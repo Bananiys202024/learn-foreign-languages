@@ -8,6 +8,15 @@ services:
           - "6379:6379"
         volumes:
           - $HOME/redis:/data
+     
+     mongo:
+        image: mongo:latest
+        hostname: mongo
+        container_name: mongo
+        ports:
+          - '27017:27017'
+        volumes:
+          - $HOME/mongodb:/data/db
           
      myapp:
         build: .  
@@ -15,4 +24,5 @@ services:
         - 8083:8080
         links:
         - "redis:redis"
+        - "mongo:mongo"
         restart: "always"

@@ -5,7 +5,6 @@ import org.springframework.stereotype.Repository;
 
 import com.web.Fremdsprache.entity.redis.TrainingWords;
 
-
 @Repository
 public interface TrainingWordRepository extends CrudRepository<TrainingWords, String> {
 
