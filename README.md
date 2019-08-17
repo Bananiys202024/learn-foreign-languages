@@ -8,6 +8,12 @@
 
 
 <h2>Start app</h2>
+
+0. Get project
+
+           $ git clone https://github.com/Bananiys202024/learn-foreign-languages
+           cd learn-foreign-languages
+ 
 1. Start back-end
 
            ./gradlew clean build           
