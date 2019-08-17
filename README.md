@@ -14,8 +14,9 @@
             docker-compose build
             docker-compose up
             
-2, Start front-end from path "learn-foreign-languages/client/"
+2, Start front-end 
 
+            cd client
             npm install
             ng serve --port 4203
             
