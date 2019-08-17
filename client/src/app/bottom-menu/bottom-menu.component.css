@@ -1,0 +1,5 @@
+.footer {
+    -webkit-box-shadow: 4px -1px 0px 0px #ccc;
+    -moz-box-shadow: 4px -1px 0px 0px #ccc;
+    box-shadow: 4px -1px 0px 0px #ccc;
+}

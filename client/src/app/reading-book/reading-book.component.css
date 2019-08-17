@@ -1,0 +1,23 @@
+.markup {
+	position: relative;
+    display: table-caption;
+    min-width: 80px;
+}
+
+
+.markupInside {
+	border-radius:3px;
+	padding: 1px 3px 1px 3px;
+	
+		
+	
+}
+
+
+.clickedWord {
+	    background-color: #fbfbfb;
+    padding: 1px 3px 1px 3px;
+    border-radius: 3px;
+	
+}
+

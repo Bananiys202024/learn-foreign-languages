@@ -1,0 +1,40 @@
+.thisIsBody {
+    /*       background: url(../../assets/img/black-and-white-black-and-white-card-1496146.jpg) no-repeat center center fixed;*/
+           background: url(../../assets/img/black-and-white-black-and-white-fog-1061623.jpg) no-repeat center center fixed;
+           min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
+           min-height: 85vh; /* These two lines are counted as one :-)       */
+           -webkit-background-size: cover;
+           -moz-background-size: cover;
+           -o-background-size: cover;
+           background-size: cover;
+   }
+   
+   
+   .size {
+           height: 25vh;
+   }
+   
+   .bg-dark-green {
+           background-color: #008000 ;
+   }
+
+
+   
+   .sizeNumber {
+        font-size: 26px;
+        padding-left: 10px;
+     }
+
+    .fontWords {
+     font-size: 18px;
+    padding-left: 10px;
+}
+
+.bg-dark-grey {
+        background-color: #fcfcfc;
+        padding: 5px;
+}
+
+.smallfont {
+font-size: 13px;
+}

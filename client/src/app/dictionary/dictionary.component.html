@@ -1,0 +1,42 @@
+
+
+<app-simple-top-menu></app-simple-top-menu>
+
+
+
+<body>
+
+
+<div class="container text-center pt-5 pb-5 ">
+<div class="vertical-center ">
+<div class="">
+
+
+<table class="table mx-auto text-white">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">English</th>
+      <th scope="col">Russian</th>
+    </tr>
+  </thead>
+  <tbody>
+
+<tr  *ngFor="let dictionary of dictionaryEnglish | slice:1; let i= index">
+<th scope="row" *ngIf="i != 0 ">{{ i+1 }}</th>
+<th scope="row" *ngIf="i == 0 ">{{ 1 }}</th>
+
+<td>{{ dictionary.wordEnglish }}</td>
+<td>{{ dictionary.wordRussian }}</td>
+</tr>
+
+
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+
+</body>
+

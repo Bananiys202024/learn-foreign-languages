@@ -1,0 +1,156 @@
+<body>
+
+<app-simple-top-menu></app-simple-top-menu>
+
+<div class="vertical-center">
+<div class="container d-flex justify-content-center align-items-center">
+
+
+<div *ngIf="countProcess == 1" class="text-center">
+<div class="card mt-5 mb-5" style="width: 18rem;">
+
+	
+  <div class="card-body text-center">
+	<h5 class="card-title sourceWord">{{ wordSource }}</h5>
+	
+	<h5 class="card-title text-white targetWord"><span class="bg-success oval">{{ wordTarget }}</span></h5>
+  
+
+	<div class="mt-4"> 
+	<a (click)="getSomeSound(element)">
+		<img src="assets/img/blue-audio-sound-waves-png-8.png" class=" mr-2"  height="15">
+		<span class="text-primary displayAsDiv">sound</span>
+	</a>
+	</div>
+</div>
+
+
+</div>
+  <button (click)="gotoProductDetails('/train-words3', element, countWords, countProcess)" class="btn btn-white bg-white mb-5">Понятно</button>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		<!-- countWords -->
+<!-- Second process -->
+
+<div  *ngIf="countProcess == 2" class="text-center">
+<div  class="card mt-5 mb-2" style="width: 18rem;">
+  <div [className]="randomcolor">
+	<h5 class="card-title sourceWord ">{{ wordSource }}</h5>
+	
+	<p *ngIf="beforeAnswer" class="mx-0 my-0 smallfontsize">Выберите правильный ответ</p>
+	
+	<h5 *ngIf="afterAnswer" class="card-title text-white targetWord"><span class="bg-success oval">{{ wordTarget }}</span></h5>
+	
+	
+		<div> 
+	<a (click)="getSomeSound(element)">
+		<img src="assets/img/blue-audio-sound-waves-png-8.png" class=" mr-2"  height="15">
+		<span class="text-primary displayAsDiv">sound</span>
+	</a>
+	</div>
+	
+	
+	
+<!-- 	There is random words and right answer -->
+
+
+	
+</div>
+
+
+</div>
+
+ <div  *ngFor="let answ of answers">
+	<button *ngIf="beforeAnswer" (click)="CheckAnswer(answ.answer, wordTarget)" class="btn btn-white bg-white mt-1 mb-1">{{ answ.answer }}</button>
+</div>
+
+<button *ngIf="afterAnswer" class="btn btn-white bg-white mb-5" (click)="nextPage('train-words3')" >Дальше</button>
+
+</div>
+
+
+
+	<!-- .... -->	<!-- .... -->	<!-- .... -->
+		<!-- .... -->	<!-- .... -->	<!-- .... -->
+
+
+
+		<!-- countWords -->
+<!-- Third process -->
+
+<div  *ngIf="countProcess == 3" class="text-center">
+
+<form (ngSubmit)="CheckAudioAnswer(answer)" #answer="ngForm">
+<div class="card mt-5 mb-2 " style="width: 18rem;">
+  <div [className]="randomcolor">
+	<h5 class="card-title sourceWord ">
+
+	<div> 
+	<a (click)="getSomeSound(element)" >
+		<img src="assets/img/blue-audio-sound-waves-png-8.png" class="mr-2" height="50" width="50" >
+<!-- 		<span class="text-primary displayAsDiv">sound</span> -->
+	</a>
+	</div>
+
+	
+
+	</h5>
+	
+	
+	
+	<p *ngIf="beforeAnswer" class="mx-0 my-0 smallfontsize">Прослушайте одно слово</p>
+	
+	<h5 *ngIf="afterAnswer" class="card-title text-white targetWord"><span class="bg-success oval">{{ wordSource }}</span></h5>	
+	
+	<div class="mt-1">
+	<input *ngIf="beforeAnswer" class="unbrokenInputBorder" id="answ" [(ngModel)]="answ" name="answ" #answers="ngModel" type="text" required/>
+		<p  *ngIf="beforeAnswer" class="smallfontsize">* Необходим хотя бы один символ</p>
+	</div>
+</div>
+
+
+</div>
+
+	<button  [disabled]="!answer.form.valid" *ngIf="beforeAnswer" type="submit" class="btn btn-white bg-white mt-1 mb-1">Проверить</button>
+
+</form>
+
+<button *ngIf="afterAnswer" class="btn btn-white bg-white mb-5" (click)="nextPage('train-words3')" >Дальше</button>
+
+
+</div>
+
+
+	<!-- .... -->	<!-- .... -->	<!-- .... -->
+		<!-- .... -->	<!-- .... -->	<!-- .... -->
+
+
+
+
+
+
+
+
+
+
+
+</div>
+</div>
+
+</body>
+
+

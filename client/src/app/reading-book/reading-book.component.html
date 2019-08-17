@@ -1,0 +1,31 @@
+<p>
+        
+        reading-book works!</p>
+
+
+
+<div class="container">        
+
+
+
+<a *ngFor="let word of books; let i = index" (click)="getTranslate(word, i)">
+
+<!--  -->
+
+<div *ngIf="i == display" (click)="resetDisplay()" [ngClass]="[word, 'markup', 'bg-success',  'markupInside'] ">
+<div class="">
+<div class=" text-white ">{{ translatedWord }}</div>
+</div>
+</div>
+<!--  -->
+
+<span [ngClass]="i == display ? 'clickedWord' : ' '">
+{{ word }}
+</span>
+
+</a>
+
+
+
+
+</div><!-- container -->

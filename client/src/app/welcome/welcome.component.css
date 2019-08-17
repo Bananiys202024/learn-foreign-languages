@@ -1,0 +1,50 @@
+
+.changefonttopmenu {    
+font-size: 25px;
+}
+
+.changefontrighttopmenu {
+		font-size:18px;
+}
+
+.thereisimage {
+    background-image: url('../../assets/img/welcome.jpg');
+    background-repeat: no-repeat;
+    background-size:cover;
+}
+
+
+.paddingFromBotton {
+ padding-bottom: 10rem;
+}
+
+
+.border-1 {
+     border-bottom: 1px solid rgba(255,255,255,.3);  
+     
+}
+
+
+
+.font-some-change {
+font-family: pp-sans-big-light,Helvetica Neue,Arial,sans-serif;
+font-weight: 400;
+line-height: 1.25;
+letter-spacing: .02em;
+}
+
+.padding-7-top {
+    padding-top: 7rem!important;
+}
+
+.padding-7-bottom {
+    padding-bottom: 7rem!important;
+}
+
+.round {
+    border-radius: 12px;
+}
+
+.padding-10 {
+padding-top: 25px;
+}

@@ -1,0 +1,72 @@
+
+<app-top-menu></app-top-menu>
+<body class="thisIsBody">
+
+
+
+<div class="container pt-5">
+<!--  *ngIf="emptyDictionary == true"    -->
+    
+<!-- Button trigger modal -->
+
+<button type="button" id="modalClick" style="display:none;" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  Launch demo modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">В словаре нет слов</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body ">
+       <div class="text-center">
+               <button type="button" class="btn btn-primary mt-2">Добавить 10 рандомных слов</button>
+                       <button type="button" class="btn btn-primary mt-2 mb-2">Добавить слова из историй</button>
+      </div>
+      
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+        <a (click)="gotoProductDetails()" >
+        <div class="card bg-dark text-white text-color changeByHover">
+                <img src="../../assets/img/bridge.jpeg" class="card-img size" alt="...">
+                <div class="card-img-overlay">
+                  <h5 class="card-title">Тренировка слов</h5>
+                  <p class="card-text">Ты можешь добавлять слова из книг или же получить рандомный набор слов. Чтобы добавить слова из книги выбери тренировку ниже. Чтобы получить 10 рандомныx слов нажми на меня</p>
+                  <p class="card-text text-dark">{{ learn  || '0'}} слов на изучении</p>
+                  <p class="card-text text-dark"> {{ later || '0' }} слов на повторении</p>
+                  <p class="card-text text-dark"> {{ learned || '0' }} cлов изучено</p>
+                  
+                </div>
+              </div>
+        </a>
+
+          <a href='reviewBooks' >
+              <div class="card bg-dark text-white mt-3 changeByHover0">
+                    <img src="../../assets/img/book-707389_1920.jpg" class="card-img size"  alt="...">
+                    <div class="card-img-overlay">
+                      <h5 class="card-title">Книги на английском</h5>
+                      <p class="card-text">Ты можешь читать книги на английском, смотреть перевод слова в один клик. Автоматическое добавление в словарь незнакомых слов. После чтения ты можешь тренировать незнакомые слова.</p>
+                    </div>
+                  </div>
+                </a>      
+</div>
+
+
+
+</body>
+
+<app-bottom-menu></app-bottom-menu>
+

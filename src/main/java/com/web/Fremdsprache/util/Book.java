@@ -19,8 +19,8 @@ public class Book {
 	public static ArrayList<String> getWordsOfBookInListFromDataBase(String title) throws FileNotFoundException
 	{
 		
-		Path path = FileSystems.getDefault().getPath(".");
-		logger.info("Path---"+path);
+//		Path path = FileSystems.getDefault().getPath(Book.class);
+		logger.info("Path--updated------"+ Book.class.getProtectionDomain().getCodeSource().getLocation().getPath());
 		
 		Scanner s = new Scanner(new File("src/main/resources/static/books/Atlas-Broken.txt"), "UTF-8");
 		
