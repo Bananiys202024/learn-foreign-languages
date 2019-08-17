@@ -5,6 +5,22 @@
 
  App is developing...
 
+
+
+<h2>Start app</h2>
+1. Start back-end
+
+           ./gradlew clean build           
+            docker-compose build
+            docker-compose up
+            
+2, Start front-end from path "learn-foreign-languages/client/"
+
+            npm install
+            ng serve --port 4203
+
+
+
 <h2>Docker</h2>
 
 Clear
