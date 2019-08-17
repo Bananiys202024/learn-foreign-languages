@@ -21,7 +21,7 @@
             docker-compose build
             docker-compose up
             
-2, Start front-end 
+2. Start front-end 
 
             cd client
             npm install
