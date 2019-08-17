@@ -18,7 +18,7 @@
 
             npm install
             ng serve --port 4203
-
+3. Go to <a href="http://localhost:4203/">http://localhost:4203/</a>
 
 
 <h2>Docker</h2>
