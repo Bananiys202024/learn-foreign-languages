@@ -3,12 +3,13 @@ import { HttpClientService } from '../service/http-client.service';
 import { Router } from '@angular/router';
 import { element } from 'protractor';
 import { Size } from '../classes/size';
+import { trigger, state, style, animate, transition } from '@angular/animations';
 
 
 @Component({
   selector: 'app-train-words',
   templateUrl: './train-words.component.html',
-  styleUrls: ['./train-words.component.css']
+  styleUrls: ['./train-words.component.css', ],
 })
 export class TrainWordsComponent implements OnInit {
 
@@ -17,6 +18,9 @@ export class TrainWordsComponent implements OnInit {
   learn:number;
   later:number;
   learned:number;
+
+  messageSuccess = true;
+  timesAddedTenWords:any;
 
 		constructor(
 	private httpClientService:HttpClientService,
@@ -57,11 +61,31 @@ else
 {
 
 this.httpClientService.getTrainWords().subscribe();
-this.router.navigate(['/train-words1', 1,1,1]);
+//this.router.navigate(['/train-words1', 1,1,1]);
+this.router.navigate(['/train-words-slider']);
+
+}
 }
 
 
+
+getTenWordsToDictionary() 
+{
+  console.log('Added 10 words');
 }
+
+
+
+//get 10 words
+
+appearAndFadeOut()
+{
+this.messageSuccess = false;
+}
+ //..
+
+
+
 
 
 }

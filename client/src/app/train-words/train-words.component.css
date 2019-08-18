@@ -26,3 +26,21 @@
 .changeByHover0:hover {
         background: #00f007 !important;
 }
+
+
+.location_fixed_same_beautiful_classes {
+position: fixed;
+    top: 0;
+    left: 0;
+    max-width: 500px;
+    margin: 1.75rem auto;
+    margin-top: 8em;
+    margin-left: auto;
+    margin-right: auto;
+    left: 70%;
+}
+
+.toast 
+{
+        opacity:1;
+}

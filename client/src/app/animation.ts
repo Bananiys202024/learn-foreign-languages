@@ -1,12 +1,12 @@
 import {
   animation, trigger, animateChild, group,
-  transition, animate, style, query
+  transition, animate, style, query, state
 } from '@angular/animations';
 
 
 
 export const slideInAnimation =
-  trigger('routeAnimations', [
+trigger('routeAnimations', [
     transition('HomePage <=> Welcome', [
       style({ position: 'relative' }),
       query(':enter, :leave', [

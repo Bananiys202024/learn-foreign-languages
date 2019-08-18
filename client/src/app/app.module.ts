@@ -32,6 +32,9 @@ import { ReviewBooksComponent } from './review-books/review-books.component';
 import { DictionaryComponent } from './dictionary/dictionary.component';
 import { LoginComponent } from './login/login.component';
 import { RegistrationComponent } from './registration/registration.component';
+import { TrainingWordsSliderComponent } from './training-words-slider/training-words-slider.component';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+
 
 @NgModule({
   declarations: [
@@ -52,6 +55,7 @@ import { RegistrationComponent } from './registration/registration.component';
 	DictionaryComponent,
 	LoginComponent,
 	RegistrationComponent,
+	TrainingWordsSliderComponent,
 	
   ],
   imports: [
@@ -60,6 +64,7 @@ import { RegistrationComponent } from './registration/registration.component';
 	HttpClientModule,
 	BrowserAnimationsModule,
 	FormsModule,
+	NgbModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

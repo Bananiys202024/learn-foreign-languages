@@ -14,6 +14,7 @@ import { ReviewBooksComponent } from './review-books/review-books.component';
 import { ReadingBookComponent } from './reading-book/reading-book.component';
 import { DictionaryComponent } from './dictionary/dictionary.component';
 import { RegistrationComponent } from './registration/registration.component';
+import { TrainingWordsSliderComponent } from './training-words-slider/training-words-slider.component';
 
 
 const routes: Routes = [
@@ -27,7 +28,9 @@ const routes: Routes = [
 
 	  { path: 'registration', component: RegistrationComponent, data: {animation: 'Registration'}},
 	  
-	  
+	  { path: 'train-words-slider', component: TrainingWordsSliderComponent, data: {animation: 'train-words-slider'}},
+
+
 	  { path: 'train-words1/:element/:countWords/:countProcess', component: TrainWords1Component, data: {animation: 'TrainWords1'}},
 	  { path: 'train-words2/:element/:countWords/:countProcess', component: TrainWords2Component, data: {animation: 'TrainWords2'}},
 	  { path: 'train-words3/:element/:countWords/:countProcess', component: TrainWords3Component, data: {animation: 'TrainWords3'}},

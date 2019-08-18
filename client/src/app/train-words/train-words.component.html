@@ -13,6 +13,12 @@
   Launch demo modal
 </button>
 
+
+
+
+
+
+
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -25,13 +31,13 @@
       </div>
       <div class="modal-body ">
        <div class="text-center">
-               <button type="button" class="btn btn-primary mt-2">Добавить 10 рандомных слов</button>
-                       <button type="button" class="btn btn-primary mt-2 mb-2">Добавить слова из историй</button>
+               <a role="button" data-dismiss="modal" data-toggle="modal" data-target="#exampleModal" (click)="getTenWordsToDictionary();appearAndFadeOut()" class="btn btn-primary mt-2 text-white">Добавить 10 наиболее встречающихся слов</a>
+               <button type="button" data-dismiss="modal" class="btn btn-primary mt-2 mb-2">Добавить слова из историй</button>
       </div>
       
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Вернуться</button>
 
       </div>
     </div>
@@ -65,6 +71,13 @@
 </div>
 
 
+
+ <a (click)="appearAndFadeOut()">check</a>
+ <div [hidden]="!messageSuccess"  class="location_fixed_same_beautiful_classes bg-dark " [@fadeInOut]>
+    <h4 class="text-white"></h4>
+  </div>
+
+  
 
 </body>
 

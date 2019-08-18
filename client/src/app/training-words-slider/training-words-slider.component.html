@@ -1,0 +1,97 @@
+<body>
+<app-simple-top-menu></app-simple-top-menu>
+<div class="vertical-center">
+<div class="container d-flex justify-content-center align-items-center setting_height">
+
+
+<div class="container">
+    <div class="row">
+      <div class="col-md-12 py-3">
+        <ngb-carousel class="remove_border" #caro  *ngIf="upcoming_events">
+          <ng-template ngbSlide *ngFor="let event of upcoming_events">
+         
+
+            <!--start part firstProcess-->
+                    <div  *ngIf="showfirstProcess" class="text-center d-flex justify-content-center align-items-center">
+                      <div class="simple_for_combination">
+                          <div class="card mt-5 mb-3" style="width: 18rem;">
+                               <div class="card-body text-center">
+                                    <h5 class="card-title sourceWord ">{{englishWords[event]}}</h5>
+                                    <h5 class="card-title text-white pt-4 targetWord"><span class="bg-success oval px-2 py-2">{{russianWords[event]}}</span></h5>
+                                 </div>
+                            </div>               
+                        <button (click)="understand($event, caro)" class="btn btn-white bg-white mb-5">Понятно</button>     
+                      </div>                    
+                    </div>
+             <!--end part-->
+
+             <!--start part secondProcess-->
+                 <div  *ngIf="showSecondProcess" class="text-center d-flex justify-content-center align-items-center">
+                    <div class="simple_for_combination">
+                        <div class="card mt-5 mb-3" style="width: 18rem;">
+                            <div [className]="settingColorsBasedOnAnswer">
+                                  <h5 class="card-title sourceWord ">{{englishWords[event]}}</h5>
+                                  <p *ngIf="beforeAnswer" class="mx-0 my-0 smallfontsize">Выберите правильный ответ</p>
+                                  <h5  *ngIf="aftereAnswer"  class="card-title text-white pt-4 targetWord"><span class="bg-success oval px-2 py-2">{{russianWords[event]}}</span></h5>
+                             </div> 
+                          </div>               
+                         
+                          <div *ngFor="let answ of generated_array_random_russian_words">
+                              <button *ngIf="beforeAnswer"  (click)="checkSecondProcessAnswer(answ, $event, caro)" class="btn btn-white bg-white mt-1 mb-1">{{ answ }}</button>
+                          </div>
+
+                      <button *ngIf="aftereAnswer" (click)="goToNextPartInSecondProcess($event, caro)" class="btn btn-white bg-white mb-5">Дальше</button>     
+                    </div>                    
+                  </div>
+
+           <!--end part-->
+
+
+           <!--start part thirdProcess-->
+           <div  *ngIf="showThirdProcess" class="text-center d-flex justify-content-center align-items-center">
+            <form (ngSubmit)="checkThirdProcessAnswer(answer, $event, caro)" #answer="ngForm">
+                <div class="card mt-5 mb-3" style="width: 18rem;">
+                    <div [className]="settingColorsBasedOnAnswer">
+                            <h5 class="card-title sourceWord ">{{russianWords[event]}}</h5>
+                            <p *ngIf="beforeAnswer" class="mx-0 my-0 smallfontsize">Введите правильный перевод</p>
+                            <h5  *ngIf="aftereAnswer"  class="card-title text-white pt-4 targetWord"><span class="bg-success oval px-2 py-2">{{englishWords[event]}}</span></h5>
+
+                       <div class="mt-1 form-group">
+                          <input *ngIf="beforeAnswer" class="form-control unbrokenInputBorder" id="answ" [(ngModel)]="answ" name="answ" #answers="ngModel" type="text" required/>	
+                          <p  *ngIf="beforeAnswer" class="smallfontsize">* Необходим хотя бы один символ</p>
+                      </div>   
+                      </div>               
+                  </div>  
+                   
+                <button [disabled]="!answer.form.valid" *ngIf="beforeAnswer" type="submit" class="btn btn-white bg-white mt-1 mb-1">Проверить</button>
+
+                <button *ngIf="aftereAnswer" (click)="goToNextPartInThirdProcess($event, caro)" class="btn btn-white bg-white mb-5">Дальше</button>     
+                         
+             </form>
+           </div>
+          <!--end part-->
+
+          </ng-template>
+        </ngb-carousel>
+      </div>
+    </div>
+  </div>
+
+
+  </div>
+  </div>
+</body>
+
+
+
+
+  https://ng-bootstrap.github.io/#/components/carousel/api
+  https://ng-bootstrap.github.io/#/components/carousel/examples
+
+  animation to ngb-carousel
+  https://netbasal.com/building-a-simple-carousel-component-with-angular-3a94092b7080
+
+
+
+  https://stackoverflow.com/questions/42567906/animation-for-carousel-with-ng-boostrap-and-angular-2
+  https://stackoverflow.com/questions/44959366/ngb-carousel-how-can-i-have-animation-like-fade-in-out-between-images-slides?noredirect=1&lq=1
