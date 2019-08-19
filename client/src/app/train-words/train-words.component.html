@@ -1,7 +1,42 @@
-
+<html  [ngClass]="isLoading?'loading_class' : 'normmal_state'">
 <app-top-menu></app-top-menu>
-<body class="thisIsBody">
+<body  class="thisIsBody">
+    
 
+    <div *ngIf="isLoading" class="spinner-grow text-success loader_by_center_location_and_more_size" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+
+
+  <!--Alert about  adding 10 words-->
+
+  <div aria-live="polite" aria-atomic="true" style="position: relative;">
+    <!-- Position it -->
+    <div style="position: absolute; top: 0; right: 0;" class="pt-4">
+     
+        
+      <div class="toast mr-2" *ngFor="let time of times" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header">
+          <div class="bg-grey rounded-circle mr-2">
+          <img src="../../assets/img/dolphi3.png" class="set-size_good_image" alt="...">
+          </div>
+          <strong class="mr-auto">Dolphi</strong>
+         <!-- <small class="text-muted">just now3</small> -->
+          <button type="button" class="ml-2 mb-1 close" (click)="dismissToastMessage()" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="toast-body">
+          Добавлено 10 слов в словарь
+        </div>
+      </div>
+    
+    
+    
+    </div>
+  </div>
+
+<!--....-->
 
 
 <div class="container pt-5">
@@ -12,11 +47,6 @@
 <button type="button" id="modalClick" style="display:none;" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
   Launch demo modal
 </button>
-
-
-
-
-
 
 
 <!-- Modal -->
@@ -31,7 +61,7 @@
       </div>
       <div class="modal-body ">
        <div class="text-center">
-               <a role="button" data-dismiss="modal" data-toggle="modal" data-target="#exampleModal" (click)="getTenWordsToDictionary();appearAndFadeOut()" class="btn btn-primary mt-2 text-white">Добавить 10 наиболее встречающихся слов</a>
+               <a role="button" data-dismiss="modal" data-toggle="modal" data-target="#exampleModal" (click)="getTenWordsToDictionary()" class="btn btn-primary mt-2 text-white">Добавить 10 наиболее встречающихся слов</a>
                <button type="button" data-dismiss="modal" class="btn btn-primary mt-2 mb-2">Добавить слова из историй</button>
       </div>
       
@@ -68,18 +98,10 @@
                     </div>
                   </div>
                 </a>      
-</div>
-
-
-
- <a (click)="appearAndFadeOut()">check</a>
- <div [hidden]="!messageSuccess"  class="location_fixed_same_beautiful_classes bg-dark " [@fadeInOut]>
-    <h4 class="text-white"></h4>
-  </div>
-
-  
+</div>  
 
 </body>
 
 <app-bottom-menu></app-bottom-menu>
 
+</html>

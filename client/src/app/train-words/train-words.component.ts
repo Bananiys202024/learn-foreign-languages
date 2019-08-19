@@ -6,10 +6,12 @@ import { Size } from '../classes/size';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 
 
+
 @Component({
   selector: 'app-train-words',
   templateUrl: './train-words.component.html',
   styleUrls: ['./train-words.component.css', ],
+
 })
 export class TrainWordsComponent implements OnInit {
 
@@ -21,6 +23,9 @@ export class TrainWordsComponent implements OnInit {
 
   messageSuccess = true;
   timesAddedTenWords:any;
+
+  isLoading: Boolean = false;
+  times:string[] = new Array();
 
 		constructor(
 	private httpClientService:HttpClientService,
@@ -71,16 +76,29 @@ this.router.navigate(['/train-words-slider']);
 
 getTenWordsToDictionary() 
 {
-  console.log('Added 10 words');
+  this.isLoading=true;
+  //document.getElementById('successful').click()
+  this.times.push('plusOneMessage');
+
+  this.httpClientService.checkIfDictionaryEmpty().subscribe(
+    response => 
+    {
+      this.isLoading=false;
+      this.learn+=10;
+    }
+  );
+  
+
+ 
 }
 
 
 
 //get 10 words
 
-appearAndFadeOut()
+dismissToastMessage()
 {
-this.messageSuccess = false;
+  this.times.splice(0,1);
 }
  //..
 

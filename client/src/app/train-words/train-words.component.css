@@ -44,3 +44,35 @@ position: fixed;
 {
         opacity:1;
 }
+
+.set-size_good_image
+{
+        width:30px;
+        height:30px;
+}
+
+.bg-grey
+{
+        background: #adadc0;
+}
+
+.loader_by_center_location_and_more_size 
+{
+z-index: 1 !important;
+position: absolute;
+left: 49%;
+top: 40%;
+width: 6em;
+height: 6em;
+
+}
+
+.loading_class
+{
+        opacity: 0.5;
+}
+
+.normal_state
+{
+        opacity:1;
+}
