@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.web.Fremdsprache.repositories.DictionaryRepository;
 import com.web.Fremdsprache.repositories.TrainingWordRepository;
-import com.web.Fremdsprache.util.Book;
+import com.web.Fremdsprache.util.Story;
 
 
 @CrossOrigin(origins = "http://localhost:4203")
@@ -31,7 +31,7 @@ public class StoryController {
 
 	@RequestMapping(value = "/getStory/{title}", method = RequestMethod.GET,produces = "application/json")
 	public ArrayList<String> getBook(@PathVariable String title) throws IOException {
-		return Book.getWordsOfBookInListFromDataBase(title);
+		return Story.getWordsOfBookInListFromDataBase(title);
 	}
 	
 }

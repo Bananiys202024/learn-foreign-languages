@@ -8,11 +8,10 @@ services:
           - "6379:6379"
         volumes:
           - $HOME/redis:/data
-     
+    
+      
      mongo:
         image: mongo:latest
-        hostname: mongo
-        container_name: mongo
         ports:
           - '27017:27017'
         volumes:
@@ -25,4 +24,7 @@ services:
         links:
         - "redis:redis"
         - "mongo:mongo"
+        depends_on:
+        - mongo
+        - redis
         restart: "always"
