@@ -34,6 +34,7 @@ import { LoginComponent } from './login/login.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { TrainingWordsSliderComponent } from './training-words-slider/training-words-slider.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { CabinetComponent } from './cabinet/cabinet.component';
 
 
 @NgModule({
@@ -56,6 +57,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 	LoginComponent,
 	RegistrationComponent,
 	TrainingWordsSliderComponent,
+	CabinetComponent,
 	
   ],
   imports: [

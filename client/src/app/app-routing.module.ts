@@ -15,6 +15,7 @@ import { ReadingBookComponent } from './reading-book/reading-book.component';
 import { DictionaryComponent } from './dictionary/dictionary.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { TrainingWordsSliderComponent } from './training-words-slider/training-words-slider.component';
+import { CabinetComponent } from './cabinet/cabinet.component';
 
 
 const routes: Routes = [
@@ -29,6 +30,7 @@ const routes: Routes = [
 	  { path: 'registration', component: RegistrationComponent, data: {animation: 'Registration'}},
 	  
 	  { path: 'train-words-slider', component: TrainingWordsSliderComponent, data: {animation: 'train-words-slider'}},
+	  { path: 'cabinet', component: CabinetComponent, data: {animation: 'cabinet'}},
 
 
 	  { path: 'train-words1/:element/:countWords/:countProcess', component: TrainWords1Component, data: {animation: 'TrainWords1'}},

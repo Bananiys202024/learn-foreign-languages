@@ -9,10 +9,89 @@
         background-size: cover;
 }
 
-
-.size {
-        height: 25vh;
+.w-20em
+{
+        width: 20em;
 }
+
+.p-05em
+{
+        padding:0.5em;
+}
+
+.fnt-13
+{
+        font-size:13px;
+
+}
+
+.progress
+{
+        height:0.3em;
+}
+
+.styles-font-experience
+{
+margin-bottom: 1.5em;
+padding-top: 1em;
+}
+
+
+.ml-20-percent 
+{
+       
+    margin-right: 3.5vw;
+}
+
+.opacity05 
+{
+        opacity:0.5;
+}
+
+
+.min-height-20
+{
+min-height: 20vh;
+}
+
+
+
+.image
+{
+background: #bfc0c2;
+width: 40px;
+border-radius: 50%;
+}
+
+.text-good-style
+{
+        font-size: 12px;
+        font-weight: 400;
+        font-style: normal;
+        font-stretch: normal;
+        line-height: normal;
+        letter-spacing: .3px;
+        text-align: center;
+}
+
+.image_block
+{
+margin-top: -1em;
+}
+
+.header-block
+{
+margin-bottom: 1em;
+font-weight: 600;
+color: #37383c;
+}
+
+.delete-margin-padding
+{
+        margin-bottom: 0.6em;
+}
+
+
 
 .text-color {
         color: #575757 !important;
@@ -75,4 +154,84 @@ height: 6em;
 .normal_state
 {
         opacity:1;
+}
+
+.training_block
+{
+        height: 100%;
+        border: 1px solid black;
+        padding: 0.5em;
+}
+
+
+.background_1
+{
+background: url(../../assets/img/planet-4400229_1920.jpg); 
+background-size: 100% 100%;
+}
+
+.background_2
+{
+background: url(../../assets/img/camp-4363073_1280.png); 
+background-size: 100% 100%;
+}
+
+
+.font-weight-bold
+{
+        font-weight:600;
+}
+
+
+.font-size-12
+{
+        font-size: 12px;
+}
+
+.background_material_1
+{
+        background: url(../../assets/img/fantasy-4378018_1920.jpg); 
+        background-size: 100% 100%;        
+}
+
+
+.background_material_2
+{
+        background: url(../../assets/img/fantasy-4356228_1920.jpg); 
+        background-size: 100% 100%;        
+}
+
+
+.background_material_3
+{
+        background: url(../../assets/img/narrative-794978_1920.jpg); 
+        background-size: 100% 100%;        
+}
+
+
+.background_material_4
+{
+        background: url(../../assets/img/fantasy-4388628_1920.jpg); 
+        background-size: 100% 100%;        
+}
+
+.font-size-14
+{
+        font-size: 16px;
+}
+
+.good-border-image
+{
+border-radius: 2%;
+}
+
+.text-small
+{
+        font-size: 13px;
+}
+
+
+.story:hover
+{
+text-decoration: none !important;
 }

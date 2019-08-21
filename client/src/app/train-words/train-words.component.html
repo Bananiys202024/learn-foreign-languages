@@ -8,6 +8,9 @@
       </div>
 
 
+
+
+
   <!--Alert about  adding 10 words-->
 
   <div aria-live="polite" aria-atomic="true" style="position: relative;">
@@ -75,30 +78,181 @@
 </div>
     
     
-        <a (click)="gotoProductDetails()" >
-        <div class="card bg-dark text-white text-color changeByHover">
-                <img src="../../assets/img/bridge.jpeg" class="card-img size" alt="...">
-                <div class="card-img-overlay">
-                  <h5 class="card-title">Тренировка слов</h5>
-                  <p class="card-text">Ты можешь добавлять слова из книг или же получить рандомный набор слов. Чтобы добавить слова из книги выбери тренировку ниже. Чтобы получить 10 рандомныx слов нажми на меня</p>
-                  <p class="card-text text-dark">{{ learn  || '0'}} слов на изучении</p>
-                  <p class="card-text text-dark"> {{ later || '0' }} слов на повторении</p>
-                  <p class="card-text text-dark"> {{ learned || '0' }} cлов изучено</p>
-                  
-                </div>
-              </div>
-        </a>
 
-          <a href='reviewBooks' >
-              <div class="card bg-dark text-white mt-3 changeByHover0">
-                    <img src="../../assets/img/book-707389_1920.jpg" class="card-img size"  alt="...">
-                    <div class="card-img-overlay">
-                      <h5 class="card-title">Книги на английском</h5>
-                      <p class="card-text">Ты можешь читать книги на английском, смотреть перевод слова в один клик. Автоматическое добавление в словарь незнакомых слов. После чтения ты можешь тренировать незнакомые слова.</p>
-                    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="container">
+
+
+  <div class="row">
+  <div class="header-block"><span>Тренировки</span></div>
+  </div>
+
+  <div class="row">
+
+
+    <div class="col-3 pl-0">
+     <a (click)="gotoProductDetails()" >
+      <div class="training_block good-border-image background_1 font-size-12">
+          <h5 class="card-title text-white">Тренировка слов</h5>
+          <p class="card-text delete-margin-padding text-white">{{ learn  || '0'}} слов на изучении</p>
+          <p class="card-text delete-margin-padding text-white"> {{ later || '0' }} слов на повторении</p>       
+        </div>
+       </a>
+      </div>
+
+
+    <div class="col-3">
+      <a href='reviewBooks' class="story" >
+        <div class="training_block good-border-image background_2 text-center text-white pt-5">
+              <h5 class="font-weight-bold ">Истории</h5>
+          </div>
+      </a>
+    </div>
+
+        
+     <div class="col-6">
+
+      <div class="container-experience text-center bg-white pb-4">
+        <div class="control_size pt-4 pb-2 pl-4 pr-4">
+          <div class="mb-3 mt-2"><span class="mt-1 pt-1 text-good-style">Занимайся ещё 5 дней и получи суперприз!</span></div>
+
+          <!--<div class="cross-dark-line"></div>-->
+          <div class="progress">
+              <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+
+          <div class="image_block d-flex justify-content-between" >
+
+          <div class="block float-left"> 
+            <div class="image"> <img src="../../assets/img/dolphi3.png" class="set-size_good_image" alt="..."></div>
+            <span class="text-good-style">День 1</span>
+          </div>
+
+          <div class="block float-left "> 
+              <div class="image"> <img src="../../assets/img/dolphi3.png" class="set-size_good_image" alt="..."></div>
+              <span class="text-good-style">День 2</span>
+            </div>
+
+            <div class="block float-left"> 
+                <div class="image"> <img src="../../assets/img/dolphi3.png" class="set-size_good_image" alt="..."></div>
+                <span class="text-good-style">День 3</span>
+              </div>
+
+              <div class="block float-left"> 
+                  <div class="image"> <img src="../../assets/img/dolphi3.png" class="set-size_good_image" alt="..."></div>
+                  <span class="text-good-style">День 4</span>
+                </div>
+
+
+                <div class="block float-left"> 
+                    <div class="image"> <img src="../../assets/img/dolphi3.png" class="set-size_good_image" alt="..."></div>
+                    <span class="text-good-style">День 5</span>
                   </div>
-                </a>      
-</div>  
+
+          </div>
+
+
+          
+      </div>
+    </div>
+     </div>
+
+  </div>
+
+
+
+  <div class="row mt-4">
+      <div class="header-block mb-0"><span>Истории</span></div>
+  </div>
+
+
+  <div class="row">
+      <div class="opacity05"><span>Самое популярное</span></div>
+  </div>
+  
+
+<div class="row mt-2 ">
+
+    <div class="col-3 pl-0 ">
+        <div class="training_block good-border-image background_material_1 min-height-20 text-white pt-5 d-flex align-items-end">
+          <div class="">
+              <h5 class="font-size-14">Жюль Верн «Двадцать тысяч лье под водой»</h5>
+              <span class="text-small ">4 страницы</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-3">
+            <div class="training_block good-border-image background_material_2  min-height-20 text-center text-white pt-5 d-flex align-items-end" >
+                <div class="">
+                  <p class="font-size-14">Джонатан Свифт «Путешествия Гулливера»</p>
+                  <span class="text-small">22 страницы</span>
+                  </div>
+              </div>
+            </div>
+
+            <div class="col-3">
+                <div class="training_block good-border-image background_material_3 min-height-20 text-center text-white pt-5 d-flex align-items-end">
+                    <div class="">
+                      <h5 class="font-size-14">Мэри Шелли «Франкенштейн, или Современный Прометей»</h5>
+                      <span class="text-small">0.5 страницы</span>
+                      </div>
+                  </div>
+                </div>
+
+                <div class="col-3">
+                    <div class="training_block good-border-image background_material_4 min-height-20 text-center text-white pt-5 d-flex align-items-end">
+                        <div class="">
+                          <h5 class="font-size-14">Уильям Гибсон «Нейромант»</h5>
+                          <span class="text-small">9 страницы</span>
+                         </div>
+                        </div>
+                    </div>
+  
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div> <!--container end-->
+
+
+
+
+
+
+
+
+
+
+
+
+              </div>  
 
 </body>
 

@@ -1,0 +1,29 @@
+@supports (display: grid) {  /* если браузер поддерживает Гриды */ 
+    @media (min-width: 14em) {  /* если окно браузера больше 14em */ 
+      dl {
+        display: grid;
+        grid-template-columns: auto 1fr;  /* auto определяет ширину первой колонки, которая равна самому широкому элементу <dt> (auto можно заменить на fit-content(10em), если необходимо её ограничить) */ 
+      }
+      dt {
+        min-width: 0;  /* более привычное поведение при переполнении */ 
+      }
+      dd {
+        margin: 0 0 0 1em;
+      }
+    }
+  }
+
+  html
+  {
+      height:100%;
+  }
+
+  body
+  {
+      height:100%;   
+  }
+
+  .set-height
+  {
+      height:82vh;
+  }
