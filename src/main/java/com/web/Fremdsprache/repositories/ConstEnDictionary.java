@@ -7,8 +7,8 @@ import com.web.Fremdsprache.entity.mongodb.ConstantEnglishDictionary;
 import com.web.Fremdsprache.entity.mongodb.CountExperienceOfTrainingWords;
 
 @Repository
-public interface ConstEnDictionary extends MongoRepository<ConstantEnglishDictionary, String> {
+public interface ConstEnDictionary extends MongoRepository<ConstantEnglishDictionary, Integer> {
 
-	
+	ConstantEnglishDictionary findById(int id);
 	
 }

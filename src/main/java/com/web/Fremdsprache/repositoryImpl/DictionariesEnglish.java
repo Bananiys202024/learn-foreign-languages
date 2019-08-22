@@ -1,15 +1,20 @@
 package com.web.Fremdsprache.repositoryImpl;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
+import java.util.Random;
 import java.util.stream.Collectors;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.web.Fremdsprache.entity.mongodb.ConstantEnglishDictionary;
 import com.web.Fremdsprache.entity.mongodb.DictionaryEnglish;
 import com.web.Fremdsprache.model.Size;
+import com.web.Fremdsprache.repositories.ConstEnDictionary;
 import com.web.Fremdsprache.repositories.DictionaryRepository;
 import com.web.Fremdsprache.translator.Translator;
 
@@ -115,5 +120,57 @@ public class DictionariesEnglish {
 		 return size;
 		  
 	}
+
+	public static List<DictionaryEnglish> insert_10_random_words(String owner, DictionaryRepository dictionaryRepository,
+			ConstEnDictionary englishDictionaryRepository) throws IOException {
+		
+
+		//generate list of entities
+		List<ConstantEnglishDictionary> entities = new ArrayList<ConstantEnglishDictionary>();
+	
+		ConstantEnglishDictionary entity = null;
+		while(entities.size()<10)
+		{
+		entity = englishDictionaryRepository.findById(new Random().ints(1, 1, 10_000).findFirst().getAsInt() );
+		
+		boolean checkingBool = IsWordNotExistsInDictionary(dictionaryRepository, entity);
+		
+		logger.info("---Boollean-----"+checkingBool);
+		
+		if(checkingBool)
+		{
+			entities.add(entity);
+		}
+		}
+		
+		//save those 10 entities in dictionaryRepository
+		for(ConstantEnglishDictionary enty:entities)
+		dictionaryRepository.save(transformToProperEntity(owner,dictionaryRepository, enty));
+		
+		return null;
+	}
+
+	private static DictionaryEnglish transformToProperEntity(String owner, DictionaryRepository dictionaryRepository, ConstantEnglishDictionary enty) throws IOException {
+		long maxId = dictionaryRepository.findFirstByOrderByIdDesc().getId();	
+		return DictionaryEnglish.builder()
+								.id(maxId+1)
+								.dateLearned(new Date())
+								.dateRepeat(new Date())
+								.learned(false)
+								.wordEnglish(enty.getWord())
+								.wordRussian(Translator.translate("ru", enty.getWord() ))
+								.owner(owner)
+								.repeatTomorrow(false)
+								.build();
+		
+	}
+
+	private static boolean IsWordNotExistsInDictionary(DictionaryRepository dictionaryRepository,
+			ConstantEnglishDictionary entity) {	
+		DictionaryEnglish result = dictionaryRepository.findBywordEnglish(entity.getWord());	
+		logger.info("Information1-----"+result);
+		return result==null?true:false;
+	}
+	
 
 }

@@ -20,8 +20,8 @@ import lombok.NoArgsConstructor;
 @Document(collection = "constantDictionary")
 public @Data class ConstantEnglishDictionary {
 
-    @Id
-    private Long id;
+    @Id    
+    private int id;
     
     @Field(value = "word")
     private String word;

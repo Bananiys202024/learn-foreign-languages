@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.web.Fremdsprache.entity.mongodb.DictionaryEnglish;
 import com.web.Fremdsprache.model.Bool;
 import com.web.Fremdsprache.model.Size;
+import com.web.Fremdsprache.repositories.ConstEnDictionary;
 import com.web.Fremdsprache.repositories.DictionaryRepository;
 import com.web.Fremdsprache.repositoryImpl.DictionariesEnglish;
 
@@ -26,6 +27,9 @@ public class DictionaryController {
 	
 	@Autowired
 	public DictionaryRepository dictionaryRepository;
+	
+	@Autowired
+	ConstEnDictionary englishDictionaryRepository;
 	
 	String owner= "Admin";
 	
@@ -50,6 +54,11 @@ public class DictionaryController {
 	@RequestMapping(value = "get/Dictionary/English", method = RequestMethod.GET, produces = "application/json")
 	public List<DictionaryEnglish> addNotesToMongoDB() throws IOException {
 		return DictionariesEnglish.getEnglishDictionary(dictionaryRepository);	
+	}
+	
+	@RequestMapping(value = "get/10/random/words/to/dictionary", method = RequestMethod.GET, produces = "application/json")
+	public List<DictionaryEnglish> generate_10_random_words() throws IOException {
+		return DictionariesEnglish.insert_10_random_words(owner, dictionaryRepository, englishDictionaryRepository);	
 	}
 	
 
