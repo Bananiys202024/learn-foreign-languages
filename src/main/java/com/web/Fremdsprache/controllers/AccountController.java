@@ -41,15 +41,6 @@ public class AccountController {
 	}
 	
 	
-	@RequestMapping(value = "mongo/say/dict", method = RequestMethod.GET, produces = "application/json")
-	public List<ConstantEnglishDictionary> mong_say_dict() throws Exception {
-			return englishDictionaryRepository.findAll();
-	}
-	
-	@RequestMapping(value = "mongo/say/eng", method = RequestMethod.GET, produces = "application/json")
-	public List<DictionaryEnglish> mong_say_dffict() throws Exception {
-			return dictionaryRepository.findAll();
-	}
 	
 	
 }

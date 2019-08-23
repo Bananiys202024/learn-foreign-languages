@@ -113,6 +113,21 @@ export class HttpClientService {
       	  	   	   					getCounterOfExperience()
     {
 	    return this.httpClient.get<number>('http://localhost:8083/count/counter/experience/training/words');
-   	} 	
+     } 	
+     
+                            get10RandomWords()
+     {
+       return this.httpClient.get('http://localhost:8083/get/10/random/words/to/dictionary');
+      } 	
+
+
+        generateDictionary()
+      {
+        return this.httpClient.get('http://localhost:8083/account/settings/generate/english/dictionary');
+       } 	
+     
+
+    
+
       
 }

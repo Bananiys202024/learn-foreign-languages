@@ -57,8 +57,8 @@ public class DictionaryController {
 	}
 	
 	@RequestMapping(value = "get/10/random/words/to/dictionary", method = RequestMethod.GET, produces = "application/json")
-	public List<DictionaryEnglish> generate_10_random_words() throws IOException {
-		return DictionariesEnglish.insert_10_random_words(owner, dictionaryRepository, englishDictionaryRepository);	
+	public void generate_10_random_words() throws IOException {
+		DictionariesEnglish.insert_10_random_words(owner, dictionaryRepository, englishDictionaryRepository);	
 	}
 	
 

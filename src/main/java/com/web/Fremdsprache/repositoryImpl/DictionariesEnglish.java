@@ -121,7 +121,7 @@ public class DictionariesEnglish {
 		  
 	}
 
-	public static List<DictionaryEnglish> insert_10_random_words(String owner, DictionaryRepository dictionaryRepository,
+	public static void insert_10_random_words(String owner, DictionaryRepository dictionaryRepository,
 			ConstEnDictionary englishDictionaryRepository) throws IOException {
 		
 
@@ -133,9 +133,10 @@ public class DictionariesEnglish {
 		{
 		entity = englishDictionaryRepository.findById(new Random().ints(1, 1, 10_000).findFirst().getAsInt() );
 		
+		logger.info("---Boollean-----"+entity);
 		boolean checkingBool = IsWordNotExistsInDictionary(dictionaryRepository, entity);
 		
-		logger.info("---Boollean-----"+checkingBool);
+		
 		
 		if(checkingBool)
 		{
@@ -146,8 +147,7 @@ public class DictionariesEnglish {
 		//save those 10 entities in dictionaryRepository
 		for(ConstantEnglishDictionary enty:entities)
 		dictionaryRepository.save(transformToProperEntity(owner,dictionaryRepository, enty));
-		
-		return null;
+
 	}
 
 	private static DictionaryEnglish transformToProperEntity(String owner, DictionaryRepository dictionaryRepository, ConstantEnglishDictionary enty) throws IOException {
@@ -167,9 +167,11 @@ public class DictionariesEnglish {
 
 	private static boolean IsWordNotExistsInDictionary(DictionaryRepository dictionaryRepository,
 			ConstantEnglishDictionary entity) {	
-		DictionaryEnglish result = dictionaryRepository.findBywordEnglish(entity.getWord());	
-		logger.info("Information1-----"+result);
-		return result==null?true:false;
+		
+		DictionaryEnglish result = dictionaryRepository.findBywordEnglish(entity.getWord()) ;	
+		
+		return result==null?true:false;	
+		
 	}
 	
 

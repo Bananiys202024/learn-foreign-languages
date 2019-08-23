@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClientService } from '../service/http-client.service';
 
 @Component({
   selector: 'app-cabinet',
@@ -7,9 +8,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CabinetComponent implements OnInit {
 
-  constructor() { }
+  constructor(	private httpClientService:HttpClientService) { }
 
   ngOnInit() {
   }
 
+
+
+  
+
+      generateDictionary()
+      {
+
+        this.httpClientService.generateDictionary().subscribe(
+          response => 
+          {
+          }
+        );
+      }
+
+  
 }

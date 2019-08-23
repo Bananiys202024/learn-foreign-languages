@@ -78,12 +78,13 @@ getTenWordsToDictionary()
 {
   this.isLoading=true;
   //document.getElementById('successful').click()
-  this.times.push('plusOneMessage');
+  
 
-  this.httpClientService.checkIfDictionaryEmpty().subscribe(
+  this.httpClientService.get10RandomWords().subscribe(
     response => 
     {
       this.isLoading=false;
+      this.times.push('plusOneMessage');
       this.learn+=10;
     }
   );

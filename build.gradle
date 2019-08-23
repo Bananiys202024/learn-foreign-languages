@@ -34,13 +34,12 @@ dependencies {
 	implementation 'com.github.goxr3plus:java-google-speech-api:8.0.0'
 	implementation 'org.hibernate:hibernate-validator:6.0.16.Final'
 	
-	
     	implementation 'org.springframework.boot:spring-boot-starter-web'
    	implementation 'org.springframework.boot:spring-boot-starter-data-redis'
 	implementation "org.springframework.boot:spring-boot-starter-actuator"
 	implementation 'org.springframework.boot:spring-boot-starter-data-mongodb-reactive'
 	implementation 'org.springframework.boot:spring-boot-starter-security'
-//	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	compile 'org.springframework.boot:spring-boot-devtools'
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
 	annotationProcessor 'org.projectlombok:lombok'
