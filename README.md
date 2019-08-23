@@ -17,7 +17,7 @@
  
 1. Start back-end
 
-           ./gradlew clean build           
+           ./gradlew bootJar           
             docker-compose build
             docker-compose up
             
@@ -32,20 +32,16 @@
 
 <h2>Docker</h2>
 
-Clear
+Clear all started containers
 
             docker rm -f $(docker ps -a -q) 	
 
 
 Start
 
-            ./gradlew clean build
+            ./gradlew bootJar
 
             docker-compose build
 
             docker-compose up
-
-You will get mistake in time of execution folowing command, but it's okey, this command mandatory. It related with line in  application.properties "spring.data.mongodb.host=mongo", it related with port of mongodb, docker; 
-
-            ./gradlew clean build
 
