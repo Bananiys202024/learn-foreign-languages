@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -35,6 +36,8 @@ import { RegistrationComponent } from './registration/registration.component';
 import { TrainingWordsSliderComponent } from './training-words-slider/training-words-slider.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { CabinetComponent } from './cabinet/cabinet.component';
+import { LoaderComponent } from './loader/loader.component';
+import { LoaderInterceptorService } from './service/loader-interceptor.service';
 
 
 @NgModule({
@@ -58,6 +61,7 @@ import { CabinetComponent } from './cabinet/cabinet.component';
 	RegistrationComponent,
 	TrainingWordsSliderComponent,
 	CabinetComponent,
+	LoaderComponent,
 	
   ],
   imports: [
@@ -68,7 +72,13 @@ import { CabinetComponent } from './cabinet/cabinet.component';
 	FormsModule,
 	NgbModule,
   ],
-  providers: [],
+  providers: [
+	{
+	  provide: HTTP_INTERCEPTORS,
+	  useClass: LoaderInterceptorService,
+	  multi: true
+	}
+],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

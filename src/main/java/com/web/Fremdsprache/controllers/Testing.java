@@ -1,5 +1,6 @@
 package com.web.Fremdsprache.controllers;
 
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -69,6 +70,19 @@ public class Testing {
 	public Iterable<TrainingWords> redis_say() throws Exception {
 		return trainingwordRepository.findAll();
 	}
+	
+	
+	@RequestMapping(value = "mongo/write", method = RequestMethod.GET, produces = "application/json")
+	public void sendWordsOnRepeat() throws IOException {	
+		DictionaryEnglish entity = new DictionaryEnglish(1L, null, null, null, false, null, false, null);
+		dictionaryRepository.save(entity);
+	}
+	
+	@RequestMapping(value = "mongodb/say", method = RequestMethod.GET, produces = "application/json")
+	public List<DictionaryEnglish> Mongo_say() throws IOException {	
+		return dictionaryRepository.findAll();
+	}
+	
 	
 	
 }

@@ -1,13 +1,20 @@
-<html  [ngClass]="isLoading?'loading_class' : 'normmal_state'">
+
+
+<!--Loader-->
+<div [class.hidden]="!show" class=" loader text-center">
+    <div class="spinner-border" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+<!--....-->
+
+<div [ngClass]="!show?'allOkey':'darkness'">
+
+
+<html>
 <app-top-menu></app-top-menu>
 <body  class="thisIsBody">
     
-
-    <div *ngIf="isLoading" class="spinner-grow text-success loader_by_center_location_and_more_size" role="status">
-        <span class="sr-only">Loading...</span>
-      </div>
-
-
 
 
 
@@ -259,3 +266,5 @@
 <app-bottom-menu></app-bottom-menu>
 
 </html>
+
+</div>

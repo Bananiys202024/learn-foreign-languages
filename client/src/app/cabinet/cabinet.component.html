@@ -1,6 +1,20 @@
+
+
+<!--Loader-->
+<div [class.hidden]="!show" class=" loader text-center">
+    <div class="spinner-border" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+<!--....-->
+
+<div [ngClass]="!show?'allOkey':'darkness'">
 <app-top-menu></app-top-menu>
 
 <body  class="thisIsBody set-height">
+
+
+
 
 <div class="container mt-5 mb-5">
 
@@ -10,6 +24,9 @@
 
 <div class="row">
 
+
+
+  
 
 <dl>
         <dt>Аккаунт
@@ -40,7 +57,7 @@
         <dt>Словарь
         <dd>
             <div class="mb-3">
-                <a class="btn btn-primary btn-lg active" role="button"  (click)="generateDictionary()">Добавить словарь в базу данных</a>
+                <button [disabled]="!show? '': 'disabled'"  class="btn btn-primary btn-lg active" (click)="generateDictionary()">Добавить словарь в базу данных</button>
             </div>
 
 
@@ -79,12 +96,14 @@
             
 
 
-</div>
-
-
-
 
 </div>
+
+
+
+</div>
+
 </body>
 
 <app-bottom-menu></app-bottom-menu>
+</div>

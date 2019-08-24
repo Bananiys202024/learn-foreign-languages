@@ -16,6 +16,7 @@ import { DictionaryComponent } from './dictionary/dictionary.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { TrainingWordsSliderComponent } from './training-words-slider/training-words-slider.component';
 import { CabinetComponent } from './cabinet/cabinet.component';
+import { LoaderComponent } from './loader/loader.component';
 
 
 const routes: Routes = [

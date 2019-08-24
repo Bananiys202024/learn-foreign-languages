@@ -18,24 +18,13 @@ import com.web.Fremdsprache.repositories.DictionaryRepository;
 
 @CrossOrigin(origins = "http://localhost:4203")
 @RestController
-public class GetControllers {
+public class HelloController {
 
-	private static final Logger logger = LogManager.getLogger(GetControllers.class);
+	private static final Logger logger = LogManager.getLogger(HelloController.class);
 
-	@Autowired
-	public DictionaryRepository dictionaryRepository;
-
-	
-	@RequestMapping(value = "mongo/write", method = RequestMethod.GET, produces = "application/json")
-	public void sendWordsOnRepeat() throws IOException {	
-		DictionaryEnglish entity = new DictionaryEnglish(1L, null, null, null, false, null, false, null);
-		dictionaryRepository.save(entity);
+	@RequestMapping(value = "/hello", method = RequestMethod.GET, produces = "application/json")
+	public String app_say_hello() throws IOException {	
+		return "Hello, my name is App and I work good";
 	}
-	
-	@RequestMapping(value = "mongodb/say", method = RequestMethod.GET, produces = "application/json")
-	public List<DictionaryEnglish> Mongo_say() throws IOException {	
-		return dictionaryRepository.findAll();
-	}
-		
-	
+			
 }

@@ -4,7 +4,9 @@ import { Router } from '@angular/router';
 import { element } from 'protractor';
 import { Size } from '../classes/size';
 import { trigger, state, style, animate, transition } from '@angular/animations';
-
+import { Subscription } from 'rxjs';
+import { LoaderService } from '../service/loader.service';
+import { LoaderState } from '../loader/LoaderState';
 
 
 @Component({
@@ -26,11 +28,16 @@ export class TrainWordsComponent implements OnInit {
 
   isLoading: Boolean = false;
   times:string[] = new Array();
-
+  show = false;
+  private subscription: Subscription;
 		constructor(
 	private httpClientService:HttpClientService,
-	private router: Router
+  private router: Router,
+  private loaderService: LoaderService
   ) {}
+
+
+
 
   ngOnInit() {
 
@@ -42,8 +49,22 @@ export class TrainWordsComponent implements OnInit {
 		 this.learned = response.Learned;
 	 }
   );
+
+  this.subscription = this.loaderService.loaderState
+  .subscribe((state: LoaderState) => {
+    this.show = state.show;
+  });
 	 
   }
+
+
+
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
+
+
 
 public gotoProductDetails() {
 	
@@ -76,21 +97,13 @@ this.router.navigate(['/train-words-slider']);
 
 getTenWordsToDictionary() 
 {
-  this.isLoading=true;
-  //document.getElementById('successful').click()
-  
-
   this.httpClientService.get10RandomWords().subscribe(
     response => 
     {
-      this.isLoading=false;
       this.times.push('plusOneMessage');
       this.learn+=10;
     }
   );
-  
-
- 
 }
 
 

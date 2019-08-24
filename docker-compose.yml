@@ -8,16 +8,21 @@ services:
           - "6379:6379"
         volumes:
           - $HOME/redis:/data
-    
+   
       
      mongo:
         image: mongo:latest
+        environment:
+        - AUTH=yes
+        - MONGODB_ADMIN_USER=myUserAdmin
+        - MONGODB_ADMIN_PASS=202024
+        - MONGODB_APPLICATION_DATABASE=admin
         ports:
           - '27017:27017'
         volumes:
           - $HOME/mongodb:/data/db
-          
-     myapp:
+        
+     fremdsprache:
         build: .  
         ports:
         - 8083:8080
