@@ -26,7 +26,7 @@ public class DictionariesEnglish {
 	public static void addWordToEnglishDictionary(DictionaryRepository dictionaryRepository, String word, String owner) throws IOException {
 		
 		//check if word exists in dictionary
-		if(IsWordExistsInDictionary(dictionaryRepository, word))
+		if(IsWordNotExistsInDictionary(dictionaryRepository, word))
 		{
 		//try/catch for empty database;
 		try
@@ -35,7 +35,7 @@ public class DictionariesEnglish {
 				  .owner(owner)
 			      .wordEnglish(word)
 			      .wordRussian(Translator.translate("ru",word))
-			      .id(dictionaryRepository.findFirstByOrderByIdDesc().getId()+1)
+			      .id(getMaxId(dictionaryRepository)+1)
 			      .repeatTomorrow(false)
 			      .dateLearned(new Date())
 			      .learned(false)
@@ -60,20 +60,11 @@ public class DictionariesEnglish {
 		}//is word exist in dictionary ?
 
 	}
-	
-	private static boolean IsWordExistsInDictionary(DictionaryRepository dictionaryRepository,String word) {
-		
-		DictionaryEnglish result = dictionaryRepository.findBywordEnglish(word);
-		
-     	if(result==null)
-		return true; //all okey, we can save word;
-		
-				
-		return false;
+
+	private static long getMaxId(DictionaryRepository dictionaryRepository) {
+		Optional<DictionaryEnglish> result = dictionaryRepository.findFirstByOrderByIdDesc();
+		return result.isPresent()?result.get().getId():0L;
 	}
-
-	
-
 
 	public static boolean checkIfEnglishDictionaryEmpty(DictionaryRepository dictionaryRepository) {
 		return getSizeEnglishDictionary(dictionaryRepository).size()>0;
@@ -134,7 +125,7 @@ public class DictionariesEnglish {
 		entity = englishDictionaryRepository.findById(new Random().ints(1, 1, 10_000).findFirst().getAsInt() );
 		
 		logger.info("---Boollean-----"+entity);
-		boolean checkingBool = IsWordNotExistsInDictionary(dictionaryRepository, entity);
+		boolean checkingBool = IsWordNotExistsInDictionary(dictionaryRepository, entity.getWord());
 		
 		
 		
@@ -151,7 +142,11 @@ public class DictionariesEnglish {
 	}
 
 	private static DictionaryEnglish transformToProperEntity(String owner, DictionaryRepository dictionaryRepository, ConstantEnglishDictionary enty) throws IOException {
-		long maxId = dictionaryRepository.findFirstByOrderByIdDesc().getId();	
+		
+		Optional<DictionaryEnglish> entity = dictionaryRepository.findFirstByOrderByIdDesc();
+		
+		long maxId = entity.isPresent()?entity.get().getId():0L;	
+		
 		return DictionaryEnglish.builder()
 								.id(maxId+1)
 								.dateLearned(new Date())
@@ -166,11 +161,11 @@ public class DictionariesEnglish {
 	}
 
 	private static boolean IsWordNotExistsInDictionary(DictionaryRepository dictionaryRepository,
-			ConstantEnglishDictionary entity) {	
+			String word) {	
 		
-		DictionaryEnglish result = dictionaryRepository.findBywordEnglish(entity.getWord()) ;	
+		Optional<DictionaryEnglish> result = dictionaryRepository.findBywordEnglish(word) ;	
 		
-		return result==null?true:false;	
+		return !result.isPresent();	
 		
 	}
 	
