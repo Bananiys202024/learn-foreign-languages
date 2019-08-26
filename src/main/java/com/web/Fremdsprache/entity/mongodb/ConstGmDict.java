@@ -1,12 +1,8 @@
 package com.web.Fremdsprache.entity.mongodb;
 
-import java.util.Date;
-
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
-
-import com.web.Fremdsprache.entity.mongodb.CountExperienceOfTrainingWords.CountExperienceOfTrainingWordsBuilder;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -17,13 +13,13 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Document(collection = "constantDictionary")
-public @Data class ConstantEnglishDictionary {
+@Document(collection = "ConstGmDict")
+public @Data class ConstGmDict {
 
-    @Id    
-    private int id;
-    
-    @Field(value = "word")
-    private String word;
+  @Id    
+  private int id;
+  
+  @Field(value = "word")
+  private String word;
 
 }

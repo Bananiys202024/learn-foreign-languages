@@ -2,6 +2,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 import { NgbCarousel, NgbSlideEvent, NgbSlideEventSource } from '@ng-bootstrap/ng-bootstrap';
 import { Router } from "@angular/router";
+import { HttpClientService } from '../service/http-client.service';
+import { Train } from '../classes/train';
 
 @Component({
   selector: 'app-training-words-slider',
@@ -11,8 +13,8 @@ import { Router } from "@angular/router";
 export class TrainingWordsSliderComponent implements OnInit {
 
   upcoming_events = [ 0, 1, 2, 3, 4];
-  russianWords = ['Крамола','Авось','Империал','Челядь','служанка в доме' ];
-  englishWords = ['WordEnglish1', 'Father', 'Mother', 'Sister', 'Brother'];
+  russianWords:string[] = new Array(5);
+  englishWords:string[] = new Array(5);
   generated_array_random_russian_words = ['Крамола','Авось','Империал','Челядь','служанка в доме' ];
 
   showfirstProcess = true;
@@ -25,11 +27,11 @@ export class TrainingWordsSliderComponent implements OnInit {
   settingColorsBasedOnAnswer = "card-body text-center ";
 
   id:number;
-
+  currentProcess:number;
 
   @ViewChild('carousel', {static : true}) carousel: NgbCarousel;
 
-  constructor(config: NgbCarouselConfig, private router: Router) {
+  constructor(private httpClientService:HttpClientService, config: NgbCarouselConfig, private router: Router) {
     // customize default values of carousels used by this component tree
     config.interval = -1;
     config.wrap = true;
@@ -44,6 +46,15 @@ export class TrainingWordsSliderComponent implements OnInit {
   }
 
   ngOnInit() {
+    
+    this.httpClientService.initializeTraining().subscribe(
+      response =>
+     {
+     this.russianWords = response.russianWords;
+     this.englishWords = response.englishWords;
+     }
+     );
+
   }
 
 
@@ -51,6 +62,7 @@ export class TrainingWordsSliderComponent implements OnInit {
 
   understand(e, caro, slideEvent: NgbSlideEvent)
   {
+    this.currentProcess=caro.activeId.replace("ngb-slide-4","");
 
     //checking if we should go to next process
     if(caro.activeId == 'ngb-slide-4')
@@ -58,6 +70,15 @@ export class TrainingWordsSliderComponent implements OnInit {
       this.showfirstProcess = false;
       this.showSecondProcess = true;
       this.showThirdProcess = false;
+
+
+      this.httpClientService.generate_random_words(this.englishWords[this.currentProcess]).subscribe(
+        response =>
+       {
+       this.generated_array_random_russian_words = response.generated_random_russian_words;
+       }
+       );
+  
     }
 
     console.log(caro.activeId === 'ngb-slide-3')

@@ -28,15 +28,37 @@ export class CabinetComponent implements OnInit {
   }
 
   
-      generateDictionary()
+      generatEngDictionary()
       {
 
-        this.httpClientService.generateDictionary().subscribe(
+        this.httpClientService.generate_english_dictionary().subscribe(
           response => 
           {
           }
         );
       }
+
+      generateGermDictionary()
+      {
+
+        this.httpClientService.generate_german_dictionary().subscribe(
+          response => 
+          {
+          }
+        );
+      }
+
+      generateRusnDictionary()
+      {
+
+        this.httpClientService.generate_russian_dictionary().subscribe(
+          response => 
+          {
+          }
+        );
+      }
+
+
 
   
 }

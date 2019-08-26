@@ -57,8 +57,16 @@
         <dt>Словарь
         <dd>
             <div class="mb-3">
-                <button [disabled]="!show? '': 'disabled'"  class="btn btn-primary btn-lg active" (click)="generateDictionary()">Добавить словарь в базу данных</button>
+                <button [disabled]="!show? '': 'disabled'"  class="btn btn-primary btn-lg active" (click)="generatEngDictionary()">Generate English Dictionary</button>
             </div>
+
+            <div class="mb-3">
+              <button [disabled]="!show? '': 'disabled'"  class="btn btn-primary btn-lg active" (click)="generateGermDictionary()">Generate German Dictionary</button>
+          </div>
+
+          <div class="mb-3">
+            <button [disabled]="!show? '': 'disabled'"  class="btn btn-primary btn-lg active" (click)="generateRusnDictionary()">Generate Russian Dicitonary</button>
+        </div>
 
 
 

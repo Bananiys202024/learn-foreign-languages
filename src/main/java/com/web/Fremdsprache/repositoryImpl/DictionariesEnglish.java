@@ -11,10 +11,10 @@ import java.util.stream.Collectors;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import com.web.Fremdsprache.entity.mongodb.ConstantEnglishDictionary;
+import com.web.Fremdsprache.entity.mongodb.ConstEnDict;
 import com.web.Fremdsprache.entity.mongodb.DictionaryEnglish;
 import com.web.Fremdsprache.model.Size;
-import com.web.Fremdsprache.repositories.ConstEnDictionary;
+import com.web.Fremdsprache.repositories.ConstEnDictRepo;
 import com.web.Fremdsprache.repositories.DictionaryRepository;
 import com.web.Fremdsprache.translator.Translator;
 
@@ -113,13 +113,13 @@ public class DictionariesEnglish {
 	}
 
 	public static void insert_10_random_words(String owner, DictionaryRepository dictionaryRepository,
-			ConstEnDictionary englishDictionaryRepository) throws IOException {
+			ConstEnDictRepo englishDictionaryRepository) throws IOException {
 		
 
 		//generate list of entities
-		List<ConstantEnglishDictionary> entities = new ArrayList<ConstantEnglishDictionary>();
+		List<ConstEnDict> entities = new ArrayList<ConstEnDict>();
 	
-		ConstantEnglishDictionary entity = null;
+		ConstEnDict entity = null;
 		while(entities.size()<10)
 		{
 		entity = englishDictionaryRepository.findById(new Random().ints(1, 1, 10_000).findFirst().getAsInt() );
@@ -136,12 +136,12 @@ public class DictionariesEnglish {
 		}
 		
 		//save those 10 entities in dictionaryRepository
-		for(ConstantEnglishDictionary enty:entities)
+		for(ConstEnDict enty:entities)
 		dictionaryRepository.save(transformToProperEntity(owner,dictionaryRepository, enty));
 
 	}
 
-	private static DictionaryEnglish transformToProperEntity(String owner, DictionaryRepository dictionaryRepository, ConstantEnglishDictionary enty) throws IOException {
+	private static DictionaryEnglish transformToProperEntity(String owner, DictionaryRepository dictionaryRepository, ConstEnDict enty) throws IOException {
 		
 		Optional<DictionaryEnglish> entity = dictionaryRepository.findFirstByOrderByIdDesc();
 		

@@ -10,8 +10,8 @@ import { Boolean } from '../classes/boolean';
 import { Dictionary } from '../classes/dictionary';
 import { Size } from '../classes/size';
 import { CounterExperience } from '../classes/counter-experience';
-
-
+import { Train } from '../classes/train';
+import { Random } from '../classes/random';
 
 
 @Injectable({
@@ -121,13 +121,31 @@ export class HttpClientService {
       } 	
 
 
-        generateDictionary()
+         generate_english_dictionary()
       {
-        return this.httpClient.get('http://localhost:8083/account/settings/generate/english/dictionary');
+        return this.httpClient.put('http://localhost:8083/account/settings/generate/english/dictionary','');
+       } 	
+     
+         generate_russian_dictionary()
+       {
+         return this.httpClient.put('http://localhost:8083/account/settings/generate/russian/dictionary','');
+        } 
+
+         generate_german_dictionary()
+        {
+          return this.httpClient.put('http://localhost:8083/account/settings/generate/german/dictionary','');
+        } 	
+
+
+       initializeTraining()
+      {
+        return this.httpClient.get<Train>('http://localhost:8083/training/initialize');
        } 	
      
 
-    
-
+       generate_random_words(rightAnswer)
+       {
+        return this.httpClient.get<Random>('http://localhost:8083/training/generate_random_words/'+rightAnswer);
+       } 	
       
 }

@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.web.Fremdsprache.entity.mongodb.DictionaryEnglish;
 import com.web.Fremdsprache.model.Bool;
 import com.web.Fremdsprache.model.Size;
-import com.web.Fremdsprache.repositories.ConstEnDictionary;
+import com.web.Fremdsprache.repositories.ConstEnDictRepo;
 import com.web.Fremdsprache.repositories.DictionaryRepository;
 import com.web.Fremdsprache.repositoryImpl.DictionariesEnglish;
 
@@ -29,7 +29,7 @@ public class DictionaryController {
 	public DictionaryRepository dictionaryRepository;
 	
 	@Autowired
-	ConstEnDictionary englishDictionaryRepository;
+	ConstEnDictRepo englishDictionaryRepository;
 	
 	String owner= "Admin";
 	

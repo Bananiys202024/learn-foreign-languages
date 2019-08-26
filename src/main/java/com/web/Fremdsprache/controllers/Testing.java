@@ -9,10 +9,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.web.Fremdsprache.entity.mongodb.ConstantEnglishDictionary;
+import com.web.Fremdsprache.entity.mongodb.ConstEnDict;
 import com.web.Fremdsprache.entity.mongodb.DictionaryEnglish;
 import com.web.Fremdsprache.entity.redis.TrainingWords;
-import com.web.Fremdsprache.repositories.ConstEnDictionary;
+import com.web.Fremdsprache.repositories.ConstEnDictRepo;
 import com.web.Fremdsprache.repositories.DictionaryRepository;
 import com.web.Fremdsprache.repositories.TrainingWordMistakesRepository;
 import com.web.Fremdsprache.repositories.TrainingWordRepository;
@@ -22,7 +22,7 @@ import com.web.Fremdsprache.repositories.countCounterOfExperienceForTrainingWord
 public class Testing {
 
 	@Autowired
-	ConstEnDictionary englishDictionaryRepository;
+	ConstEnDictRepo englishDictionaryRepository;
 	
 	@Autowired
 	public DictionaryRepository dictionaryRepository;
@@ -37,7 +37,7 @@ public class Testing {
 	public countCounterOfExperienceForTrainingWords countExperienceOfTrainingWords;
 	
 	@RequestMapping(value = "/mongo/say/dict", method = RequestMethod.GET, produces = "application/json")
-	public List<ConstantEnglishDictionary> mong_say_dict() throws Exception {
+	public List<ConstEnDict> mong_say_dict() throws Exception {
 			return englishDictionaryRepository.findAll();
 	}
 	
