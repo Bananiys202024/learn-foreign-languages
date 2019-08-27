@@ -4,6 +4,8 @@ import { NgbCarousel, NgbSlideEvent, NgbSlideEventSource } from '@ng-bootstrap/n
 import { Router } from "@angular/router";
 import { HttpClientService } from '../service/http-client.service';
 import { Train } from '../classes/train';
+import { Random } from '../classes/random';
+
 
 @Component({
   selector: 'app-training-words-slider',
@@ -15,7 +17,13 @@ export class TrainingWordsSliderComponent implements OnInit {
   upcoming_events = [ 0, 1, 2, 3, 4];
   russianWords:string[] = new Array(5);
   englishWords:string[] = new Array(5);
-  generated_array_random_russian_words = ['Крамола','Авось','Империал','Челядь','служанка в доме' ];
+  generated_array_random_russian_words_1:string[] = new Array(4);
+  generated_array_random_russian_words_2:string[] = new Array(4);
+  generated_array_random_russian_words_3:string[] = new Array(4);
+  generated_array_random_russian_words_4:string[] = new Array(4);
+  generated_array_random_russian_words_5:string[] = new Array(4);
+
+
 
   showfirstProcess = true;
   showSecondProcess = false;
@@ -27,7 +35,7 @@ export class TrainingWordsSliderComponent implements OnInit {
   settingColorsBasedOnAnswer = "card-body text-center ";
 
   id:number;
-  currentProcess:number;
+  currentProcess:string;
 
   @ViewChild('carousel', {static : true}) carousel: NgbCarousel;
 
@@ -41,8 +49,6 @@ export class TrainingWordsSliderComponent implements OnInit {
     config.showNavigationArrows=false;
     config.pauseOnHover = false;
     config.keyboard =false;
-
-
   }
 
   ngOnInit() {
@@ -52,8 +58,32 @@ export class TrainingWordsSliderComponent implements OnInit {
      {
      this.russianWords = response.russianWords;
      this.englishWords = response.englishWords;
+
+     this.httpClientService.generate_random_words(this.russianWords).subscribe(
+      response =>
+     {
+       console.log(response);
+     this.generated_array_random_russian_words_1 = response.generate_random_words_1;
+     this.generated_array_random_russian_words_2 = response.generate_random_words_2;
+     this.generated_array_random_russian_words_3 = response.generate_random_words_3;
+     this.generated_array_random_russian_words_4 = response.generate_random_words_4;
+     this.generated_array_random_russian_words_5 = response.generate_random_words_5;
+     console.log(response.generate_random_words_1 +"--Answer")
+
+     console.log(this.russianWords+"--Russian");
+     console.log(this.generated_array_random_russian_words_1 +"--array_1" );
+     console.log(this.generated_array_random_russian_words_2 +"--array_2" );
+     console.log(this.generated_array_random_russian_words_3 +"--array_3" );
+     console.log(this.generated_array_random_russian_words_4 +"--array_4" );
+     console.log(this.generated_array_random_russian_words_5 +"--array_5" );
      }
      );
+
+    
+     }
+     );
+
+     
 
   }
 
@@ -62,7 +92,9 @@ export class TrainingWordsSliderComponent implements OnInit {
 
   understand(e, caro, slideEvent: NgbSlideEvent)
   {
-    this.currentProcess=caro.activeId.replace("ngb-slide-4","");
+    this.currentProcess = caro.activeId;
+    console.log(this.currentProcess+"--mArk1");
+    console.log(this.generated_array_random_russian_words_1+"--Mark2");
 
     //checking if we should go to next process
     if(caro.activeId == 'ngb-slide-4')
@@ -70,15 +102,6 @@ export class TrainingWordsSliderComponent implements OnInit {
       this.showfirstProcess = false;
       this.showSecondProcess = true;
       this.showThirdProcess = false;
-
-
-      this.httpClientService.generate_random_words(this.englishWords[this.currentProcess]).subscribe(
-        response =>
-       {
-       this.generated_array_random_russian_words = response.generated_random_russian_words;
-       }
-       );
-  
     }
 
     console.log(caro.activeId === 'ngb-slide-3')
@@ -100,7 +123,8 @@ export class TrainingWordsSliderComponent implements OnInit {
 
   goToNextPartInSecondProcess(e, caro)
   {
-
+    this.currentProcess = caro.activeId;
+    console.log('Messaeg---'+this.currentProcess);
     //checking if we should go to next process
     if(caro.activeId == 'ngb-slide-4')
     {

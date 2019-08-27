@@ -85,11 +85,7 @@ if(this.emptyDictionary)
 }
 else
 {
-
-this.httpClientService.getTrainWords().subscribe();
-//this.router.navigate(['/train-words1', 1,1,1]);
-this.router.navigate(['/train-words-slider']);
-
+this.router.navigate(['/training']);
 }
 }
 

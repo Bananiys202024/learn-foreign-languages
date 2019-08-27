@@ -30,7 +30,7 @@ const routes: Routes = [
 
 	  { path: 'registration', component: RegistrationComponent, data: {animation: 'Registration'}},
 	  
-	  { path: 'train-words-slider', component: TrainingWordsSliderComponent, data: {animation: 'train-words-slider'}},
+	  { path: 'training', component: TrainingWordsSliderComponent, data: {animation: 'train-words-slider'}},
 	  { path: 'cabinet', component: CabinetComponent, data: {animation: 'cabinet'}},
 
 

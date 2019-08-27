@@ -28,12 +28,6 @@ export class HttpClientService {
   ) { 
      }
 
-	   getTrainWords()
-  {
-    return this.httpClient.get('http://localhost:8083/trainWords/initializeList');
-  }
-
-
   	     getSomeSound(element)
   {	    	 
     return this.httpClient.get('http://localhost:8083/speach/'+element);
@@ -143,9 +137,9 @@ export class HttpClientService {
        } 	
      
 
-       generate_random_words(rightAnswer)
+       generate_random_words(rightAnswers)
        {
-        return this.httpClient.get<Random>('http://localhost:8083/training/generate_random_words/'+rightAnswer);
+        return this.httpClient.get<Random>('http://localhost:8083/training/generate_random_words/'+rightAnswers);
        } 	
       
 }

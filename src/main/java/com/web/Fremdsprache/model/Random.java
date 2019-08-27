@@ -1,6 +1,11 @@
 package com.web.Fremdsprache.model;
 
-public class Random {	
+import java.util.ArrayList;
+import java.util.List;
+
+import lombok.Data;
+
+public @Data class Random {	
 	
 	String[] generate_random_words_1;
 	String[] generate_random_words_2;

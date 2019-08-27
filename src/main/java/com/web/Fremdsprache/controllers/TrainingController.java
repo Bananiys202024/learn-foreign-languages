@@ -18,6 +18,7 @@ import com.web.Fremdsprache.model.Answers;
 import com.web.Fremdsprache.model.Mistakes;
 import com.web.Fremdsprache.model.Random;
 import com.web.Fremdsprache.model.Train;
+import com.web.Fremdsprache.repositories.ConstRnDictRepo;
 import com.web.Fremdsprache.repositories.DictionaryRepository;
 import com.web.Fremdsprache.repositories.TrainingWordMistakesRepository;
 import com.web.Fremdsprache.repositories.TrainingWordRepository;
@@ -29,9 +30,9 @@ import com.web.Fremdsprache.util.DictionaryProcess;
 @CrossOrigin(origins = "http://localhost:4203")
 @RestController
 @RequestMapping("/training/")
-public class TrainingWordsController {
+public class TrainingController {
 
-	private static final Logger logger = LogManager.getLogger(TrainingWordsController.class);
+	private static final Logger logger = LogManager.getLogger(TrainingController.class);
 	
 	@Autowired
 	TrainingWordRepository trainingwordRepository;
@@ -45,6 +46,9 @@ public class TrainingWordsController {
 	@Autowired
 	public countCounterOfExperienceForTrainingWords countExperienceOfTrainingWords;
 
+	@Autowired
+	public ConstRnDictRepo russianRepository;
+	
 	String owner ="Admin";
 	
 //	@RequestMapping(value = "/trainWords/destroyList", method = RequestMethod.GET, produces = "application/json")
@@ -110,9 +114,9 @@ public class TrainingWordsController {
 		return Training.initialize(dictionaryRepository);
 	}
 	
-	@GetMapping(value = "generate_random_words/{rightAnswer}", produces = "application/json")
-	public Random generate_random_words(@PathVariable String rightAnswer) throws IOException {
-		return Training.generateRussianAnswers(rightAnswer);
+	@GetMapping(value = "generate_random_words/{rightAnswers}", produces = "application/json")
+	public Random generate_random_words(@PathVariable String[] rightAnswers) throws IOException {
+		return Training.generateRussianAnswers(rightAnswers, russianRepository);
 
 	}
 	

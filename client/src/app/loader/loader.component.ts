@@ -22,14 +22,4 @@ export class LoaderComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }
-
-  generateDictionary()
-  {
-
-    this.httpClientService.generateDictionary().subscribe(
-      response => 
-      {
-      }
-    );
-  }
 }

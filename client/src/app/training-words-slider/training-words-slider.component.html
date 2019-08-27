@@ -35,9 +35,35 @@
                              </div> 
                           </div>               
                          
-                          <div *ngFor="let answ of generated_array_random_russian_words">
+                        <div *ngIf="currentProcess === 'ngb-slide-4' ">
+                          <div *ngFor="let answ of generated_array_random_russian_words_1">
                               <button *ngIf="beforeAnswer"  (click)="checkSecondProcessAnswer(answ, $event, caro)" class="btn btn-white bg-white mt-1 mb-1">{{ answ }}</button>
                           </div>
+                        </div>
+
+                        <div *ngIf="currentProcess  === 'ngb-slide-0' ">
+                          <div *ngFor="let answ of generated_array_random_russian_words_2">
+                              <button *ngIf="beforeAnswer"  (click)="checkSecondProcessAnswer(answ, $event, caro)" class="btn btn-white bg-white mt-1 mb-1">{{ answ }}</button>
+                          </div>
+                        </div>
+
+                        <div *ngIf="currentProcess === 'ngb-slide-1' ">
+                          <div *ngFor="let answ of generated_array_random_russian_words_3">
+                              <button *ngIf="beforeAnswer"  (click)="checkSecondProcessAnswer(answ, $event, caro)" class="btn btn-white bg-white mt-1 mb-1">{{ answ }}</button>
+                          </div>
+                        </div>
+
+                        <div *ngIf="currentProcess === 'ngb-slide-2' ">
+                          <div *ngFor="let answ of generated_array_random_russian_words_4">
+                              <button *ngIf="beforeAnswer"  (click)="checkSecondProcessAnswer(answ, $event, caro)" class="btn btn-white bg-white mt-1 mb-1">{{ answ }}</button>
+                          </div>
+                        </div>
+
+                        <div *ngIf="currentProcess === 'ngb-slide-3' ">
+                          <div *ngFor="let answ of generated_array_random_russian_words_5">
+                              <button *ngIf="beforeAnswer"  (click)="checkSecondProcessAnswer(answ, $event, caro)" class="btn btn-white bg-white mt-1 mb-1">{{ answ }}</button>
+                          </div>
+                        </div>
 
                       <button *ngIf="aftereAnswer" (click)="goToNextPartInSecondProcess($event, caro)" class="btn btn-white bg-white mb-5">Дальше</button>     
                     </div>                    

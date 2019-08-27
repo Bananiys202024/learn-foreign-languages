@@ -46,7 +46,6 @@ export class ResultTrainingWordsComponent implements OnInit {
 }
 
 public gotoProductDetails(url) {
-  this.httpClientService.getTrainWords().subscribe();
 
   this.router.navigate([url, 1, 1, 1]);
   }

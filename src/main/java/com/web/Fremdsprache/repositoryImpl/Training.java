@@ -2,6 +2,8 @@ package com.web.Fremdsprache.repositoryImpl;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -9,6 +11,7 @@ import java.util.stream.Collectors;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.web.Fremdsprache.entity.mongodb.ConstEnDict;
 import com.web.Fremdsprache.entity.mongodb.CountExperienceOfTrainingWords;
 import com.web.Fremdsprache.entity.mongodb.DictionaryEnglish;
 import com.web.Fremdsprache.entity.redis.TrainingWords;
@@ -16,6 +19,7 @@ import com.web.Fremdsprache.entity.redis.TrainingWordsMistakes;
 import com.web.Fremdsprache.model.Mistakes;
 import com.web.Fremdsprache.model.Random;
 import com.web.Fremdsprache.model.Train;
+import com.web.Fremdsprache.repositories.ConstRnDictRepo;
 import com.web.Fremdsprache.repositories.DictionaryRepository;
 import com.web.Fremdsprache.repositories.TrainingWordMistakesRepository;
 import com.web.Fremdsprache.repositories.TrainingWordRepository;
@@ -59,9 +63,64 @@ public class Training {
 		return result;
 	}
 
-	public static Random generateRussianAnswers(String rightAnswer) {
-		// TODO Auto-generated method stub
-		return null;
+	public static Random generateRussianAnswers(String[] rightAnswers, ConstRnDictRepo russianRepository) {
+		
+		int limit = 34010; // numbers of words in dicitonary;
+		
+		//generate list of entities
+		Random result = new Random();
+		ArrayList generated = new ArrayList(4);
+		
+		//generate random indexex for finding words
+		int[] random = new int[3];		
+		//...
+		
+		for(int i=0;i<5;i++)
+		{
+		generated.clear();
+		for(int j=0;j<3;j++)
+		{
+		//generate random indexex for finding words
+		random[j]= new java.util.Random().ints(1, 1, limit).findFirst().getAsInt();
+		//...
+		generated.add(russianRepository.findById(random[j]).getWord());
+		}
+			
+		switch(i) 
+		{
+			case 0: 
+					generated.add(rightAnswers[0]);					//add
+					Collections.shuffle(generated); 					//shuffle
+					result.setGenerate_random_words_1((String[]) generated.toArray(new String[4]));	//add 
+					break;											//end
+			case 1:
+					generated.add(rightAnswers[1]);					//add
+					Collections.shuffle(generated); 					//shuffle
+					result.setGenerate_random_words_2((String[]) generated.toArray(new String[4]));	//add 
+					break;											//end
+			case 2:
+					generated.add(rightAnswers[2]);					//add
+					Collections.shuffle(generated); 					//shuffle
+					result.setGenerate_random_words_3((String[]) generated.toArray(new String[4]));	//add 
+					break;											//end
+			case 3:
+					generated.add(rightAnswers[3]);					//add
+					Collections.shuffle(generated); 					//shuffle
+					result.setGenerate_random_words_4((String[]) generated.toArray(new String[4]));	//add 
+					break;											//end
+			case 4:
+					generated.add(rightAnswers[4]);					//add
+					Collections.shuffle(generated); 					//shuffle
+					result.setGenerate_random_words_5((String[]) generated.toArray(new String[4]));	//add 
+					break;											//end
+			default: break;
+		}
+		
+		}	
+		
+		logger.info("Result----"+result);
+		
+		return result;
 	}
 	
 //	public static void initializeFiveWordsFromDictionary( DictionaryRepository dictionaryRepository, TrainingWordRepository trainingwordRepository, String owner)
