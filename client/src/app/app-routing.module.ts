@@ -39,7 +39,7 @@ const routes: Routes = [
 	  { path: 'train-words3/:element/:countWords/:countProcess', component: TrainWords3Component, data: {animation: 'TrainWords3'}},
 	  { path: 'train-words4/:element/:countWords/:countProcess', component: TrainWords4Component, data: {animation: 'TrainWords4'}},
 	  { path: 'train-words5/:element/:countWords/:countProcess', component: TrainWords5Component, data: {animation: 'TrainWords5'}},
-	  { path: 'result-training-words', component: ResultTrainingWordsComponent, data: {animation: 'ResultTrainWords'} },
+	  { path: 'result-training-words/:wrong/:right', component: ResultTrainingWordsComponent, data: {animation: 'ResultTrainWords'} },
 ];
 
 @NgModule({

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClientService} from '../service/http-client.service';
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: 'app-result-training-words',
@@ -14,7 +15,20 @@ export class ResultTrainingWordsComponent implements OnInit {
   countExperience:number;
 
   constructor(	private router: Router,
-    private httpClientService:HttpClientService) { }
+    private route: ActivatedRoute,
+    private httpClientService:HttpClientService) {
+
+      this.route.params.subscribe(params => {
+
+        //get element of array;
+    
+        this.rightAnswers= params.right.replace("right-","");
+        this.wrongAnswers = params.wrong.replace("wrong-","");
+
+        })
+    
+
+     }
 
   ngOnInit() {
   

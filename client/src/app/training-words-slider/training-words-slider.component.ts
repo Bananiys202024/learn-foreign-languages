@@ -22,8 +22,8 @@ export class TrainingWordsSliderComponent implements OnInit {
   generated_array_random_russian_words_3:string[] = new Array(4);
   generated_array_random_russian_words_4:string[] = new Array(4);
   generated_array_random_russian_words_5:string[] = new Array(4);
-
-
+  error_array:string[] = new Array(10);
+  right_array:string[] = new Array(10);
 
   showfirstProcess = true;
   showSecondProcess = false;
@@ -113,16 +113,47 @@ export class TrainingWordsSliderComponent implements OnInit {
   checkSecondProcessAnswer(answer, e, caro)
   {
 
+    this.id = caro.activeId.replace('ngb-slide-','');
     this.beforeAnswer = false;
     this.aftereAnswer = true;
 
-    this.id = caro.activeId.replace('ngb-slide-','');
+    //checking right answer
+    answer == this.russianWords[this.id] ? this.add_to_right_array(this.englishWords[this.id]) : this.add_to_wrong_array(this.englishWords[this.id]);
+    //...
 
+    //add hidlight of right/wrong answer
     answer == this.russianWords[this.id] ?this.settingColorsBasedOnAnswer += " right ":this.settingColorsBasedOnAnswer += " wrong ";
+    //...
+
   }
+
+  add_to_right_array(arg: string) { 
+    
+    if(!this.error_array.includes(arg))     //if word exist in wrong_array then that don't right word;
+    if(!this.right_array.includes(arg))           
+    this.right_array.push(arg);
+  }
+  add_to_wrong_array(arg: string) {
+
+    if(this.right_array.includes(arg))       //because wrong word can't exist in right_array
+    this.exclude_from_right_array(arg);            
+    
+    if(!this.error_array.includes(arg))
+    this.error_array.push(arg);
+  }
+  exclude_from_right_array(arg: string) {
+   this.right_array = this.right_array.filter(item => item!=arg);
+  }
+
+
+  //in the end add method for excluding from right array those words which contain array error_array;
+
 
   goToNextPartInSecondProcess(e, caro)
   {
+    console.log(this.right_array.filter(item => item!='undefined').length+"--Right");
+    console.log(this.error_array.filter(item => item!='undefined').length+"--Wrong");
+
     this.currentProcess = caro.activeId;
     console.log('Messaeg---'+this.currentProcess);
     //checking if we should go to next process
@@ -149,8 +180,15 @@ export class TrainingWordsSliderComponent implements OnInit {
 
     this.id = caro.activeId.replace('ngb-slide-','');
 
+
+    //checking right answer
+    form.controls['answ'].value.toLowerCase() == this.englishWords[this.id]  ? this.add_to_right_array(this.englishWords[this.id]) : this.add_to_wrong_array(this.englishWords[this.id]);
+    //...
+
+    //add hidlight of right/wrong answer
     form.controls['answ'].value.toLowerCase() == this.englishWords[this.id] ?this.settingColorsBasedOnAnswer += " right ":this.settingColorsBasedOnAnswer += " wrong ";
-  
+    //...
+
     form.reset();
   }
 
@@ -159,6 +197,8 @@ export class TrainingWordsSliderComponent implements OnInit {
 
   goToNextPartInThirdProcess(e, caro)
   {
+    console.log(this.right_array.filter(item => item!='undefined').length+"--Right");
+    console.log(this.error_array.filter(item => item!='undefined').length+"--Wrong");
 
     //checking if we should go to next process
     if(caro.activeId == 'ngb-slide-4')
@@ -166,9 +206,12 @@ export class TrainingWordsSliderComponent implements OnInit {
       this.showfirstProcess = false;
       this.showSecondProcess = false;
       this.showThirdProcess = false;
-    
+
       //redirect to result training words
-      this.router.navigate(['/result-training-words']);
+      this.router.navigate(['/result-training-words', 'wrong-'+this.error_array.filter(item => item!='undefined').length, 'right-'+this.right_array.filter(item => item!='undefined').length]);
+      
+      //sendin words by repeat by "training/conclusion/repeat" or "/training/conclusion/learned"
+      
     }
 
     this.beforeAnswer = true;

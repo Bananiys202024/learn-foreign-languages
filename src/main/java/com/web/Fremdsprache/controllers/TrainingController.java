@@ -117,7 +117,7 @@ public class TrainingController {
 	@GetMapping(value = "generate_random_words/{rightAnswers}", produces = "application/json")
 	public Random generate_random_words(@PathVariable String[] rightAnswers) throws IOException {
 		return Training.generateRussianAnswers(rightAnswers, russianRepository);
-
 	}
+
 	
 }
