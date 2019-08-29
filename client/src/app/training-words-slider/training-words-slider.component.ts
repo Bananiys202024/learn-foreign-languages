@@ -208,10 +208,15 @@ export class TrainingWordsSliderComponent implements OnInit {
       this.showThirdProcess = false;
 
       //redirect to result training words
-      this.router.navigate(['/result-training-words', 'wrong-'+this.error_array.filter(item => item!='undefined').length, 'right-'+this.right_array.filter(item => item!='undefined').length]);
-      
+           
       //sendin words by repeat by "training/conclusion/repeat" or "/training/conclusion/learned"
-      
+      this.httpClientService.conclusion_training(this.right_array.filter(item => item != 'undefined'), this.error_array.filter(item => item != 'undefined') ).subscribe(
+        response =>
+      {
+        this.router.navigate(['/result-training-words', 'wrong-'+this.error_array.filter(item => item!='undefined').length, 'right-'+this.right_array.filter(item => item!='undefined').length]);
+      }
+      );
+
     }
 
     this.beforeAnswer = true;

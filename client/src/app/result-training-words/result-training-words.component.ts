@@ -19,52 +19,19 @@ export class ResultTrainingWordsComponent implements OnInit {
     private httpClientService:HttpClientService) {
 
       this.route.params.subscribe(params => {
-
         //get element of array;
-    
         this.rightAnswers= params.right.replace("right-","");
         this.wrongAnswers = params.wrong.replace("wrong-","");
-
         })
     
 
      }
 
-  ngOnInit() {
-  
-    this.httpClientService.getMistakes().subscribe(
-      response =>
-      {
-    	  this.handleSuccessfulResponse(response);
-    	  this.httpClientService.cleanResources().subscribe();
-      },
-     ); 
-      
-    this.httpClientService.getCounterOfExperience().subscribe(
-      response =>
-      {
-    	  console.log(response);
-    	  this.countExperience = response
-    	  console.log(this.countExperience);
-      }
-    
-    );
-
-  }
-
-
-  handleSuccessfulResponse(response)
-{
-	 this.rightAnswers = response.right;
-	 this.wrongAnswers = response.wrong;
-}
+  ngOnInit() {}
 
 public gotoProductDetails(url) {
-
   this.router.navigate([url, 1, 1, 1]);
-  }
-
-
+}
 
 
 }

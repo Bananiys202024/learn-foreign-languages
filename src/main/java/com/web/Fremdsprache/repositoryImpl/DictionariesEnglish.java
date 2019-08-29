@@ -67,7 +67,12 @@ public class DictionariesEnglish {
 	}
 
 	public static boolean checkIfEnglishDictionaryEmpty(DictionaryRepository dictionaryRepository) {
-		return getSizeEnglishDictionary(dictionaryRepository).size()>0;
+		return getSizeEnglishDictionary(dictionaryRepository)
+									.stream()
+									.filter(model -> model.isLearned()==false)
+									.filter(model -> model.isRepeatTomorrow()==false)
+									.collect(Collectors.toList())
+									.size()>0;
 	}
 
 	private static List<DictionaryEnglish> getSizeEnglishDictionary(DictionaryRepository dictionaryRepository) {
@@ -115,6 +120,7 @@ public class DictionariesEnglish {
 	public static void insert_10_random_words(String owner, DictionaryRepository dictionaryRepository,
 			ConstEnDictRepo englishDictionaryRepository) throws IOException {
 		
+		int limit = 1_000; //number of words in dicitonary;
 
 		//generate list of entities
 		List<ConstEnDict> entities = new ArrayList<ConstEnDict>();
@@ -122,7 +128,7 @@ public class DictionariesEnglish {
 		ConstEnDict entity = null;
 		while(entities.size()<10)
 		{
-		entity = englishDictionaryRepository.findById(new Random().ints(1, 1, 10_000).findFirst().getAsInt() );
+		entity = englishDictionaryRepository.findById(new Random().ints(1, 1, limit).findFirst().getAsInt() );
 		
 		logger.info("---Boollean-----"+entity);
 		boolean checkingBool = IsWordNotExistsInDictionary(dictionaryRepository, entity.getWord());

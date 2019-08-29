@@ -10,12 +10,12 @@ import { LoaderState } from '../loader/LoaderState';
 
 
 @Component({
-  selector: 'app-train-words',
-  templateUrl: './train-words.component.html',
-  styleUrls: ['./train-words.component.css', ],
+  selector: 'app-dashboard',
+  templateUrl: './dashboard.component.html',
+  styleUrls: ['./dashboard.component.css', ],
 
 })
-export class TrainWordsComponent implements OnInit {
+export class DashboardComponent implements OnInit {
 
   emptyDictionary:string;
 

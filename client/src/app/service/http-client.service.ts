@@ -19,6 +19,8 @@ import { Random } from '../classes/random';
 })
 export class HttpClientService {
 
+
+
  word:TrainWords;
  check:any;
 
@@ -131,15 +133,32 @@ export class HttpClientService {
         } 	
 
 
-       initializeTraining()
-      {
+     
+      
+
+
+       //training
+               conclusion_training(right_array: string[], wrong_array: string[]) 
+      { 
+        
+        if(wrong_array.length==0)
+        wrong_array.push('null');
+
+        if(right_array.length==0)
+        right_array.push('null');
+
+        return this.httpClient.put('http://localhost:8083/training/conclusion/'+right_array+'/'+wrong_array,'');
+      }
+
+               initializeTraining()
+       {
         return this.httpClient.get<Train>('http://localhost:8083/training/initialize');
        } 	
      
 
-       generate_random_words(rightAnswers)
+                generate_random_words(rightAnswers)
        {
         return this.httpClient.get<Random>('http://localhost:8083/training/generate_random_words/'+rightAnswers);
        } 	
-      
+       //...
 }

@@ -2,6 +2,7 @@ package com.web.Fremdsprache.repositoryImpl;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
@@ -122,6 +123,48 @@ public class Training {
 		
 		return result;
 	}
+
+	public static void conclusion(String[] right_array, String[] wrong_array,
+			DictionaryRepository dictionaryRepository) {
+	
+		wrong_array = Arrays.stream(wrong_array).filter(e -> !e.equals("null")).toArray(String[]::new);
+		right_array = Arrays.stream(right_array).filter(e -> !e.equals("null")).toArray(String[]::new);
+
+		
+		List<DictionaryEnglish> right_entity_list = new ArrayList<DictionaryEnglish>();
+		List<DictionaryEnglish> wrong_entity_list = new ArrayList<DictionaryEnglish>();
+
+		for(String item:right_array)
+		{
+			Optional<DictionaryEnglish> found = dictionaryRepository.findBywordEnglish(item);
+			if(found.isPresent())
+			{
+			DictionaryEnglish entity = found.get();
+			entity.setLearned(true);
+			entity.setRepeatTomorrow(false);
+			right_entity_list.add(entity);
+			}
+
+		}
+		
+		for(String item:wrong_array)
+		{
+			Optional<DictionaryEnglish> found = dictionaryRepository.findBywordEnglish(item);
+			if(found.isPresent())
+			{
+			DictionaryEnglish entity = found.get();
+			entity.setLearned(false);
+			entity.setRepeatTomorrow(true);
+			wrong_entity_list.add(entity);
+			}
+
+		}
+		
+		dictionaryRepository.saveAll(right_entity_list);
+		dictionaryRepository.saveAll(wrong_entity_list);
+	
+	}
+
 	
 //	public static void initializeFiveWordsFromDictionary( DictionaryRepository dictionaryRepository, TrainingWordRepository trainingwordRepository, String owner)
 //	{
