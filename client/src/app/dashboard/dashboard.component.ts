@@ -66,13 +66,14 @@ export class DashboardComponent implements OnInit {
 
 
 
-public gotoProductDetails() {
+  training() 
+  {
 	
- this.httpClientService.checkIfDictionaryEmpty().subscribe(
-	 response =>this.handleEmptyDictionary(response),
+  this.httpClientService.checkIfDictionaryEmpty().subscribe(
+	     response =>this.handleEmptyDictionary(response),
   );
 
-}
+  }
 
 
 handleEmptyDictionary(response) {

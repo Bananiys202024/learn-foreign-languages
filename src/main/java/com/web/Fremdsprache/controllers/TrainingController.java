@@ -67,5 +67,14 @@ public class TrainingController {
 	public void conclusion_decision_of_destiny_wors(@PathVariable String[] right_array, @PathVariable String[] wrong_array) throws IOException {
 		Training.conclusion(right_array, wrong_array, dictionaryRepository);
 	}
+	
+	//get array of right_array(learned_words) and wrong_array(learned_words)
+	@PutMapping(value = "conclusion/add/experience/{count}")
+	public void conclusion_decision_of_destiny_wors(@PathVariable int count) throws IOException {
+				//there add some nunmbers to experience column in table "User"
+		//add 20 or 30, depend from counter;
+//		I need add registration and LogIn for this process;;
+		
+	}
 
 }

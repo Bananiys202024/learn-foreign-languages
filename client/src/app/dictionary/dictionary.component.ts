@@ -28,9 +28,7 @@ export class DictionaryComponent implements OnInit {
   
     handleEnglishDictionaryResponse(response)
 {
-    	console.log(response+"--Response");
 	this.dictionaryEnglish = response;
-	console.log(this.dictionaryEnglish+"---ThatEnglish");
 }
     
 

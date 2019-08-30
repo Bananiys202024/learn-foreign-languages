@@ -5,6 +5,7 @@ import { Router } from "@angular/router";
 import { HttpClientService } from '../service/http-client.service';
 import { Train } from '../classes/train';
 import { Random } from '../classes/random';
+import { Globals } from '../classes/globals'
 
 
 @Component({
@@ -39,7 +40,7 @@ export class TrainingWordsSliderComponent implements OnInit {
 
   @ViewChild('carousel', {static : true}) carousel: NgbCarousel;
 
-  constructor(private httpClientService:HttpClientService, config: NgbCarouselConfig, private router: Router) {
+  constructor(private httpClientService:HttpClientService, config: NgbCarouselConfig, private router: Router, private globals: Globals) {
     // customize default values of carousels used by this component tree
     config.interval = -1;
     config.wrap = true;
@@ -207,9 +208,14 @@ export class TrainingWordsSliderComponent implements OnInit {
       this.showSecondProcess = false;
       this.showThirdProcess = false;
 
+      this.globals.count_experience +=1;
+      if(this.globals.count_experience==0)
+      this.globals.count_experience=1;
+
       //redirect to result training words
-           
       //sendin words by repeat by "training/conclusion/repeat" or "/training/conclusion/learned"
+
+
       this.httpClientService.conclusion_training(this.right_array.filter(item => item != 'undefined'), this.error_array.filter(item => item != 'undefined') ).subscribe(
         response =>
       {

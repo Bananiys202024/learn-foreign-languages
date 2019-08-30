@@ -11,13 +11,14 @@ import { FormsModule } from '@angular/forms';
 export class RegistrationComponent implements OnInit {
 
   submitted = false;	
+  check_recaptcha = false;
 
   constructor() { }
 
   ngOnInit() {
   }
 
- model = new UserRegistration('name', 'password', 'confirmPassowrd')
+ model = new UserRegistration('name', 'password', 'confirmPassowrd', 'email@gmail.com')
   
  onSubmit(form: any) 
  { 
@@ -28,5 +29,9 @@ export class RegistrationComponent implements OnInit {
  
  get diagnostic() { return JSON.stringify(this.model); }
 
+ resolved(captchaResponse: string) {
+  console.log(`Resolved captcha with response: ${captchaResponse}`);
+  this.check_recaptcha =true;
+}
 
 }

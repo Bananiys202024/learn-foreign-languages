@@ -12,14 +12,13 @@ import { Size } from '../classes/size';
 import { CounterExperience } from '../classes/counter-experience';
 import { Train } from '../classes/train';
 import { Random } from '../classes/random';
+import { count } from 'rxjs/operators';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class HttpClientService {
-
-
 
  word:TrainWords;
  check:any;
@@ -138,9 +137,14 @@ export class HttpClientService {
 
 
        //training
+
+               conclusion_add_experience(count) 
+      {
+        return this.httpClient.put('http://localhost:8083/training/conclusion/add/experience', count);
+      }
+
                conclusion_training(right_array: string[], wrong_array: string[]) 
-      { 
-        
+      {         
         if(wrong_array.length==0)
         wrong_array.push('null');
 
@@ -154,7 +158,6 @@ export class HttpClientService {
        {
         return this.httpClient.get<Train>('http://localhost:8083/training/initialize');
        } 	
-     
 
                 generate_random_words(rightAnswers)
        {

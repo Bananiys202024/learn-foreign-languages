@@ -5,4 +5,5 @@ export class Dictionary {
 	public wordEnglish:string;
 	public wordRussian:string;
 	public repeatTomorrow:boolean;
+	public learned:boolean;
 }

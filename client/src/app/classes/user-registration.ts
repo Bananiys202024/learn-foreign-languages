@@ -4,6 +4,7 @@ export class UserRegistration {
         public name: string,
         public password: string,
         public confirmPassword: string,
+        public email: string,
       ) {  }
 
 }

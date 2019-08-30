@@ -25,4 +25,5 @@ public @Data class User {
 	    @Field(value = "registration_date")
 	    private Date date_of_registration;
 	    
+	    private long experience;
 }

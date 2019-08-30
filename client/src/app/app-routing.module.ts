@@ -12,18 +12,20 @@ import { RegistrationComponent } from './registration/registration.component';
 import { TrainingWordsSliderComponent } from './training-words-slider/training-words-slider.component';
 import { CabinetComponent } from './cabinet/cabinet.component';
 import { LoaderComponent } from './loader/loader.component';
+import { LoginComponent } from './login/login.component';
 
 
 const routes: Routes = [
 	  { path: '', component: WelcomeComponent, data: {animation: 'Welcome'}},
-	  { path: 'train-words', component: DashboardComponent, data: {animation: 'HomePage'} },
+	  { path: 'dashboard', component: DashboardComponent, data: {animation: 'HomePage'} },
 
 	  { path: 'reviewBooks', component: ReviewBooksComponent, data: {animation: 'ReviewBooks'}},
 	  { path: 'readBook/:title', component: ReadingBookComponent, data: {animation: 'readBook'}},
 	  { path: 'dictionary', component: DictionaryComponent, data: {animation: 'Dictionary'}},
 
 	  { path: 'registration', component: RegistrationComponent, data: {animation: 'Registration'}},
-	  
+	  { path: 'login', component: LoginComponent, data: {animation: 'Registration'}},
+
 	  { path: 'training', component: TrainingWordsSliderComponent, data: {animation: 'train-words-slider'}},
 	  { path: 'cabinet', component: CabinetComponent, data: {animation: 'cabinet'}},
 

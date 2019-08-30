@@ -1,44 +1,63 @@
 
 
-<p>registration works!</p>
-
-{{diagnostic}}
-2
-
+<div class="bg-dark-green h-100-vh">
 <div class="container">
-    <h1>Hero Form</h1>
-    <form (ngSubmit)="onSubmit(singupForm)" #singupForm="ngForm">
+
+  <div class="h-100-vh d-flex align-items-center row justify-content-center pt-5 pb-5">
+  <div class=" col-5">
+      <div class="card card-signin my-5">
+      <div class="card-body bg-white">
+    <h1 class="text-center pt-2 card-title">Регистрация</h1>
+    <form (ngSubmit)="onSubmit(singupForm)" class="p-4" #singupForm="ngForm">
       <div class="form-group">
-        <label for="name">Name</label>
+        <label for="name">Никнейм</label>
         <input type="text" class="form-control" id="name" required 
-        [(ngModel)]="model.name" name="name" #name="ngModel">{{model.name}}
+        [(ngModel)]="model.name" name="name" #name="ngModel">
       <div [hidden]="name.valid || name.pristine"
      	class="alert alert-danger">
-  			Name is required
+       Никнейм обязателен
   	   </div>
       </div>
 
       <div class="form-group">
-        <label for="password">Password</label>
+        <label for="email">e-mail</label>
+        <input type="text" class="form-control" id="email" required
+       [(ngModel)]="model.email" name="email" #email="ngModel">
+        <div [hidden]="email.valid || email.pristine"
+     	class="alert alert-danger">
+       e-mail обязателен
+  	   </div>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Пароль</label>
         <input type="text" class="form-control" id="password" required
-       [(ngModel)]="model.password" name="password" #password="ngModel">{{model.password}}
+       [(ngModel)]="model.password" name="password" #password="ngModel">
         <div [hidden]="password.valid || password.pristine"
      	class="alert alert-danger">
-  			Password is required
+       Пароль обязателен
   	   </div>
       </div>
       
       <div class="form-group">
-        <label for="confirmPassword">Confirm password</label>
+        <label for="confirmPassword">Подтверждение пароля</label>
         <input type="text" class="form-control" id="confirmPassword" required
-       [(ngModel)]="model.confirmPassword" name="confirmPassword" #confirmPassword="ngModel">{{model.confirmPassword}}
+       [(ngModel)]="model.confirmPassword" name="confirmPassword" #confirmPassword="ngModel">
         <div [hidden]="confirmPassword.valid || confirmPassword.pristine"
      	class="alert alert-danger">
-  			Password is required
+       Подтверждение пароля обязательно
   	   </div>
       </div>
-      
-      <button type="submit" class="btn btn-success" [disabled]="!singupForm.form.valid">Submit</button>
 
+      <re-captcha (resolved)="resolved($event)" siteKey="6Lc2l7UUAAAAAKx5rCNhd4Q1I0TdSfoFTijXIrFi"></re-captcha>
+      
+      <button type="submit" class="btn btn-success" [disabled]="!singupForm.form.valid || !check_recaptcha">Submit</button>
     </form>
+    </div>
+    </div>
+  </div>
+</div>
+
+
+  </div>
 </div>

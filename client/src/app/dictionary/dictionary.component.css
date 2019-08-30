@@ -14,3 +14,12 @@ body {
     width: 1%;
 }
 
+.not_learned_class
+{
+    background: #b60b32;
+}
+
+.learned_class
+{
+	background: #00ab1d;
+}

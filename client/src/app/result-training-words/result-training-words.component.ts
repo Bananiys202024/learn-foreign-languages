@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClientService} from '../service/http-client.service';
 import { ActivatedRoute } from "@angular/router";
+import { Globals } from '../classes/globals'
 
 @Component({
   selector: 'app-result-training-words',
@@ -16,18 +17,20 @@ export class ResultTrainingWordsComponent implements OnInit {
 
   constructor(	private router: Router,
     private route: ActivatedRoute,
-    private httpClientService:HttpClientService) {
+    private httpClientService:HttpClientService,
+    globals: Globals) {
 
       this.route.params.subscribe(params => {
         //get element of array;
         this.rightAnswers= params.right.replace("right-","");
         this.wrongAnswers = params.wrong.replace("wrong-","");
         })
-    
+        this.countExperience = globals.count_experience;  
+      }
 
-     }
-
-  ngOnInit() {}
+  ngOnInit() {
+    this.httpClientService.conclusion_add_experience(this.countExperience).subscribe();
+  }
 
 public gotoProductDetails(url) {
   this.router.navigate([url, 1, 1, 1]);
