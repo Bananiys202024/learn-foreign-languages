@@ -1,9 +1,11 @@
 package com.web.Fremdsprache.entity.mongodb;
 
 import java.util.Date;
+import java.util.Set;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
@@ -21,9 +23,22 @@ public @Data class User {
 	 
 	    @Field(value = "username")
 	    private String username;
+	    
+	    @Field(value = "password")
+	    private String password;
 	 
 	    @Field(value = "registration_date")
 	    private Date date_of_registration;
 	    
+	    @Field(value = "status")
+	    private String status;
+
+	    @Field(value = "enabled")
+	    private boolean enabled;
+
+	    @Field(value = "experience")
 	    private long experience;
+	    
+	    @DBRef
+	    private Set<Role> roles;
 }
