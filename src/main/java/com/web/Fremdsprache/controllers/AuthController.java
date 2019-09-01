@@ -5,12 +5,16 @@ import static org.springframework.http.ResponseEntity.ok;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.apache.logging.log4j.LogManager;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,9 +26,14 @@ import com.web.Fremdsprache.model.AuthBody;
 import com.web.Fremdsprache.repositories.UserRepository;
 import com.web.Fremdsprache.service.CustomUserDetailsService;
 
+import ch.qos.logback.classic.Logger;
+
 @RestController
 @RequestMapping("/api/auth")
+@CrossOrigin(origins = "http://localhost:4203")
 public class AuthController {
+
+	private static final org.apache.logging.log4j.Logger logger = LogManager.getLogger(AuthController.class);
 
     @Autowired
     AuthenticationManager authenticationManager;
@@ -55,15 +64,15 @@ public class AuthController {
     }
 
     @SuppressWarnings("rawtypes")
-    @PostMapping("/register")
+    @PostMapping(value="/register")
+//    @ResponseStatus(value = HttpStatus.OK)
     public ResponseEntity register(@RequestBody User user) {
         User userExists = userService.findUserByEmail(user.getEmail());
         if (userExists != null) {
             throw new BadCredentialsException("User with username: " + user.getEmail() + " already exists");
         }
         userService.saveUser(user);
-        Map<Object, Object> model = new HashMap<>();
-        model.put("message", "User registered successfully");
-        return ok(model);
+        logger.info("All okey, we registered");
+        return new ResponseEntity<>("User registered successfully", HttpStatus.OK);
     }
 }

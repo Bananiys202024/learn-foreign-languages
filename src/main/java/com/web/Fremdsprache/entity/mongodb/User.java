@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.Set;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -26,6 +27,9 @@ public @Data class User {
 	    
 	    @Field(value = "password")
 	    private String password;
+	    
+	    @Transient
+	    private String confirmPassword;
 	 
 	    @Field(value = "registration_date")
 	    private Date date_of_registration;

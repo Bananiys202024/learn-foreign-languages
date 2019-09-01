@@ -1,4 +1,4 @@
-export class UserRegistration {
+export class User {
 
     constructor(
         public name: string,
@@ -8,3 +8,4 @@ export class UserRegistration {
       ) {  }
 
 }
+

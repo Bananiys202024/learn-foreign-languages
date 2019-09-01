@@ -1,5 +1,7 @@
 package com.web.Fremdsprache.config;
 
+import java.util.Arrays;
+
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +18,9 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.AuthenticationEntryPoint;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import com.web.Fremdsprache.service.CustomUserDetailsService;
 
@@ -33,13 +38,26 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		auth.userDetailsService(userDetailsService).passwordEncoder(bCryptPasswordEncoder());
 
 	}
+	
+//	 @Bean
+//	    CorsConfigurationSource corsConfigurationSource() {
+//	        CorsConfiguration configuration = new CorsConfiguration();
+//	        configuration.setAllowedOrigins(Arrays.asList("http://localhost:4203"));
+//	        configuration.setAllowedMethods(Arrays.asList("GET","POST", "PUT", "DELETE"));
+//	        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+//	        source.registerCorsConfiguration("/**", configuration);
+//	        return source;
+//	    }
+//	 
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.httpBasic().disable().csrf().disable().sessionManagement()
 				.sessionCreationPolicy(SessionCreationPolicy.STATELESS).and().authorizeRequests()
-				.antMatchers("/api/auth/login").permitAll().antMatchers("/api/auth/register").permitAll()
-				.antMatchers("/api/products/**").hasAuthority("ADMIN").anyRequest().authenticated().and().csrf()
+				.antMatchers("/**")
+				.permitAll().antMatchers("/api/auth/register")
+				.permitAll().antMatchers("*")
+				.hasAuthority("*").anyRequest().authenticated().and().csrf()
 				.disable().exceptionHandling().authenticationEntryPoint(unauthorizedEntryPoint()).and()
 				.apply(new JwtConfigurer(jwtTokenProvider));
 	}

@@ -1,7 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { UserRegistration } from '../classes/user-registration';
+import { User } from '../classes/user';
 import { FormsModule } from '@angular/forms';
+import { HttpClientService } from '../service/http-client.service';
+import { AuthService } from '../auth.service';
+import { Router } from '@angular/router';
+
+
 
 @Component({
   selector: 'app-registration',
@@ -11,20 +16,31 @@ import { FormsModule } from '@angular/forms';
 export class RegistrationComponent implements OnInit {
 
   submitted = false;	
-  check_recaptcha = false;
+  check_recaptcha = true;
 
-  constructor() { }
+
+  constructor(private httpClientService:HttpClientService, private router: Router, private authService: AuthService) { }
 
   ngOnInit() {
   }
 
- model = new UserRegistration('name', 'password', 'confirmPassowrd', 'email@gmail.com')
+ model = new User('name', 'password', 'confirmPassowrd', 'email@gmail.com')
   
  onSubmit(form: any) 
  { 
-	console.log(form.controls['name'].value);
-	console.log(form.controls['password'].value);
-	console.log(form.controls['confirmPassword'].value);
+//	console.log(form.controls['name'].value);
+//	console.log(form.controls['password'].value);
+//  console.log(form.controls['confirmPassword'].value);
+
+//add validation
+  console.log("Ts----"+JSON.stringify(this.model));
+  this.httpClientService.registration(this.model).subscribe(
+    response =>
+   {
+          console.log(response+"---reponse");
+   }
+   );
+   
  }
  
  get diagnostic() { return JSON.stringify(this.model); }

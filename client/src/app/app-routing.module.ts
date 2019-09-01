@@ -13,10 +13,11 @@ import { TrainingWordsSliderComponent } from './training-words-slider/training-w
 import { CabinetComponent } from './cabinet/cabinet.component';
 import { LoaderComponent } from './loader/loader.component';
 import { LoginComponent } from './login/login.component';
+import { AuthGuard } from './auth/auth.guard';
 
 
 const routes: Routes = [
-	  { path: '', component: WelcomeComponent, data: {animation: 'Welcome'}},
+	  { path: '', component: WelcomeComponent, data: {animation: 'Welcome', title: 'Dolphi'}},
 	  { path: 'dashboard', component: DashboardComponent, data: {animation: 'HomePage'} },
 
 	  { path: 'reviewBooks', component: ReviewBooksComponent, data: {animation: 'ReviewBooks'}},
@@ -24,7 +25,7 @@ const routes: Routes = [
 	  { path: 'dictionary', component: DictionaryComponent, data: {animation: 'Dictionary'}},
 
 	  { path: 'registration', component: RegistrationComponent, data: {animation: 'Registration'}},
-	  { path: 'login', component: LoginComponent, data: {animation: 'Registration'}},
+	  { path: 'login', canActivate: [AuthGuard], component: LoginComponent, data: {animation: 'Registration'}},
 
 	  { path: 'training', component: TrainingWordsSliderComponent, data: {animation: 'train-words-slider'}},
 	  { path: 'cabinet', component: CabinetComponent, data: {animation: 'cabinet'}},

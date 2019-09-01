@@ -164,4 +164,14 @@ export class HttpClientService {
         return this.httpClient.get<Random>('http://localhost:8083/training/generate_random_words/'+rightAnswers);
        } 	
        //...
+
+
+       //login .. registration
+
+       registration(model)
+       {
+        return this.httpClient.post('http://localhost:8083/api/auth/register', model);
+       } 	
+
+       //...
 }
