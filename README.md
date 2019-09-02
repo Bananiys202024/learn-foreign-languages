@@ -30,7 +30,7 @@
 3. Go to <a href="http://localhost:4203/">http://localhost:4203/</a>
 
 
-<h2>Tutorials by use used technology in project on arch linux</h2>
+<h2>Tutorials "How use" with "Arch Linux"</h2>
 
 <h3>Docker</h3>
 
