@@ -30,7 +30,9 @@
 3. Go to <a href="http://localhost:4203/">http://localhost:4203/</a>
 
 
-<h2>Docker</h2>
+<h2>Tutorials by use used technology in project on arch linux</h2>
+
+<h3>Docker</h3>
 
 Clear all started containers
 
@@ -44,6 +46,15 @@ Start
             docker-compose build
 
             docker-compose up
+            
+<h3>Redis</h3>
+
+Start
+
+            redis-cli
+            
+  
+
 
 Access
  <a href="http://localhost:8083/">http://localhost:8083/</a>
