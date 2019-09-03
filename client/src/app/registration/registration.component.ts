@@ -5,7 +5,15 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientService } from '../service/http-client.service';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
-
+import { HttpEventType } from '@angular/common/http';
+import {
+  HttpRequest,
+  HttpHandler,
+  HttpEvent,
+  HttpInterceptor,
+  HttpResponse,
+  HttpErrorResponse
+} from '@angular/common/http';
 
 
 @Component({
@@ -17,7 +25,6 @@ export class RegistrationComponent implements OnInit {
 
   submitted = false;	
   check_recaptcha = true;
-
 
   constructor(private httpClientService:HttpClientService, private router: Router, private authService: AuthService) { }
 
@@ -37,6 +44,8 @@ export class RegistrationComponent implements OnInit {
   this.httpClientService.registration(this.model).subscribe(
     response =>
    {
+
+
           console.log(response+"---reponse");
    }
    );

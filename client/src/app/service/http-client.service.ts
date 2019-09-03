@@ -14,7 +14,6 @@ import { Train } from '../classes/train';
 import { Random } from '../classes/random';
 import { count } from 'rxjs/operators';
 
-
 @Injectable({
   providedIn: 'root'
 })
@@ -170,7 +169,7 @@ export class HttpClientService {
 
        registration(model)
        {
-        return this.httpClient.post('http://localhost:8083/api/auth/register', model);
+        return this.httpClient.post('http://localhost:8083/api/auth/register', model, { responseType: 'text' });
        } 	
 
        //...
