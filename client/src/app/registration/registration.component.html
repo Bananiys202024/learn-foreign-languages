@@ -1,5 +1,39 @@
 
 
+
+ <!--User exist-->
+
+<!-- Button trigger modal -->
+<button type="button" id="userExist" class="btn btn-primary d-none" data-toggle="modal" data-target="#exampleModal">
+  Launch demo modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Пользователь существует</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        К сожалению пользователь с таким email уже существует. Вы можете восстановить пароль, нажав кнопку внизу "Восстановить пароль"
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Восстановить пароль</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--....-->
+
+
+
+
 <div class="bg-dark-green h-100-vh">
 <div class="container">
 
@@ -51,7 +85,7 @@
 
       <re-captcha (resolved)="resolved($event)" siteKey="6Lc2l7UUAAAAAKx5rCNhd4Q1I0TdSfoFTijXIrFi"></re-captcha>
       
-      <button type="submit" class="btn btn-success" [disabled]="!singupForm.form.valid || !check_recaptcha">Submit</button>
+      <button type="submit" class="btn btn-success mt-3" [disabled]="!singupForm.form.valid || !check_recaptcha">Submit</button>
     </form>
     </div>
     </div>

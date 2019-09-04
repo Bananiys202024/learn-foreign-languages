@@ -15,6 +15,7 @@ import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -65,14 +66,15 @@ public class AuthController {
 
     @SuppressWarnings("rawtypes")
     @PostMapping(value="/register")
-//    @ResponseStatus(value = HttpStatus.OK)
     public ResponseEntity register(@RequestBody User user) {
         User userExists = userService.findUserByEmail(user.getEmail());
         if (userExists != null) {
-            throw new BadCredentialsException("User with username: " + user.getEmail() + " already exists");
+        return new ResponseEntity<String>("User with email: " + user.getEmail() + " already exists", HttpStatus.OK );
         }
         userService.saveUser(user);
         logger.info("All okey, we registered");
-        return new ResponseEntity<>("User registered successfully", HttpStatus.OK);
+        return new ResponseEntity<String>("User registered successfully", HttpStatus.OK);
     }
+    
+
 }

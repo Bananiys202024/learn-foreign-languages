@@ -24,7 +24,7 @@ import {
 export class RegistrationComponent implements OnInit {
 
   submitted = false;	
-  check_recaptcha = true;
+  check_recaptcha = false;
 
   constructor(private httpClientService:HttpClientService, private router: Router, private authService: AuthService) { }
 
@@ -40,18 +40,25 @@ export class RegistrationComponent implements OnInit {
 //  console.log(form.controls['confirmPassword'].value);
 
 //add validation
-  console.log("Ts----"+JSON.stringify(this.model));
-  this.httpClientService.registration(this.model).subscribe(
-    response =>
-   {
 
 
-          console.log(response+"---reponse");
-   }
-   );
-   
- }
+this.httpClientService.registration(this.model).subscribe(
+  response =>
+  {
+        console.log(response);
+    if(response.includes("User with email:") && response.includes("already exists"))
+    {
+      document.getElementById('userExist').click();
+    }
+
+    //add if success registration go to confirm password by e-mail;
+    
+  }
+  );
  
+}
+
+
  get diagnostic() { return JSON.stringify(this.model); }
 
  resolved(captchaResponse: string) {
