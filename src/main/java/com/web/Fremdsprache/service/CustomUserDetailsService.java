@@ -80,6 +80,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 	    user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
 	    user.setRoles(new HashSet<>(Arrays.asList(userRole)));
 	    
+	    roleRepository.save(userRole);
 	    userRepository.save(user);
 	}
 

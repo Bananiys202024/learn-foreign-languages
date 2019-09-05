@@ -52,6 +52,7 @@ public class AuthController {
     @PostMapping("/login")
     public ResponseEntity login(@RequestBody AuthBody data) {
         try {
+        	logger.info("Email---"+data.getEmail()+"---passwd3e---"+data.getPassword());
             String username = data.getEmail();
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, data.getPassword()));
             String token = jwtTokenProvider.createToken(username, this.users.findByEmail(username).getRoles());
@@ -76,5 +77,13 @@ public class AuthController {
         return new ResponseEntity<String>("User registered successfully", HttpStatus.OK);
     }
     
+//    @SuppressWarnings("rawtypes")
+//    @PostMapping(value="/signout")
+//    public ResponseEntity register(@RequestBody User user) {
+//
+//    		
+//    	return new ResponseEntity<String>("User registered successfully", HttpStatus.OK);
+//    }
+//    
 
 }

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClientService } from '../service/http-client.service';
+import { Router } from '@angular/router';
+import { AuthService } from '../auth.service';
 
 
 @Component({
@@ -10,9 +12,28 @@ import { HttpClientService } from '../service/http-client.service';
 export class WelcomeComponent implements OnInit {
 
 
-  constructor() { }
+  constructor(private router: Router, private authService: AuthService) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.isloginn();
+  }
 
+
+  isloginn(){
+    if (localStorage.getItem('token')){
+      return true;
+    }
+
+    return 'I am method and i dont know';
+  }
+
+
+  logout()
+  {
+    console.log('log_out');
+    console.log(this.isloginn());
+    localStorage.removeItem('token');
+    this.router.navigate(['']);
+  }
 
 }
