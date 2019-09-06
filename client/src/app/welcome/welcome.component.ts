@@ -11,7 +11,6 @@ import { AuthService } from '../auth.service';
 })
 export class WelcomeComponent implements OnInit {
 
-
   constructor(private router: Router, private authService: AuthService) { }
 
   ngOnInit() {
@@ -24,7 +23,7 @@ export class WelcomeComponent implements OnInit {
       return true;
     }
 
-    return 'I am method and i dont know';
+    return 'User does not logged in';
   }
 
 
@@ -33,6 +32,7 @@ export class WelcomeComponent implements OnInit {
     console.log('log_out');
     console.log(this.isloginn());
     localStorage.removeItem('token');
+    localStorage.removeItem('email');
     this.router.navigate(['']);
   }
 

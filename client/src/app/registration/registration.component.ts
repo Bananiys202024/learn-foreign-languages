@@ -41,7 +41,7 @@ export class RegistrationComponent implements OnInit {
 
 //add validation
 
-
+console.log(this.model);
 this.httpClientService.registration(this.model).subscribe(
   response =>
   {

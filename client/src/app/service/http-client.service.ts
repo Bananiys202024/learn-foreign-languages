@@ -19,6 +19,7 @@ import { count } from 'rxjs/operators';
 })
 export class HttpClientService {
 
+
  word:TrainWords;
  check:any;
 
@@ -173,4 +174,7 @@ export class HttpClientService {
        } 	
 
        //...
+
+
+
 }

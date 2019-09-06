@@ -2,6 +2,7 @@ package com.web.Fremdsprache.service;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
@@ -73,9 +74,10 @@ public class CustomUserDetailsService implements UserDetailsService {
 	    userRole.setId(id);
 	    userRole.setRole("User");
 	    
+	    user.setDate_of_registration(new Date());
 	    user.setId(id);
 	    user.setStatus("okey");
-	    user.setExperience(0);
+	    user.setExperience(0L);
 	    user.setEnabled(true);
 	    user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
 	    user.setRoles(new HashSet<>(Arrays.asList(userRole)));

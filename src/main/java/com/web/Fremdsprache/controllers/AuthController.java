@@ -54,11 +54,18 @@ public class AuthController {
         try {
         	logger.info("Email---"+data.getEmail()+"---passwd3e---"+data.getPassword());
             String username = data.getEmail();
+            String password = data.getPassword();
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, data.getPassword()));
-            String token = jwtTokenProvider.createToken(username, this.users.findByEmail(username).getRoles());
+            User found = this.users.findByEmail(username);
+            String token = jwtTokenProvider.createToken(username, found.getRoles());
+            logger.info("We reached this point");
+            
             Map<Object, Object> model = new HashMap<>();
-            model.put("username", username);
+            model.put("email", username); // It is really email, but have name of "username"
             model.put("token", token);
+            model.put("password", password);
+            model.put("username", found.getUsername());
+            
             return ok(model);
         } catch (AuthenticationException e) {
             throw new BadCredentialsException("Invalid email/password supplied");
@@ -72,18 +79,11 @@ public class AuthController {
         if (userExists != null) {
         return new ResponseEntity<String>("User with email: " + user.getEmail() + " already exists", HttpStatus.OK );
         }
+        logger.info(user.getUsername()+"----name");
         userService.saveUser(user);
         logger.info("All okey, we registered");
         return new ResponseEntity<String>("User registered successfully", HttpStatus.OK);
     }
     
-//    @SuppressWarnings("rawtypes")
-//    @PostMapping(value="/signout")
-//    public ResponseEntity register(@RequestBody User user) {
-//
-//    		
-//    	return new ResponseEntity<String>("User registered successfully", HttpStatus.OK);
-//    }
-//    
 
 }

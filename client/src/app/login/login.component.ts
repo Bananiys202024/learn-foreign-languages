@@ -28,6 +28,9 @@ console.log(this.model);
         console.log(res);
         if (res.token) {
           localStorage.setItem('token', res.token);
+          localStorage.setItem('email', res.email);
+          localStorage.setItem('username', res.username);
+          localStorage.setItem('password', res.password);
           this.router.navigate(['']);
        }
       }, (err) => {

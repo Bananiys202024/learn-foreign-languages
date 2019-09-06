@@ -44,10 +44,10 @@
     <h1 class="text-center pt-2 card-title">Регистрация</h1>
     <form (ngSubmit)="onSubmit(singupForm)" class="p-4" #singupForm="ngForm">
       <div class="form-group">
-        <label for="name">Никнейм</label>
-        <input type="text" class="form-control" id="name" required 
-        [(ngModel)]="model.name" name="name" #name="ngModel">
-      <div [hidden]="name.valid || name.pristine"
+        <label for="username">Никнейм</label>
+        <input type="text" class="form-control" id="username" required 
+        [(ngModel)]="model.username" name="username" #username="ngModel">
+      <div [hidden]="username.valid || username.pristine"
      	class="alert alert-danger">
        Никнейм обязателен
   	   </div>
