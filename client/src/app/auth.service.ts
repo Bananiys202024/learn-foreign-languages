@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
+import {of as observableOf } from 'rxjs'; // since RxJs 6
 
 const apiUrl = 'http://localhost:8083/api/auth/';
 
@@ -10,34 +11,31 @@ const apiUrl = 'http://localhost:8083/api/auth/';
 })
 export class AuthService {
 
-  isLoggedIn = false;
   redirectUrl: string;
 
   constructor(private http: HttpClient) { }
 
+  login(data: any): Observable<any> {
+    console.log('We here');
+    return this.http.post(apiUrl + 'login', data)
+  }
+
   isLogIn()
   {
-    if(localStorage.getItem('item'))
-    return true;
-
-    if(!localStorage.getItem('item'))
-    return false;
+    return localStorage.getItem('token');
   }
 
-  login(data: any): Observable<any> {
-    return this.http.post<any>(apiUrl + 'login', data)
-      .pipe(
-        tap(_ => this.isLoggedIn = true),
-        catchError(this.handleError('login', []))
-      );
-  }
-  
   logout(): Observable<any> {
-    return this.http.get<any>(apiUrl + 'signout')
-      .pipe(
-        tap(_ => this.isLoggedIn = false),
-        catchError(this.handleError('logout', []))
-      );
+    
+    
+    console.log('log_out successfully');
+
+    localStorage.removeItem('token');
+    localStorage.removeItem('email');
+    localStorage.removeItem('password');
+    localStorage.removeItem('username');
+
+    return this.http.get<any>(apiUrl + 'logout')
   }
   
   register(data: any): Observable<any> {
@@ -51,7 +49,7 @@ export class AuthService {
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
   
-      console.error(error); // log to console instead
+      console.error('Error--'+error); // log to console instead
       this.log(`${operation} failed: ${error.message}`);
   
       return of(result as T);

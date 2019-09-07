@@ -14,6 +14,7 @@ import { CabinetComponent } from './cabinet/cabinet.component';
 import { LoaderComponent } from './loader/loader.component';
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './auth/auth.guard';
+import { AuthGuardAnonymouse } from './auth/auth-guard-anonymouse';
 
 
 const routes: Routes = [
@@ -25,8 +26,8 @@ const routes: Routes = [
 	  { path: 'readBook/:title', component: ReadingBookComponent, data: {animation: 'readBook'}},
 	  { path: 'dictionary', component: DictionaryComponent, data: {animation: 'Dictionary'}},
 
-	  { path: 'registration', component: RegistrationComponent, data: {animation: 'Registration'}},
-	  { path: 'login', component: LoginComponent, data: {animation: 'Registration'}},
+	  { path: 'registration', canActivate: [AuthGuardAnonymouse], component: RegistrationComponent, data: {animation: 'Registration'}},
+	  { path: 'login', canActivate: [AuthGuardAnonymouse], component: LoginComponent, data: {animation: 'Registration'}},
 
 	  { path: 'adminSecretPage', canActivate: [AuthGuard], component: CabinetComponent, data: {animation: 'Registration'}},
 

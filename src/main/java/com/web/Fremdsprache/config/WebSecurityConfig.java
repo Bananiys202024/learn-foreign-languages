@@ -39,6 +39,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	}
 	
+ 
 //	 @Bean
 //	    CorsConfigurationSource corsConfigurationSource() {
 //	        CorsConfiguration configuration = new CorsConfiguration();
@@ -60,7 +61,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.permitAll().antMatchers("*")
 				.hasAuthority("*").anyRequest().authenticated().and().csrf()
 				.disable().exceptionHandling().authenticationEntryPoint(unauthorizedEntryPoint()).and()
-				.apply(new JwtConfigurer(jwtTokenProvider));
+				.apply(new JwtConfigurer(jwtTokenProvider))
+				.and()
+	            .logout()
+	            .permitAll();
 	}
 
 	@Override

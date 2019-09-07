@@ -84,6 +84,6 @@ public class AuthController {
         logger.info("All okey, we registered");
         return new ResponseEntity<String>("User registered successfully", HttpStatus.OK);
     }
-    
+
 
 }

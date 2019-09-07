@@ -1,4 +1,4 @@
-Last: AuthGoard to some routes And checking by authentication by some buttons;
+Last: AuthGuard, limitations by routes from front-end, ;
 Next: handle exception from back-end to front-end. example: BadcredentialException;
 
 Fast tasks:
@@ -9,6 +9,8 @@ Fast tasks:
 4. page of progress;
 5. add loaders;
 6.2 Tuing AuthGuard;
+6.3 Create alert pages "For access this page you need log_in;
+
 
 To tie back-end and front-end validation for both process of registration and log_in;
-https://www.djamware.com/post/5d3332980707cc65eac46c7b/spring-boot-security-mongodb-angular-8-build-authentication
+5

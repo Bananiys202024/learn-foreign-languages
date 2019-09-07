@@ -29,12 +29,8 @@ export class WelcomeComponent implements OnInit {
 
   logout()
   {
-    console.log('log_out');
     this.isLogged=false;
-    localStorage.removeItem('token');
-    localStorage.removeItem('email');
-    localStorage.removeItem('password');
-    localStorage.removeItem('username');
+    this.authService.logout();
     this.router.navigate(['']);
   }
 

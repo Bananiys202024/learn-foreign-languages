@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { User } from '../classes/user';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -20,7 +21,7 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(form: NgForm) {
-   
+
 console.log(this.model);
 
     this.authService.login(JSON.stringify(this.model))
@@ -36,8 +37,9 @@ console.log(this.model);
       }, (err) => {
         console.log(err);
       });
-  }
-  
 
-  
+
+
+  }
+
 }
