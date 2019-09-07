@@ -15,6 +15,15 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
 
+  isLogIn()
+  {
+    if(localStorage.getItem('item'))
+    return true;
+
+    if(!localStorage.getItem('item'))
+    return false;
+  }
+
   login(data: any): Observable<any> {
     return this.http.post<any>(apiUrl + 'login', data)
       .pipe(

@@ -11,28 +11,30 @@ import { AuthService } from '../auth.service';
 })
 export class WelcomeComponent implements OnInit {
 
+  isLogged:boolean;
+
   constructor(private router: Router, private authService: AuthService) { }
 
   ngOnInit() {
     this.isloginn();
   }
 
-
   isloginn(){
-    if (localStorage.getItem('token')){
-      return true;
-    }
+    if (localStorage.getItem('token'))
+    this.isLogged = true;
 
-    return 'User does not logged in';
+    if(!localStorage.getItem('token'))
+    this.isLogged = false;
   }
-
 
   logout()
   {
     console.log('log_out');
-    console.log(this.isloginn());
+    this.isLogged=false;
     localStorage.removeItem('token');
     localStorage.removeItem('email');
+    localStorage.removeItem('password');
+    localStorage.removeItem('username');
     this.router.navigate(['']);
   }
 

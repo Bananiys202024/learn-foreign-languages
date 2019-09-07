@@ -14,9 +14,9 @@
   </a>    
       
 <div>
-     <button type="button" routerLink="login" class="btn btn-outline-light">Войти</button>
-   <a role="button" routerLink="registration" class="btn btn-outline-light ml-2">Зарегистрироваться</a>
-   <button type="button" class="btn btn-outline-light ml-2" (click)="logout()">LogOut</button>
+   <button *ngIf="!isLogged" type="button" routerLink="login" class="btn btn-outline-light">Войти</button>
+   <a *ngIf="!isLogged" role="button" routerLink="registration" class="btn btn-outline-light ml-2">Зарегистрироваться</a>
+   <button *ngIf="isLogged" type="button" class="btn btn-outline-light ml-2" (click)="logout()">LogOut</button>
 
 </div>    
     

@@ -1,10 +1,14 @@
-Last: login/logout some fix and saving those values to localStorage;
+Last: AuthGoard to some routes And checking by authentication by some buttons;
 Next: handle exception from back-end to front-end. example: BadcredentialException;
 
 Fast tasks:
 0. Add guide "How use mongo" fast commands to READ_ME;
-
-
+1. Add screen_schots to project;
+2. Bottom_menu to bottom;(not less than 2 numbers of bottom_menu);
+3. Login page change somthng there;
+4. page of progress;
+5. add loaders;
+6.2 Tuing AuthGuard;
 
 To tie back-end and front-end validation for both process of registration and log_in;
 https://www.djamware.com/post/5d3332980707cc65eac46c7b/spring-boot-security-mongodb-angular-8-build-authentication

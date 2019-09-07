@@ -25,7 +25,8 @@ export class RegistrationComponent implements OnInit {
 
   submitted = false;	
   check_recaptcha = false;
-
+  show = false;
+  
   constructor(private httpClientService:HttpClientService, private router: Router, private authService: AuthService) { }
 
   ngOnInit() {
