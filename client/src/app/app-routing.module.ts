@@ -15,6 +15,7 @@ import { LoaderComponent } from './loader/loader.component';
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './auth/auth.guard';
 import { AuthGuardAnonymouse } from './auth/auth-guard-anonymouse';
+import { ProgressComponent } from './progress/progress.component';
 
 
 const routes: Routes = [
@@ -25,8 +26,10 @@ const routes: Routes = [
 	  { path: 'reviewBooks', component: ReviewBooksComponent, data: {animation: 'ReviewBooks'}},
 	  { path: 'readBook/:title', component: ReadingBookComponent, data: {animation: 'readBook'}},
 	  { path: 'dictionary', component: DictionaryComponent, data: {animation: 'Dictionary'}},
+	  { path: 'progress', component: ProgressComponent, data: {animation: 'progress'}},
 
 	  { path: 'registration', canActivate: [AuthGuardAnonymouse], component: RegistrationComponent, data: {animation: 'Registration'}},
+	  { path: 'login', canActivate: [AuthGuardAnonymouse], component: LoginComponent, data: {animation: 'Registration'}},
 	  { path: 'login', canActivate: [AuthGuardAnonymouse], component: LoginComponent, data: {animation: 'Registration'}},
 
 	  { path: 'adminSecretPage', canActivate: [AuthGuard], component: CabinetComponent, data: {animation: 'Registration'}},

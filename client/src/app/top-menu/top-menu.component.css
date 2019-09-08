@@ -24,3 +24,10 @@ box-shadow:         1px 1px 1px 1px #ccc;  /* Opera 10.5, IE 9, Firefox 4+, Chro
 .sizeTop {
     height: 9vh;
 }
+
+
+.hidhlight-current-choosen
+{
+    background-color: #41a141;
+    border-radius: 10%!important;
+}

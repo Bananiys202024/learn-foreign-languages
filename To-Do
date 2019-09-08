@@ -1,5 +1,10 @@
-Last: AuthGuard, limitations by routes from front-end, ;
-Next: handle exception from back-end to front-end. example: BadcredentialException;
+Last: some animations between pages, some limitations to pages, some css of page "progress";
+Next: add css of page "Progress";
+
+
+or add experience;
+
+Connect Kafka
 
 Fast tasks:
 0. Add guide "How use mongo" fast commands to READ_ME;
@@ -10,7 +15,72 @@ Fast tasks:
 5. add loaders;
 6.2 Tuing AuthGuard;
 6.3 Create alert pages "For access this page you need log_in;
-
-
+6.5 Add validation to registration and login process;
+6.6. Fix toggling from "dictionary" to "dashboard";
 To tie back-end and front-end validation for both process of registration and log_in;
-5
+6.7 Add access to web-site only with login;
+6.8 read about animations add anumations to all apges;
+6.9 ;
+
+
+https://www.djamware.com/post/5d3332980707cc65eac46c7b/spring-boot-security-mongodb-angular-8-build-authentication
+
+
+
+Some modifiication to tables(add):
+0. Languages;
+1. Country
+1.5 TownOfRegistration(pointed by user)
+2. Town(count from ip);
+3. TimeZone(count from ip);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Write app only with 0 and 1;

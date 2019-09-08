@@ -22,7 +22,8 @@ export class DashboardComponent implements OnInit {
   learn:number;
   later:number;
   learned:number;
-
+  
+  
   messageSuccess = true;
   timesAddedTenWords:any;
 

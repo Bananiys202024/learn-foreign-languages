@@ -36,6 +36,7 @@ import { LoaderInterceptorService } from './service/loader-interceptor.service';
 import { RecaptchaModule } from 'ng-recaptcha';
 import { Globals } from './classes/globals';
 import { TokenInterceptor } from './Interceptors/token.interceptor';
+import { ProgressComponent } from './progress/progress.component';
 
 
 @NgModule({
@@ -55,6 +56,7 @@ import { TokenInterceptor } from './Interceptors/token.interceptor';
 	TrainingWordsSliderComponent,
 	CabinetComponent,
 	LoaderComponent,
+	ProgressComponent,
 	
   ],
   imports: [
