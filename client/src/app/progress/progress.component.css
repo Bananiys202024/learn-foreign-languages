@@ -9,3 +9,26 @@
            background-size: cover;
    }
    
+
+   .border-right
+   {
+
+   }
+
+
+   .jounral_title
+   {
+    margin-bottom: 16px;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: .6px;
+    color: #37383c;
+    text-align: left;
+    text-transform: uppercase;
+   }
+
+   .title
+   {
+       font-size:14px;
+       text-align: center;
+    }
