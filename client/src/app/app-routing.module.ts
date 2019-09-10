@@ -19,25 +19,25 @@ import { ProgressComponent } from './progress/progress.component';
 
 
 const routes: Routes = [
-	  { path: '', component: WelcomeComponent, data: {animation: 'Welcome', title: 'Dolphi'}},
+	  { path: '', component: WelcomeComponent, data: {animation: 'StandartAnimation1', title: 'Dolphi'}},
 
-	  { path: 'dashboard', component: DashboardComponent, data: {animation: 'HomePage'} },
+	  { path: 'dashboard', component: DashboardComponent, data: {animation: 'StandartAnimation2'} },
 
-	  { path: 'reviewBooks', component: ReviewBooksComponent, data: {animation: 'ReviewBooks'}},
-	  { path: 'readBook/:title', component: ReadingBookComponent, data: {animation: 'readBook'}},
-	  { path: 'dictionary', component: DictionaryComponent, data: {animation: 'Dictionary'}},
-	  { path: 'progress', component: ProgressComponent, data: {animation: 'progress'}},
+	  { path: 'reviewBooks', component: ReviewBooksComponent, data: {animation: 'StandartAnimation3'}},
+	  { path: 'readBook/:title', component: ReadingBookComponent, data: {animation: 'StandartAnimation4'}},
+	  { path: 'dictionary', component: DictionaryComponent, data: {animation: 'StandartAnimation5'}},
+	  { path: 'progress', component: ProgressComponent, data: {animation: 'StandartAnimation6'}},
 
-	  { path: 'registration', canActivate: [AuthGuardAnonymouse], component: RegistrationComponent, data: {animation: 'Registration'}},
-	  { path: 'login', canActivate: [AuthGuardAnonymouse], component: LoginComponent, data: {animation: 'Registration'}},
-	  { path: 'login', canActivate: [AuthGuardAnonymouse], component: LoginComponent, data: {animation: 'Registration'}},
+	  { path: 'registration', canActivate: [AuthGuardAnonymouse], component: RegistrationComponent, data: {animation: 'StandartAnimation7'}},
+	  { path: 'login', canActivate: [AuthGuardAnonymouse], component: LoginComponent, data: {animation: 'StandartAnimation8'}},
+	  { path: 'login', canActivate: [AuthGuardAnonymouse], component: LoginComponent, data: {animation: 'StandartAnimation9'}},
 
-	  { path: 'adminSecretPage', canActivate: [AuthGuard], component: CabinetComponent, data: {animation: 'Registration'}},
+	  { path: 'adminSecretPage', canActivate: [AuthGuard], component: CabinetComponent, data: {animation: 'StandartAnimation10'}},
 
-	  { path: 'training', component: TrainingWordsSliderComponent, data: {animation: 'train-words-slider'}},
-	  { path: 'cabinet', component: CabinetComponent, data: {animation: 'cabinet'}},
+	  { path: 'training', component: TrainingWordsSliderComponent, data: {animation: 'StandartAnimation11'}},
+	  { path: 'cabinet', component: CabinetComponent, data: {animation: 'StandartAnimation12'}},
 
-	  { path: 'result-training-words/:wrong/:right', component: ResultTrainingWordsComponent, data: {animation: 'ResultTrainWords'} },
+	  { path: 'result-training-words/:wrong/:right', component: ResultTrainingWordsComponent, data: {animation: 'StandartAnimation13'} },
 ];
 
 @NgModule({

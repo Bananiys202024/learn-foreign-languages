@@ -128,7 +128,8 @@ public class DictionariesEnglish {
 		ConstEnDict entity = null;
 		while(entities.size()<10)
 		{
-		entity = englishDictionaryRepository.findById(new Random().ints(1, 1, limit).findFirst().getAsInt() );
+		
+		entity = findEntityConstEnDict(englishDictionaryRepository, limit);
 		
 		logger.info("---Boollean-----"+entity);
 		boolean checkingBool = IsWordNotExistsInDictionary(dictionaryRepository, entity.getWord());
@@ -145,6 +146,17 @@ public class DictionariesEnglish {
 		for(ConstEnDict enty:entities)
 		dictionaryRepository.save(transformToProperEntity(owner,dictionaryRepository, enty));
 
+	}
+
+	private static ConstEnDict findEntityConstEnDict(ConstEnDictRepo englishDictionaryRepository, int limit) {
+		
+		if(englishDictionaryRepository.findAll().size()==0)
+		{
+		logger.debug("EnglishDictionaryRepositoryEmpty");
+		return ConstEnDict.builder().word("towing").build();
+		}
+		
+		return englishDictionaryRepository.findById(new Random().ints(1, 1, limit).findFirst().getAsInt() );
 	}
 
 	private static DictionaryEnglish transformToProperEntity(String owner, DictionaryRepository dictionaryRepository, ConstEnDict enty) throws IOException {

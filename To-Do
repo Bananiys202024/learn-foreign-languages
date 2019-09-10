@@ -1,6 +1,24 @@
-Last: css of progress page(progress bars and dolphi levels), front-end;
-Next: Add "words" to page "progress";
+Last: front-end pages: dictionary, progress, story, in conclusion:front-end changes, connect Kafka(back-end);
+Next: 
 
+Count as for One(1):
+Add number of all words to dictionaries  in words "Словарный запас: 8883 слова"
+Words on learned 
+Words on detecting
+Words on learning
+Current level;
+
+How do manz experience got todaz(use redis)
+rename "review-books" to "review-story";
+
+set in trainining-words if numbers of words less than...
+
+DictionaryEnglish 132 line change that line;
+add warning if not exist dictionary then alert;
+
+
+
+How do many experience to next level of experience
 change front-end of page "Dicitonary"(словарь)
 change animation between pages;
 
@@ -44,7 +62,7 @@ Some modifiication to tables(add):
 
 
 
-
+SEOPULT for marketing of web_site;
 
 
 

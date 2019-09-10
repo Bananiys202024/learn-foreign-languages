@@ -1,2 +1,288 @@
-<p>review-books works!</p>
-<a (click)="getBook('')">readBook</a>
+
+
+<!--Loader-->
+<div [class.hidden]="!show" class=" loader text-center">
+        <div class="spinner-border" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+      </div>
+    <!--....-->
+    
+    <div [ngClass]="!show?'allOkey':'darkness'">
+    
+    
+    <html>
+    <app-top-menu></app-top-menu>
+    <body  class="thisIsBody">
+        
+<div class="container">
+
+
+
+        <div class="row mt-2 pt-5">
+
+                <div class="col-3 pl-0 ">
+                    <div class="training_block good-border-image background_material_1 min-height-20 text-white pt-5 d-flex align-items-end">
+                      <div class="">
+                          <h5 class="font-size-14">Жюль Верн «Двадцать тысяч лье под водой»</h5>
+                          <span class="text-small ">4 страницы</span>
+                        </div>
+                      </div>
+                    </div>
+            
+                    <div class="col-3">
+                        <div class="training_block good-border-image background_material_2  min-height-20 text-center text-white pt-5 d-flex align-items-end" >
+                            <div class="">
+                              <p class="font-size-14">Джонатан Свифт «Путешествия Гулливера»</p>
+                              <span class="text-small">22 страницы</span>
+                              </div>
+                          </div>
+                        </div>
+            
+                        <div class="col-3">
+                            <div class="training_block good-border-image background_material_3 min-height-20 text-center text-white pt-5 d-flex align-items-end">
+                                <div class="">
+                                  <h5 class="font-size-14">Мэри Шелли «Франкенштейн, или Современный Прометей»</h5>
+                                  <span class="text-small">0.5 страницы</span>
+                                  </div>
+                              </div>
+                            </div>
+            
+                            <div class="col-3">
+                                <div class="training_block good-border-image background_material_4 min-height-20 text-center text-white pt-5 d-flex align-items-end">
+                                    <div class="">
+                                      <h5 class="font-size-14">Уильям Гибсон «Нейромант»</h5>
+                                      <span class="text-small">9 страницы</span>
+                                     </div>
+                                    </div>
+                                </div>
+              
+            
+            </div>
+
+            
+<div class="row mt-2 ">
+
+        <div class="col-3 pl-0 ">
+            <div class="training_block good-border-image background_material_1 min-height-20 text-white pt-5 d-flex align-items-end">
+              <div class="">
+                  <h5 class="font-size-14">Жюль Верн «Двадцать тысяч лье под водой»</h5>
+                  <span class="text-small ">4 страницы</span>
+                </div>
+              </div>
+            </div>
+    
+            <div class="col-3">
+                <div class="training_block good-border-image background_material_2  min-height-20 text-center text-white pt-5 d-flex align-items-end" >
+                    <div class="">
+                      <p class="font-size-14">Джонатан Свифт «Путешествия Гулливера»</p>
+                      <span class="text-small">22 страницы</span>
+                      </div>
+                  </div>
+                </div>
+    
+                <div class="col-3">
+                    <div class="training_block good-border-image background_material_3 min-height-20 text-center text-white pt-5 d-flex align-items-end">
+                        <div class="">
+                          <h5 class="font-size-14">Мэри Шелли «Франкенштейн, или Современный Прометей»</h5>
+                          <span class="text-small">0.5 страницы</span>
+                          </div>
+                      </div>
+                    </div>
+    
+                    <div class="col-3">
+                        <div class="training_block good-border-image background_material_4 min-height-20 text-center text-white pt-5 d-flex align-items-end">
+                            <div class="">
+                              <h5 class="font-size-14">Уильям Гибсон «Нейромант»</h5>
+                              <span class="text-small">9 страницы</span>
+                             </div>
+                            </div>
+                        </div>
+      
+    
+    </div>
+
+
+              
+<div class="row mt-2 ">
+
+        <div class="col-3 pl-0 ">
+            <div class="training_block good-border-image background_material_1 min-height-20 text-white pt-5 d-flex align-items-end">
+              <div class="">
+                  <h5 class="font-size-14">Жюль Верн «Двадцать тысяч лье под водой»</h5>
+                  <span class="text-small ">4 страницы</span>
+                </div>
+              </div>
+            </div>
+    
+            <div class="col-3">
+                <div class="training_block good-border-image background_material_2  min-height-20 text-center text-white pt-5 d-flex align-items-end" >
+                    <div class="">
+                      <p class="font-size-14">Джонатан Свифт «Путешествия Гулливера»</p>
+                      <span class="text-small">22 страницы</span>
+                      </div>
+                  </div>
+                </div>
+    
+                <div class="col-3">
+                    <div class="training_block good-border-image background_material_3 min-height-20 text-center text-white pt-5 d-flex align-items-end">
+                        <div class="">
+                          <h5 class="font-size-14">Мэри Шелли «Франкенштейн, или Современный Прометей»</h5>
+                          <span class="text-small">0.5 страницы</span>
+                          </div>
+                      </div>
+                    </div>
+    
+                    <div class="col-3">
+                        <div class="training_block good-border-image background_material_4 min-height-20 text-center text-white pt-5 d-flex align-items-end">
+                            <div class="">
+                              <h5 class="font-size-14">Уильям Гибсон «Нейромант»</h5>
+                              <span class="text-small">9 страницы</span>
+                             </div>
+                            </div>
+                        </div>
+      
+    
+    </div>
+
+              
+<div class="row mt-2 ">
+
+        <div class="col-3 pl-0 ">
+            <div class="training_block good-border-image background_material_1 min-height-20 text-white pt-5 d-flex align-items-end">
+              <div class="">
+                  <h5 class="font-size-14">Жюль Верн «Двадцать тысяч лье под водой»</h5>
+                  <span class="text-small ">4 страницы</span>
+                </div>
+              </div>
+            </div>
+    
+            <div class="col-3">
+                <div class="training_block good-border-image background_material_2  min-height-20 text-center text-white pt-5 d-flex align-items-end" >
+                    <div class="">
+                      <p class="font-size-14">Джонатан Свифт «Путешествия Гулливера»</p>
+                      <span class="text-small">22 страницы</span>
+                      </div>
+                  </div>
+                </div>
+    
+                <div class="col-3">
+                    <div class="training_block good-border-image background_material_3 min-height-20 text-center text-white pt-5 d-flex align-items-end">
+                        <div class="">
+                          <h5 class="font-size-14">Мэри Шелли «Франкенштейн, или Современный Прометей»</h5>
+                          <span class="text-small">0.5 страницы</span>
+                          </div>
+                      </div>
+                    </div>
+    
+                    <div class="col-3">
+                        <div class="training_block good-border-image background_material_4 min-height-20 text-center text-white pt-5 d-flex align-items-end">
+                            <div class="">
+                              <h5 class="font-size-14">Уильям Гибсон «Нейромант»</h5>
+                              <span class="text-small">9 страницы</span>
+                             </div>
+                            </div>
+                        </div>
+      
+    
+    </div>
+
+              
+<div class="row mt-2 ">
+
+        <div class="col-3 pl-0 ">
+            <div class="training_block good-border-image background_material_1 min-height-20 text-white pt-5 d-flex align-items-end">
+              <div class="">
+                  <h5 class="font-size-14">Жюль Верн «Двадцать тысяч лье под водой»</h5>
+                  <span class="text-small ">4 страницы</span>
+                </div>
+              </div>
+            </div>
+    
+            <div class="col-3">
+                <div class="training_block good-border-image background_material_2  min-height-20 text-center text-white pt-5 d-flex align-items-end" >
+                    <div class="">
+                      <p class="font-size-14">Джонатан Свифт «Путешествия Гулливера»</p>
+                      <span class="text-small">22 страницы</span>
+                      </div>
+                  </div>
+                </div>
+    
+                <div class="col-3">
+                    <div class="training_block good-border-image background_material_3 min-height-20 text-center text-white pt-5 d-flex align-items-end">
+                        <div class="">
+                          <h5 class="font-size-14">Мэри Шелли «Франкенштейн, или Современный Прометей»</h5>
+                          <span class="text-small">0.5 страницы</span>
+                          </div>
+                      </div>
+                    </div>
+    
+                    <div class="col-3">
+                        <div class="training_block good-border-image background_material_4 min-height-20 text-center text-white pt-5 d-flex align-items-end">
+                            <div class="">
+                              <h5 class="font-size-14">Уильям Гибсон «Нейромант»</h5>
+                              <span class="text-small">9 страницы</span>
+                             </div>
+                            </div>
+                        </div>
+      
+    
+    </div>
+
+              
+<div class="row mt-2 pb-5">
+
+        <div class="col-3 pl-0 ">
+            <div class="training_block good-border-image background_material_1 min-height-20 text-white pt-5 d-flex align-items-end">
+              <div class="">
+                  <h5 class="font-size-14">Жюль Верн «Двадцать тысяч лье под водой»</h5>
+                  <span class="text-small ">4 страницы</span>
+                </div>
+              </div>
+            </div>
+    
+            <div class="col-3">
+                <div class="training_block good-border-image background_material_2  min-height-20 text-center text-white pt-5 d-flex align-items-end" >
+                    <div class="">
+                      <p class="font-size-14">Джонатан Свифт «Путешествия Гулливера»</p>
+                      <span class="text-small">22 страницы</span>
+                      </div>
+                  </div>
+                </div>
+    
+                <div class="col-3">
+                    <div class="training_block good-border-image background_material_3 min-height-20 text-center text-white pt-5 d-flex align-items-end">
+                        <div class="">
+                          <h5 class="font-size-14">Мэри Шелли «Франкенштейн, или Современный Прометей»</h5>
+                          <span class="text-small">0.5 страницы</span>
+                          </div>
+                      </div>
+                    </div>
+    
+                    <div class="col-3">
+                        <div class="training_block good-border-image background_material_4 min-height-20 text-center text-white pt-5 d-flex align-items-end">
+                            <div class="">
+                              <h5 class="font-size-14">Уильям Гибсон «Нейромант»</h5>
+                              <span class="text-small">9 страницы</span>
+                             </div>
+                            </div>
+                        </div>
+      
+    
+    </div>
+
+    
+
+
+
+</div>
+
+</body>
+
+
+
+</html>
+
+</div>
+
+<app-bottom-menu></app-bottom-menu>

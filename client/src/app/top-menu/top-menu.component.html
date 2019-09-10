@@ -13,8 +13,8 @@
       <li  [ngClass]="current_choosen_top_menu_button==='dashboard'? 'nav-item active hidhlight-current-choosen':'nav-item' ">
         <a [ngClass]="current_choosen_top_menu_button==='dashboard'? 'nav-link text-body-50 weight-font text-white':'nav-link text-body-50 weight-font' " routerLink="/dashboard" href="#">Тренировки <span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link text-black-50 weight-font" routerLink="/dictionary">Словарь</a>
+      <li [ngClass]="current_choosen_top_menu_button==='dictionary'? 'nav-item active hidhlight-current-choosen':'nav-item'">
+        <a [ngClass]="current_choosen_top_menu_button==='dictionary'? 'nav-link text-body-50 weight-font text-white':'nav-link text-body-50 weight-font'" routerLink="/dictionary">Словарь</a>
       </li>
       <li [ngClass]="current_choosen_top_menu_button==='progress'? 'nav-item active hidhlight-current-choosen':'nav-item'">
         <a [ngClass]="current_choosen_top_menu_button==='progress'? 'nav-link text-body-50 weight-font text-white':'nav-link text-body-50 weight-font'"  routerLink="/progress" href="#" tabindex="-1" aria-disabled="true">Прогресс</a>
@@ -25,11 +25,18 @@
     </ul>
   
     <span class="navbar-text">
-    <div>   
+    <div *ngIf="!(current_choosen_top_menu_button==='cabinet')">   
        <a (click)="getAccountDataForCabinet()" class="navbar-brand" >
         <img src="../../assets/img/account.png" width="36" height="36" class="d-inline-block align-top" alt="">
        </a>
     </div>
+
+    <div *ngIf="current_choosen_top_menu_button==='cabinet'">   
+        <a (click)="getAccountDataForCabinet()" class="navbar-brand" >
+         <img src="../../assets/img/white-account.png" width="36" height="36" class="d-inline-block align-top background-border-color" alt="">
+        </a>
+     </div>
+
   </span>
 
 

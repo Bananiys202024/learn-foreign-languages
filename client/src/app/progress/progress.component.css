@@ -2,7 +2,7 @@
     /*       background: url(../../assets/img/black-and-white-black-and-white-card-1496146.jpg) no-repeat center center fixed;*/
            background: url(../../assets/img/black-and-white-black-and-white-fog-1061623.jpg) no-repeat center center fixed;
            min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
-           min-height: 85vh; /* These two lines are counted as one :-)       */
+           min-height: 86vh; /* These two lines are counted as one :-)       */
            -webkit-background-size: cover;
            -moz-background-size: cover;
            -o-background-size: cover;
@@ -32,3 +32,58 @@
        font-size:14px;
        text-align: center;
     }
+
+
+    .styling
+    {
+        color: #af6cb3;
+        font-weight: 300;
+        line-height: 1;
+    }
+
+    .those-words
+    {
+    display: block;
+    margin-bottom: -2px;
+    font-size: 50px;
+    }  
+
+    .learned_words
+    {
+    display: block;
+    font-size: 30px;
+    font-weight: 300;
+    }
+
+    .align-in-row
+{
+    display: table-caption;
+}
+
+.display-flex
+{
+    display:flex;
+}
+
+
+.progress-words .text-block span
+{
+    display:block;
+    margin-bottom: 12px;
+    font-size: 50px;
+    font-weight: 300;
+    line-height: 1;
+}
+
+.progress-words .text-block b
+{
+display: block;
+font-size: 14px;
+font-weight: 300;
+line-height: 20px;
+}
+
+.mt-12
+{
+    margin-top:1.2em;
+}

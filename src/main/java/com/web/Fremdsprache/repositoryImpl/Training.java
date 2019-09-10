@@ -84,7 +84,7 @@ public class Training {
 		//generate random indexex for finding words
 		random[j]= new java.util.Random().ints(1, 1, limit).findFirst().getAsInt();
 		//...
-		generated.add(russianRepository.findById(random[j]).getWord());
+		generated.add(generateElementOfArray(random[j], russianRepository));
 		}
 			
 		switch(i) 
@@ -122,6 +122,14 @@ public class Training {
 		logger.info("Result----"+result);
 		
 		return result;
+	}
+
+	private static Object generateElementOfArray(int i,ConstRnDictRepo russianRepository) {
+		
+		if(russianRepository.findAll().size()==0)
+		logger.info("You forget initialize russian dictionaries");
+		
+		return russianRepository.findById(i).getWord();
 	}
 
 	public static void conclusion(String[] right_array, String[] wrong_array,

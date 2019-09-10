@@ -31,3 +31,9 @@ box-shadow:         1px 1px 1px 1px #ccc;  /* Opera 10.5, IE 9, Firefox 4+, Chro
     background-color: #41a141;
     border-radius: 10%!important;
 }
+
+.background-border-color
+{
+    border-radius: 50%;
+    background-color: #007f00;
+}
