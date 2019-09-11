@@ -32,10 +32,11 @@ public class Training {
 
 	private static final Logger logger = LogManager.getLogger(Training.class);
 
-	public static Train initialize(DictionaryRepository dictionaryRepository) {
+	public static Train initialize(String loggedUser, DictionaryRepository dictionaryRepository) {
 		
 		List<DictionaryEnglish> list = dictionaryRepository.findAll()
 																	.stream()
+																	.filter(c -> c.getOwner().equals(loggedUser))
 																	.filter(c -> c.isRepeatTomorrow()== false)
 																	.filter(c -> c.isLearned() == false)
 																	.limit(5) //6 excluded, only 5;
@@ -132,7 +133,7 @@ public class Training {
 		return russianRepository.findById(i).getWord();
 	}
 
-	public static void conclusion(String[] right_array, String[] wrong_array,
+	public static void conclusion(String loggedUser, String[] right_array, String[] wrong_array,
 			DictionaryRepository dictionaryRepository) {
 	
 		wrong_array = Arrays.stream(wrong_array).filter(e -> !e.equals("null")).toArray(String[]::new);
@@ -150,6 +151,7 @@ public class Training {
 			DictionaryEnglish entity = found.get();
 			entity.setLearned(true);
 			entity.setRepeatTomorrow(false);
+			entity.setOwner(loggedUser);
 			right_entity_list.add(entity);
 			}
 
@@ -163,10 +165,12 @@ public class Training {
 			DictionaryEnglish entity = found.get();
 			entity.setLearned(false);
 			entity.setRepeatTomorrow(true);
+			entity.setOwner(loggedUser);
 			wrong_entity_list.add(entity);
 			}
 
 		}
+		
 		
 		dictionaryRepository.saveAll(right_entity_list);
 		dictionaryRepository.saveAll(wrong_entity_list);

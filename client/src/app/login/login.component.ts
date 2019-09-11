@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
 
   constructor(private authService: AuthService,  private router: Router) { }
 
-  model = new User('email@gmail.com', 'password', '', '')
+  model = new User('', 'password', '', 'email@gmail.com')
   show = false;
 
   ngOnInit() {

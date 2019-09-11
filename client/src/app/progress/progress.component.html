@@ -73,7 +73,7 @@
                             </span>
                             <div class="progress-value">
                                 <div>
-                                    1643<br>
+                                    {{ experience_before_next_level }}<br>
                                     <span>До следующего уровня</span>
                                 </div>
                             </div>
@@ -82,7 +82,7 @@
                 </div>
             </div>
 
-            <div class="next-level">Текущий уровень: <span class="level">47</span></div>
+            <div class="next-level">Текущий уровень: <span class="level"> {{ current_level_experience }}</span></div>
             <div class="next-level">Cегодня: <span class="level">+118xp</span></div>
 
         </div>
@@ -121,25 +121,23 @@
                                     </div>
 
                                     <div class="text-block mt-1">
-                                    <span>8733</span> 
+                                    <span>{{ learned_words }}</span> 
                                     <b>слова<br>
                                     изучено</b>
                                     </div>
                                 </div>
 
-                                <div class="align-in-row m-2 p-1">
+                                <!-- <div class="align-in-row m-2 p-1">
                                         <div class="mt-12">
                                         <img src="../../assets/img/Progress/2.png" width="50" height="30" class="d-inline-block align-top" alt="">
                                         </div>
 
                                         <div class="text-block mt-1">
-                                                <span>8733</span> 
+                                                <span>{{ detected_words }}</span> 
                                                 <b>слова<br>
                                                     выявлено</b>
                                           </div>
-
-
-                                </div>
+                                </div> -->
                                     
                                 <div class="align-in-row m-2 p-1">
                                     <div class="">    
@@ -147,7 +145,7 @@
                                     </div>
 
                                     <div class="text-block mt-1">
-                                            <span>8733</span> 
+                                            <span>{{ learning_words }}</span> 
                                             <b>слов<br>
                                                 на изучении</b>
                                       </div>
@@ -162,7 +160,7 @@
                
                 <div class="words styling mt-5">
                        <span class="text-muted"> Cловарный запас</span>
-                       <span class="those-words"> 8883</span>
+                       <span class="those-words">{{ all_words_dictionary }}</span>
                        <span class="learned_words"> слова </span>
                 </div>
     

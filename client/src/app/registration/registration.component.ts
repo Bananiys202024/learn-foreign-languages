@@ -53,7 +53,11 @@ this.httpClientService.registration(this.model).subscribe(
     }
 
     //add if success registration go to confirm password by e-mail;
-    
+    if(response.includes("User registered successfully"))
+    {
+      this.router.navigate(['/login']);
+    }
+
   }
   );
  

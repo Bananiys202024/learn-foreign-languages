@@ -34,4 +34,14 @@ export class WelcomeComponent implements OnInit {
     this.router.navigate(['']);
   }
 
+  getLoggedUser()
+  {
+    this.authService.getLoggedName().subscribe(
+      response =>
+      {
+        console.log(response+"-----It our back-end logged name");
+      }
+    );
+  }
+
 }

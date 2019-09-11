@@ -37,6 +37,8 @@ import { RecaptchaModule } from 'ng-recaptcha';
 import { Globals } from './classes/globals';
 import { TokenInterceptor } from './Interceptors/token.interceptor';
 import { ProgressComponent } from './progress/progress.component';
+import { PermissionDeniedComponent } from './security/permission-denied/permission-denied.component';
+import { TopMenuBeforeAutheticationComponent } from './parts/top-menu-before-authetication/top-menu-before-authetication.component';
 
 
 @NgModule({
@@ -57,6 +59,8 @@ import { ProgressComponent } from './progress/progress.component';
 	CabinetComponent,
 	LoaderComponent,
 	ProgressComponent,
+	PermissionDeniedComponent,
+	TopMenuBeforeAutheticationComponent,
 	
   ],
   imports: [

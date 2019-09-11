@@ -1,14 +1,10 @@
-Last: front-end pages: dictionary, progress, story, in conclusion:front-end changes, connect Kafka(back-end);
-Next: 
-
-Count as for One(1):
-Add number of all words to dictionaries  in words "Словарный запас: 8883 слова"
-Words on learned 
-Words on detecting
-Words on learning
-Current level;
-
-How do manz experience got todaz(use redis)
+Last: logged-user by even query, values for "progress" page, redirect after registartion,
+permission denied page,
+Css pages login/registration,
+Simple top menu before authentication
+Limitation to web-site, limitatinon by login;
+Next:
+How do many experience got today(use redis)
 rename "review-books" to "review-story";
 
 set in trainining-words if numbers of words less than...
@@ -17,10 +13,16 @@ DictionaryEnglish 132 line change that line;
 add warning if not exist dictionary then alert;
 
 
+Add comments to even line in java code, it important. To do guid from my app.
+push front-end code in separate repository too, for showing as front-end developer;
 
 How do many experience to next level of experience
 change front-end of page "Dicitonary"(словарь)
 change animation between pages;
+
+validation to registration back-end
+
+
 
 *add bottom menu to page "progress";
 
@@ -65,6 +67,7 @@ Some modifiication to tables(add):
 SEOPULT for marketing of web_site;
 
 
+automatically login after registration;
 
 
 
@@ -103,6 +106,10 @@ SEOPULT for marketing of web_site;
 
 
 
-
-
+Write programming languages on base of java;3
 Write app only with 0 and 1;
+Telegramm bot on java
+
+
+
+

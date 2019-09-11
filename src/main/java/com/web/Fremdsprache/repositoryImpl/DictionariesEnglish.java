@@ -66,8 +66,8 @@ public class DictionariesEnglish {
 		return result.isPresent()?result.get().getId():0L;
 	}
 
-	public static boolean checkIfEnglishDictionaryEmpty(DictionaryRepository dictionaryRepository) {
-		return getSizeEnglishDictionary(dictionaryRepository)
+	public static boolean checkIfEnglishDictionaryEmpty(String loggedUser, DictionaryRepository dictionaryRepository) {
+		return getSizeEnglishDictionaryByLoggedUser(loggedUser, dictionaryRepository)
 									.stream()
 									.filter(model -> model.isLearned()==false)
 									.filter(model -> model.isRepeatTomorrow()==false)
@@ -83,9 +83,9 @@ public class DictionariesEnglish {
 		return dictionaryRepository.findAll();
 	}
 
-	public static Size getDictionarySize(DictionaryRepository dictionaryRepository) {
+	public static Size getDictionarySize(DictionaryRepository dictionaryRepository, String loggedUser) {
 		
-		List<DictionaryEnglish> list = getSizeEnglishDictionary(dictionaryRepository);
+		List<DictionaryEnglish> list = getSizeEnglishDictionaryByLoggedUser(loggedUser, dictionaryRepository);
 		
 		logger.info("List------"+
 				 list.stream()
@@ -115,6 +115,14 @@ public class DictionariesEnglish {
 
 		 return size;
 		  
+	}
+
+	public static List<DictionaryEnglish> getSizeEnglishDictionaryByLoggedUser(String loggedUser,
+			DictionaryRepository dictionaryRepository) {
+		return dictionaryRepository.findAll()
+									.stream()
+									.filter(c -> c.getOwner().equals(loggedUser))
+									.collect(Collectors.toList());
 	}
 
 	public static void insert_10_random_words(String owner, DictionaryRepository dictionaryRepository,

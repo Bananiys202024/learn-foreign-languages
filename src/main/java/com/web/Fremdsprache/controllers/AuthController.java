@@ -2,8 +2,11 @@ package com.web.Fremdsprache.controllers;
 
 import static org.springframework.http.ResponseEntity.ok;
 
+import java.security.Principal;
 import java.util.HashMap;
 import java.util.Map;
+
+import javax.annotation.PostConstruct;
 
 import org.apache.logging.log4j.LogManager;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +17,8 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -83,6 +88,26 @@ public class AuthController {
         userService.saveUser(user);
         logger.info("All okey, we registered");
         return new ResponseEntity<String>("User registered successfully", HttpStatus.OK);
+    }
+
+    
+    @GetMapping(value="/get/logged/name")
+    public ResponseEntity<String> register(Principal principal) {
+    	try
+    	{
+        return new ResponseEntity<String>(principal.getName()+"---Logged name", HttpStatus.OK);
+    	}
+    	catch(NullPointerException e)
+    	{
+    		logger.error("Error---"+e);
+            return new ResponseEntity<String>("Not logged name", HttpStatus.OK);	
+    	}
+    	catch(Exception e)
+    	{
+    		logger.error("unfamouse error", e);
+            return new ResponseEntity<String>("Some errors", HttpStatus.OK);	
+    	}
+    	
     }
 
 

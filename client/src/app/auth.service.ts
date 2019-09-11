@@ -59,5 +59,10 @@ export class AuthService {
   private log(message: string) {
     console.log(message);
   }
+
+  getLoggedName() {
+    return this.http.get(apiUrl + 'get/logged/name', {responseType: 'text'});
+  }
+
   
 }

@@ -16,28 +16,33 @@ import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './auth/auth.guard';
 import { AuthGuardAnonymouse } from './auth/auth-guard-anonymouse';
 import { ProgressComponent } from './progress/progress.component';
+import { PermissionDeniedComponent } from './security/permission-denied/permission-denied.component';
 
 
 const routes: Routes = [
 	  { path: '', component: WelcomeComponent, data: {animation: 'StandartAnimation1', title: 'Dolphi'}},
 
-	  { path: 'dashboard', component: DashboardComponent, data: {animation: 'StandartAnimation2'} },
+	  { path: 'dashboard', canActivate: [AuthGuard], component: DashboardComponent, data: {animation: 'StandartAnimation2'} },
 
-	  { path: 'reviewBooks', component: ReviewBooksComponent, data: {animation: 'StandartAnimation3'}},
-	  { path: 'readBook/:title', component: ReadingBookComponent, data: {animation: 'StandartAnimation4'}},
-	  { path: 'dictionary', component: DictionaryComponent, data: {animation: 'StandartAnimation5'}},
-	  { path: 'progress', component: ProgressComponent, data: {animation: 'StandartAnimation6'}},
+	  { path: 'reviewBooks', canActivate: [AuthGuard], component: ReviewBooksComponent, data: {animation: 'StandartAnimation3'}},
+	  { path: 'readBook/:title', canActivate: [AuthGuard], component: ReadingBookComponent, data: {animation: 'StandartAnimation4'}},
+	  { path: 'dictionary', canActivate: [AuthGuard], component: DictionaryComponent, data: {animation: 'StandartAnimation5'}},
+	  { path: 'progress', canActivate: [AuthGuard], component: ProgressComponent, data: {animation: 'StandartAnimation6'}},
 
 	  { path: 'registration', canActivate: [AuthGuardAnonymouse], component: RegistrationComponent, data: {animation: 'StandartAnimation7'}},
 	  { path: 'login', canActivate: [AuthGuardAnonymouse], component: LoginComponent, data: {animation: 'StandartAnimation8'}},
-	  { path: 'login', canActivate: [AuthGuardAnonymouse], component: LoginComponent, data: {animation: 'StandartAnimation9'}},
 
 	  { path: 'adminSecretPage', canActivate: [AuthGuard], component: CabinetComponent, data: {animation: 'StandartAnimation10'}},
 
-	  { path: 'training', component: TrainingWordsSliderComponent, data: {animation: 'StandartAnimation11'}},
-	  { path: 'cabinet', component: CabinetComponent, data: {animation: 'StandartAnimation12'}},
+	  { path: 'training', canActivate: [AuthGuard], component: TrainingWordsSliderComponent, data: {animation: 'StandartAnimation11'}},
+	  { path: 'cabinet', canActivate: [AuthGuard], component: CabinetComponent, data: {animation: 'StandartAnimation12'}},
 
-	  { path: 'result-training-words/:wrong/:right', component: ResultTrainingWordsComponent, data: {animation: 'StandartAnimation13'} },
+	  { path: 'result-training-words/:wrong/:right', canActivate: [AuthGuard], component: ResultTrainingWordsComponent, data: {animation: 'StandartAnimation13'} },
+
+
+	//   security
+		{ path: 'permission-denied', component: PermissionDeniedComponent, data: {animation: 'StandartAnimation14'} },
+	// ....
 ];
 
 @NgModule({

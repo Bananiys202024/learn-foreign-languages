@@ -1,6 +1,7 @@
 package com.web.Fremdsprache.controllers;
 
 import java.io.IOException;
+import java.security.Principal;
 import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
@@ -50,11 +51,10 @@ public class TrainingController {
 	@Autowired
 	public ConstRnDictRepo russianRepository;
 	
-	String loggedUser ="Admin";
-	
 	@GetMapping(value = "initialize", produces = "application/json")
-	public Train initialize() throws IOException {
-		return Training.initialize(dictionaryRepository);
+	public Train initialize(Principal principal) throws IOException {
+		String loggedUser = principal.getName();
+		return Training.initialize(loggedUser, dictionaryRepository);
 	}
 	
 	@GetMapping(value = "generate_random_words/{rightAnswers}", produces = "application/json")
@@ -64,14 +64,16 @@ public class TrainingController {
 
 	//get array of right_array(learned_words) and wrong_array(learned_words)
 	@PutMapping(value = "conclusion/{right_array}/{wrong_array}")
-	public void conclusion_decision_of_destiny_wors(@PathVariable String[] right_array, @PathVariable String[] wrong_array) throws IOException {
-		Training.conclusion(right_array, wrong_array, dictionaryRepository);
+	public void conclusion_decision_of_destiny_wors(@PathVariable String[] right_array, @PathVariable String[] wrong_array, Principal principal) throws IOException {
+		String loggedUser = principal.getName();
+		Training.conclusion(loggedUser, right_array, wrong_array, dictionaryRepository);
 	}
 	
 	//get array of right_array(learned_words) and wrong_array(learned_words)
 	@PutMapping(value = "conclusion/add/experience/{count}")
-	public void conclusion_decision_of_destiny_wors(@PathVariable int count) throws IOException {
-				//there add some nunmbers to experience column in table "User"
+	public void conclusion_decision_of_destiny_wors(@PathVariable int count, Principal principal) throws IOException {
+		String loggedUser = principal.getName();	
+		//there add some nunmbers to experience column in table "User"
 		//add 20 or 30, depend from counter;
 //		I need add registration and LogIn for this process;;
 		
