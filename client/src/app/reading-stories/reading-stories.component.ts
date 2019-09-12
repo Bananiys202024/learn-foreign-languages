@@ -6,8 +6,8 @@ import { Book } from '../classes/book';
 
 @Component({
   selector: 'app-reading-book',
-  templateUrl: './reading-book.component.html',
-  styleUrls: ['./reading-book.component.css']
+  templateUrl: './reading-stories.component.html',
+  styleUrls: ['./reading-stories.component.css']
 })
 export class ReadingBookComponent implements OnInit {
 

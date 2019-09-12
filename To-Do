@@ -1,18 +1,41 @@
-Last: logged-user by even query, values for "progress" page, redirect after registartion,
-permission denied page,
-Css pages login/registration,
-Simple top menu before authentication
-Limitation to web-site, limitatinon by login;
-Next:
-How do many experience got today(use redis)
+Last: 
+deleteing some trash, 
+renamed review-books to review story,
+fixed bugs with non-unique mongodb;
+fixed bug with ngb-slider-6 to ngb-slider-0;
+
+Next: 
+complete process of connecting
+ redis count experience;
+Connect experience to page progress
+How do mayn experience to enxt level, etc.
+
+
+Copy projects from github to BitBucket;
+Add protect to gmail;
+If i lose my phone;
+
+If i will add russian words translate to ConstEnDict loading of words will be faster and 
+without mistake it can help;
+
+Add to dictionary, yellow color for those which later learn
+And add in top of page
+insctruction. color/describe;
+
+
+
 rename "review-books" to "review-story";
 
 set in trainining-words if numbers of words less than...
+
+exclude "the" from words, that not translated by translator;
+Add inputed variant of words in "/training" with line across yourself if answer if wrong;
 
 DictionaryEnglish 132 line change that line;
 add warning if not exist dictionary then alert;
 
 
+Use instead int byte;
 Add comments to even line in java code, it important. To do guid from my app.
 push front-end code in separate repository too, for showing as front-end developer;
 
@@ -22,6 +45,8 @@ change animation between pages;
 
 validation to registration back-end
 
+
+Exclude "a" from words, beacuse translator can't translate;
 
 
 *add bottom menu to page "progress";

@@ -7,6 +7,7 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
 import { Subscription } from 'rxjs';
 import { LoaderService } from '../service/loader.service';
 import { LoaderState } from '../loader/LoaderState';
+import { Location } from '@angular/common';
 
 
 @Component({
@@ -34,7 +35,8 @@ export class DashboardComponent implements OnInit {
 		constructor(
 	private httpClientService:HttpClientService,
   private router: Router,
-  private loaderService: LoaderService
+  private loaderService: LoaderService,
+  private location: Location
   ) {}
 
 
@@ -55,7 +57,9 @@ export class DashboardComponent implements OnInit {
   .subscribe((state: LoaderState) => {
     this.show = state.show;
   });
-	 
+   
+  
+
   }
 
 
@@ -87,8 +91,17 @@ if(this.emptyDictionary)
 }
 else
 {
-this.router.navigate(['/training']);
+
+// this.router.navigate(['/training']);
+document.getElementById('GoToDashBoard').click()
+
+
 }
+}
+
+exit()
+{
+  location.reload();
 }
 
 
@@ -113,6 +126,7 @@ dismissToastMessage()
   this.times.splice(0,1);
 }
  //..
+
 
 
 

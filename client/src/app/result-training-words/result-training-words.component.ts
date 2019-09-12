@@ -29,7 +29,6 @@ export class ResultTrainingWordsComponent implements OnInit {
       }
 
   ngOnInit() {
-    this.httpClientService.conclusion_add_experience(this.countExperience).subscribe();
   }
 
 public gotoProductDetails(url) {

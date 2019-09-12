@@ -4,8 +4,8 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-review-books',
-  templateUrl: './review-books.component.html',
-  styleUrls: ['./review-books.component.css', '../dashboard/dashboard.component.css']
+  templateUrl: './review-stories.component.html',
+  styleUrls: ['./review-stories.component.css', '../dashboard/dashboard.component.css']
 })
 export class ReviewBooksComponent implements OnInit {
 

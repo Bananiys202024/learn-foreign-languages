@@ -15,15 +15,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.web.Fremdsprache.entity.redis.TrainingWords;
 import com.web.Fremdsprache.model.Answers;
 import com.web.Fremdsprache.model.Mistakes;
 import com.web.Fremdsprache.model.Random;
 import com.web.Fremdsprache.model.Train;
+import com.web.Fremdsprache.repositories.CashExperience;
 import com.web.Fremdsprache.repositories.ConstRnDictRepo;
 import com.web.Fremdsprache.repositories.DictionaryRepository;
-import com.web.Fremdsprache.repositories.TrainingWordMistakesRepository;
-import com.web.Fremdsprache.repositories.TrainingWordRepository;
+import com.web.Fremdsprache.repositories.UserRepository;
 import com.web.Fremdsprache.repositories.countCounterOfExperienceForTrainingWords;
 import com.web.Fremdsprache.repositoryImpl.Training;
 import com.web.Fremdsprache.util.DictionaryProcess;
@@ -36,15 +35,16 @@ public class TrainingController {
 
 	private static final Logger logger = LogManager.getLogger(TrainingController.class);
 	
-	@Autowired
-	TrainingWordRepository trainingwordRepository;
-	
+
 	@Autowired
 	public DictionaryRepository dictionaryRepository;
 	
-	@Autowired
-	public TrainingWordMistakesRepository trainingwordmistakeRepository;
+    @Autowired
+    UserRepository users;
 	
+    @Autowired
+    CashExperience cashExperience;
+    
 	@Autowired
 	public countCounterOfExperienceForTrainingWords countExperienceOfTrainingWords;
 
@@ -66,17 +66,13 @@ public class TrainingController {
 	@PutMapping(value = "conclusion/{right_array}/{wrong_array}")
 	public void conclusion_decision_of_destiny_wors(@PathVariable String[] right_array, @PathVariable String[] wrong_array, Principal principal) throws IOException {
 		String loggedUser = principal.getName();
+		this.conclusion_about_experience(loggedUser);
 		Training.conclusion(loggedUser, right_array, wrong_array, dictionaryRepository);
 	}
 	
-	//get array of right_array(learned_words) and wrong_array(learned_words)
-	@PutMapping(value = "conclusion/add/experience/{count}")
-	public void conclusion_decision_of_destiny_wors(@PathVariable int count, Principal principal) throws IOException {
-		String loggedUser = principal.getName();	
-		//there add some nunmbers to experience column in table "User"
-		//add 20 or 30, depend from counter;
-//		I need add registration and LogIn for this process;;
-		
+
+	private void conclusion_about_experience(String loggedUser) throws IOException {
+		Training.conclusion_about_experience(loggedUser, users, cashExperience);
 	}
 
 }

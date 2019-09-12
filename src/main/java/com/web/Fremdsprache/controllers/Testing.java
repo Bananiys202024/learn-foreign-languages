@@ -11,11 +11,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.web.Fremdsprache.entity.mongodb.ConstEnDict;
 import com.web.Fremdsprache.entity.mongodb.DictionaryEnglish;
-import com.web.Fremdsprache.entity.redis.TrainingWords;
 import com.web.Fremdsprache.repositories.ConstEnDictRepo;
 import com.web.Fremdsprache.repositories.DictionaryRepository;
-import com.web.Fremdsprache.repositories.TrainingWordMistakesRepository;
-import com.web.Fremdsprache.repositories.TrainingWordRepository;
 import com.web.Fremdsprache.repositories.countCounterOfExperienceForTrainingWords;
 
 @RestController
@@ -26,12 +23,7 @@ public class Testing {
 	
 	@Autowired
 	public DictionaryRepository dictionaryRepository;
-	
-	@Autowired
-	TrainingWordRepository trainingwordRepository;
-	
-	@Autowired
-	public TrainingWordMistakesRepository trainingwordmistakeRepository;
+
 	
 	@Autowired
 	public countCounterOfExperienceForTrainingWords countExperienceOfTrainingWords;
@@ -51,26 +43,26 @@ public class Testing {
 			return "Checking_work_really_work_good_word_last_not_last";
 	}
 	
-	@RequestMapping(value = "/redis/add", method = RequestMethod.GET, produces = "application/json")
-	public void redis_add() throws Exception {
+//	@RequestMapping(value = "/redis/add", method = RequestMethod.GET, produces = "application/json")
+//	public void redis_add() throws Exception {
+//	
+//		TrainingWords entity = TrainingWords.builder()
+//											.autoCrementId(1L)
+//											.englishWord("englishWord)")
+//											.owner("Admin")
+//											.reallyId(5L)
+//											.russianWord("Russkoe slovo")						
+//											.build();
+//		
+//		trainingwordRepository.save(entity);
+//
+//	}
 	
-		TrainingWords entity = TrainingWords.builder()
-											.autoCrementId(1L)
-											.englishWord("englishWord)")
-											.owner("Admin")
-											.reallyId(5L)
-											.russianWord("Russkoe slovo")						
-											.build();
-		
-		trainingwordRepository.save(entity);
-
-	}
-	
-	@RequestMapping(value = "/redis/say", method = RequestMethod.GET, produces = "application/json")
-	public Iterable<TrainingWords> redis_say() throws Exception {
-		return trainingwordRepository.findAll();
-	}
-	
+//	@RequestMapping(value = "/redis/say", method = RequestMethod.GET, produces = "application/json")
+//	public Iterable<TrainingWords> redis_say() throws Exception {
+////		return trainingwordRepository.findAll();
+//	}
+//	
 	
 	@RequestMapping(value = "mongo/write", method = RequestMethod.GET, produces = "application/json")
 	public void sendWordsOnRepeat() throws IOException {	

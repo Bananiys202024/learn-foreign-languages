@@ -6,7 +6,7 @@ import { HttpClientService } from '../service/http-client.service';
 import { Train } from '../classes/train';
 import { Random } from '../classes/random';
 import { Globals } from '../classes/globals'
-
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-training-words-slider',
@@ -33,6 +33,7 @@ export class TrainingWordsSliderComponent implements OnInit {
   beforeAnswer = true;
   aftereAnswer = false;
 
+
   settingColorsBasedOnAnswer = "card-body text-center ";
 
   id:number;
@@ -40,7 +41,11 @@ export class TrainingWordsSliderComponent implements OnInit {
 
   @ViewChild('carousel', {static : true}) carousel: NgbCarousel;
 
-  constructor(private httpClientService:HttpClientService, config: NgbCarouselConfig, private router: Router, private globals: Globals) {
+  constructor(
+    private httpClientService:HttpClientService, 
+    private config: NgbCarouselConfig,
+    private router: Router,
+    private globals: Globals) {
     // customize default values of carousels used by this component tree
     config.interval = -1;
     config.wrap = true;
@@ -80,19 +85,28 @@ export class TrainingWordsSliderComponent implements OnInit {
      }
      );
 
+
+
+     //reload for carousel, there's something strange with ngb-slider-0, 6, 8 etc.
+
+
     
+
      }
      );
 
-     
-
   }
+
+
+
+
 
 
   //methods related with training words and counting
 
   understand(e, caro, slideEvent: NgbSlideEvent)
   {
+
     this.currentProcess = caro.activeId;
     console.log(this.currentProcess+"--mArk1");
     console.log(this.generated_array_random_russian_words_1+"--Mark2");
@@ -208,10 +222,12 @@ export class TrainingWordsSliderComponent implements OnInit {
       this.showSecondProcess = false;
       this.showThirdProcess = false;
 
+      
       this.globals.count_experience +=1;
-      if(this.globals.count_experience==0)
-      this.globals.count_experience=1;
 
+      caro.activeId = 'ngb-slide-1';
+      if(this.globals.count_experience>=3)
+      this.globals.count_experience=1;
       //redirect to result training words
       //sendin words by repeat by "training/conclusion/repeat" or "/training/conclusion/learned"
 
@@ -219,6 +235,7 @@ export class TrainingWordsSliderComponent implements OnInit {
       this.httpClientService.conclusion_training(this.right_array.filter(item => item != 'undefined'), this.error_array.filter(item => item != 'undefined') ).subscribe(
         response =>
       {
+
         this.router.navigate(['/result-training-words', 'wrong-'+this.error_array.filter(item => item!='undefined').length, 'right-'+this.right_array.filter(item => item!='undefined').length]);
       }
       );

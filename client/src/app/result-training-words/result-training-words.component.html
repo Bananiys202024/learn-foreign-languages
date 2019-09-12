@@ -38,18 +38,9 @@
 		
 		
 		
-        <span *ngIf="countExperience == 1"><img src="../../assets/img/dolphistepsByExperience.png"  class="rounded-circle" height="30" width="30"/></span>
-        <span *ngIf="countExperience == 1" class="ml-2"><img src="../../assets/img/dolphins.png"  class="rounded-circle"  height="30" width="30"/></span>
-        <span *ngIf="countExperience == 1" class="ml-2"><img src="../../assets/img/dolphins.png"  class="rounded-circle"  height="30" width="30"/></span>
-
-        <span *ngIf="countExperience == 2"><img src="../../assets/img/dolphistepsByExperience.png"  class="rounded-circle" height="30" width="30"/></span>
-        <span *ngIf="countExperience == 2"><img src="../../assets/img/dolphistepsByExperience.png"  class="rounded-circle" height="30" width="30"/></span>
-        <span *ngIf="countExperience == 2" class="ml-2"><img src="../../assets/img/dolphins.png"  class="rounded-circle"  height="30" width="30"/></span>
-
-        <span *ngIf="countExperience == 3"><img src="../../assets/img/dolphistepsByExperience.png"  class="rounded-circle" height="30" width="30"/></span>
-        <span *ngIf="countExperience == 3"><img src="../../assets/img/dolphistepsByExperience.png"  class="rounded-circle" height="30" width="30"/></span>
-        <span *ngIf="countExperience == 3"><img src="../../assets/img/dolphistepsByExperience.png"  class="rounded-circle" height="30" width="30"/></span>
-
+          <img [src]="countExperience >= 1 ? '../../assets/img/dolphistepsByExperience.png' : '../../assets/img/dolphins.png'" class="rounded-circle m-1" height="30" width="30"/>
+          <img [src]="countExperience >= 2 ? '../../assets/img/dolphistepsByExperience.png' : '../../assets/img/dolphins.png'" class="rounded-circle m-1" height="30" width="30"/>
+          <img [src]="countExperience >= 3 ? '../../assets/img/dolphistepsByExperience.png' : '../../assets/img/dolphins.png'" class="rounded-circle m-1" height="30" width="30"/>
 
             </div>
         

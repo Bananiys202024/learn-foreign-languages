@@ -26,7 +26,7 @@ public class DictionariesEnglish {
 	public static void addWordToEnglishDictionary(DictionaryRepository dictionaryRepository, String word, String owner) throws IOException {
 		
 		//check if word exists in dictionary
-		if(IsWordNotExistsInDictionary(dictionaryRepository, word))
+		if(IsWordNotExistsInDictionary(dictionaryRepository, word, owner))
 		{
 		//try/catch for empty database;
 		try
@@ -140,7 +140,7 @@ public class DictionariesEnglish {
 		entity = findEntityConstEnDict(englishDictionaryRepository, limit);
 		
 		logger.info("---Boollean-----"+entity);
-		boolean checkingBool = IsWordNotExistsInDictionary(dictionaryRepository, entity.getWord());
+		boolean checkingBool = IsWordNotExistsInDictionary(dictionaryRepository, entity.getWord(), owner);
 		
 		
 		
@@ -187,9 +187,9 @@ public class DictionariesEnglish {
 	}
 
 	private static boolean IsWordNotExistsInDictionary(DictionaryRepository dictionaryRepository,
-			String word) {	
+			String word, String loggedUser) {	
 		
-		Optional<DictionaryEnglish> result = dictionaryRepository.findBywordEnglish(word) ;	
+		Optional<DictionaryEnglish> result = dictionaryRepository.findBywordEnglishAndOwner(word, loggedUser) ;	
 		
 		return !result.isPresent();	
 		

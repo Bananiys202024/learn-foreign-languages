@@ -17,5 +17,7 @@ public interface DictionaryRepository extends MongoRepository<DictionaryEnglish,
 
 	public Optional<DictionaryEnglish> findBywordEnglish(String word);
 	
+	public Optional<DictionaryEnglish> findBywordEnglishAndOwner(String word, String owner);
+
 
 }

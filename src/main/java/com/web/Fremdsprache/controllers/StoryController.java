@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.web.Fremdsprache.repositories.DictionaryRepository;
-import com.web.Fremdsprache.repositories.TrainingWordRepository;
 import com.web.Fremdsprache.util.Story;
 
 
@@ -23,9 +22,6 @@ public class StoryController {
 
 	private static final Logger logger = LogManager.getLogger(StoryController.class);
 
-	@Autowired
-	TrainingWordRepository trainingwordRepository;
-	
 	@Autowired
 	public DictionaryRepository dictionaryRepository;
 
