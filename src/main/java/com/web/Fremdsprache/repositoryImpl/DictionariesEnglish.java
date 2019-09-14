@@ -141,10 +141,10 @@ public class DictionariesEnglish {
 		
 		logger.info("---Boollean-----"+entity);
 		boolean checkingBool = IsWordNotExistsInDictionary(dictionaryRepository, entity.getWord(), owner);
+		boolean word_not_exist_in_generated_list = checkIfGeneratedListContainWord(entities, entity.getWord());
 		
 		
-		
-		if(checkingBool)
+		if(checkingBool && word_not_exist_in_generated_list)
 		{
 			entities.add(entity);
 		}
@@ -154,6 +154,15 @@ public class DictionariesEnglish {
 		for(ConstEnDict enty:entities)
 		dictionaryRepository.save(transformToProperEntity(owner,dictionaryRepository, enty));
 
+	}
+
+	private static boolean checkIfGeneratedListContainWord(List<ConstEnDict> entities, String word) {
+		
+		for(ConstEnDict model:entities)
+		if(model.getWord().equals(word))
+		return false;
+		
+		return true;
 	}
 
 	private static ConstEnDict findEntityConstEnDict(ConstEnDictRepo englishDictionaryRepository, int limit) {

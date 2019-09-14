@@ -15,10 +15,14 @@ export class ProgressComponent implements OnInit {
   current_level_experience:number;
   experience_before_next_level:number;
 
+  experience_earned_today:number;
+  current_level:number;
+  before_next_level:number;
+  how_do_many_days_persistence_of_learning:number;
+
   constructor(private progressHttpClient:ProgressClient) { }
 
   ngOnInit() {
-
     this.progressHttpClient.getProgressData().subscribe(
       response => 
       {
@@ -28,9 +32,18 @@ export class ProgressComponent implements OnInit {
           this.learning_words=response.learning_words;
           this.current_level_experience=response.current_level_experience;
           this.experience_before_next_level=response.experience_before_next_level;
+
+          this.experience_earned_today=response.experience_earned_today;
+          this.current_level=response.current_level;
+          this.before_next_level=response.before_next_level;
+          this.how_do_many_days_persistence_of_learning=response.how_do_many_days_persistence_of_learning;
+
+          console.log(this.how_do_many_days_persistence_of_learning+"---1");
+          console.log(this.before_next_level+"---2");
+          console.log(this.current_level+"---3");
+          console.log(this.experience_earned_today+"---4");
       }
      );
-
   }
 
 }

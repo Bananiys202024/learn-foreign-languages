@@ -23,6 +23,7 @@ import com.web.Fremdsprache.repositories.DictionaryRepository;
 import com.web.Fremdsprache.repositories.UserRepository;
 import com.web.Fremdsprache.repositoryImpl.AccountInformation;
 import com.web.Fremdsprache.repositoryImpl.DictionariesEnglish;
+import com.web.Fremdsprache.repositories.CashExperience;
 import com.web.Fremdsprache.repositories.ConstEnDictRepo;
 import com.web.Fremdsprache.repositories.ConstGmDictRepo;
 import com.web.Fremdsprache.repositories.ConstRnDictRepo;
@@ -48,6 +49,9 @@ public class AccountController {
     
 	@Autowired
     UserRepository users;
+    
+    @Autowired
+    CashExperience cashExperience;
     
 	String owner="Admin";
 	
@@ -78,7 +82,7 @@ public class AccountController {
 	@GetMapping(value = "banch/data/for/progress/page")
 	public BanchProgressData banch_data_progress_page(Principal principal) {
 		String loggedUser = principal.getName();
-		return AccountInformation.generate_progress_information(dictionaryRepository, users, loggedUser);
+		return AccountInformation.generate_progress_information(dictionaryRepository, users, loggedUser, cashExperience);
 	}
 	
 	

@@ -27,30 +27,48 @@
 
                             <div class="image_block d-flex justify-content-center" >
                   
+                                
+
                             <div class="block float-left m-2"> 
-                              <div class="image"> <img src="../../assets/img/dolphi3.png" class="set-size_good_image" alt="..."></div>
+                              <div class="image bg-white"> 
+                                <img [src]="how_do_many_days_persistence_of_learning >= 1 ? '../../assets/img/dolphistepsByExperience.png' : '../../assets/img/dolphins.png'" class="rounded-circle m-1" height="40" width="40"/>
+                                </div>
+                              
                               <span class="text-good-style">День 1</span>
                             </div>
                   
                             <div class="block float-left m-2"> 
-                                <div class="image"> <img src="../../assets/img/dolphi3.png" class="set-size_good_image" alt="..."></div>
-                                <span class="text-good-style">День 2</span>
+                                    <div class="image bg-white"> 
+                                            <img [src]="how_do_many_days_persistence_of_learning >= 2 ? '../../assets/img/dolphistepsByExperience.png' : '../../assets/img/dolphins.png'" class="rounded-circle m-1" height="40" width="40"/>            
+                                    </div>
+
+                               <span class="text-good-style">День 2</span>
                               </div>
                   
                               <div class="block float-left m-2"> 
-                                  <div class="image"> <img src="../../assets/img/dolphi3.png" class="set-size_good_image" alt="..."></div>
+                                    <div class="image bg-white"> 
+                                            <img [src]="how_do_many_days_persistence_of_learning >= 3 ? '../../assets/img/dolphistepsByExperience.png' : '../../assets/img/dolphins.png'" class="rounded-circle m-1" height="40" width="40"/>
+                                    </div>
+                                
                                   <span class="text-good-style">День 3</span>
+                                
                                 </div>
                   
                                 <div class="block float-left m-2"> 
-                                    <div class="image"> <img src="../../assets/img/dolphi3.png" class="set-size_good_image" alt="..."></div>
+                                        <div class="image bg-white"> 
+                                                <img [src]="how_do_many_days_persistence_of_learning >= 4 ? '../../assets/img/dolphistepsByExperience.png' : '../../assets/img/dolphins.png'" class="rounded-circle m-1" height="40" width="40"/>
+                                         </div>
+
                                     <span class="text-good-style">День 4</span>
                                   </div>
                   
                   
                                   <div class="block float-left m-2"> 
-                                      <div class="image"> <img src="../../assets/img/dolphi3.png" class="set-size_good_image" alt="..."></div>
-                                      <span class="text-good-style">День 5</span>
+                                        <div class="image bg-white">
+                                                <img [src]="how_do_many_days_persistence_of_learning >= 5 ? '../../assets/img/dolphistepsByExperience.png' : '../../assets/img/dolphins.png'" class="rounded-circle m-1" height="40" width="40"/>
+                                        </div>
+
+                                        <span class="text-good-style">День 5</span>
                                     </div>
 
                             
@@ -73,7 +91,7 @@
                             </span>
                             <div class="progress-value">
                                 <div>
-                                    {{ experience_before_next_level }}<br>
+                                    {{ before_next_level }}<br>
                                     <span>До следующего уровня</span>
                                 </div>
                             </div>
@@ -82,8 +100,8 @@
                 </div>
             </div>
 
-            <div class="next-level">Текущий уровень: <span class="level"> {{ current_level_experience }}</span></div>
-            <div class="next-level">Cегодня: <span class="level">+118xp</span></div>
+            <div class="next-level">Текущий уровень: <span class="level"> {{ current_level }}</span></div>
+            <div class="next-level">Cегодня: <span class="level">+{{ experience_earned_today }}xp</span></div>
             <div class="next-level">Текущий опыт: <span class="level">+{{ current_level_experience }}xp</span></div>
 
             

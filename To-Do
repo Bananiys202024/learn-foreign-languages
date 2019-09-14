@@ -1,19 +1,35 @@
-Last: 
-deleteing some trash, 
-renamed review-books to review story,
-fixed bugs with non-unique mongodb;
-fixed bug with ngb-slider-6 to ngb-slider-0;
-
+Last: completed process of connecting redis count experience;
 Next: 
-complete process of connecting
- redis count experience;
+change name of published web-site of installing arch-linux 
+Fix displaying images on web-site;
+What do command "git merge"
+
+revise video by topic: "spring boot + redis" or "spring data  + redis";
+
+
+correct some "completed process of connecting redis count experience"
+persistance of learning for front-end for page "dashboard" 
+persistance of learning for front-end for page "resut-training-words"
+persistance of learning for front-end for page "progress" 
+ 
+Write redis and mongodb manualles;
+
+
+set expire of redis;
 Connect experience to page progress
 How do mayn experience to enxt level, etc.
-
 
 Copy projects from github to BitBucket;
 Add protect to gmail;
 If i lose my phone;
+
+Add series of persistence days of training to "progress" page;
+
+training for les number words;
+or
+add alert if less 5 words;
+
+
 
 If i will add russian words translate to ConstEnDict loading of words will be faster and 
 without mistake it can help;
@@ -22,7 +38,8 @@ Add to dictionary, yellow color for those which later learn
 And add in top of page
 insctruction. color/describe;
 
-
+modify method get_persistence_days_of_learning, for that add in reis table of 
+get_persistence_days_of_learning;
 
 rename "review-books" to "review-story";
 

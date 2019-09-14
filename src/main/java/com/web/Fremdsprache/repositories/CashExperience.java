@@ -13,4 +13,6 @@ public interface CashExperience extends CrudRepository<Experience, String>{
 	
 	Optional<Experience> findById(String loggedUser);
 
+	Optional<Experience> findByUser(String loggedUser);
+
 }

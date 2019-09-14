@@ -187,28 +187,62 @@ public class Training {
 		byte experience = (byte) (time>=3?50:20);
 
 		saveExperienceToUser(loggedUser, users, experience);
-		
+//		saveExperienceToCash()
 	}
 
 	private static void saveExperienceToUser(String loggedUser, UserRepository users, int experience) {	
 		User found = users.findByEmail(loggedUser);
-		found.setExperience(found.getExperience()+experience);	
+		found.setExperience(found.getExperience()+experience);
+		
 		users.save(found);
 	}
 
 	private static int checkCurrentTimeOfTraining(CashExperience cashExperience, String loggedUser) {
 		
-		Optional<Experience> found = cashExperience.findById(loggedUser);
+		List<Experience> list = (List<Experience>) cashExperience.findAll();
 		
-		if(found.isPresent())
+		List<Experience> foundList = list.stream().filter(c -> c.getUser().equals(loggedUser)).collect(Collectors.toList());
+		logger.info("Onfi-----"+foundList);
+		
+		
+		boolean empty = foundList.size() == 0;
+		
+		logger.info("Empty-----"+empty);
+		
+		if(!empty)
 		{		
-		int plusCount = found.get().getCount()+1;
-		Experience entity = found.get();
+			Experience found = (Experience) list.stream().filter(c -> c.getUser().equals(loggedUser)).collect(Collectors.toList()).get(0);
+			logger.info("\n\nfound---"+found+"\n\n");
+
+		byte plusCount = (byte) (found.getCount()+1);
+		logger.info("plusCount1-----"+plusCount);
+		
+		byte experience = (byte) (plusCount>=3?50:20);
+
+		plusCount = plusCount>=3?1:plusCount;
+		logger.info("plusCount2-------"+plusCount);
+		
+		logger.info("experience----"+experience);
+		
+		byte currentExperience = (byte) found.getExperience();
+		logger.info("info-----"+currentExperience);
+		
+		Experience entity = found;
 		entity.setCount(plusCount);
+		entity.setExperience(currentExperience+experience);
 		cashExperience.save(entity);
+		
+		return found.getCount();
+		}
+		else
+		{
+			Experience entity = Experience.builder().count(1).experience(0).user(loggedUser).build();
+			cashExperience.save(entity);
+		
+		return 1;
 		}
 		
-		return found.isPresent()?found.get().getCount():1;
+		
 	}
 
 	
