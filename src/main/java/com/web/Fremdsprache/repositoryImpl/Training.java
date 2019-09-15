@@ -182,15 +182,13 @@ public class Training {
 		
 		//on third time of training you will get +50 exp.
 		//time variable can't be more than 3, that's logic of app;
-		byte time = (byte) checkCurrentTimeOfTraining(cashExperience, loggedUser); 
-
-		byte experience = (byte) (time>=3?50:20);
+		byte experience = (byte) checkCurrentTimeOfTraining(cashExperience, loggedUser); 
 
 		saveExperienceToUser(loggedUser, users, experience);
 //		saveExperienceToCash()
 	}
 
-	private static void saveExperienceToUser(String loggedUser, UserRepository users, int experience) {	
+	private static void saveExperienceToUser(String loggedUser, UserRepository users, byte experience) {	
 		User found = users.findByEmail(loggedUser);
 		found.setExperience(found.getExperience()+experience);
 		
@@ -232,14 +230,14 @@ public class Training {
 		entity.setExperience(currentExperience+experience);
 		cashExperience.save(entity);
 		
-		return found.getCount();
+		return experience;
 		}
 		else
 		{
-			Experience entity = Experience.builder().count(1).experience(0).user(loggedUser).build();
+			Experience entity = Experience.builder().count(1).experience(20).user(loggedUser).build();
 			cashExperience.save(entity);
 		
-		return 1;
+		return 20;
 		}
 		
 		

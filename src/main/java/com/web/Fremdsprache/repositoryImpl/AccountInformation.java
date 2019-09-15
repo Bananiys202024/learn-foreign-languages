@@ -22,6 +22,8 @@ public class AccountInformation {
 										.filter(c -> c.getOwner().equals(owner))
 										.collect(Collectors.toList());
 		
+		short level_experience_division_part_of_indicator_of_level = 500;
+		
 		int learned_words = (int) list.stream().filter(c -> c.isLearned()==true ).count();
 		int all_words_dictionary = list.size();
 		int learning_words = all_words_dictionary-learned_words;
@@ -30,7 +32,7 @@ public class AccountInformation {
 
 		byte experience_earned_today = get_experience_earned_today(cashExperience, owner);
 		short current_level = (byte) (current_level_experience/500);
-		short before_next_level =  (byte) (500 - current_level_experience);
+		short before_next_level =  count_experience_to_next_level(level_experience_division_part_of_indicator_of_level, current_level_experience);
 		byte how_do_many_days_persistence_of_learning = get_persistence_days_of_learning();
 		
 		int detected_words = 0; //we will add it later
@@ -48,6 +50,17 @@ public class AccountInformation {
 								.before_next_level(before_next_level)
 								.how_do_many_days_persistence_of_learning(how_do_many_days_persistence_of_learning)
 								.build();
+	}
+
+	private static short count_experience_to_next_level(short level_experience_division_part_of_indicator_of_level, long current_level_experience) {
+
+		
+		while(current_level_experience>level_experience_division_part_of_indicator_of_level)
+		{
+			current_level_experience-=level_experience_division_part_of_indicator_of_level;
+		}
+		
+		return current_level_experience==0?level_experience_division_part_of_indicator_of_level: (short) (500-current_level_experience);	
 	}
 
 	private static byte get_persistence_days_of_learning() {

@@ -2,6 +2,7 @@ package com.web.Fremdsprache.entity.redis;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.redis.core.RedisHash;
+import org.springframework.data.redis.core.TimeToLive;
 
 import lombok.Builder;
 import lombok.Data;
@@ -16,5 +17,10 @@ public @Data class Experience {
 	long experience; //column for experience, which earmed today
 	//experience for only today;
 	
+	
+	@TimeToLive
+	  public long getTimeToLive() {
+	  	return 86400;
+	}
 	
 }

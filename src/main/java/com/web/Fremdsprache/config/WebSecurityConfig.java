@@ -38,18 +38,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		auth.userDetailsService(userDetailsService).passwordEncoder(bCryptPasswordEncoder());
 
 	}
-	
- 
-//	 @Bean
-//	    CorsConfigurationSource corsConfigurationSource() {
-//	        CorsConfiguration configuration = new CorsConfiguration();
-//	        configuration.setAllowedOrigins(Arrays.asList("http://localhost:4203"));
-//	        configuration.setAllowedMethods(Arrays.asList("GET","POST", "PUT", "DELETE"));
-//	        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-//	        source.registerCorsConfiguration("/**", configuration);
-//	        return source;
-//	    }
-//	 
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {

@@ -1,18 +1,32 @@
-Last: completed process of connecting redis count experience;
-Next: 
-change name of published web-site of installing arch-linux 
-Fix displaying images on web-site;
-What do command "git merge"
+Last: back-end banch of data to page "progress";
+Next:  
 
-revise video by topic: "spring boot + redis" or "spring data  + redis";
+revise some videos about JIRA
 
+create page for TV; we can't get access to it;
 
 correct some "completed process of connecting redis count experience"
 persistance of learning for front-end for page "dashboard" 
 persistance of learning for front-end for page "resut-training-words"
 persistance of learning for front-end for page "progress" 
  
+
+If app won't be work you should drop TTL in redis class 
+
+creaate anothe page of cabinet for admin;
+
+Add in back_end some logic to variable of persitence_day:
+use redis table,
+set cashe destroy after 24 hourse;
+
+
 Write redis and mongodb manualles;
+
+Add empty page to TV "We work on this page"
+
+
+
+revise video by topic: "spring boot + redis" or "spring data  + redis";
 
 
 set expire of redis;
@@ -153,5 +167,54 @@ Write app only with 0 and 1;
 Telegramm bot on java
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+install
+Arch linux:
+0. Conky
+1. After start terminal automatically open beuatiful arch images with parameters;
+2. nethack
+yaourt -S nethack
+3. display data of terminal, beautiful arch-linux
+yaourt -S screenfetch
+4. change cursor of i3
+5. i3 set wall paper
+6. Add weather to i3status bar
+7. To do list with fast list on background of arch-linux;
+8. Create back-up;
 
 
