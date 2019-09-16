@@ -23,3 +23,31 @@
   }
 
 /*......56*/
+
+
+
+.background-settings 
+{
+  background: url(assets/img/black-and-white-black-and-white-fog-1061623.jpg) no-repeat center center fixed;
+  min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
+  min-height: 86vh; /* These two lines are counted as one :-)       */
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+html
+{
+  height: 100%;
+}
+
+body 
+{
+  height:100%;
+}
+
+.standard-height-body
+{
+  height:92%;
+}

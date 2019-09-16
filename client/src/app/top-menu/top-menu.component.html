@@ -18,10 +18,10 @@
       </li>
       <li [ngClass]="current_choosen_top_menu_button==='progress'? 'nav-item active hidhlight-current-choosen':'nav-item'">
         <a [ngClass]="current_choosen_top_menu_button==='progress'? 'nav-link text-body-50 weight-font text-white':'nav-link text-body-50 weight-font'"  routerLink="/progress" href="#" tabindex="-1" aria-disabled="true">Прогресс</a>
-	  </li>
-	  <li class="nav-item">
-        <a class="nav-link text-body-50 weight-font"  href="#" tabindex="-1" aria-disabled="true">ТВ</a>
-      </li>
+    </li>
+    <li [ngClass]="current_choosen_top_menu_button==='tv'? 'nav-item active hidhlight-current-choosen':'nav-item'">
+      <a [ngClass]="current_choosen_top_menu_button==='tv'? 'nav-link text-body-50 weight-font text-white':'nav-link text-body-50 weight-font'"  routerLink="/tv" href="#" tabindex="-1" aria-disabled="true">ТВ</a>
+  </li>
     </ul>
   
     <span class="navbar-text">

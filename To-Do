@@ -1,19 +1,17 @@
-Last: back-end banch of data to page "progress";
-Next:  
+REMEMBER: write time of execution on even task of executed;
 
-revise some videos about JIRA
 
-create page for TV; we can't get access to it;
+Last: front-end of page "tv";
+Next: Add validation to registration and login process;
+	  Add registration of ADMIN role by starting project;
 
-correct some "completed process of connecting redis count experience"
-persistance of learning for front-end for page "dashboard" 
-persistance of learning for front-end for page "resut-training-words"
-persistance of learning for front-end for page "progress" 
+
+
  
-
-If app won't be work you should drop TTL in redis class 
-
+ 
+front-end: 
 creaate anothe page of cabinet for admin;
+fix bottom menu on page "dictionary" that's broken, that' absolute position;
 
 Add in back_end some logic to variable of persitence_day:
 use redis table,
@@ -28,91 +26,57 @@ Add empty page to TV "We work on this page"
 
 revise video by topic: "spring boot + redis" or "spring data  + redis";
 
-
-set expire of redis;
-Connect experience to page progress
-How do mayn experience to enxt level, etc.
-
-Copy projects from github to BitBucket;
-Add protect to gmail;
-If i lose my phone;
-
-Add series of persistence days of training to "progress" page;
-
-training for les number words;
-or
-add alert if less 5 words;
+Fast check_marks on github
+0.Add images to describe github from github/images...
+1.Add describe redis database, "How use redis";
+2.Add describe mongodb, "How use mongodb";
 
 
-
-If i will add russian words translate to ConstEnDict loading of words will be faster and 
-without mistake it can help;
-
-Add to dictionary, yellow color for those which later learn
-And add in top of page
-insctruction. color/describe;
-
-modify method get_persistence_days_of_learning, for that add in reis table of 
-get_persistence_days_of_learning;
-
-rename "review-books" to "review-story";
-
-set in trainining-words if numbers of words less than...
-
-exclude "the" from words, that not translated by translator;
-Add inputed variant of words in "/training" with line across yourself if answer if wrong;
-
-DictionaryEnglish 132 line change that line;
-add warning if not exist dictionary then alert;
-
-
-Use instead int byte;
-Add comments to even line in java code, it important. To do guid from my app.
-push front-end code in separate repository too, for showing as front-end developer;
-
-How do many experience to next level of experience
-change front-end of page "Dicitonary"(словарь)
-change animation between pages;
-
-validation to registration back-end
-
-
-Exclude "a" from words, beacuse translator can't translate;
-
-
-*add bottom menu to page "progress";
-
-or add experience;
-
-Connect Kafka
-
-Fast tasks:
-0. Add guide "How use mongo" fast commands to READ_ME;
-1. Add screen_schots to project;
-2. Bottom_menu to bottom;(not less than 2 numbers of bottom_menu);
-3. Login page change somthng there;
-4. page of progress;
-5. add loaders;
-6.2 Tuing AuthGuard;
-6.3 Create alert pages "For access this page you need log_in;
-6.5 Add validation to registration and login process;
-6.6. Fix toggling from "dictionary" to "dashboard";
-To tie back-end and front-end validation for both process of registration and log_in;
-6.7 Add access to web-site only with login;
-6.8 read about animations add anumations to all apges;
-6.9 ;
-
-
+Checking:
+1. 
+2. Fix toggling from "dictionary" to "dashboard";
+	To tie back-end and front-end validation for both process of registration and log_in;
+3 read about animations add anumations to all apges;
+4. Reread, rewise and checking this 
 https://www.djamware.com/post/5d3332980707cc65eac46c7b/spring-boot-security-mongodb-angular-8-build-authentication
+5. Some modifiication to tables(add):
+Country(USER table)
+TownRegistration(USER table)
+TimeZone(USER table)
+Languages(USER table), that for displaying letters, simple information, from which languages read web-site
+
+6. Add ability toggle yourself between different languages
+7. Add front-end toggle languages;
+8. automatically login after registration;
+9. Use instead int byte, BUT before read information about this topic ;
+10. Exclude "a", "the" from words, beacuse translator can't translate;
+11. Add more comments to code;
+12. 
+set in trainining-words if numbers of words less than...
+or create something that can proceed less amount of words;
+13. Confirm password of registration by email;
+To do that with phone and email;
+14.
+back-end,maybe some front-end:
+correct some "completed process of connecting redis count experience"
+persistance of learning for front-end for page "dashboard" 
+persistance of learning for front-end for page "resut-training-words"
+persistance of learning for front-end for page "progress" 
+15. add JIRA to Spring Boot
 
 
 
-Some modifiication to tables(add):
-0. Languages;
-1. Country
-1.5 TownOfRegistration(pointed by user)
-2. Town(count from ip);
-3. TimeZone(count from ip);
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -121,31 +85,6 @@ Some modifiication to tables(add):
 
 
 SEOPULT for marketing of web_site;
-
-
-automatically login after registration;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -192,14 +131,32 @@ Telegramm bot on java
 
 
 
+file: .config/i3(home directory); 
+vim ~/.conkyrc
+execute conky  
+usermod -aG banan
+Вы добавили пользователя имя_пользователя в группу log. Теперь имя_пользователя может читать файлы логов, и conky сможет отображать журнальные записи на рабочем столе.
+
+yaourt -S feh
+feh --bg-scale /home/banan/arh-linux-config/wallpaper.png
+Add folder with images to web-site;
+
+
+corky:
+ yaourt -S ttf-pizzadude-bullets 
+
+Add to linux, output bad words on bad password;
+
+What do i can do with arch-linux;
+
+Add 
 
 
 
 
-
-
-
-
+Add automatically execution in terminal some command on start i3;
+may be use some another programm or SCRIPT
+YES, i should simple write script, that's quite interesting;
 
 
 
@@ -216,5 +173,7 @@ yaourt -S screenfetch
 6. Add weather to i3status bar
 7. To do list with fast list on background of arch-linux;
 8. Create back-up;
-
+9. Add protect to gmail;
+	If i lose my phone;
+10. How do i can attack another computer from arch-linux
 

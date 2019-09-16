@@ -85,5 +85,12 @@ public class AccountController {
 		return AccountInformation.generate_progress_information(dictionaryRepository, users, loggedUser, cashExperience);
 	}
 	
+	@GetMapping(value = "days/persistence/learning")
+	public int days_persistence_learning(Principal principal) {
+		String loggedUser = principal.getName();
+//		return AccountInformation.days_persistence_learning(dictionaryRepository, users, loggedUser, cashExperience);
+		return 2;
+	}
+	
 	
 }

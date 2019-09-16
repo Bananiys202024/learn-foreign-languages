@@ -39,6 +39,7 @@ import { TokenInterceptor } from './Interceptors/token.interceptor';
 import { ProgressComponent } from './progress/progress.component';
 import { PermissionDeniedComponent } from './security/permission-denied/permission-denied.component';
 import { TopMenuBeforeAutheticationComponent } from './parts/top-menu-before-authetication/top-menu-before-authetication.component';
+import { TVComponent } from './tv/tv.component';
 
 
 @NgModule({
@@ -61,6 +62,7 @@ import { TopMenuBeforeAutheticationComponent } from './parts/top-menu-before-aut
 	ProgressComponent,
 	PermissionDeniedComponent,
 	TopMenuBeforeAutheticationComponent,
+	TVComponent,
 	
   ],
   imports: [

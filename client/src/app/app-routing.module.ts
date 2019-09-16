@@ -17,6 +17,7 @@ import { AuthGuard } from './auth/auth.guard';
 import { AuthGuardAnonymouse } from './auth/auth-guard-anonymouse';
 import { ProgressComponent } from './progress/progress.component';
 import { PermissionDeniedComponent } from './security/permission-denied/permission-denied.component';
+import { TVComponent } from './tv/tv.component';
 
 
 const routes: Routes = [
@@ -29,12 +30,15 @@ const routes: Routes = [
 	  { path: 'dictionary', canActivate: [AuthGuard], component: DictionaryComponent, data: {animation: 'StandartAnimation5'}},
 	  { path: 'progress', canActivate: [AuthGuard], component: ProgressComponent, data: {animation: 'StandartAnimation6'}},
 
+
 	  { path: 'registration', canActivate: [AuthGuardAnonymouse], component: RegistrationComponent, data: {animation: 'StandartAnimation7'}},
 	  { path: 'login', canActivate: [AuthGuardAnonymouse], component: LoginComponent, data: {animation: 'StandartAnimation8'}},
 
 	  { path: 'adminSecretPage', canActivate: [AuthGuard], component: CabinetComponent, data: {animation: 'StandartAnimation10'}},
 
 	  { path: 'training', canActivate: [AuthGuard], component: TrainingWordsSliderComponent, data: {animation: 'StandartAnimation11'}},
+	  { path: 'tv', canActivate: [AuthGuard], component: TVComponent, data: {animation: 'StandartAnimation15'}},
+
 	  { path: 'cabinet', canActivate: [AuthGuard], component: CabinetComponent, data: {animation: 'StandartAnimation12'}},
 
 	  { path: 'result-training-words/:wrong/:right', canActivate: [AuthGuard], component: ResultTrainingWordsComponent, data: {animation: 'StandartAnimation13'} },

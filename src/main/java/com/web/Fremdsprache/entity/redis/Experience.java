@@ -20,7 +20,7 @@ public @Data class Experience {
 	
 	@TimeToLive
 	  public long getTimeToLive() {
-	  	return 86400;
+	  	return 86400; //24 hours
 	}
 	
 }
