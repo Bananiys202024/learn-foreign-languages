@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.web.Fremdsprache.entity.mongodb.DictionaryEnglish;
-import com.web.Fremdsprache.initializer.Initializator;
+import com.web.Fremdsprache.initializer.ActiveInitializingg;
 import com.web.Fremdsprache.model.BanchProgressData;
 import com.web.Fremdsprache.model.Bool;
 import com.web.Fremdsprache.repositories.DictionaryRepository;
@@ -58,19 +58,19 @@ public class AccountController {
 	//only for admin
 	@PutMapping(value = "generate/english/dictionary")
 	public void generate_english_dictionary() throws Exception {
-		Initializator.initalizeMostUsedEnglishWordsToTableMongo(englishDictionaryRepository);
+		ActiveInitializingg.initalizeMostUsedEnglishWordsToTableMongo(englishDictionaryRepository);
 	}
 	
 	//only for admin
 	@PutMapping(value = "generate/russian/dictionary")
 	public void generate_russian_dictionary() throws Exception {
-		Initializator.initalizeMostUsedRussianWordsToTableMongo(russianDictionaryRepository);
+		ActiveInitializingg.initalizeMostUsedRussianWordsToTableMongo(russianDictionaryRepository);
 	}
 	
 	//only for admin
 	@PutMapping(value = "generate/german/dictionary")
 	public void generate_german_dictionary() throws Exception {
-		Initializator.initalizeMostUsedGermanWordsToTableMongo(germanDictionaryRepository);
+		ActiveInitializingg.initalizeMostUsedGermanWordsToTableMongo(germanDictionaryRepository);
 	}
 	
 	//get learned words

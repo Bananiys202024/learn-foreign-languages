@@ -85,7 +85,7 @@ public class AuthController {
         return new ResponseEntity<String>("User with email: " + user.getEmail() + " already exists", HttpStatus.OK );
         }
         logger.info(user.getUsername()+"----name");
-        userService.saveUser(user);
+        userService.saveUser(user, "User");
         logger.info("All okey, we registered");
         return new ResponseEntity<String>("User registered successfully", HttpStatus.OK);
     }

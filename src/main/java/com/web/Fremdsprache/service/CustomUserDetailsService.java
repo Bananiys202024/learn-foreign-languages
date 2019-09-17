@@ -66,13 +66,13 @@ public class CustomUserDetailsService implements UserDetailsService {
 	    return userRepository.findByEmail(email);
 	}
 
-	public void saveUser(User user) {
+	public void saveUser(User user, String role) {
 	    
 		long id = generateId();
 		
 	    Role userRole = new Role();
 	    userRole.setId(id);
-	    userRole.setRole("User");
+	    userRole.setRole(role);
 	    
 	    user.setDate_of_registration(new Date());
 	    user.setId(id);

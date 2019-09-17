@@ -1,11 +1,9 @@
-REMEMBER: write time of execution on even task of executed;
+REMEMBER: write time of execution on even task of executed;45 minutes;
 
 
-Last: front-end of page "tv";
-Next: Add validation to registration and login process;
-	  Add registration of ADMIN role by starting project;
-
-
+Last: initializing Admin account on start app;
+Next: Set in front-end permissions by roles: "User", "Admin";
+	  Add validation to registration and login process;
 
  
  
