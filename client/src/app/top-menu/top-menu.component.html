@@ -25,17 +25,20 @@
     </ul>
   
     <span class="navbar-text">
-    <div *ngIf="!(current_choosen_top_menu_button==='cabinet')">   
-       <a (click)="getAccountDataForCabinet()" class="navbar-brand" >
-        <img src="../../assets/img/account.png" width="36" height="36" class="d-inline-block align-top" alt="">
+    <div *ngIf="role === 'User'">   
+       <a (click)="goUserCabinet()" class="navbar-brand" >
+        <img src="../../assets/img/account.png" width="36" height="36" [ngClass]="current_choosen_top_menu_button==='cabinet'? 'd-inline-block align-top background-border-color':'d-inline-block align-top'" alt="">
        </a>
     </div>
 
-    <div *ngIf="current_choosen_top_menu_button==='cabinet'">   
-        <a (click)="getAccountDataForCabinet()" class="navbar-brand" >
-         <img src="../../assets/img/white-account.png" width="36" height="36" class="d-inline-block align-top background-border-color" alt="">
-        </a>
-     </div>
+  </span>
+  
+    <span class="navbar-text">
+      <div *ngIf="role === 'Admin'">   
+         <a (click)="goAdminCabinet()" class="navbar-brand" >
+          <img src="../../assets/img/account.png" width="36" height="36" [ngClass]="current_choosen_top_menu_button==='cabinet'? 'd-inline-block align-top background-border-color':'d-inline-block align-top'" alt="">
+         </a>
+      </div>
 
   </span>
 

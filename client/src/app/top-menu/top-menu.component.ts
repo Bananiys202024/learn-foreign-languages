@@ -9,16 +9,21 @@ import { Router } from "@angular/router";
 export class TopMenuComponent implements OnInit {
 
   current_choosen_top_menu_button = this.router.url.replace('/','');
-  
+  role = localStorage.getItem('role'); 
+
   constructor(private router: Router,) { }
 
   ngOnInit() {
   }
 
 
-  getAccountDataForCabinet()
+  goUserCabinet()
   {
     this.router.navigate(['cabinet']);
   }
 
+  goAdminCabinet()
+  {
+    this.router.navigate(['admin/cabinet']);
+  }
 }

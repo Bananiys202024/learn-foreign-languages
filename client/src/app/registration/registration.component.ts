@@ -26,21 +26,35 @@ export class RegistrationComponent implements OnInit {
   submitted = false;	
   check_recaptcha = false;
   show = false;
-  
+  codeInputed = false;
+
   constructor(private httpClientService:HttpClientService, private router: Router, private authService: AuthService) { }
 
   ngOnInit() {
   }
 
- model = new User('name', 'password', 'confirmPassowrd', 'email@gmail.com')
+ model = new User('name', 'password', 'confirmPassowrd', 'email@gmail.com', '')
   
  onSubmit(form: any) 
- { 
-//	console.log(form.controls['name'].value);
-//	console.log(form.controls['password'].value);
-//  console.log(form.controls['confirmPassword'].value);
+ {  
+    
+    //validation
 
+
+    this.router.navigate(['/registration/confirmCode']);
+
+  //there add http method
+  //pass as method form
+  //function: 1. Saving with TTL form
+  //function: 2. Check if email that already exist or phone number; 
+
+    // this.registration(form); 
+ }
+
+  registration(form: any) {
+   
 //add validation
+// form.controls['name'].value
 
 console.log(this.model);
 this.httpClientService.registration(this.model).subscribe(
@@ -60,8 +74,8 @@ this.httpClientService.registration(this.model).subscribe(
 
   }
   );
- 
-}
+
+  }
 
 
  get diagnostic() { return JSON.stringify(this.model); }

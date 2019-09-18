@@ -18,6 +18,9 @@ import { AuthGuardAnonymouse } from './auth/auth-guard-anonymouse';
 import { ProgressComponent } from './progress/progress.component';
 import { PermissionDeniedComponent } from './security/permission-denied/permission-denied.component';
 import { TVComponent } from './tv/tv.component';
+import { CabinetAdminComponent } from './admin/cabinet-admin/cabinet-admin.component';
+import { SuccessComponent } from './registration/success/success.component';
+import { ConfirmCodeComponent } from './registration/confirm-code/confirm-code.component';
 
 
 const routes: Routes = [
@@ -32,10 +35,15 @@ const routes: Routes = [
 
 
 	  { path: 'registration', canActivate: [AuthGuardAnonymouse], component: RegistrationComponent, data: {animation: 'StandartAnimation7'}},
+	  { path: 'registration/success', canActivate: [AuthGuardAnonymouse], component: SuccessComponent, data: {animation: 'StandartAnimation18'}},
+	  { path: 'registration/confirmCode', canActivate: [AuthGuardAnonymouse], component: ConfirmCodeComponent, data: {animation: 'StandartAnimation18'}},
+
 	  { path: 'login', canActivate: [AuthGuardAnonymouse], component: LoginComponent, data: {animation: 'StandartAnimation8'}},
 
 	  { path: 'adminSecretPage', canActivate: [AuthGuard], component: CabinetComponent, data: {animation: 'StandartAnimation10'}},
+	  { path: 'admin/cabinet', canActivate: [AuthGuard], component: CabinetAdminComponent, data: {animation: 'StandartAnimation16'} },
 
+	  
 	  { path: 'training', canActivate: [AuthGuard], component: TrainingWordsSliderComponent, data: {animation: 'StandartAnimation11'}},
 	  { path: 'tv', canActivate: [AuthGuard], component: TVComponent, data: {animation: 'StandartAnimation15'}},
 

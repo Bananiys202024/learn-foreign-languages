@@ -1,11 +1,25 @@
-REMEMBER: write time of execution on even task of executed;45 minutes;
+REMEMBER: write time of execution on even task of executed;
 
 
-Last: initializing Admin account on start app;
-Next: Set in front-end permissions by roles: "User", "Admin";
+Last:
+initializing Admin account on start app; 45 minutes;
+Set in front-end permissions by roles: "User", "Admin":- minutes;
+Add front-end for input confirm by email: - minutes;
+
+
+
+Next: Add "phone_number" to registration column
+	  Send data by saving to back-end and set time to live, if registration success save those data with 
+	  with checking email in same time;
+	  localToStorage data for checking if that already exist;
 	  Add validation to registration and login process;
-
- 
+	  Add checking if email alread exist 
+	  Add front-end for input confirm by email
+	  Add back-end sending by email letter;
+	  Add alert if wrong inputed login info.
+ 	  Add if dictionaries german,en and ru exists then disable those  buttons in admin cabinet;
+ 	  Add validation to process of registration;
+	  front-end success page registration;
  
 front-end: 
 creaate anothe page of cabinet for admin;
@@ -15,12 +29,14 @@ Add in back_end some logic to variable of persitence_day:
 use redis table,
 set cashe destroy after 24 hourse;
 
+Add creating statistics to "progress" page:
+Generating static graphics;
 
 Write redis and mongodb manualles;
 
 Add empty page to TV "We work on this page"
 
-
+Add test of turing by enter to web-sites;
 
 revise video by topic: "spring boot + redis" or "spring data  + redis";
 
@@ -174,4 +190,10 @@ yaourt -S screenfetch
 9. Add protect to gmail;
 	If i lose my phone;
 10. How do i can attack another computer from arch-linux
+
+Add to conky scripts: 
+Add to conky display PID ports:
+redis, mongodb, docker ps;
+
+
 

@@ -31,6 +31,7 @@ import { RegistrationComponent } from './registration/registration.component';
 import { TrainingWordsSliderComponent } from './training-words-slider/training-words-slider.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { CabinetComponent } from './cabinet/cabinet.component';
+
 import { LoaderComponent } from './loader/loader.component';
 import { LoaderInterceptorService } from './service/loader-interceptor.service';
 import { RecaptchaModule } from 'ng-recaptcha';
@@ -40,6 +41,10 @@ import { ProgressComponent } from './progress/progress.component';
 import { PermissionDeniedComponent } from './security/permission-denied/permission-denied.component';
 import { TopMenuBeforeAutheticationComponent } from './parts/top-menu-before-authetication/top-menu-before-authetication.component';
 import { TVComponent } from './tv/tv.component';
+import { CabinetAdminComponent } from './admin/cabinet-admin/cabinet-admin.component';
+import { ConfirmCodeComponent } from './registration/confirm-code/confirm-code.component';
+import { SuccessComponent } from './registration/success/success.component';
+
 
 
 @NgModule({
@@ -63,6 +68,9 @@ import { TVComponent } from './tv/tv.component';
 	PermissionDeniedComponent,
 	TopMenuBeforeAutheticationComponent,
 	TVComponent,
+	CabinetAdminComponent,
+	ConfirmCodeComponent,
+	SuccessComponent,
 	
   ],
   imports: [

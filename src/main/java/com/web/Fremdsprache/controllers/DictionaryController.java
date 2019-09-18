@@ -64,7 +64,7 @@ public class DictionaryController {
 		String loggedUser = principal.getName();
 		DictionariesEnglish.insert_10_random_words(loggedUser, dictionaryRepository, englishDictionaryRepository);	
 	}
-	
+
 
 	
 }

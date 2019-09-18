@@ -4,6 +4,7 @@ import static org.springframework.http.ResponseEntity.ok;
 
 import java.security.Principal;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 
 import javax.annotation.PostConstruct;
@@ -70,6 +71,7 @@ public class AuthController {
             model.put("token", token);
             model.put("password", password);
             model.put("username", found.getUsername());
+            model.put("role", found.getRoles().iterator().next().getRole());
             
             return ok(model);
         } catch (AuthenticationException e) {

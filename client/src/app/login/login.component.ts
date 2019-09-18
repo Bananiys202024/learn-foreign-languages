@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
 
   constructor(private authService: AuthService,  private router: Router) { }
 
-  model = new User('', 'password', '', 'email@gmail.com')
+  model = new User('', 'password', '', 'email@gmail.com','')
   show = false;
 
   ngOnInit() {
@@ -32,6 +32,7 @@ console.log(this.model);
           localStorage.setItem('email', res.email);
           localStorage.setItem('username', res.username);
           localStorage.setItem('password', res.password);
+          localStorage.setItem('role', res.role);
           this.router.navigate(['']);
        }
       }, (err) => {
