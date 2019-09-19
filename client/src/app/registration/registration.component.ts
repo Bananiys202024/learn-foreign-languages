@@ -14,6 +14,7 @@ import {
   HttpResponse,
   HttpErrorResponse
 } from '@angular/common/http';
+import { FormUserDataService } from '../service/model/form-user-data.service';
 
 
 @Component({
@@ -28,7 +29,7 @@ export class RegistrationComponent implements OnInit {
   show = false;
   codeInputed = false;
 
-  constructor(private httpClientService:HttpClientService, private router: Router, private authService: AuthService) { }
+  constructor(private httpClientService:HttpClientService, private router: Router, private authService: AuthService, private form_user_data: FormUserDataService) { }
 
   ngOnInit() {
   }
@@ -40,13 +41,14 @@ export class RegistrationComponent implements OnInit {
     
     //validation
 
-
+    this.form_user_data.storage = this.model;
     this.router.navigate(['/registration/confirmCode']);
 
   //there add http method
   //pass as method form
   //function: 1. Saving with TTL form
   //function: 2. Check if email that already exist or phone number; 
+
 
     // this.registration(form); 
  }

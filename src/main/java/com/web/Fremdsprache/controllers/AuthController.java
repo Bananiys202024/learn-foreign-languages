@@ -93,24 +93,12 @@ public class AuthController {
     }
 
     
-    @GetMapping(value="/get/logged/name")
-    public ResponseEntity<String> register(Principal principal) {
-    	try
-    	{
-        return new ResponseEntity<String>(principal.getName()+"---Logged name", HttpStatus.OK);
-    	}
-    	catch(NullPointerException e)
-    	{
-    		logger.error("Error---"+e);
-            return new ResponseEntity<String>("Not logged name", HttpStatus.OK);	
-    	}
-    	catch(Exception e)
-    	{
-    		logger.error("unfamouse error", e);
-            return new ResponseEntity<String>("Some errors", HttpStatus.OK);	
-    	}
-    	
+    @PostMapping(value="/send/code/by/email")
+    public String register(@RequestBody String email) {  	
+    	return "555";
     }
+    
+    
 
 
 }

@@ -18,16 +18,20 @@ import { count } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class HttpClientService {
-
-
+  
  word:TrainWords;
  check:any;
-
+ localhost = 'http://localhost:8083/';
 
   constructor(
     private httpClient:HttpClient
   ) { 
      }
+
+
+  send_code_to_email_And_get_code(email) {
+    return this.httpClient.post(this.localhost+'send/code/by/email', email);   
+  }
 
   	     getSomeSound(element)
   {	    	 

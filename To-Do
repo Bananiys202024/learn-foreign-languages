@@ -1,14 +1,12 @@
 REMEMBER: write time of execution on even task of executed;
 
+     
 
-Last:
-initializing Admin account on start app; 45 minutes;
-Set in front-end permissions by roles: "User", "Admin":- minutes;
-Add front-end for input confirm by email: - minutes;
-
+Last: 
+pass <form> data between pages in angular; 45minutes;
 
 
-Next: Add "phone_number" to registration column
+Next: 
 	  Send data by saving to back-end and set time to live, if registration success save those data with 
 	  with checking email in same time;
 	  localToStorage data for checking if that already exist;
@@ -20,17 +18,25 @@ Next: Add "phone_number" to registration column
  	  Add if dictionaries german,en and ru exists then disable those  buttons in admin cabinet;
  	  Add validation to process of registration;
 	  front-end success page registration;
+ 	  Add registration by phone;
  
 front-end: 
 creaate anothe page of cabinet for admin;
 fix bottom menu on page "dictionary" that's broken, that' absolute position;
+
+
+Improvements of project:
+0. Add "phone_number" to registration column
+1.
+
+Do i should use ResponseEntity in project with REST architecture;
 
 Add in back_end some logic to variable of persitence_day:
 use redis table,
 set cashe destroy after 24 hourse;
 
 Add creating statistics to "progress" page:
-Generating static graphics;
+Generating static graphics;cd
 
 Write redis and mongodb manualles;
 
@@ -45,6 +51,9 @@ Fast check_marks on github
 1.Add describe redis database, "How use redis";
 2.Add describe mongodb, "How use mongodb";
 
+Add only 3 attempts to checking e-mail;
+
+https://stackoverflow.com/questions/26549379/when-use-responseentityt-and-restcontroller-for-spring-restful-applications
 
 Checking:
 1. 
@@ -137,7 +146,7 @@ Telegramm bot on java
 
 
 
-
+Implement confirmation of code by sendin to email info and then by href confirm that account;
 
 
 
