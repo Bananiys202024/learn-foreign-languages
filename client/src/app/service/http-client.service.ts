@@ -28,11 +28,6 @@ export class HttpClientService {
   ) { 
      }
 
-
-  send_code_to_email_And_get_code(email) {
-    return this.httpClient.post(this.localhost+'send/code/by/email', email);   
-  }
-
   	     getSomeSound(element)
   {	    	 
     return this.httpClient.get('http://localhost:8083/speach/'+element);

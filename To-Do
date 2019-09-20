@@ -2,11 +2,18 @@ REMEMBER: write time of execution on even task of executed;
 
      
 
-Last: 
-pass <form> data between pages in angular; 45minutes;
+Last: send gmail and generation code; 60 minutes
+ 
 
+How do i can block view in github some lines:
+@gmail.com
+password to gmail
 
 Next: 
+	  Fixing errors after registration process by email;
+	  Uncaught DOMException: Blocked a frame with origin "https://www.google.com" from accessing a cross-origin frame.
+	  Add sendin data add to database after success end;
+	  Replace sending gmail by inputed in process registration;
 	  Send data by saving to back-end and set time to live, if registration success save those data with 
 	  with checking email in same time;
 	  localToStorage data for checking if that already exist;
@@ -24,6 +31,7 @@ front-end:
 creaate anothe page of cabinet for admin;
 fix bottom menu on page "dictionary" that's broken, that' absolute position;
 
+I can connect translator in top_menu;
 
 Improvements of project:
 0. Add "phone_number" to registration column
@@ -52,6 +60,9 @@ Fast check_marks on github
 2.Add describe mongodb, "How use mongodb";
 
 Add only 3 attempts to checking e-mail;
+
+https://www.mkyong.com/spring-boot/spring-boot-how-to-send-email-via-smtp/
+
 
 https://stackoverflow.com/questions/26549379/when-use-responseentityt-and-restcontroller-for-spring-restful-applications
 

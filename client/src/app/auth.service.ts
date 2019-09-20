@@ -16,8 +16,11 @@ export class AuthService {
   constructor(private http: HttpClient) { }
 
   login(data: any): Observable<any> {
-    console.log('We here');
     return this.http.post(apiUrl + 'login', data)
+  }
+
+  send_code_to_email_And_get_code(email) {
+    return this.http.post(apiUrl+'send/code/by/email', email);   
   }
 
   isLogIn()

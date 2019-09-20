@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -32,6 +33,8 @@ import com.web.Fremdsprache.entity.mongodb.User;
 import com.web.Fremdsprache.model.AuthBody;
 import com.web.Fremdsprache.repositories.UserRepository;
 import com.web.Fremdsprache.service.CustomUserDetailsService;
+import com.web.Fremdsprache.util.ConfirmEmailorPassword;
+import com.web.Fremdsprache.util.Security;
 
 import ch.qos.logback.classic.Logger;
 
@@ -54,6 +57,9 @@ public class AuthController {
     @Autowired
     private CustomUserDetailsService userService;
 
+	@Autowired
+    private JavaMailSender javaMailSender;
+	
     @SuppressWarnings("rawtypes")
     @PostMapping("/login")
     public ResponseEntity login(@RequestBody AuthBody data) {
@@ -94,8 +100,10 @@ public class AuthController {
 
     
     @PostMapping(value="/send/code/by/email")
-    public String register(@RequestBody String email) {  	
-    	return "555";
+    public ResponseEntity<String> register(@RequestBody String email) {  	
+    	String code = Security.generateRandomSevenElementCode();
+    	ConfirmEmailorPassword.sendEmail(code, javaMailSender);  	
+    	return new ResponseEntity<String>(code, HttpStatus.OK);
     }
     
     
