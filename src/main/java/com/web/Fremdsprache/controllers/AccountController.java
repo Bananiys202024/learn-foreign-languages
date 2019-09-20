@@ -28,7 +28,7 @@ import com.web.Fremdsprache.repositories.ConstEnDictRepo;
 import com.web.Fremdsprache.repositories.ConstGmDictRepo;
 import com.web.Fremdsprache.repositories.ConstRnDictRepo;
 
-@CrossOrigin(origins = "http://localhost:4203")
+@CrossOrigin(origins = { "http://localhost:4203", "https://www.google.com" })
 @RestController
 @RequestMapping("/account/settings/")
 public class AccountController {

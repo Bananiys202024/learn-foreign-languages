@@ -167,6 +167,10 @@ export class HttpClientService {
         return this.httpClient.post('http://localhost:8083/api/auth/register', model, { responseType: 'text' });
        } 	
 
+       check_email(model) {
+        return this.httpClient.post('http://localhost:8083/api/auth/check/exist/email', model, { responseType: 'text' });      
+       }
+
        //...
 
 

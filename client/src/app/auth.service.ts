@@ -19,8 +19,8 @@ export class AuthService {
     return this.http.post(apiUrl + 'login', data)
   }
 
-  send_code_to_email_And_get_code(email) {
-    return this.http.post(apiUrl+'send/code/by/email', email);   
+  send_code_to_email_And_get_code(email : any) {
+    return this.http.post(apiUrl+'send/code/by/email', email, { responseType: 'text' });   
   }
 
   isLogIn()

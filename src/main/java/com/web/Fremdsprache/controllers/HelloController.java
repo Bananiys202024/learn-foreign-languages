@@ -16,7 +16,7 @@ import com.web.Fremdsprache.repositories.DictionaryRepository;
 
 
 
-@CrossOrigin(origins = "http://localhost:4203")
+@CrossOrigin(origins = { "http://localhost:4203", "https://www.google.com" })
 @RestController
 public class HelloController {
 

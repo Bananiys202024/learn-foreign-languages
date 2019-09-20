@@ -20,3 +20,8 @@ body, html
 {
   height: 94vh;
 }
+
+.alert
+{
+  margin-top:1em;
+}

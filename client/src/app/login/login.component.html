@@ -38,6 +38,11 @@
                  </div>
               </div>
       
+              <div *ngIf="failed_login"
+              class="alert alert-danger">
+            Пароль или емайл не верны.
+              </div>
+
               <button type="submit" class="btn btn-success" [disabled]="!singupForm.form.valid">Submit</button>
             </form>
             </div>

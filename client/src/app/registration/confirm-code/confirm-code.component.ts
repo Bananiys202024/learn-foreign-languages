@@ -27,7 +27,7 @@ export class ConfirmCodeComponent implements OnInit {
   ngOnInit() {
 
     this.authService.send_code_to_email_And_get_code(this.form.email).subscribe(
-      (response:string) =>
+      response =>
      {
         console.log('Initialize---'+response);
         this.sendedCode=response;
@@ -39,15 +39,37 @@ export class ConfirmCodeComponent implements OnInit {
 
   onSubmit(form: any) 
  {  
-   console.log(form.controls['password'].value);
-   console.log(this.sendedCode);
+
+
+    //inputed code equals by sended code
     if(form.controls['password'].value === this.sendedCode)
     {
-      this.router.navigate(['/registration/success']);
+      
+      this.httpClientService.registration(this.form).subscribe(
+        response =>
+        {
+              console.log(response);
+          if(response.includes("User with email:") && response.includes("already exists"))
+          {
+            document.getElementById('userExist').click();
+          }
+      
+          //add if success registration go to confirm password by e-mail;
+          if(response.includes("User registered successfully"))
+          {
+            this.router.navigate(['/registration/success']);
+          }
+      
+        }
+        );
+
+      
     }  
   
     //validation there
  }
+
+ 
 
 
 }

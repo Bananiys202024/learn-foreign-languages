@@ -40,7 +40,7 @@ import ch.qos.logback.classic.Logger;
 
 @RestController
 @RequestMapping("/api/auth")
-@CrossOrigin(origins = "http://localhost:4203")
+@CrossOrigin(origins = { "http://localhost:4203", "https://www.google.com" })
 public class AuthController {
 
 	private static final org.apache.logging.log4j.Logger logger = LogManager.getLogger(AuthController.class);
@@ -102,11 +102,20 @@ public class AuthController {
     @PostMapping(value="/send/code/by/email")
     public ResponseEntity<String> register(@RequestBody String email) {  	
     	String code = Security.generateRandomSevenElementCode();
-    	ConfirmEmailorPassword.sendEmail(code, javaMailSender);  	
+    	ConfirmEmailorPassword.sendEmail(code, email, javaMailSender);  	
     	return new ResponseEntity<String>(code, HttpStatus.OK);
     }
     
-    
+    @PostMapping(value="/check/exist/email")
+    public ResponseEntity<String> check_exist_email(@RequestBody User user) {
+        User userExists = userService.findUserByEmail(user.getEmail());
+
+        if (userExists != null) {
+        return new ResponseEntity<String>("User with email: " + user.getEmail() + " already exists", HttpStatus.OK );
+        }
+
+        return new ResponseEntity<String>("Validation of registration data is ok", HttpStatus.OK);
+    }
 
 
 }

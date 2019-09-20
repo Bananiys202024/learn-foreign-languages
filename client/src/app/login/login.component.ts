@@ -16,6 +16,7 @@ export class LoginComponent implements OnInit {
 
   model = new User('', 'password', '', 'email@gmail.com','')
   show = false;
+  failed_login = false;
 
   ngOnInit() {
   }
@@ -37,6 +38,7 @@ console.log(this.model);
        }
       }, (err) => {
         console.log(err);
+        this.failed_login=true;
       });
 
 

@@ -2,30 +2,25 @@ REMEMBER: write time of execution on even task of executed;
 
      
 
-Last: send gmail and generation code; 60 minutes
- 
+Last: 
+Add sending data add to database after success end;
+Validation by unique email, and same passwords;
+Validation to login;
 
-How do i can block view in github some lines:
-@gmail.com
-password to gmail
 
 Next: 
-	  Fixing errors after registration process by email;
-	  Uncaught DOMException: Blocked a frame with origin "https://www.google.com" from accessing a cross-origin frame.
-	  Add sendin data add to database after success end;
-	  Replace sending gmail by inputed in process registration;
-	  Send data by saving to back-end and set time to live, if registration success save those data with 
-	  with checking email in same time;
-	  localToStorage data for checking if that already exist;
-	  Add validation to registration and login process;
-	  Add checking if email alread exist 
-	  Add front-end for input confirm by email
-	  Add back-end sending by email letter;
-	  Add alert if wrong inputed login info.
- 	  Add if dictionaries german,en and ru exists then disable those  buttons in admin cabinet;
- 	  Add validation to process of registration;
-	  front-end success page registration;
- 	  Add registration by phone;
+	  
+Task 1:
+generate page "Restore password"
+add button "restore password" to login/registration;
+Add links to modal registration/confirm_password;	  
+fix green_background login/registraion	 
+Add if dictionaries german,en and ru exists then disable those  buttons in admin cabinet;
+
+Add checking by inputed email
+If that match to:
+efwfwfwe....@gmail.com or ....@....
+ 	  
  
 front-end: 
 creaate anothe page of cabinet for admin;
@@ -63,6 +58,7 @@ Add only 3 attempts to checking e-mail;
 
 https://www.mkyong.com/spring-boot/spring-boot-how-to-send-email-via-smtp/
 
+Add registration by phone;
 
 https://stackoverflow.com/questions/26549379/when-use-responseentityt-and-restcontroller-for-spring-restful-applications
 

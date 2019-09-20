@@ -9,10 +9,10 @@ public class ConfirmEmailorPassword {
 	
 
 	
-	public static void sendEmail(String code, JavaMailSender javaMailSender) {
+	public static void sendEmail(String code, String  email, JavaMailSender javaMailSender) {
 
         SimpleMailMessage msg = new SimpleMailMessage();
-        msg.setTo("BestJavaDeveloper24@gmail.com");
+        msg.setTo(email);
 
         msg.setSubject("Dolphi");
         msg.setText("Ps...closer....yet closer...there is code: \n"+code);
