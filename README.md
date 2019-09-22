@@ -76,7 +76,27 @@ Delete key "mykey"
  Read hash key "mykey"
  
             HGETALL mykey
-            
+
+<h3>Mongodb</h3>
+
+Show all databases
+
+            show dbs; 	
+
+
+Use database "tongues"
+
+           use tongues
+           
+Show tables
+
+           show tabes
+           
+Revise content of table "users"
+
+           db.users.find();
+           
+           
 <h2>Access</h2>
 
 Back-end:  <a href="http://localhost:8083/">http://localhost:8083/</a> </br>
