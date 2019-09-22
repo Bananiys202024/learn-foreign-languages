@@ -3,23 +3,63 @@ REMEMBER: write time of execution on even task of executed;
      
 
 Last: 
-Add sending data add to database after success end;
-Validation by unique email, and same passwords;
-Validation to login;
+generate page "Restore password";
+some front-end pages;
+add button "restore password" to login/registration;
+Add links to modal registration/confirm_password;	
+fix green_background login/registraion	 
+fixing some front-end display;
+Checking by inputed email;
 
 
 Next: 
-	  
-Task 1:
-generate page "Restore password"
-add button "restore password" to login/registration;
-Add links to modal registration/confirm_password;	  
-fix green_background login/registraion	 
-Add if dictionaries german,en and ru exists then disable those  buttons in admin cabinet;
+	Add abilitz to pass money from one account to another;
+	Add ability pay with cards;
+	
+	Add to top menu checkbox with messages
+	Add to cabinet of user and admin change languages, with dropbox, choose between en and german;
+	Add ability to write us(us-company);
+	 
 
-Add checking by inputed email
-If that match to:
-efwfwfwe....@gmail.com or ....@....
+	Add to admin ability send message to all users;
+	Add icon of messages to web-site;
+	
+	How do i can use kafka ?
+	
+	adaptive "review-books" to mobile;
+	Add 30 histories;
+	Add ability choose word and get translate and that then goes to dictionary as new word for learning
+	Add ability to admin create new hostory;
+	add ability translate words of histories;
+	add to back-end exception of address not found for sending confirm email;
+	display mistake in case if registration process not sended email due tue problems;
+	Add if dictionaries german,en and ru exists then disable those  buttons in admin cabinet;
+	Add ability toggle yourself to German language;
+	
+
+	
+For end project;
+End pages;
+progress(persistence_learning);
+training(history and persitance_learning);
+history;
+Add ability write us;
+Add ability to admin write to all;
+Clear mess of back-end and front-end;
+
+With registration of user add automatically detecting:
+country, languages, time_zone, target_learning_language;
+Connect that toggling in cabinet;
+Display choosen language: for registration user;
+
+
+German is not need for resume, that all after that,
+Later i can add translate
+I should familiary closer with broker of messages, if that won't be satisfied for me then create table:
+permission_role: Admin
+message: --
+Target_role: USER;
+
  	  
  
 front-end: 
@@ -97,7 +137,7 @@ persistance of learning for front-end for page "progress"
 
 
 
-
+Add in another project multithreading;
 
 
 
@@ -146,6 +186,9 @@ Telegramm bot on java
 
 
 
+Написать серверный чат на Java. как соедующий проэкт.
+Может быть с использованием сокетом
+Может быть с исопльзование многопточного программирования.
 
 
 

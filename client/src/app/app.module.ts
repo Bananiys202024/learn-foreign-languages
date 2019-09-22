@@ -44,6 +44,8 @@ import { TVComponent } from './tv/tv.component';
 import { CabinetAdminComponent } from './admin/cabinet-admin/cabinet-admin.component';
 import { ConfirmCodeComponent } from './registration/confirm-code/confirm-code.component';
 import { SuccessComponent } from './registration/success/success.component';
+import { InputEmailCodeComponent } from './registration/restore-password/input-email-code/input-email-code.component';
+import { InputNewPasswordComponent } from './registration/restore-password/input-new-password/input-new-password.component';
 
 
 
@@ -71,6 +73,8 @@ import { SuccessComponent } from './registration/success/success.component';
 	CabinetAdminComponent,
 	ConfirmCodeComponent,
 	SuccessComponent,
+	InputEmailCodeComponent,
+	InputNewPasswordComponent,
 	
   ],
   imports: [

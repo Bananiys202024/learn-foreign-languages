@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SuccessComponent implements OnInit {
 
+  executedTask = 'restorePassword or registration.';
+
   constructor() { }
 
   ngOnInit() {

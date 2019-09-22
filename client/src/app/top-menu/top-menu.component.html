@@ -25,23 +25,11 @@
     </ul>
   
     <span class="navbar-text">
-    <div *ngIf="role === 'User'">   
-       <a (click)="goUserCabinet()" class="navbar-brand" >
-        <img src="../../assets/img/account.png" width="36" height="36" [ngClass]="current_choosen_top_menu_button==='cabinet'? 'd-inline-block align-top background-border-color':'d-inline-block align-top'" alt="">
+       <a (click)="goCabinet()" class="navbar-brand" >
+        <img [src]="page_choosen ?'../../assets/img/white-account.png':'../../assets/img/account.png' " width="36" height="36" [ngClass]="page_choosen? 'd-inline-block align-top background-border-color':'d-inline-block align-top'" alt="">
        </a>
-    </div>
-
   </span>
   
-    <span class="navbar-text">
-      <div *ngIf="role === 'Admin'">   
-         <a (click)="goAdminCabinet()" class="navbar-brand" >
-          <img src="../../assets/img/account.png" width="36" height="36" [ngClass]="current_choosen_top_menu_button==='cabinet'? 'd-inline-block align-top background-border-color':'d-inline-block align-top'" alt="">
-         </a>
-      </div>
-
-  </span>
-
 
 
       </div>

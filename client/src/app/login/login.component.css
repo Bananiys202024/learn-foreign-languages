@@ -1,9 +1,5 @@
-.bg-dark-green
+.bg-dark-green 
 {
-    background: #22b473;
-}
-
-.h-100-vh
-{
-    height: 94vh;
+  background: #22b473;
+  height:105%;
 }

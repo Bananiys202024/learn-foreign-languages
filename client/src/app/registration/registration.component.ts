@@ -34,6 +34,7 @@ export class RegistrationComponent implements OnInit {
   constructor(private httpClientService:HttpClientService, private router: Router, private authService: AuthService, private form_user_data: FormUserDataService) { }
 
   ngOnInit() {
+    this.emailExist=false;
   }
 
  model = new User('name', 'password', 'password', 'email@gmail.com', '');

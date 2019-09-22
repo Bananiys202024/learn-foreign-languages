@@ -30,7 +30,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Восстановить пароль</button>
+        <button type="button" routerLink="restore-password/email" data-dismiss="modal" class="btn btn-primary">Восстановить пароль</button>
       </div>
     </div>
   </div>
@@ -41,13 +41,13 @@
 
 <app-top-menu-before-authetication></app-top-menu-before-authetication>
 
-<div class="bg-dark-green h-100-vh">
-<div class="container">
+<div class="bg-dark-green">
+<div class="container h-100">
 
 
   
-  <div class="h-100-vh d-flex align-items-center row justify-content-center pt-5 pb-5">
-  <div class=" col-5">
+  <div class="h-100 d-flex align-items-center row justify-content-center ">
+  <div class="col-5">
       <div class="card card-signin my-5">
       <div class="card-body bg-white">
     <h1 class="text-center pt-2 card-title">Регистрация</h1>
@@ -65,12 +65,15 @@
       <div class="form-group">
         <label for="email">e-mail</label>
         <input type="email" class="form-control" id="email" required
-       [(ngModel)]="model.email" name="email" #email="ngModel">
-        <div [hidden]="email.valid || email.pristine"
-     	class="alert alert-danger">
-       Либо вам необходимо ввести емайл
-       </div>
+       [(ngModel)]="model.email" name="email" #email="ngModel" pattern="[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
+    
        
+       <div [hidden]="email.valid"
+     	class="alert alert-danger">
+       Пожалуйста включите в емайл "@" и дополните типом майла, например:
+       email@gmail.com
+       </div>
+
        <div [hidden]="email_not_exist"
      	class="alert alert-danger">
        Такой емайл уже существует
