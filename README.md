@@ -96,6 +96,11 @@ Revise content of table "users"
 
            db.users.find();
            
+Drop database
+       
+           db.dropDatabase()
+            
+            
            
 <h2>Access</h2>
 
