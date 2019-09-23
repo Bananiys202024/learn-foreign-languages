@@ -23,6 +23,7 @@ import { SuccessComponent } from './registration/success/success.component';
 import { ConfirmCodeComponent } from './registration/confirm-code/confirm-code.component';
 import { InputNewPasswordComponent } from './registration/restore-password/input-new-password/input-new-password.component';
 import { InputEmailCodeComponent } from './registration/restore-password/input-email-code/input-email-code.component';
+import { MessagesComponent } from './cabinet/messages/messages.component';
 
 
 const routes: Routes = [
@@ -52,7 +53,8 @@ const routes: Routes = [
 	  { path: 'training', canActivate: [AuthGuard], component: TrainingWordsSliderComponent, data: {animation: 'StandartAnimation11'}},
 	  { path: 'tv', canActivate: [AuthGuard], component: TVComponent, data: {animation: 'StandartAnimation15'}},
 
-	  { path: 'cabinet', canActivate: [AuthGuard], component: CabinetComponent, data: {animation: 'StandartAnimation12'}},
+	  { path: 'user/cabinet', canActivate: [AuthGuard], component: CabinetComponent, data: {animation: 'StandartAnimation23'}},
+	  { path: 'user/messages', canActivate: [AuthGuard], component: MessagesComponent, data: {animation: 'StandartAnimation22'}},
 
 	  { path: 'result-training-words/:wrong/:right', canActivate: [AuthGuard], component: ResultTrainingWordsComponent, data: {animation: 'StandartAnimation13'} },
 

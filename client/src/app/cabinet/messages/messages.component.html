@@ -1,0 +1,118 @@
+
+
+<!--Loader-->
+<div [class.hidden]="!show" class=" loader text-center">
+        <div class="spinner-border" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+      </div>
+    <!--....-->
+    
+    <div [ngClass]="!show?'allOkey':'darkness'">
+    
+    
+    <html>
+    <app-top-menu></app-top-menu>
+    <body  class="thisIsBody">
+        
+    
+
+    <div class="container pt-5">
+    <!--  *ngIf="emptyDictionary == true"    -->
+        
+    <!-- Button trigger modal -->
+    
+    <button type="button" id="modalClick" style="display:none;" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+      Launch demo modal
+    </button>
+    
+    
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">В словаре нет слов</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body ">
+           <div class="text-center">
+                   <a role="button" data-dismiss="modal" data-toggle="modal" data-target="#exampleModal" (click)="getTenWordsToDictionary()" class="btn btn-primary mt-2 text-white">Добавить 10 наиболее встречающихся слов</a>
+                   <button type="button" data-dismiss="modal" class="btn btn-primary mt-2 mb-2">Добавить слова из историй</button>
+          </div>
+          
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Вернуться</button>
+    
+          </div>
+        </div>
+      </div>
+    </div>
+        
+        
+    
+    
+    
+    <!-- We need ue this href, it related with carousel, ngb.. -->
+    <a href="/training" id="GoToDashBoard" style="display:none;">Exit</a>
+    
+    
+    
+   
+    
+    
+    
+    <div class="container">
+    
+    <table class="width-100">
+            <thead>
+                    <tr>
+                      <th scope="col-1"></th>  <!--1-->
+                      <th scope="col-3"></th>  
+                      <th scope="col-7"></th>
+                      <th scope="col-1"></th>  <!--4--> 
+                    </tr>
+            </thead>
+
+        <tbody>
+            <tr>
+                <td class="float-right"><input type="checkbox" value="Check"></td>
+                <td>Topic</td>
+                <td>Значимость этих проблем настолько очевидна </td>
+                <td class="float-right">22.09.19</td>
+            </tr>
+        </tbody>
+    </table>
+
+    
+    
+    
+    
+    </div> <!--container end-->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+                  </div>  
+    
+    </body>
+    
+    
+    
+    </html>
+    
+    </div>
+    
+    <app-bottom-menu></app-bottom-menu>
+    

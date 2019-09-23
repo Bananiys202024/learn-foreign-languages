@@ -10,6 +10,8 @@ import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
+import com.web.Fremdsprache.model.Preference;
+
 import lombok.Builder;
 import lombok.Data;
 
@@ -32,18 +34,9 @@ public @Data class User {
 	    
 	    @Transient
 	    private String confirmPassword;
-	 
-	    @Field(value = "registration_date")
-	    private Date date_of_registration;
-	    
-	    @Field(value = "status")
-	    private String status;
 
-	    @Field(value = "enabled")
-	    private boolean enabled;
-
-	    @Field(value = "experience")
-	    private long experience;
+	    @DBRef
+	    private Set<Preference> preference;
 	    
 	    @DBRef
 	    private Set<Role> roles;

@@ -25,7 +25,15 @@
     </ul>
   
     <span class="navbar-text">
+      <a (click)="displayMessages()" class="navbar-brand" >
+       <img src="../../assets/img/top-menu/message.png" width="36" height="36" class="d-inline-block align-top" alt=""/>
+       <i class="message_number">{{ new_messages }}</i>
+      </a>
+ </span>
+
+    <span class="navbar-text">
        <a (click)="goCabinet()" class="navbar-brand" >
+        
         <img [src]="page_choosen ?'../../assets/img/white-account.png':'../../assets/img/account.png' " width="36" height="36" [ngClass]="page_choosen? 'd-inline-block align-top background-border-color':'d-inline-block align-top'" alt="">
        </a>
   </span>

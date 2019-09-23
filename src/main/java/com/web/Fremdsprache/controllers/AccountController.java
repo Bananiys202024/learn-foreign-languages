@@ -24,6 +24,7 @@ import com.web.Fremdsprache.repositories.UserRepository;
 import com.web.Fremdsprache.repositoryImpl.AccountInformation;
 import com.web.Fremdsprache.repositoryImpl.DictionariesEnglish;
 import com.web.Fremdsprache.repositories.CashExperience;
+import com.web.Fremdsprache.repositories.CashePersistence;
 import com.web.Fremdsprache.repositories.ConstEnDictRepo;
 import com.web.Fremdsprache.repositories.ConstGmDictRepo;
 import com.web.Fremdsprache.repositories.ConstRnDictRepo;
@@ -35,15 +36,7 @@ public class AccountController {
 
 	private static final Logger logger = LogManager.getLogger(AccountController.class);
 
-	@Autowired
-	ConstEnDictRepo englishDictionaryRepository;
-	
-	@Autowired
-	ConstGmDictRepo  germanDictionaryRepository;
-	
-	@Autowired
-	ConstRnDictRepo  russianDictionaryRepository;
-	
+
 	@Autowired
 	public DictionaryRepository dictionaryRepository;
     
@@ -53,25 +46,9 @@ public class AccountController {
     @Autowired
     CashExperience cashExperience;
     
-	String owner="Admin";
-	
-	//only for admin
-	@PutMapping(value = "generate/english/dictionary")
-	public void generate_english_dictionary() throws Exception {
-		ActiveInitializingg.initalizeMostUsedEnglishWordsToTableMongo(englishDictionaryRepository);
-	}
-	
-	//only for admin
-	@PutMapping(value = "generate/russian/dictionary")
-	public void generate_russian_dictionary() throws Exception {
-		ActiveInitializingg.initalizeMostUsedRussianWordsToTableMongo(russianDictionaryRepository);
-	}
-	
-	//only for admin
-	@PutMapping(value = "generate/german/dictionary")
-	public void generate_german_dictionary() throws Exception {
-		ActiveInitializingg.initalizeMostUsedGermanWordsToTableMongo(germanDictionaryRepository);
-	}
+    @Autowired 
+    CashePersistence cashe_persistence;
+    
 	
 	//get learned words
     //get detected words
@@ -88,8 +65,7 @@ public class AccountController {
 	@GetMapping(value = "days/persistence/learning")
 	public int days_persistence_learning(Principal principal) {
 		String loggedUser = principal.getName();
-//		return AccountInformation.days_persistence_learning(dictionaryRepository, users, loggedUser, cashExperience);
-		return 2;
+		return AccountInformation.days_persistence_learning(users, loggedUser, cashe_persistence);
 	}
 	
 	

@@ -11,6 +11,8 @@ export class TopMenuComponent implements OnInit {
   current_choosen_top_menu_button = this.router.url.replace('/','');
   role = localStorage.getItem('role'); 
   page_choosen = false;
+  new_messages = 1;
+
   constructor(private router: Router,) { }
 
   ngOnInit() {
@@ -22,12 +24,15 @@ export class TopMenuComponent implements OnInit {
   goCabinet()
   {
     if(this.role === 'User')
-    this.router.navigate(['cabinet']);
+    this.router.navigate(['user/cabinet']);
 
     if(this.role === 'Admin')
     this.router.navigate(['admin/cabinet']);
   }
 
-
+  displayMessages()
+  {
+    this.router.navigate(['user/messages']);
+  }
 
 }

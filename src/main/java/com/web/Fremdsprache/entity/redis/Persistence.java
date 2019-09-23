@@ -1,5 +1,7 @@
 package com.web.Fremdsprache.entity.redis;
 
+import java.util.Date;
+
 import org.springframework.data.redis.core.RedisHash;
 import org.springframework.data.redis.core.TimeToLive;
 
@@ -13,6 +15,7 @@ public class Persistence {
 
 	String owner;
 	int days;
+	Date date;
 	
 	@TimeToLive
 	  public long getTimeToLive() {

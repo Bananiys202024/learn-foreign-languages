@@ -61,3 +61,18 @@ body
 {
   height:auto;
 }
+
+.width-20
+{
+  width:20%;
+}
+
+.width-1
+{
+  width:1%;
+}
+
+.width-100
+{
+  width:100%;
+}

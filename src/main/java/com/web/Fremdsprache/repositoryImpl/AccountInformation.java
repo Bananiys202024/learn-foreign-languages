@@ -9,6 +9,7 @@ import com.web.Fremdsprache.entity.mongodb.DictionaryEnglish;
 import com.web.Fremdsprache.entity.redis.Experience;
 import com.web.Fremdsprache.model.BanchProgressData;
 import com.web.Fremdsprache.repositories.CashExperience;
+import com.web.Fremdsprache.repositories.CashePersistence;
 import com.web.Fremdsprache.repositories.DictionaryRepository;
 import com.web.Fremdsprache.repositories.UserRepository;
 
@@ -70,6 +71,28 @@ public class AccountInformation {
 	private static byte get_experience_earned_today(CashExperience cashExperience, String owner) {
 		Optional<Experience> found = cashExperience.findById(owner);		
 		return (byte) (found.isPresent()?found.get().getExperience():0);
+	}
+
+
+
+	public static int days_persistence_learning(UserRepository users, String loggedUser,
+			CashePersistence cashe_persistence) {
+		
+		
+		//users get time-zone
+		//count date from now;
+		//check if in cashe_persistence exist user(owner)
+		//if no then create new example of cash_persistence objecct PersistenceCash
+		//with current data, days to one , owner -loggedName
+		//if yes check last date, if current date equals by lastDate.
+		//then miss  and return
+		//if last date not equals them
+		//update object cahePersitenct of cashe_persistence
+		//days+1, if days==5 then goes to 1;
+		//date current set and set owner-loggedName.
+		
+		
+		return 0;
 	}
 
 }

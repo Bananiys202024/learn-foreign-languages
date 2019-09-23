@@ -46,6 +46,7 @@ import { ConfirmCodeComponent } from './registration/confirm-code/confirm-code.c
 import { SuccessComponent } from './registration/success/success.component';
 import { InputEmailCodeComponent } from './registration/restore-password/input-email-code/input-email-code.component';
 import { InputNewPasswordComponent } from './registration/restore-password/input-new-password/input-new-password.component';
+import { MessagesComponent } from './cabinet/messages/messages.component';
 
 
 
@@ -75,6 +76,7 @@ import { InputNewPasswordComponent } from './registration/restore-password/input
 	SuccessComponent,
 	InputEmailCodeComponent,
 	InputNewPasswordComponent,
+	MessagesComponent,
 	
   ],
   imports: [

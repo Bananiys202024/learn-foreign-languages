@@ -3,20 +3,22 @@ REMEMBER: write time of execution on even task of executed;
      
 
 Last: 
-generate page "Restore password";
-some front-end pages;
-add button "restore password" to login/registration;
-Add links to modal registration/confirm_password;	
-fix green_background login/registraion	 
-fixing some front-end display;
-Checking by inputed email;
+created logic of adding days persistence;
+I broke app with new architecture of app;
+message iconf in top-menu;
 
 
 Next: 
+	fixing all new fault;
+	front-end of message page
+	change process of registration;
+    I need set time-zone for even user, and display time in match with even time-zone;
+	Change path in AdminController; RequestController path;
 	Add abilitz to pass money from one account to another;
 	Add ability pay with cards;
 	
-	Add to top menu checkbox with messages
+	connect ability send message for admin;
+	Add to top menu checkbox with messages;
 	Add to cabinet of user and admin change languages, with dropbox, choose between en and german;
 	Add ability to write us(us-company);
 	 
@@ -36,6 +38,7 @@ Next:
 	Add if dictionaries german,en and ru exists then disable those  buttons in admin cabinet;
 	Add ability toggle yourself to German language;
 	
+	Add scheduling with sending statistics;
 
 	
 For end project;
@@ -60,6 +63,7 @@ permission_role: Admin
 message: --
 Target_role: USER;
 
+ 	  	In table "User" create another table "Preferences" and there add all other preferences;
  	  
  
 front-end: 
