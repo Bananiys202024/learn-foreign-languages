@@ -96,6 +96,12 @@ Revise content of table "users"
 
            db.users.find();
            
+Drop database "tongues"
+
+           use tongues       
+           db.dropDatabase()
+            
+            
            
 <h2>Access</h2>
 
