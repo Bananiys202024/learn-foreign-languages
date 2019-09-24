@@ -19,6 +19,7 @@ import org.springframework.stereotype.Service;
 
 import com.web.Fremdsprache.entity.mongodb.Role;
 import com.web.Fremdsprache.entity.mongodb.User;
+import com.web.Fremdsprache.model.Preference;
 import com.web.Fremdsprache.repositories.RoleRepository;
 import com.web.Fremdsprache.repositories.UserRepository;
 
@@ -74,13 +75,17 @@ public class CustomUserDetailsService implements UserDetailsService {
 	    userRole.setId(id);
 	    userRole.setRole(role);
 	    
-	    user.setDate_of_registration(new Date());
-	    user.setId(id);
-	    user.setStatus("okey");
-	    user.setExperience(0L);
-	    user.setEnabled(true);
+	    Preference preference = new Preference();
+	    preference.setId(id);
+	    preference.setDate_of_registration(new Date());
+	    preference.setStatus("okey");
+	    preference.setExperience(0L);
+	    preference.setEnabled(true);
+	    
 	    user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
 	    user.setRoles(new HashSet<>(Arrays.asList(userRole)));
+	    user.setId(id);
+	    user.setPreference(new HashSet<>(Arrays.asList(preference)));
 	    
 	    roleRepository.save(userRole);
 	    userRepository.save(user);

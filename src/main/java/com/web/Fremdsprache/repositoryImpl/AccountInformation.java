@@ -28,7 +28,7 @@ public class AccountInformation {
 		int learned_words = (int) list.stream().filter(c -> c.isLearned()==true ).count();
 		int all_words_dictionary = list.size();
 		int learning_words = all_words_dictionary-learned_words;
-		long current_level_experience = users.findByEmail(owner).getExperience();
+		long current_level_experience = users.findByEmail(owner).getPreference().iterator().next().getExperience();
 		int experience_before_next_level = 1422; //there is will method for count that number;
 
 		byte experience_earned_today = get_experience_earned_today(cashExperience, owner);

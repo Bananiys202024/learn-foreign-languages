@@ -6,8 +6,10 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
+import lombok.Data;
+
 @Document(collection = "preference")
-public class Preference {
+public @Data class Preference {
 
     @Id
     private Long id;
@@ -25,15 +27,15 @@ public class Preference {
     private long experience;
     
     @Field(value = "timezone")
-    private long timezone;
+    private String timezone;
     
     @Field(value = "country")
-    private long country;
+    private String country;
 
     @Field(value = "native_language")
-    private long native_language;
+    private String native_language;
     
     @Field(value = "target_learning_language")
-    private long target_learning_language;
+    private String target_learning_language;
     
 }

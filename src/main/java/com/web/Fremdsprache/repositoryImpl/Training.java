@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -18,6 +19,7 @@ import com.web.Fremdsprache.entity.mongodb.DictionaryEnglish;
 import com.web.Fremdsprache.entity.mongodb.User;
 import com.web.Fremdsprache.entity.redis.Experience;
 import com.web.Fremdsprache.model.Mistakes;
+import com.web.Fremdsprache.model.Preference;
 import com.web.Fremdsprache.model.Random;
 import com.web.Fremdsprache.model.Train;
 import com.web.Fremdsprache.repositories.CashExperience;
@@ -190,8 +192,9 @@ public class Training {
 
 	private static void saveExperienceToUser(String loggedUser, UserRepository users, byte experience) {	
 		User found = users.findByEmail(loggedUser);
-		found.setExperience(found.getExperience()+experience);
-		
+		Preference preference = found.getPreference().iterator().next();
+		preference.setExperience(preference.getExperience()+experience);
+		found.setPreference(new HashSet<>(Arrays.asList(preference)));
 		users.save(found);
 	}
 

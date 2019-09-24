@@ -10,6 +10,8 @@ import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.web.Fremdsprache.model.Preference;
 
 import lombok.Builder;
@@ -36,6 +38,8 @@ public @Data class User {
 	    private String confirmPassword;
 
 	    @DBRef
+	    @JsonProperty("preference")
+	    @JsonFormat(with = JsonFormat.Feature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
 	    private Set<Preference> preference;
 	    
 	    @DBRef

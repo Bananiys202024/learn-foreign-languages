@@ -69,6 +69,10 @@ public class AuthController {
             String password = data.getPassword();
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, data.getPassword()));
             User found = this.users.findByEmail(username);
+            
+            if(!found.getPreference().iterator().next().isEnabled())//if doesn't enable user;
+            return new ResponseEntity<String>("User is disabled", HttpStatus.OK);
+
             String token = jwtTokenProvider.createToken(username, found.getRoles());
             logger.info("We reached this point");
             

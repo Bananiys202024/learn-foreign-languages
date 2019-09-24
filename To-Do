@@ -3,12 +3,29 @@ REMEMBER: write time of execution on even task of executed;
      
 
 Last: 
-created logic of adding days persistence;
-I broke app with new architecture of app;
-message iconf in top-menu;
-
+fixing failure registration app;90minutes
+some front-end:5minutes;
+If user not_enabled then can't go to web-site:10minutes;
 
 Next: 
+	if failed_login add message "failed_login to "login" page;
+	Add to Admin disable user by Id;
+		
+	drop exception from back-end and intercept that from side of front-end;
+	
+	Main: Add other data information to registration form;
+	Before: check how set Time-zone, read some;Which values for time-zone need;
+			
+	
+	
+	For prevent infinity loading fo learning_words: Add return to controller, add response
+	if that ConstEnDict empty then doesn't do nothing;
+	
+	
+	fix inifinity loop loading words;
+	fix failure of words
+	set new field of Preference.class;(registration/login);
+    do i replace in password String to char[] for fields password and ConfirmPassword
 	fixing all new fault;
 	front-end of message page
 	change process of registration;
@@ -22,6 +39,9 @@ Next:
 	Add to cabinet of user and admin change languages, with dropbox, choose between en and german;
 	Add ability to write us(us-company);
 	 
+	 familiar more with JwtResponse as response to htto in angualr;
+	 
+	 Block to user login to web-site if his enable.equals(true);
 
 	Add to admin ability send message to all users;
 	Add icon of messages to web-site;

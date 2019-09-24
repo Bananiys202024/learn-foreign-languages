@@ -4,6 +4,7 @@ import { HttpClientService } from '../../service/http-client.service';
 import { Router } from '@angular/router';
 import { FormUserDataService } from 'src/app/service/model/form-user-data.service';
 import { AuthService } from 'src/app/auth.service';
+import { Preference } from 'src/app/classes/preference';
 
 
 @Component({
@@ -22,7 +23,7 @@ export class ConfirmCodeComponent implements OnInit {
 
    }
 
-  model = new User('', 'Я банан', '', '', '')
+  model = new User('', 'Я банан', '', '', '', new Preference( new Date(), '2', true, 4, '5', '6', '7', '8'))
   
   ngOnInit() {
 

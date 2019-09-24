@@ -2,6 +2,7 @@ package com.web.Fremdsprache.entity.redis;
 
 import java.util.Date;
 
+import org.springframework.data.annotation.Id;
 import org.springframework.data.redis.core.RedisHash;
 import org.springframework.data.redis.core.TimeToLive;
 
@@ -13,6 +14,7 @@ import lombok.Builder;
 @RedisHash("experience")
 public class Persistence {
 
+	@Id
 	String owner;
 	int days;
 	Date date;

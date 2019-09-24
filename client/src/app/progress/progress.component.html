@@ -91,7 +91,7 @@
                             </span>
                             <div class="progress-value">
                                 <div>
-                                    {{ before_next_level }}<br>
+                                    {{ before_next_level || 500}}<br>
                                     <span>До следующего уровня</span>
                                 </div>
                             </div>
@@ -100,9 +100,9 @@
                 </div>
             </div>
 
-            <div class="next-level">Текущий уровень: <span class="level"> {{ current_level }}</span></div>
-            <div class="next-level">За 24 часа: <span class="level">+{{ experience_earned_today }}xp</span></div>
-            <div class="next-level">Текущий опыт: <span class="level">+{{ current_level_experience }}xp</span></div>
+            <div class="next-level">Текущий уровень: <span class="level"> {{ current_level || 0}}</span></div>
+            <div class="next-level">За 24 часа: <span class="level">+{{ experience_earned_today || 0 }}xp</span></div>
+            <div class="next-level">Текущий опыт: <span class="level">+{{ current_level_experience || 0 }}xp</span></div>
 
             
 
@@ -142,7 +142,7 @@
                                     </div>
 
                                     <div class="text-block mt-1">
-                                    <span>{{ learned_words }}</span> 
+                                    <span>{{ learned_words || 0}}</span> 
                                     <b>слова<br>
                                     изучено</b>
                                     </div>
@@ -166,7 +166,7 @@
                                     </div>
 
                                     <div class="text-block mt-1">
-                                            <span>{{ learning_words }}</span> 
+                                            <span>{{ learning_words || 0}}</span> 
                                             <b>слов<br>
                                                 на изучении</b>
                                       </div>
@@ -181,7 +181,7 @@
                
                 <div class="words styling mt-5">
                        <span class="text-muted"> Cловарный запас</span>
-                       <span class="those-words">{{ all_words_dictionary }}</span>
+                       <span class="those-words">{{ all_words_dictionary || 0}}</span>
                        <span class="learned_words"> слова </span>
                 </div>
     

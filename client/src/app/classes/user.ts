@@ -1,3 +1,5 @@
+import { Preference } from './preference';
+
 export class User {
 
     constructor(
@@ -6,6 +8,7 @@ export class User {
         public confirmPassword: string,
         public email: string,
         public role:string,
+        public preference:Preference,
       ) {  }
 
 }

@@ -15,6 +15,7 @@ import {
   HttpErrorResponse
 } from '@angular/common/http';
 import { FormUserDataService } from '../service/model/form-user-data.service';
+import { Preference } from '../classes/preference';
 
 
 @Component({
@@ -37,7 +38,7 @@ export class RegistrationComponent implements OnInit {
     this.emailExist=false;
   }
 
- model = new User('name', 'password', 'password', 'email@gmail.com', '');
+ model = new User('name', 'password', 'password', 'email@gmail.com', '', new Preference( new Date(), '2', true, 4, '5', '6', '7', '8'));
   
  onSubmit(form: any) 
  {  
