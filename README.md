@@ -39,7 +39,7 @@ Clear all started containers
             docker rm -f $(docker ps -a -q) 	
 
 
-Start
+Start(long note)
 
             ./gradlew bootJar
 
@@ -47,6 +47,10 @@ Start
 
             docker-compose up
             
+Start(short note)
+    
+            ./gradlew bootJar;docker-compose build;docker-compose up;
+   
 <h3>Redis</h3>
 
 Start
