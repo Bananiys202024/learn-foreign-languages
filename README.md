@@ -95,6 +95,10 @@ Use database "tongues"
 Show tables
 
            show tabes
+
+Get number of lines in table "users"
+
+           db.users.count();
            
 Revise content of table "users"
 
