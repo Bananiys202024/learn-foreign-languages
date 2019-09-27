@@ -1,6 +1,7 @@
 package com.web.Fremdsprache.controllers;
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,7 +41,7 @@ public class Testing {
 	
 	@RequestMapping(value = "/check", method = RequestMethod.GET, produces = "application/json")
 	public String check() throws Exception {
-			return "Checking_work_really_work_good_word_last_not_last";
+			return "Checking_work_really_work_good_word_last_not_last+"+ new Date();
 	}
 	
 //	@RequestMapping(value = "/redis/add", method = RequestMethod.GET, produces = "application/json")

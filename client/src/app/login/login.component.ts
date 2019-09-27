@@ -31,15 +31,23 @@ console.log(this.model);
     this.authService.login(JSON.stringify(this.model))
       .subscribe(res => {
 
-        if(res.includes('User is disabled'))
-        {
-        this.message='User is disabled, it seems you some type of terrorist or unpleasure type or even worse...';
-        this.title_message='User is disabled';
-        document.getElementById('messageIcon').click();
-        }
+        // if(res.includes('User is disabled'))
+        // {
+        // this.message='Пользователь отключен, похоже вы терорист или просто неприятный тип или даже хуже..поэтому вы не можите войти на веб-сайт';
+        // this.title_message='User is disabled';
+        // document.getElementById('messageIcon').click();
+        // }
         
-        else //start else
+        // else //start else
+        // {
+
+        console.log('boolean--'+ typeof res === 'string')
+        if(typeof res ==="string")
         {
+          console.log('rest---'+res);
+          console.log('string');
+        }
+
         console.log(res);
         if (res.token) {
           localStorage.setItem('token', res.token);
@@ -51,7 +59,9 @@ console.log(this.model);
           }
         }//end else
         
-      },(err) => {
+      ,(err) => {
+        console.log('Error----'+JSON.stringify(err));
+        console.log('Obtained---'+err.message);
         console.log(err);
         this.failed_login=true;
       }

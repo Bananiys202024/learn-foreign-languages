@@ -7,12 +7,15 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import com.web.Fremdsprache.config.JwtTokenProvider;
+import com.web.Fremdsprache.entity.mongodb.Preference;
 import com.web.Fremdsprache.entity.mongodb.Role;
 import com.web.Fremdsprache.entity.mongodb.User;
+import com.web.Fremdsprache.repositories.PreferenceRepository;
 import com.web.Fremdsprache.repositories.RoleRepository;
 import com.web.Fremdsprache.repositories.UserRepository;
 import com.web.Fremdsprache.service.CustomUserDetailsService;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.apache.logging.log4j.LogManager;
@@ -36,13 +39,19 @@ public class PassiveInitializing implements ApplicationListener<ContextRefreshed
     @Autowired 
     RoleRepository roles;
     
+	@Autowired
+	private  PreferenceRepository preferenceRepository;
+	
+	
 	@Override
 	public void onApplicationEvent(ContextRefreshedEvent event) {
 		logger.info("Starting passive initializing..");
 		
-		
 		//checking if Admin role exist in app
 		Optional<Role> adminExist = roles.findByRole("Admin");
+		
+		List<Preference> preferenceExist = preferenceRepository.findAll();
+		logger.info("Checking--" + preferenceExist);
 		
 		if(adminExist.isPresent())
 		{

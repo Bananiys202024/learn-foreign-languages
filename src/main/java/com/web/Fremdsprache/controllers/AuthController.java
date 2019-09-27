@@ -60,18 +60,26 @@ public class AuthController {
 	@Autowired
     private JavaMailSender javaMailSender;
 	
+ 
+   
     @SuppressWarnings("rawtypes")
     @PostMapping("/login")
     public ResponseEntity login(@RequestBody AuthBody data) {
-        try {
+       
+//    	throw new BadCredentialsException("Invalid email/password supplied");
+    	try {
         	logger.info("Email---"+data.getEmail()+"---passwd3e---"+data.getPassword());
             String username = data.getEmail();
             String password = data.getPassword();
-            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, data.getPassword()));
+            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
             User found = this.users.findByEmail(username);
+            logger.info("Chec-point-1");
             
             if(!found.getPreference().iterator().next().isEnabled())//if doesn't enable user;
-            return new ResponseEntity<String>("User is disabled", HttpStatus.OK);
+            {
+            	logger.info("User is disabled");
+            	return new ResponseEntity<String>("User is disabled", HttpStatus.OK);
+            }
 
             String token = jwtTokenProvider.createToken(username, found.getRoles());
             logger.info("We reached this point");
@@ -82,12 +90,19 @@ public class AuthController {
             model.put("password", password);
             model.put("username", found.getUsername());
             model.put("role", found.getRoles().iterator().next().getRole());
-            
+           
             return ok(model);
         } catch (AuthenticationException e) {
-            throw new BadCredentialsException("Invalid email/password supplied");
+        	logger.error("Error Authentication");
+            return new ResponseEntity<String>("Invalid email/password supplied", HttpStatus.OK);
         }
+    	catch(Exception e) {
+    		logger.error("Commong error "+e);
+            return new ResponseEntity<String>("Common error", HttpStatus.OK);
+    	}
+
     }
+
 
     @SuppressWarnings("rawtypes")
     @PostMapping(value="/register")

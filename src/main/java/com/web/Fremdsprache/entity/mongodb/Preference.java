@@ -1,4 +1,5 @@
-package com.web.Fremdsprache.model;
+package com.web.Fremdsprache.entity.mongodb;
+
 
 import java.util.Date;
 

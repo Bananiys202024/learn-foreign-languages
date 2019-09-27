@@ -1,14 +1,22 @@
 REMEMBER: write time of execution on even task of executed;
 
      
-
+     
+     
+     
+     
 Last: 
-fixing failure registration app;90minutes
-some front-end:5minutes;
-If user not_enabled then can't go to web-site:10minutes;
+detected and fixed errors of create table "preference";100minutes
+
+
 
 Next: 
-	if failed_login add message "failed_login to "login" page;
+Add exceptions:
+User doesn't exist
+User  disabled;
+User invalid password/email
+
+
 	Add to Admin disable user by Id;
 		
 	drop exception from back-end and intercept that from side of front-end;
@@ -249,12 +257,14 @@ What do i can do with arch-linux;
 Add 
 
 
-
+thunar for open program
 
 Add automatically execution in terminal some command on start i3;
 may be use some another programm or SCRIPT
 YES, i should simple write script, that's quite interesting;
 
+
+USB-stick:
 
 
 install

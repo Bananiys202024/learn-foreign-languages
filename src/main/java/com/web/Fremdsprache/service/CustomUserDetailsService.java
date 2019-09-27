@@ -17,9 +17,10 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.web.Fremdsprache.entity.mongodb.Preference;
 import com.web.Fremdsprache.entity.mongodb.Role;
 import com.web.Fremdsprache.entity.mongodb.User;
-import com.web.Fremdsprache.model.Preference;
+import com.web.Fremdsprache.repositories.PreferenceRepository;
 import com.web.Fremdsprache.repositories.RoleRepository;
 import com.web.Fremdsprache.repositories.UserRepository;
 
@@ -34,6 +35,9 @@ public class CustomUserDetailsService implements UserDetailsService {
 
 	@Autowired
 	private PasswordEncoder bCryptPasswordEncoder;
+	
+	@Autowired
+	private  PreferenceRepository preferenceRepository;
 	
 	@Override
 	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
@@ -87,8 +91,10 @@ public class CustomUserDetailsService implements UserDetailsService {
 	    user.setId(id);
 	    user.setPreference(new HashSet<>(Arrays.asList(preference)));
 	    
+	    preferenceRepository.save(preference);
 	    roleRepository.save(userRole);
 	    userRepository.save(user);
+	    
 	}
 
 	private Long generateId() {
