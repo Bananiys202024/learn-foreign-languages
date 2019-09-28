@@ -6,17 +6,11 @@ REMEMBER: write time of execution on even task of executed;
      
      
 Last: 
-detected and fixed errors of create table "preference";100minutes
+catched exceptions in login: user doesn't exist, user disabled;invalid password/email;
 
 
 
 Next: 
-Add exceptions:
-User doesn't exist
-User  disabled;
-User invalid password/email
-
-
 	Add to Admin disable user by Id;
 		
 	drop exception from back-end and intercept that from side of front-end;
@@ -68,6 +62,7 @@ User invalid password/email
 	
 	Add scheduling with sending statistics;
 
+	initialiye disconnected userö
 	
 For end project;
 End pages;
@@ -233,6 +228,9 @@ Implement confirmation of code by sendin to email info and then by href confirm 
 
 
 
+Add install yourt before install i3;
+
+clean terminals by start;
 
 
 
@@ -252,7 +250,11 @@ corky:
 
 Add to linux, output bad words on bad password;
 
+install conky before installing i3wm;
+
 What do i can do with arch-linux;
+
+add folder for setting fah;
 
 Add 
 

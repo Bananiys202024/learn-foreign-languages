@@ -69,10 +69,22 @@
                  </div>
               </div>
       
-              <div *ngIf="failed_login"
+              <div *ngIf="failed_login_invalid_password_email"
               class="alert alert-danger">
             Пароль или емайл не верны.
               </div>
+
+
+              <div *ngIf="failed_login_may_be_user_does_not_exist"
+              class="alert alert-danger">
+              Пользователь с таким емайлом не существует
+              </div>
+
+              <div *ngIf="failed_login_disabled_user"
+              class="alert alert-danger">
+              К сожалению пользователь отключен, похоже вы терорист или что-то типо того. Если не согласны можете написать в службу поддержки, сюда.
+              </div>
+              
 
               <button type="submit" class="btn btn-success" [disabled]="!singupForm.form.valid">Submit</button>
             </form>

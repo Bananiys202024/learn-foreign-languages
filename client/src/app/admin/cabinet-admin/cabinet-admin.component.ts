@@ -4,6 +4,9 @@ import { HttpClientService } from '../../service/http-client.service';
 import { Subscription } from 'rxjs';
 import { LoaderService } from '../../service/loader.service';
 import { LoaderState } from '../../loader/LoaderState';
+import { User } from 'src/app/classes/user';
+import { Preference } from 'src/app/classes/preference';
+import { NgForm } from '@angular/forms';
 
 
 @Component({
@@ -13,7 +16,7 @@ import { LoaderState } from '../../loader/LoaderState';
 })
 export class CabinetAdminComponent implements OnInit {
 
- 
+  model = new User('', 'password', '', 'email@gmail.com','', new Preference( new Date(), '2', true, 4, '5', '6', '7', '8'))
   show = false;
   logged_user_name:string;
   logged_email:string;
@@ -72,4 +75,21 @@ export class CabinetAdminComponent implements OnInit {
         );
       }
 
+
+      onSubmit(form: NgForm) {
+
+        console.log(this.model);  
+
+        this.httpClientService.disableUser(this.model.email).subscribe(
+          response =>
+         {
+           if(response.includes('All okey, user disabled successfully'))
+           this.user_disabled_successfully = true;
+        }
+        );
+        
+          }
+     
+
+          
 }

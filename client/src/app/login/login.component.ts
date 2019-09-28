@@ -17,9 +17,11 @@ export class LoginComponent implements OnInit {
 
   model = new User('', 'password', '', 'email@gmail.com','', new Preference( new Date(), '2', true, 4, '5', '6', '7', '8'))
   show = false;
-  failed_login = false;
+  failed_login_invalid_password_email = false;
   message:string;
   title_message:string;
+  failed_login_may_be_user_does_not_exist = false;
+  failed_login_disabled_user = false;
 
   ngOnInit() {
   }
@@ -40,9 +42,9 @@ console.log(this.model);
         
         // else //start else
         // {
-
+        console.log('We here, but there is...');
         console.log('boolean--'+ typeof res === 'string')
-        if(typeof res ==="string")
+        if(typeof res === "string")
         {
           console.log('rest---'+res);
           console.log('string');
@@ -61,9 +63,28 @@ console.log(this.model);
         
       ,(err) => {
         console.log('Error----'+JSON.stringify(err));
-        console.log('Obtained---'+err.message);
-        console.log(err);
-        this.failed_login=true;
+        console.log('Obtained---'+err.error.text);
+        if(err.error.text === 'User not found. May be, he does not exist')
+        {
+          this.failed_login_disabled_user = false;
+          this.failed_login_invalid_password_email = false;
+          this.failed_login_may_be_user_does_not_exist = true;
+        }
+        
+        if(err.error.text === 'Invalid email/password supplied')
+        {
+          this.failed_login_disabled_user = false;
+          this.failed_login_may_be_user_does_not_exist = false;
+          this.failed_login_invalid_password_email=true;
+        }
+
+        if(err.error.text === 'User is disabled')
+        {
+          this.failed_login_disabled_user = true;
+          this.failed_login_may_be_user_does_not_exist = false;
+          this.failed_login_invalid_password_email= false;
+        }
+
       }
       );
 

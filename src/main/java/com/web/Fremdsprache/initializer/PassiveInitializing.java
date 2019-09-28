@@ -30,6 +30,12 @@ public class PassiveInitializing implements ApplicationListener<ContextRefreshed
 	String emailAdmin = "BestJavaDeveloper24@gmail.com"; //admin email;
 	String passwordAdmin = "I am Admin"; 			     //admin password;
     
+	//initialize data for disabled user
+	String disabledUserPassword = "IamDisabledUser";	//disabled user password
+	String disabledUserEmail = "IamDisabledUser";		//disabled user email
+	
+	
+	
     @Autowired
     UserRepository users;
     
@@ -48,8 +54,8 @@ public class PassiveInitializing implements ApplicationListener<ContextRefreshed
 		logger.info("Starting passive initializing..");
 		
 		//checking if Admin role exist in app
+		logger.info("Creating admin account...");
 		Optional<Role> adminExist = roles.findByRole("Admin");
-		
 		List<Preference> preferenceExist = preferenceRepository.findAll();
 		logger.info("Checking--" + preferenceExist);
 		
@@ -64,10 +70,30 @@ public class PassiveInitializing implements ApplicationListener<ContextRefreshed
 			user.setEmail(emailAdmin);
 			user.setPassword(passwordAdmin);
 			
-			userService.saveUser(user, "Admin");
+			userService.saveUser(user, "Admin", true);
 			logger.info("Admin account created, all okey.");
 		}
 		//...
+		
+		//creating disabled user
+		logger.info("Creating disabled user account...");
+		Optional<User> userDisabledExist = users.findByEmail(disabledUserEmail);
+		if(userDisabledExist.isPresent())
+		{
+			logger.info("disabled user already exist");
+		}
+		else
+		{
+			User user = new User();
+			user.setUsername("Mortal");
+			user.setEmail(disabledUserEmail);
+			user.setPassword(disabledUserPassword);
+			
+			userService.saveUser(user, "User", false);
+			logger.info("user-disabled account already created, all okey");
+		}
+		
+		//....
 		
 		
 		logger.info("End passive initializing..");

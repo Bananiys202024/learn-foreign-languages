@@ -191,7 +191,7 @@ public class Training {
 	}
 
 	private static void saveExperienceToUser(String loggedUser, UserRepository users, byte experience) {	
-		User found = users.findByEmail(loggedUser);
+		User found = users.findByEmail(loggedUser).get();
 		Preference preference = found.getPreference().iterator().next();
 		preference.setExperience(preference.getExperience()+experience);
 		found.setPreference(new HashSet<>(Arrays.asList(preference)));

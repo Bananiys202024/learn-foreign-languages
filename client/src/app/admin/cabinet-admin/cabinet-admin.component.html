@@ -93,6 +93,24 @@
                               </div>
                 </div>
 
+         <dt>Отключить пользователя по емайлу
+         <dd>
+                          <div class="mb-3">
+                            <form (ngSubmit)="onSubmit(singupForm)" class="p-4" #singupForm="ngForm">
+        
+                              <div class="form-group">
+                                <input type="text" class="form-control" id="email" required
+                               [(ngModel)]="model.email" name="email" #email="ngModel">
+                                <div [hidden]="email.valid || email.pristine"
+                                 class="alert alert-danger">
+                               e-mail обязателен
+                                 </div>
+                              </div>
+
+                              <button type="submit" class="btn btn-success" [disabled]="!singupForm.form.valid">Submit</button>
+                            </form>
+                          </div>
+
       </dl>
             
 

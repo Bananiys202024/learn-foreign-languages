@@ -12,7 +12,7 @@ import com.web.Fremdsprache.entity.mongodb.User;
 @Repository
 public interface UserRepository extends MongoRepository<User, Long> {
 	
-	User findByEmail(String email);
+	Optional<User> findByEmail(String email);
 	
 	Optional<User> findFirstByOrderByIdDesc();
 

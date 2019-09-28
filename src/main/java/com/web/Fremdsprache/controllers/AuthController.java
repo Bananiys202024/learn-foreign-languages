@@ -6,6 +6,7 @@ import java.security.Principal;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
+import java.util.Optional;
 
 import javax.annotation.PostConstruct;
 
@@ -71,25 +72,34 @@ public class AuthController {
         	logger.info("Email---"+data.getEmail()+"---passwd3e---"+data.getPassword());
             String username = data.getEmail();
             String password = data.getPassword();
-            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
-            User found = this.users.findByEmail(username);
+            Optional<User> found = this.users.findByEmail(username);
             logger.info("Chec-point-1");
             
-            if(!found.getPreference().iterator().next().isEnabled())//if doesn't enable user;
+            //exception if user doesn't exist
+            if(!found.isPresent())
+            {
+            	logger.info("User not found");
+            	return new ResponseEntity<String>("User not found. May be, he does not exist", HttpStatus.OK);
+            }
+            
+            //exception if user is disabled
+            if(!found.get().getPreference().iterator().next().isEnabled())//if doesn't enable user;
             {
             	logger.info("User is disabled");
             	return new ResponseEntity<String>("User is disabled", HttpStatus.OK);
             }
 
-            String token = jwtTokenProvider.createToken(username, found.getRoles());
+            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
+
+            String token = jwtTokenProvider.createToken(username, found.get().getRoles());
             logger.info("We reached this point");
             
             Map<Object, Object> model = new HashMap<>();
             model.put("email", username); // It is really email, but have name of "username"
             model.put("token", token);
             model.put("password", password);
-            model.put("username", found.getUsername());
-            model.put("role", found.getRoles().iterator().next().getRole());
+            model.put("username", found.get().getUsername());
+            model.put("role", found.get().getRoles().iterator().next().getRole());
            
             return ok(model);
         } catch (AuthenticationException e) {
@@ -107,12 +117,12 @@ public class AuthController {
     @SuppressWarnings("rawtypes")
     @PostMapping(value="/register")
     public ResponseEntity register(@RequestBody User user) {
-        User userExists = userService.findUserByEmail(user.getEmail());
-        if (userExists != null) {
+        Optional<User> userExists = userService.findUserByEmail(user.getEmail());
+        if (userExists.isPresent()) {
         return new ResponseEntity<String>("User with email: " + user.getEmail() + " already exists", HttpStatus.OK );
         }
         logger.info(user.getUsername()+"----name");
-        userService.saveUser(user, "User");
+        userService.saveUser(user, "User", true);
         logger.info("All okey, we registered");
         return new ResponseEntity<String>("User registered successfully", HttpStatus.OK);
     }
@@ -127,9 +137,9 @@ public class AuthController {
     
     @PostMapping(value="/check/exist/email")
     public ResponseEntity<String> check_exist_email(@RequestBody User user) {
-        User userExists = userService.findUserByEmail(user.getEmail());
+        Optional<User> userExists = userService.findUserByEmail(user.getEmail());
 
-        if (userExists != null) {
+        if (userExists.isPresent()) {
         return new ResponseEntity<String>("User with email: " + user.getEmail() + " already exists", HttpStatus.OK );
         }
 

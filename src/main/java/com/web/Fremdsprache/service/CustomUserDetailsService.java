@@ -42,11 +42,11 @@ public class CustomUserDetailsService implements UserDetailsService {
 	@Override
 	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
 		
-		User user = userRepository.findByEmail(email);
+		Optional<User> user = userRepository.findByEmail(email);
 		 
-			if(user != null) {
-		        List<GrantedAuthority> authorities = getUserAuthority(user.getRoles());
-		        return buildUserForAuthentication(user, authorities);
+			if(user.isPresent()) {
+		        List<GrantedAuthority> authorities = getUserAuthority(user.get().getRoles());
+		        return buildUserForAuthentication(user.get(), authorities);
 		    } else {
 		        throw new UsernameNotFoundException("username not found");
 		    }
@@ -67,11 +67,11 @@ public class CustomUserDetailsService implements UserDetailsService {
 	    return grantedAuthorities;
 	}
 	
-	public User findUserByEmail(String email) {
+	public Optional<User> findUserByEmail(String email) {
 	    return userRepository.findByEmail(email);
 	}
 
-	public void saveUser(User user, String role) {
+	public void saveUser(User user, String role, boolean enabled) {
 	    
 		long id = generateId();
 		
@@ -84,7 +84,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 	    preference.setDate_of_registration(new Date());
 	    preference.setStatus("okey");
 	    preference.setExperience(0L);
-	    preference.setEnabled(true);
+	    preference.setEnabled(enabled);
 	    
 	    user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
 	    user.setRoles(new HashSet<>(Arrays.asList(userRole)));
