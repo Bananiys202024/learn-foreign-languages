@@ -6,18 +6,33 @@ REMEMBER: write time of execution on even task of executed;
      
      
 Last: 
-catched exceptions in login: user doesn't exist, user disabled;invalid password/email;
+Add to Admin disable user by Id; 120 minutes;
 
 
-
-Next: 
-	Add to Admin disable user by Id;
-		
-	drop exception from back-end and intercept that from side of front-end;
+Next:
+	
+	
+	practicale use of kafka
+	
+	Do I need for internasionalization field "time_zone";
+	
 	
 	Main: Add other data information to registration form;
-	Before: check how set Time-zone, read some;Which values for time-zone need;
-			
+	Add following fields to registration process:
+	date_of_registration_process(automatically count);
+	status("Funny chily boy")(default value);
+	
+	time_zone
+	country
+	native_language
+	target_language(some languages for learnign);
+	
+	
+	Before:  
+	check how set Time-zone, read some;
+	Which values for time-zone need;
+		
+	
 	
 	
 	For prevent infinity loading fo learning_words: Add return to controller, add response
@@ -63,6 +78,9 @@ Next:
 	Add scheduling with sending statistics;
 
 	initialiye disconnected userö
+	
+	Add JasperReports for creating report for admin about statistics of web-sites;
+	May be i should use there is kafka;
 	
 For end project;
 End pages;

@@ -95,10 +95,10 @@
 
          <dt>Отключить пользователя по емайлу
          <dd>
-                          <div class="mb-3">
-                            <form (ngSubmit)="onSubmit(singupForm)" class="p-4" #singupForm="ngForm">
+                          <div class="mb-3 pt-2">
+                            <form (ngSubmit)="onSubmit(singupForm)" #singupForm="ngForm">
         
-                              <div class="form-group">
+                              <div class="form-group float-left pr-3">
                                 <input type="text" class="form-control" id="email" required
                                [(ngModel)]="model.email" name="email" #email="ngModel">
                                 <div [hidden]="email.valid || email.pristine"
@@ -106,8 +106,18 @@
                                e-mail обязателен
                                  </div>
                               </div>
+                              <button type="submit" class="btn btn-primary" [disabled]="!singupForm.form.valid">Submit</button>
+                            
+                              <div class="block_of_errors ">
+                              <div class="float-left text-success" *ngIf="user_disabled_successfully">
+                                {{ user_disabled_message_successfully }}
+                              </div>
 
-                              <button type="submit" class="btn btn-success" [disabled]="!singupForm.form.valid">Submit</button>
+                              <div class="float-left text-danger" *ngIf="user_disabled_not_found_error">
+                                {{ user_disabled_message_not_found}}
+                              </div>
+                             </div>
+
                             </form>
                           </div>
 
