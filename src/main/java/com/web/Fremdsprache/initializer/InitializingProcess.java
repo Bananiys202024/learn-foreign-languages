@@ -30,11 +30,11 @@ import com.web.Fremdsprache.repositories.ConstRnDictRepo;
 
 import java.nio.charset.StandardCharsets;
 
-public class ActiveInitializingg {
+public class InitializingProcess {
 
 ;
 	
-	private static final Logger logger = LogManager.getLogger(ActiveInitializingg.class);
+	private static final Logger logger = LogManager.getLogger(InitializingProcess.class);
 	
 	public static void initalizeMostUsedEnglishWordsToTableMongo(ConstEnDictRepo englishDictionaryRepository) throws Exception {
 	

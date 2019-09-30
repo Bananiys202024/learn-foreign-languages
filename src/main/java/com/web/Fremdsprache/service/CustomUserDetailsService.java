@@ -54,7 +54,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 	}
 	
 	private UserDetails buildUserForAuthentication(User user, List<GrantedAuthority> authorities) {
-	    return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(), authorities);
+	    return new org.springframework.security.core.userdetails.User(user.getEmail(), new String(user.getPassword()), authorities);
 	}
 	
 	private List<GrantedAuthority> getUserAuthority(Set<Role> userRoles) {
@@ -85,8 +85,13 @@ public class CustomUserDetailsService implements UserDetailsService {
 	    preference.setStatus("okey");
 	    preference.setExperience(0L);
 	    preference.setEnabled(enabled);
+	    preference.setTimezone("Europe/Kiev");
+	    preference.setCountry("Ukraine");
+	    preference.setNative_language("ru uk");
+	    preference.setTarget_learning_language("de en");
 	    
-	    user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+	    String password = new String(user.getPassword());
+	    user.setPassword(bCryptPasswordEncoder.encode(password).toCharArray());
 	    user.setRoles(new HashSet<>(Arrays.asList(userRole)));
 	    user.setId(id);
 	    user.setPreference(new HashSet<>(Arrays.asList(preference)));

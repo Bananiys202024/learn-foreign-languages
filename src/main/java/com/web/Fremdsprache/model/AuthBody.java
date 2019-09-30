@@ -5,6 +5,6 @@ import lombok.Data;
 public @Data class AuthBody {
 
     private String email;
-    private String password;
+    private char[] password;
 
 }

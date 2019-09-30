@@ -3,49 +3,17 @@ REMEMBER: write time of execution on even task of executed;
      
      
      
-     
+     Add comment to char[]
      
 Last: 
-Add to Admin disable user by Id; 120 minutes;
-
+I moved some codes:20minutes
+Replace String to char[];33minutes
 
 Next:
-	
-	
-	practicale use of kafka
-	
-	Do I need for internasionalization field "time_zone";
-	
-	
-	Main: Add other data information to registration form;
-	Add following fields to registration process:
-	date_of_registration_process(automatically count);
-	status("Funny chily boy")(default value);
-	
-	time_zone
-	country
-	native_language
-	target_language(some languages for learnign);
-	
-	
-	Before:  
-	check how set Time-zone, read some;
-	Which values for time-zone need;
-		
-	
-	
-	
-	For prevent infinity loading fo learning_words: Add return to controller, add response
-	if that ConstEnDict empty then doesn't do nothing;
-	
-	
-	fix inifinity loop loading words;
-	fix failure of words
-	set new field of Preference.class;(registration/login);
-    do i replace in password String to char[] for fields password and ConfirmPassword
-	fixing all new fault;
-	front-end of message page
-	change process of registration;
+
+	fix error in process of training
+	if wrong inputed code to confirm email then add alert about wrong inputed code;
+
     I need set time-zone for even user, and display time in match with even time-zone;
 	Change path in AdminController; RequestController path;
 	Add abilitz to pass money from one account to another;

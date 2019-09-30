@@ -30,8 +30,15 @@ public @Data class User {
 	    @Field(value = "username")
 	    private String username;
 	    
+	    //some explains "Why do i use char[] instead string"
+	    //1. if you store the password as plain text 
+	    //it will be available in memory 
+	    //until the Garbage collector clears it
+	    //2. char[] is mutable while String objects are not.
+	    //3. Character arrays (char[]) can be cleared after use 
+	    //by setting each character to zero and Strings not. 
 	    @Field(value = "password")
-	    private String password;
+	    private char[] password;
 	    
 	    @Transient
 	    private String confirmPassword;

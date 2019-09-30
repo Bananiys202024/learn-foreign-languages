@@ -71,7 +71,8 @@ public class AuthController {
     	try {
         	logger.info("Email---"+data.getEmail()+"---passwd3e---"+data.getPassword());
             String username = data.getEmail();
-            String password = data.getPassword();
+            char [] password = data.getPassword();
+            
             Optional<User> found = this.users.findByEmail(username);
             logger.info("Chec-point-1");
             
@@ -89,7 +90,7 @@ public class AuthController {
             	return new ResponseEntity<String>("User is disabled", HttpStatus.OK);
             }
 
-            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
+            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, new String(password) ));
 
             String token = jwtTokenProvider.createToken(username, found.get().getRoles());
             logger.info("We reached this point");
@@ -101,6 +102,9 @@ public class AuthController {
             model.put("username", found.get().getUsername());
             model.put("role", found.get().getRoles().iterator().next().getRole());
            
+            //clear password field for security
+            data.setPassword(new char[] {'c', 'l','e','a','r','e','d'});
+            
             return ok(model);
         } catch (AuthenticationException e) {
         	logger.error("Error Authentication");
@@ -124,6 +128,9 @@ public class AuthController {
         logger.info(user.getUsername()+"----name");
         userService.saveUser(user, "User", true);
         logger.info("All okey, we registered");
+        
+        user.setPassword(new char[] {'l','a','t','e'});
+        
         return new ResponseEntity<String>("User registered successfully", HttpStatus.OK);
     }
 

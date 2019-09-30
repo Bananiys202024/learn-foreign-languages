@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.web.Fremdsprache.entity.mongodb.DictionaryEnglish;
-import com.web.Fremdsprache.initializer.ActiveInitializingg;
+import com.web.Fremdsprache.initializer.InitializingProcess;
 import com.web.Fremdsprache.model.BanchProgressData;
 import com.web.Fremdsprache.model.Bool;
 import com.web.Fremdsprache.repositories.DictionaryRepository;

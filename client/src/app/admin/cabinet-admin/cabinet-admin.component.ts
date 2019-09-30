@@ -50,35 +50,7 @@ export class CabinetAdminComponent implements OnInit {
   }
 
   
-      generatEngDictionary()
-      {
 
-        this.httpClientService.generate_english_dictionary().subscribe(
-          response => 
-          {
-          }
-        );
-      }
-
-      generateGermDictionary()
-      {
-
-        this.httpClientService.generate_german_dictionary().subscribe(
-          response => 
-          {
-          }
-        );
-      }
-
-      generateRusnDictionary()
-      {
-
-        this.httpClientService.generate_russian_dictionary().subscribe(
-          response => 
-          {
-          }
-        );
-      }
 
 
       onSubmit(form: NgForm) {

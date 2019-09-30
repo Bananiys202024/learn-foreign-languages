@@ -116,20 +116,6 @@ export class HttpClientService {
       } 	
 
 
-         generate_english_dictionary()
-      {
-        return this.httpClient.put('http://localhost:8083/account/settings/generate/english/dictionary','');
-       } 	
-     
-         generate_russian_dictionary()
-       {
-         return this.httpClient.put('http://localhost:8083/account/settings/generate/russian/dictionary','');
-        } 
-
-         generate_german_dictionary()
-        {
-          return this.httpClient.put('http://localhost:8083/account/settings/generate/german/dictionary','');
-        } 	
 
 
      

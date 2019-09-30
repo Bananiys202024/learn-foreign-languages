@@ -11,7 +11,7 @@ import org.apache.logging.log4j.Logger;
 
 import com.web.Fremdsprache.entity.mongodb.Preference;
 import com.web.Fremdsprache.entity.mongodb.User;
-import com.web.Fremdsprache.initializer.PassiveInitializing;
+import com.web.Fremdsprache.initializer.Initializing;
 import com.web.Fremdsprache.repositories.PreferenceRepository;
 import com.web.Fremdsprache.repositories.UserRepository;
 

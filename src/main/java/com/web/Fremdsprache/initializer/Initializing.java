@@ -10,6 +10,9 @@ import com.web.Fremdsprache.config.JwtTokenProvider;
 import com.web.Fremdsprache.entity.mongodb.Preference;
 import com.web.Fremdsprache.entity.mongodb.Role;
 import com.web.Fremdsprache.entity.mongodb.User;
+import com.web.Fremdsprache.repositories.ConstEnDictRepo;
+import com.web.Fremdsprache.repositories.ConstGmDictRepo;
+import com.web.Fremdsprache.repositories.ConstRnDictRepo;
 import com.web.Fremdsprache.repositories.PreferenceRepository;
 import com.web.Fremdsprache.repositories.RoleRepository;
 import com.web.Fremdsprache.repositories.UserRepository;
@@ -22,9 +25,9 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 @Component
-public class PassiveInitializing implements ApplicationListener<ContextRefreshedEvent> {
+public class Initializing implements ApplicationListener<ContextRefreshedEvent> {
 
-	private static final Logger logger = LogManager.getLogger(PassiveInitializing.class);
+	private static final Logger logger = LogManager.getLogger(Initializing.class);
 	
 	//iniitialize data for admin
 	String emailAdmin = "BestJavaDeveloper24@gmail.com"; //admin email;
@@ -34,6 +37,14 @@ public class PassiveInitializing implements ApplicationListener<ContextRefreshed
 	String disabledUserPassword = "IamDisabledUser";	//disabled user password
 	String disabledUserEmail = "IamDisabledUser";		//disabled user email
 	
+	@Autowired
+	ConstEnDictRepo englishDictionaryRepository;
+	
+	@Autowired
+	ConstGmDictRepo  germanDictionaryRepository;
+	
+	@Autowired
+	ConstRnDictRepo  russianDictionaryRepository;
 	
 	
     @Autowired
@@ -68,7 +79,7 @@ public class PassiveInitializing implements ApplicationListener<ContextRefreshed
 			User user = new User();
 			user.setUsername("Admin");
 			user.setEmail(emailAdmin);
-			user.setPassword(passwordAdmin);
+			user.setPassword(passwordAdmin.toCharArray());
 			
 			userService.saveUser(user, "Admin", true);
 			logger.info("Admin account created, all okey.");
@@ -87,7 +98,7 @@ public class PassiveInitializing implements ApplicationListener<ContextRefreshed
 			User user = new User();
 			user.setUsername("Mortal");
 			user.setEmail(disabledUserEmail);
-			user.setPassword(disabledUserPassword);
+			user.setPassword(disabledUserPassword.toCharArray());
 			
 			userService.saveUser(user, "User", false);
 			logger.info("user-disabled account already created, all okey");
@@ -97,6 +108,22 @@ public class PassiveInitializing implements ApplicationListener<ContextRefreshed
 		
 		
 		logger.info("End passive initializing..");
+	
+	
+		//initializing different dictionaries
+		
+		//add there is logger initializing dictionaries
+		try {
+			InitializingProcess.initalizeMostUsedEnglishWordsToTableMongo(englishDictionaryRepository);
+			InitializingProcess.initalizeMostUsedRussianWordsToTableMongo(russianDictionaryRepository);
+			InitializingProcess.initalizeMostUsedGermanWordsToTableMongo(germanDictionaryRepository);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		//add there are success logger initializing dictionaries;
+
+		
 	}
 
 }
