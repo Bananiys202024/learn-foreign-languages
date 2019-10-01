@@ -3,14 +3,18 @@ REMEMBER: write time of execution on even task of executed;
      
      
      
-     Add comment to char[]
-     
+
 Last: 
-I moved some codes:20minutes
-Replace String to char[];33minutes
+fixed error training words; 27 minutes;
+fixing count experience; 8 minutes;
+Hide field of password; 4 minutesö
+addding to some hrefs "page under construction":14 minutes;
 
 Next:
 
+	Add count level if experience>=500;
+	
+	Add warning that we can't training if words less than 5, or create training with words more than 5;
 	fix error in process of training
 	if wrong inputed code to confirm email then add alert about wrong inputed code;
 
@@ -90,6 +94,8 @@ Do i should use ResponseEntity in project with REST architecture;
 Add in back_end some logic to variable of persitence_day:
 use redis table,
 set cashe destroy after 24 hourse;
+
+in th end: adaptive design to  mobile, smal ssize monitor
 
 Add creating statistics to "progress" page:
 Generating static graphics;cd

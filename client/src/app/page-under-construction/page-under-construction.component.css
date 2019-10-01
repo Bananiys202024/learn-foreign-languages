@@ -1,0 +1,11 @@
+.container
+{
+    height:100%;
+}
+
+.vcenter
+{
+    display: table-cell;
+    vertical-align: middle;
+    float: none;
+}

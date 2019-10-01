@@ -25,6 +25,7 @@ import com.web.Fremdsprache.model.Train;
 import com.web.Fremdsprache.repositories.CashExperience;
 import com.web.Fremdsprache.repositories.ConstRnDictRepo;
 import com.web.Fremdsprache.repositories.DictionaryRepository;
+import com.web.Fremdsprache.repositories.PreferenceRepository;
 import com.web.Fremdsprache.repositories.UserRepository;
 import com.web.Fremdsprache.repositories.countCounterOfExperienceForTrainingWords;
 import com.web.Fremdsprache.translator.Translator;
@@ -180,27 +181,35 @@ public class Training {
 	}
 
 	public static void conclusion_about_experience(String loggedUser, UserRepository users,
-			CashExperience cashExperience) {
+			CashExperience cashExperience, PreferenceRepository preferenceRepo) {
 		
 		//on third time of training you will get +50 exp.
 		//time variable can't be more than 3, that's logic of app;
 		byte experience = (byte) checkCurrentTimeOfTraining(cashExperience, loggedUser); 
 
-		saveExperienceToUser(loggedUser, users, experience);
+		saveExperienceToUser(loggedUser, users, experience, preferenceRepo);
 //		saveExperienceToCash()
 	}
 
-	private static void saveExperienceToUser(String loggedUser, UserRepository users, byte experience) {	
+	private static void saveExperienceToUser(String loggedUser, UserRepository users, byte experience, PreferenceRepository preferenceRepo) {	
 		User found = users.findByEmail(loggedUser).get();
 		Preference preference = found.getPreference().iterator().next();
 		preference.setExperience(preference.getExperience()+experience);
 		found.setPreference(new HashSet<>(Arrays.asList(preference)));
 		users.save(found);
+		preferenceRepo.save(preference);
 	}
 
 	private static int checkCurrentTimeOfTraining(CashExperience cashExperience, String loggedUser) {
 		
 		List<Experience> list = (List<Experience>) cashExperience.findAll();
+		
+		if(list.size()==0)
+		{
+			Experience entity = Experience.builder().count(1).experience(20).user(loggedUser).build();
+			cashExperience.save(entity);
+			return 20;
+		}
 		
 		List<Experience> foundList = list.stream().filter(c -> c.getUser().equals(loggedUser)).collect(Collectors.toList());
 		logger.info("Onfi-----"+foundList);

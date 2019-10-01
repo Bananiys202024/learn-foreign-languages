@@ -26,7 +26,7 @@ import { Preference } from '../classes/preference';
 export class RegistrationComponent implements OnInit {
 
   submitted = false;	
-  check_recaptcha = true;
+  check_recaptcha = false;
   show = false;
   codeInputed = false;
   emailExist = true

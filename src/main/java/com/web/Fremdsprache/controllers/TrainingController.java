@@ -22,6 +22,7 @@ import com.web.Fremdsprache.model.Train;
 import com.web.Fremdsprache.repositories.CashExperience;
 import com.web.Fremdsprache.repositories.ConstRnDictRepo;
 import com.web.Fremdsprache.repositories.DictionaryRepository;
+import com.web.Fremdsprache.repositories.PreferenceRepository;
 import com.web.Fremdsprache.repositories.UserRepository;
 import com.web.Fremdsprache.repositories.countCounterOfExperienceForTrainingWords;
 import com.web.Fremdsprache.repositoryImpl.Training;
@@ -44,6 +45,9 @@ public class TrainingController {
 	
     @Autowired
     CashExperience cashExperience;
+    
+    @Autowired
+    PreferenceRepository preferenceRepo;
     
 	@Autowired
 	public countCounterOfExperienceForTrainingWords countExperienceOfTrainingWords;
@@ -72,7 +76,7 @@ public class TrainingController {
 	
 
 	private void conclusion_about_experience(String loggedUser) throws IOException {
-		Training.conclusion_about_experience(loggedUser, users, cashExperience);
+		Training.conclusion_about_experience(loggedUser, users, cashExperience, preferenceRepo);
 	}
 
 }

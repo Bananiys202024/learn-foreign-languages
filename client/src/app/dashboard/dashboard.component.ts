@@ -118,7 +118,6 @@ getTenWordsToDictionary()
 }
 
 
-
 //get 10 words
 
 dismissToastMessage()

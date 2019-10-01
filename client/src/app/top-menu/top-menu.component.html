@@ -20,7 +20,7 @@
         <a [ngClass]="current_choosen_top_menu_button==='progress'? 'nav-link text-body-50 weight-font text-white':'nav-link text-body-50 weight-font'"  routerLink="/progress" href="#" tabindex="-1" aria-disabled="true">Прогресс</a>
     </li>
     <li [ngClass]="current_choosen_top_menu_button==='tv'? 'nav-item active hidhlight-current-choosen':'nav-item'">
-      <a [ngClass]="current_choosen_top_menu_button==='tv'? 'nav-link text-body-50 weight-font text-white':'nav-link text-body-50 weight-font'"  routerLink="/tv" href="#" tabindex="-1" aria-disabled="true">ТВ</a>
+      <a [ngClass]="current_choosen_top_menu_button==='tv'? 'nav-link text-body-50 weight-font text-white':'nav-link text-body-50 weight-font'"  routerLink="/pageIsCurrentBusy" href="#" tabindex="-1" aria-disabled="true">ТВ</a>
   </li>
     </ul>
   
@@ -30,6 +30,8 @@
        <i class="message_number">{{ new_messages }}</i>
       </a>
  </span>
+ 
+ 
 
     <span class="navbar-text">
        <a (click)="goCabinet()" class="navbar-brand" >

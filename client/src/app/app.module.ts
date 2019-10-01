@@ -47,6 +47,7 @@ import { SuccessComponent } from './registration/success/success.component';
 import { InputEmailCodeComponent } from './registration/restore-password/input-email-code/input-email-code.component';
 import { InputNewPasswordComponent } from './registration/restore-password/input-new-password/input-new-password.component';
 import { MessagesComponent } from './cabinet/messages/messages.component';
+import { PageUnderConstructionComponent } from './page-under-construction/page-under-construction.component';
 
 
 
@@ -77,6 +78,7 @@ import { MessagesComponent } from './cabinet/messages/messages.component';
 	InputEmailCodeComponent,
 	InputNewPasswordComponent,
 	MessagesComponent,
+	PageUnderConstructionComponent,
 	
   ],
   imports: [
