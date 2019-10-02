@@ -18,6 +18,9 @@ public @Data class Preference {
     @Field(value = "registration_date")
     private Date date_of_registration;
     
+    @Field(value = "current_level")
+    private int current_level;
+    
     @Field(value = "status")
     private String status;
 

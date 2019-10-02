@@ -5,18 +5,18 @@ REMEMBER: write time of execution on even task of executed;
      
 
 Last: 
-fixed error training words; 27 minutes;
-fixing count experience; 8 minutes;
-Hide field of password; 4 minutesö
-addding to some hrefs "page under construction":14 minutes;
+setting if count more than 500 count level and fixing some errors of sequence;10 minutes
+add warnings if words less than 5:14 minutes
+alert about wrong inputed code for confirm code:15 minutes
 
 Next:
 
-	Add count level if experience>=500;
-	
-	Add warning that we can't training if words less than 5, or create training with words more than 5;
-	fix error in process of training
-	if wrong inputed code to confirm email then add alert about wrong inputed code;
+	internationalization; time-zone; spring-boot;
+	after internilization add redis  persitence_days;
+
+	Add ability to Admin send messages to all people;
+	Then add time;
+	And then add time to messages that get user;
 
     I need set time-zone for even user, and display time in match with even time-zone;
 	Change path in AdminController; RequestController path;
@@ -28,9 +28,9 @@ Next:
 	Add to cabinet of user and admin change languages, with dropbox, choose between en and german;
 	Add ability to write us(us-company);
 	 
-	 familiar more with JwtResponse as response to htto in angualr;
-	 
-	 Block to user login to web-site if his enable.equals(true);
+	familiar more with JwtResponse as response to htto in angualr;
+
+	Block to user login to web-site if his enable.equals(true);
 
 	Add to admin ability send message to all users;
 	Add icon of messages to web-site;

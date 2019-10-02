@@ -194,8 +194,19 @@ public class Training {
 	private static void saveExperienceToUser(String loggedUser, UserRepository users, byte experience, PreferenceRepository preferenceRepo) {	
 		User found = users.findByEmail(loggedUser).get();
 		Preference preference = found.getPreference().iterator().next();
+		
+		if(preference.getExperience()>=500)
+		{
+			preference.setExperience(0);
+			preference.setCurrent_level(preference.getCurrent_level()+1);
+			found.setPreference(new HashSet<>(Arrays.asList(preference)));
+		}
+		else
+		{
 		preference.setExperience(preference.getExperience()+experience);
 		found.setPreference(new HashSet<>(Arrays.asList(preference)));
+		}
+		
 		users.save(found);
 		preferenceRepo.save(preference);
 	}

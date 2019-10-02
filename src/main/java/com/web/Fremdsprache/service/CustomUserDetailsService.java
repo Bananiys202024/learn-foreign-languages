@@ -89,6 +89,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 	    preference.setCountry("Ukraine");
 	    preference.setNative_language("ru uk");
 	    preference.setTarget_learning_language("de en");
+	    preference.setCurrent_level(0);
 	    
 	    String password = new String(user.getPassword());
 	    user.setPassword(bCryptPasswordEncoder.encode(password).toCharArray());

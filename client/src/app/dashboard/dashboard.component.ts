@@ -85,17 +85,13 @@ handleEmptyDictionary(response) {
 
 	this.emptyDictionary = response.bool;
 	
-if(this.emptyDictionary)
+if(this.emptyDictionary || this.learn < 5)
 {
 	document.getElementById('modalClick').click()
 }
 else
 {
-
-// this.router.navigate(['/training']);
 document.getElementById('GoToDashBoard').click()
-
-
 }
 }
 

@@ -17,6 +17,7 @@ export class ConfirmCodeComponent implements OnInit {
   sendedCode:string;
   email = 'BestJavaDeveloper24@gmail.com';
   form:User;
+  wrong_code = false;
 
   constructor(private authService: AuthService, private httpClientService:HttpClientService, private router: Router, private form_user_data: FormUserDataService) {
     this.form = this.form_user_data.storage;
@@ -41,6 +42,10 @@ export class ConfirmCodeComponent implements OnInit {
   onSubmit(form: any) 
  {  
 
+    if(form.controls['password'].value != this.sendedCode) //there is exclamation sign, be carefule, be in attantion;
+    {
+      this.wrong_code = true;
+    }
 
     //inputed code equals by sended code
     if(form.controls['password'].value === this.sendedCode)
