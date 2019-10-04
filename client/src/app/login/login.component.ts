@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
 
   onSubmit(form: NgForm) {
 
-console.log(this.model);
+    console.log(this.model);
 
     this.authService.login(JSON.stringify(this.model))
       .subscribe(res => {

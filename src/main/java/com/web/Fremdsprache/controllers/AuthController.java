@@ -126,7 +126,7 @@ public class AuthController {
         return new ResponseEntity<String>("User with email: " + user.getEmail() + " already exists", HttpStatus.OK );
         }
         logger.info(user.getUsername()+"----name");
-        userService.saveUser(user, "User", true);
+        userService.saveUser(user, "User", true, user.getPreference().iterator().next().getTimezone());
         logger.info("All okey, we registered");
         
         user.setPassword(new char[] {'l','a','t','e'});

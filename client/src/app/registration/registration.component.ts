@@ -26,11 +26,14 @@ import { Preference } from '../classes/preference';
 export class RegistrationComponent implements OnInit {
 
   submitted = false;	
-  check_recaptcha = false;
+  check_recaptcha = true;
   show = false;
   codeInputed = false;
   emailExist = true
   email_not_exist = true; 
+
+  powers = ['Europe/Kiev', 'Europe/Berlin', 'Europe/London', 'America/Tijuana', 'Canada/Yukon',
+            'Africa/Dakar', 'Asia/Saigon', 'Pacific/Majuro'];
 
   constructor(private httpClientService:HttpClientService, private router: Router, private authService: AuthService, private form_user_data: FormUserDataService) { }
 
@@ -38,10 +41,12 @@ export class RegistrationComponent implements OnInit {
     this.emailExist=false;
   }
 
- model = new User('name', 'password', 'password', 'email@gmail.com', '', new Preference( new Date(), '2', true, 4, '5', '6', '7', '8'));
+ model = new User('name', 'password', 'password', 'email@gmail.com', '', new Preference( new Date(), '2', true, 4, this.powers[0], '6', '7', '8'));
   
  onSubmit(form: any) 
  {  
+    console.log('Country--------'+this.model.preference.timezone);
+
     console.log(this.model.email);
     //validation
 

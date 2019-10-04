@@ -2,17 +2,17 @@ REMEMBER: write time of execution on even task of executed;
 
      
      
-     
 
-Last: 
-setting if count more than 500 count level and fixing some errors of sequence;10 minutes
-add warnings if words less than 5:14 minutes
-alert about wrong inputed code for confirm code:15 minutes
+
+Last: -----
+
 
 Next:
 
+	
 	internationalization; time-zone; spring-boot;
 	after internilization add redis  persitence_days;
+	
 
 	Add ability to Admin send messages to all people;
 	Then add time;
@@ -32,6 +32,10 @@ Next:
 
 	Block to user login to web-site if his enable.equals(true);
 
+To do bz default learning two languages;
+
+	add system of pay;
+	
 	Add to admin ability send message to all users;
 	Add icon of messages to web-site;
 	

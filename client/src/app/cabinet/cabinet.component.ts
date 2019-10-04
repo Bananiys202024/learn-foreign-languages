@@ -4,6 +4,9 @@ import { HttpClientService } from '../service/http-client.service';
 import { Subscription } from 'rxjs';
 import { LoaderService } from '../service/loader.service';
 import { LoaderState } from '../loader/LoaderState';
+import { User } from '../classes/user';
+import { Preference } from '../classes/preference';
+import { UserSettingsService } from '../service/http/user/user-settings.service';
 
 
 
@@ -19,8 +22,14 @@ export class CabinetComponent implements OnInit {
   logged_email:string;
   logged_password:string;
 
+  powers = ['Europe/Kiev', 'Europe/Berlin', 'Europe/London', 'America/Tijuana', 'Canada/Yukon',
+  'Africa/Dakar', 'Asia/Saigon', 'Pacific/Majuro'];
+  
+  model = new User('name', 'password', 'password', 'email@gmail.com', '', new Preference( new Date(), '2', true, 4, this.powers[0], '6', '7', '8'));
+
+
   private subscription: Subscription;
-  constructor(private httpClientService:HttpClientService, private loaderService: LoaderService) { }
+  constructor(private userSettingshttps: UserSettingsService, private httpClientService:HttpClientService, private loaderService: LoaderService) { }
   ngOnInit() {
 
     this.subscription = this.loaderService.loaderState
@@ -35,6 +44,18 @@ export class CabinetComponent implements OnInit {
   }
   ngOnDestroy() {
     this.subscription.unsubscribe();
+  }
+
+
+  changeTimeZone(form: any) 
+  {  
+     console.log('TimeZones--------'+this.model.preference.timezone);
+
+     this.userSettingshttps.change_timezone_user(this.model.preference.timezone)
+      .subscribe(res => {
+          console.log('Result='+res);
+      }
+      );
   }
 
 

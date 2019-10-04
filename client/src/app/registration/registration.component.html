@@ -104,8 +104,21 @@
      	class="alert alert-danger">
        Подтверждение пароля обязательно
        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="preference.timezone">Страна</label>
+
+        <select class="form-control" id="preference.timezone"
+        required
+        [(ngModel)]="model.preference.timezone" name="preference.timezone"
+        #preference.timezone="ngModel">
+  <option *ngFor="let pow of powers" [value]="pow">{{pow}}</option>
+</select>
 
       </div>
+
+ 
 
       <re-captcha  (resolved)="resolved($event)" siteKey="6Lc2l7UUAAAAAKx5rCNhd4Q1I0TdSfoFTijXIrFi"></re-captcha>
       

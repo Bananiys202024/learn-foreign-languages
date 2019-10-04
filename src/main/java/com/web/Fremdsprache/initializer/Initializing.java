@@ -81,7 +81,7 @@ public class Initializing implements ApplicationListener<ContextRefreshedEvent> 
 			user.setEmail(emailAdmin);
 			user.setPassword(passwordAdmin.toCharArray());
 			
-			userService.saveUser(user, "Admin", true);
+			userService.saveUser(user, "Admin", true, "Europe/Kiev");
 			logger.info("Admin account created, all okey.");
 		}
 		//...
@@ -100,7 +100,7 @@ public class Initializing implements ApplicationListener<ContextRefreshedEvent> 
 			user.setEmail(disabledUserEmail);
 			user.setPassword(disabledUserPassword.toCharArray());
 			
-			userService.saveUser(user, "User", false);
+			userService.saveUser(user, "User", false, "Europe/Kiev");
 			logger.info("user-disabled account already created, all okey");
 		}
 		

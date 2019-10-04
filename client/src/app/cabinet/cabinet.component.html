@@ -38,52 +38,27 @@
                 <div class="password_change pt-1">Пароль: {{ logged_password }} </div>
             </div>
        
+           
        
         <dt>Часовой пояс
         <dd>
-            <div class="mb-3">
-                    <div class="dropdown">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                              Dropdown button
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                              <a class="dropdown-item" href="#">Action</a>
-                              <a class="dropdown-item" href="#">Another action</a>
-                              <a class="dropdown-item" href="#">Something else here</a>
-                            </div>
+            <form (ngSubmit)="changeTimeZone(singupForm)" #singupForm="ngForm">
+                    <div class="form-group float-left d-flex mr-2">                      
+                    
+                    <select class="form-control" id="preference.timezone"
+                    required
+                    [(ngModel)]="model.preference.timezone" name="preference.timezone"
+                    #preference.timezone="ngModel">
+
+                    <option *ngFor="let pow of powers" [value]="pow">{{pow}}</option>
+                </select>
                           </div>
-            </div>
+
+            <button type="submit" class="btn btn-secondary">Submit</button>
+            
+        </form>
 
 
-        <dt>Язык
-        <dd>
-                <div class="mb-3">
-                        <div class="dropdown">
-                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                  Dropdown button
-                                </button>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                  <a class="dropdown-item" href="#">Action</a>
-                                  <a class="dropdown-item" href="#">Another action</a>
-                                  <a class="dropdown-item" href="#">Something else here</a>
-                                </div>
-                              </div>
-                </div>
-
-        <dt>Страна
-        <dd>
-                <div class="mb-3">
-                        <div class="dropdown">
-                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                  Dropdown button
-                                </button>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                  <a class="dropdown-item" href="#">Action</a>
-                                  <a class="dropdown-item" href="#">Another action</a>
-                                  <a class="dropdown-item" href="#">Something else here</a>
-                                </div>
-                              </div>
-                </div>
 
       </dl>
             

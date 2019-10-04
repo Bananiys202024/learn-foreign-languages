@@ -71,7 +71,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 	    return userRepository.findByEmail(email);
 	}
 
-	public void saveUser(User user, String role, boolean enabled) {
+	public void saveUser(User user, String role, boolean enabled, String timezone) {
 	    
 		long id = generateId();
 		
@@ -85,8 +85,8 @@ public class CustomUserDetailsService implements UserDetailsService {
 	    preference.setStatus("okey");
 	    preference.setExperience(0L);
 	    preference.setEnabled(enabled);
-	    preference.setTimezone("Europe/Kiev");
-	    preference.setCountry("Ukraine");
+	    preference.setTimezone(timezone);
+	    preference.setCountry("default");
 	    preference.setNative_language("ru uk");
 	    preference.setTarget_learning_language("de en");
 	    preference.setCurrent_level(0);
