@@ -1,12 +1,16 @@
 package com.web.Fremdsprache.controllers;
 
 import java.security.Principal;
+import java.util.Date;
 import java.util.Optional;
 
+import org.joda.time.DateTime;
+import org.joda.time.LocalDateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -46,5 +50,23 @@ public class UserController {
     	return new ResponseEntity<String>("All okey, timezone "+found.get().getEmail()+" is changed", HttpStatus.OK);
 	}
 		
+	//only for admin
+	@GetMapping(value = "get/timezone")
+	public ResponseEntity<String> get_timezone(Principal principal) throws Exception {	
+			Optional<User> found = users.findByEmail(principal.getName());
+			
+			if(found.isPresent())
+			{
+				LocalDateTime date = UserProcess.get_timezone(users, found);
+		    	return new ResponseEntity<String>(""+date, HttpStatus.OK);
+
+			}
+			else
+			{
+	        	return new ResponseEntity<String>("User not found", HttpStatus.OK);
+			}
+
+	}
+			
 	
 }

@@ -21,6 +21,7 @@ export class CabinetComponent implements OnInit {
   logged_user_name:string;
   logged_email:string;
   logged_password:string;
+  time:string;
 
   powers = ['Europe/Kiev', 'Europe/Berlin', 'Europe/London', 'America/Tijuana', 'Canada/Yukon',
   'Africa/Dakar', 'Asia/Saigon', 'Pacific/Majuro'];
@@ -31,6 +32,13 @@ export class CabinetComponent implements OnInit {
   private subscription: Subscription;
   constructor(private userSettingshttps: UserSettingsService, private httpClientService:HttpClientService, private loaderService: LoaderService) { }
   ngOnInit() {
+
+    this.userSettingshttps.current_time().
+    subscribe(res => {
+        this.time=res;
+    }
+    );
+    // get current time
 
     this.subscription = this.loaderService.loaderState
     .subscribe((state: LoaderState) => {

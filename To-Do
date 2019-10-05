@@ -5,14 +5,16 @@ REMEMBER: write time of execution on even task of executed;
 
 
 Last: -----
-
+We are Displaying time that match location of user;
 
 Next:
-
 	
-	internationalization; time-zone; spring-boot;
+	parse Time in UserProcess in method get_timezone;
+	internationalization; 
 	after internilization add redis  persitence_days;
-	
+		
+	add ability send message for admin to all
+	add paying system;
 
 	Add ability to Admin send messages to all people;
 	Then add time;
@@ -31,6 +33,8 @@ Next:
 	familiar more with JwtResponse as response to htto in angualr;
 
 	Block to user login to web-site if his enable.equals(true);
+	
+	parse time in UserProcess of method() get_timezone();
 
 To do bz default learning two languages;
 
@@ -287,4 +291,5 @@ Add to conky display PID ports:
 redis, mongodb, docker ps;
 
 
-
+For automatically mount usb to arch linux 
+yaourt -S thunar-volman

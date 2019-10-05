@@ -16,4 +16,8 @@ export class UserSettingsService {
       return this.httpClient.put(this.apiUrl+'settings/timezone', timezone, { responseType: 'text' });      
   }
 
+  current_time() {
+    return this.httpClient.get(this.apiUrl+'get/timezone', { responseType: 'text' });      
+  }
+
 }
