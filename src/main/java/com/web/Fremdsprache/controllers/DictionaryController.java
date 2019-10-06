@@ -13,11 +13,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.web.Fremdsprache.entity.mongodb.DictionaryEnglish;
+import com.web.Fremdsprache.entity.mongodb.Dictionary;
+import com.web.Fremdsprache.entity.mongodb.Words;
 import com.web.Fremdsprache.model.Bool;
 import com.web.Fremdsprache.model.Size;
 import com.web.Fremdsprache.repositories.ConstEnDictRepo;
 import com.web.Fremdsprache.repositories.DictionaryRepository;
+import com.web.Fremdsprache.repositories.WordsRepository;
 import com.web.Fremdsprache.repositoryImpl.DictionariesEnglish;
 
 @CrossOrigin(origins = "http://localhost:4203")
@@ -32,10 +34,13 @@ public class DictionaryController {
 	@Autowired
 	ConstEnDictRepo englishDictionaryRepository;
 	
+	@Autowired 
+	WordsRepository words_repository;
+	
 	@RequestMapping(value = "/Dictionary/English/empty", method = RequestMethod.GET, produces = "application/json")
 	public Bool translateWord(Principal principal) throws IOException {
 		String loggedUser = principal.getName();
-		boolean result = DictionariesEnglish.checkIfEnglishDictionaryEmpty(loggedUser,dictionaryRepository);
+		boolean result = DictionariesEnglish.checkIfEnglishDictionaryEmpty(loggedUser, words_repository);
 		return  Bool.builder()
 					.bool(!result) //important !, that logic...yes, i know...but it's work;
 					.build();
@@ -50,13 +55,13 @@ public class DictionaryController {
 	@RequestMapping(value = "get/Dictionary/size", method = RequestMethod.GET, produces = "application/json")
 	public Size dictionarySize(Principal principal) throws IOException {
 	String loggedUser = principal.getName();
-	return DictionariesEnglish.getDictionarySize(dictionaryRepository, loggedUser);
+	return DictionariesEnglish.getDictionarySize(words_repository, loggedUser);
 	}
 	
 	@RequestMapping(value = "get/Dictionary/English", method = RequestMethod.GET, produces = "application/json")
-	public List<DictionaryEnglish> addNotesToMongoDB(Principal principal) throws IOException {
+	public List<Words> addNotesToMongoDB(Principal principal) throws IOException {
 		String loggedUser = principal.getName();
-		return DictionariesEnglish.getSizeEnglishDictionaryByLoggedUser(loggedUser, dictionaryRepository);	
+		return DictionariesEnglish.getSizeEnglishDictionaryByLoggedUser(loggedUser, words_repository);	
 	}
 	
 	@RequestMapping(value = "get/10/random/words/to/dictionary", method = RequestMethod.GET, produces = "application/json")

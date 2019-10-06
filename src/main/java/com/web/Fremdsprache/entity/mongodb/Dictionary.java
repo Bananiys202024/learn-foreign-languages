@@ -3,9 +3,12 @@ package com.web.Fremdsprache.entity.mongodb;
 
 
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Set;
 
 import javax.persistence.Entity;
 
+import org.joda.time.LocalDateTime;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
@@ -20,7 +23,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Document(collection = "dictionaryEnglish")
-public @Data class DictionaryEnglish {
+public @Data class Dictionary {
 
     @Id
     private Long id;
@@ -28,22 +31,6 @@ public @Data class DictionaryEnglish {
     @Field(value = "owner")
     private String owner;
     
-    @Field(value = "wordEnglish")
-    private String wordEnglish;
- 
-    @Field(value = "wordRussian")
-    private String wordRussian;
-    
-    @Field(value = "reapeatTomorrow")
-    private boolean repeatTomorrow;
-
-    @Field(value = "dateRepeat")
-    private Date dateRepeat;
- 	
-    @Field(value = "IsItLearned")
-    private boolean learned;
- 	
-    @Field(value = "dateLaerned")
-    private Date dateLearned;
+    private Set<Words> words;
  	
 }

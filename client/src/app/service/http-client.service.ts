@@ -18,6 +18,7 @@ import { count } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class HttpClientService {
+ 
 
   
  word:TrainWords;
@@ -162,6 +163,13 @@ export class HttpClientService {
 
 
 
+       //update redis
+
+       synchronize_words_for_repeat_or_learning() {
+        return this.httpClient.get('http://localhost:8083/user/synchronize/dictionary', { responseType: 'text' });      
+      }
+
+       //...
 
 
 }

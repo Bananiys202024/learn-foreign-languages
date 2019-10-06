@@ -7,17 +7,19 @@ import javax.swing.text.html.Option;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
-import com.web.Fremdsprache.entity.mongodb.DictionaryEnglish;
+import com.web.Fremdsprache.entity.mongodb.Dictionary;
 
 
 @Repository
-public interface DictionaryRepository extends MongoRepository<DictionaryEnglish, String> {
+public interface DictionaryRepository extends MongoRepository<Dictionary, String> {
 
-	public Optional<DictionaryEnglish> findFirstByOrderByIdDesc();
-
-	public Optional<DictionaryEnglish> findBywordEnglish(String word);
+	public Optional<Dictionary> findByOwner(String owner);
 	
-	public Optional<DictionaryEnglish> findBywordEnglishAndOwner(String word, String owner);
+	public Optional<Dictionary> findFirstByOrderByIdDesc();
+
+	public Optional<Dictionary> findBywordEnglish(String word);
+	
+	public Optional<Dictionary> findBywordEnglishAndOwner(String word, String owner);
 
 
 }

@@ -9,10 +9,13 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Optional;
 import java.util.TimeZone;
+import java.util.concurrent.TimeUnit;
 
 import com.web.Fremdsprache.controllers.TrainingController;
+import com.web.Fremdsprache.entity.mongodb.Dictionary;
 import com.web.Fremdsprache.entity.mongodb.Preference;
 import com.web.Fremdsprache.entity.mongodb.User;
+import com.web.Fremdsprache.repositories.DictionaryRepository;
 import com.web.Fremdsprache.repositories.PreferenceRepository;
 import com.web.Fremdsprache.repositories.UserRepository;
 
@@ -42,7 +45,7 @@ public class UserProcess {
 		users.save(user);
 	}
 
-	public static LocalDateTime get_timezone(UserRepository users, Optional<User> found) {
+	public static Date get_timezone(UserRepository users, Optional<User> found) {
 		
 		//get timezone
 		String timezone = found.get().getPreference().iterator().next().getTimezone();
@@ -51,9 +54,27 @@ public class UserProcess {
 		DateTimeZone time_zone = DateTimeZone.forID(timezone);
 		DateTime result_current_time = nowUtc.toDateTime(time_zone);
 
-        LocalDateTime now = result_current_time.toLocalDateTime();
+		return result_current_time.toDate();
+	}
 
-		return result_current_time.toLocalDateTime();
+	public static void synchronize_dictionary_for_words_on_reapeating_checking_if_day_expired_for_words_on_reapeat(User user,
+			DictionaryRepository dictionaryRepository) {
+			
+			Optional<Dictionary> found = dictionaryRepository.findByOwner(user.getEmail());
+			
+			if(found.isPresent())
+			{
+				 Date time_repeat = found.get().getWords().iterator().next().getDateRepeat();
+				 long diffInMillies = Math.abs(new Date().getTime() - time_repeat.getTime());
+				 long diff = TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS);
+				 logger.info("Found time---"+diff);
+				 
+			}
+			//synchronize dictionary
+			//get field of "dateReapeat"
+			//if value(time) more than 24 houres from now then change all values of all words from "dateReapeat" to false in particular timezone
+
+	
 	}
 
 }

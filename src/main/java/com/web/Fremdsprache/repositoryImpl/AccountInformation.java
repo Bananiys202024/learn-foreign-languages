@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-import com.web.Fremdsprache.entity.mongodb.DictionaryEnglish;
+import com.web.Fremdsprache.entity.mongodb.Dictionary;
 import com.web.Fremdsprache.entity.redis.Experience;
 import com.web.Fremdsprache.model.BanchProgressData;
 import com.web.Fremdsprache.repositories.CashExperience;
@@ -18,14 +18,14 @@ public class AccountInformation {
 	public static BanchProgressData generate_progress_information(DictionaryRepository dictionaryRepository,
 			UserRepository users, String owner, CashExperience cashExperience) {
 		
-		List<DictionaryEnglish> list = dictionaryRepository.findAll()
+		List<Dictionary> list = dictionaryRepository.findAll()
 										.stream()
 										.filter(c -> c.getOwner().equals(owner))
 										.collect(Collectors.toList());
 		
 		short level_experience_division_part_of_indicator_of_level = 500;
 		
-		int learned_words = (int) list.stream().filter(c -> c.isLearned()==true ).count();
+		int learned_words = (int) list.stream().filter(c -> c.getWords().iterator().next().isLearned()==true ).count();
 		int all_words_dictionary = list.size();
 		int learning_words = all_words_dictionary-learned_words;
 		long current_level_experience = users.findByEmail(owner).get().getPreference().iterator().next().getExperience();

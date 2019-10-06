@@ -44,6 +44,10 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
 
+    this.httpClientService.synchronize_words_for_repeat_or_learning().subscribe(
+      response => 
+      {
+
   this.httpClientService.getSizeEnglishDictionary().subscribe(
 	 response => 
 	 {
@@ -59,8 +63,10 @@ export class DashboardComponent implements OnInit {
   });
    
   
-
   }
+  );
+
+  } //end ng on initializing 
 
 
 

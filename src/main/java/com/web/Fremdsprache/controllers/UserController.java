@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.web.Fremdsprache.entity.mongodb.User;
+import com.web.Fremdsprache.repositories.DictionaryRepository;
 import com.web.Fremdsprache.repositories.PreferenceRepository;
 import com.web.Fremdsprache.repositories.UserRepository;
 import com.web.Fremdsprache.repositoryImpl.AdminProcesses;
@@ -32,6 +33,9 @@ public class UserController {
 	
     @Autowired
     PreferenceRepository preferenceRepo;
+	
+	@Autowired
+	public DictionaryRepository dictionaryRepository;
 	
 	//only for admin
 	@PutMapping(value = "settings/timezone")
@@ -57,7 +61,7 @@ public class UserController {
 			
 			if(found.isPresent())
 			{
-				LocalDateTime date = UserProcess.get_timezone(users, found);
+				Date date = UserProcess.get_timezone(users, found);
 		    	return new ResponseEntity<String>(""+date, HttpStatus.OK);
 
 			}
@@ -67,6 +71,26 @@ public class UserController {
 			}
 
 	}
+	
+	//only for admin
+	@GetMapping(value = "synchronize/dictionary")
+	public ResponseEntity<String> synchronize_dictionary_for_words_on_reapeat(Principal principal) throws Exception {	
+			Optional<User> found = users.findByEmail(principal.getName());
+			
+			if(found.isPresent())
+			{
+				//logic of refresh redis, updating words on by repeat
+				UserProcess.synchronize_dictionary_for_words_on_reapeating_checking_if_day_expired_for_words_on_reapeat(found.get(), dictionaryRepository );
+		    	return new ResponseEntity<String>("All okey", HttpStatus.OK);
+			}
+			else
+			{
+	        	return new ResponseEntity<String>("Something goes wrong, we can't find your user.", HttpStatus.OK);
+			}
+
+	}
+	
+	
 			
 	
 }

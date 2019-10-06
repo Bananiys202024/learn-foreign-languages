@@ -5,11 +5,28 @@ REMEMBER: write time of execution on even task of executed;
 
 
 Last: -----
-We are Displaying time that match location of user;
-
-Next:
+	created some logic in mind "How do i can initiale words even 24 hourse";
+	some refactoring of table "Dictionary"
+	fixing some back-end error of refiactoring table "Dicitonary";
 	
-	parse Time in UserProcess in method get_timezone;
+	
+Next:
+
+	fixing error of refiactoring table "Dicitonary";
+	checking projects;
+	
+		add kafka to spring boot
+	
+	redis experience and redis persitence;
+	
+	Add Map property field to field "dateReapeat";
+	Adding to that field as key word, as value time;
+	
+	Checking dictonaries and synchronyze that wth redis while visiting dashboard page;
+	
+	To do something with experience in redis; Set time to expire by "x".
+	Set to x seconds to end of current time in match with timezone;
+	
 	internationalization; 
 	after internilization add redis  persitence_days;
 		
@@ -218,21 +235,7 @@ Telegramm bot on java
 Может быть с исопльзование многопточного программирования.
 
 
-
-
-
-
-
-Implement confirmation of code by sendin to email info and then by href confirm that account;
-
-
-
-
-Add install yourt before install i3;
-
-clean terminals by start;
-
-
+script on java?For arch-linux?
 
 file: .config/i3(home directory); 
 vim ~/.conkyrc
@@ -240,56 +243,30 @@ execute conky
 usermod -aG banan
 Вы добавили пользователя имя_пользователя в группу log. Теперь имя_пользователя может читать файлы логов, и conky сможет отображать журнальные записи на рабочем столе.
 
+
+
+
 yaourt -S feh
 feh --bg-scale /home/banan/arh-linux-config/wallpaper.png
 Add folder with images to web-site;
 
 
+add instructions on installing conky
 corky:
  yaourt -S ttf-pizzadude-bullets 
-
 Add to linux, output bad words on bad password;
-
-install conky before installing i3wm;
-
-What do i can do with arch-linux;
-
-add folder for setting fah;
-
-Add 
-
-
-thunar for open program
-
+add folder for setting fah to a project and set that in arch-linux projects;
 Add automatically execution in terminal some command on start i3;
 may be use some another programm or SCRIPT
 YES, i should simple write script, that's quite interesting;
+After start terminal automatically open beuatiful arch images with parameters;
+change cursor of i3
 
 
-USB-stick:
-
-
-install
-Arch linux:
-0. Conky
-1. After start terminal automatically open beuatiful arch images with parameters;
-2. nethack
-yaourt -S nethack
-3. display data of terminal, beautiful arch-linux
-yaourt -S screenfetch
-4. change cursor of i3
-5. i3 set wall paper
-6. Add weather to i3status bar
-7. To do list with fast list on background of arch-linux;
-8. Create back-up;
 9. Add protect to gmail;
 	If i lose my phone;
 10. How do i can attack another computer from arch-linux
 
-Add to conky scripts: 
-Add to conky display PID ports:
-redis, mongodb, docker ps;
+Install torrent
+yaourt -S qbittorrent 
 
-
-For automatically mount usb to arch linux 
-yaourt -S thunar-volman

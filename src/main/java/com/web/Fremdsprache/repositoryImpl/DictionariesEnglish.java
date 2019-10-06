@@ -3,19 +3,25 @@ package com.web.Fremdsprache.repositoryImpl;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.Random;
 import java.util.stream.Collectors;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.assertj.core.util.Arrays;
 
 import com.web.Fremdsprache.entity.mongodb.ConstEnDict;
-import com.web.Fremdsprache.entity.mongodb.DictionaryEnglish;
+import com.web.Fremdsprache.entity.mongodb.Dictionary;
+import com.web.Fremdsprache.entity.mongodb.Words;
 import com.web.Fremdsprache.model.Size;
 import com.web.Fremdsprache.repositories.ConstEnDictRepo;
 import com.web.Fremdsprache.repositories.DictionaryRepository;
+import com.web.Fremdsprache.repositories.WordsRepository;
 import com.web.Fremdsprache.translator.Translator;
 
 
@@ -28,46 +34,45 @@ public class DictionariesEnglish {
 		//check if word exists in dictionary
 		if(IsWordNotExistsInDictionary(dictionaryRepository, word, owner))
 		{
+		
+	
+		
 		//try/catch for empty database;
 		try
-		{
-		DictionaryEnglish dictionary = DictionaryEnglish.builder()
+		{	
+			
+			Words words = Words.builder()
+					.english_word(word)
+					.russian_word(Translator.translate("ru",word))
+					.id(getMaxId(dictionaryRepository)+1)
+					.repeatTomorrow(false)
+					.dateLearned(new Date())
+					.learned(false)	
+					.build();	
+			
+		Dictionary dictionary = Dictionary.builder()
+				  .id(getMaxId(dictionaryRepository)+1)
 				  .owner(owner)
-			      .wordEnglish(word)
-			      .wordRussian(Translator.translate("ru",word))
-			      .id(getMaxId(dictionaryRepository)+1)
-			      .repeatTomorrow(false)
-			      .dateLearned(new Date())
-			      .learned(false)
+			      .words(new HashSet<>(Arrays.asList(words)))
 			      .build();
 		
 		dictionaryRepository.save(dictionary);
 		}
 		catch(Exception e)
 		{
-			DictionaryEnglish dictionary = DictionaryEnglish.builder()
-				      .owner(owner)
-					  .wordEnglish(word)
-				      .wordRussian(Translator.translate("ru",word))
-				      .id(1L)
-				      .repeatTomorrow(false)
-				      .dateLearned(new Date())
-				      .learned(false)
-				      .build();
-			
-		dictionaryRepository.save(dictionary);
+			logger.error("Ops!Error!Catched by logger!",e);
 		}
 		}//is word exist in dictionary ?
 
 	}
 
 	private static long getMaxId(DictionaryRepository dictionaryRepository) {
-		Optional<DictionaryEnglish> result = dictionaryRepository.findFirstByOrderByIdDesc();
+		Optional<Dictionary> result = dictionaryRepository.findFirstByOrderByIdDesc();
 		return result.isPresent()?result.get().getId():0L;
 	}
 
-	public static boolean checkIfEnglishDictionaryEmpty(String loggedUser, DictionaryRepository dictionaryRepository) {
-		return getSizeEnglishDictionaryByLoggedUser(loggedUser, dictionaryRepository)
+	public static boolean checkIfEnglishDictionaryEmpty(String loggedUser, WordsRepository words_repository) {
+		return getSizeEnglishDictionaryByLoggedUser(loggedUser, words_repository)
 									.stream()
 									.filter(model -> model.isLearned()==false)
 									.filter(model -> model.isRepeatTomorrow()==false)
@@ -75,17 +80,17 @@ public class DictionariesEnglish {
 									.size()>0;
 	}
 
-	private static List<DictionaryEnglish> getSizeEnglishDictionary(DictionaryRepository dictionaryRepository) {
+	private static List<Dictionary> getSizeEnglishDictionary(DictionaryRepository dictionaryRepository) {
 			return dictionaryRepository.findAll();
 	}
 
-	public static  List<DictionaryEnglish> getEnglishDictionary(DictionaryRepository dictionaryRepository) {
+	public static  List<Dictionary> getEnglishDictionary(DictionaryRepository dictionaryRepository) {
 		return dictionaryRepository.findAll();
 	}
 
-	public static Size getDictionarySize(DictionaryRepository dictionaryRepository, String loggedUser) {
+	public static Size getDictionarySize(WordsRepository words_repository, String loggedUser) {
 		
-		List<DictionaryEnglish> list = getSizeEnglishDictionaryByLoggedUser(loggedUser, dictionaryRepository);
+		List<Words> list = getSizeEnglishDictionaryByLoggedUser(loggedUser, words_repository);
 		
 		logger.info("List------"+
 				 list.stream()
@@ -117,9 +122,9 @@ public class DictionariesEnglish {
 		  
 	}
 
-	public static List<DictionaryEnglish> getSizeEnglishDictionaryByLoggedUser(String loggedUser,
-			DictionaryRepository dictionaryRepository) {
-		return dictionaryRepository.findAll()
+	public static List<Words> getSizeEnglishDictionaryByLoggedUser(String loggedUser,
+			WordsRepository words_repository) {
+		return  words_repository.findAll()
 									.stream()
 									.filter(c -> c.getOwner().equals(loggedUser))
 									.collect(Collectors.toList());
@@ -176,29 +181,35 @@ public class DictionariesEnglish {
 		return englishDictionaryRepository.findById(new Random().ints(1, 1, limit).findFirst().getAsInt() );
 	}
 
-	private static DictionaryEnglish transformToProperEntity(String owner, DictionaryRepository dictionaryRepository, ConstEnDict enty) throws IOException {
+	private static Dictionary transformToProperEntity(String owner, DictionaryRepository dictionaryRepository, ConstEnDict enty) throws IOException {
 		
-		Optional<DictionaryEnglish> entity = dictionaryRepository.findFirstByOrderByIdDesc();
+		Optional<Dictionary> entity = dictionaryRepository.findFirstByOrderByIdDesc();
 		
 		long maxId = entity.isPresent()?entity.get().getId():0L;	
 		
-		return DictionaryEnglish.builder()
-								.id(maxId+1)
-								.dateLearned(new Date())
-								.dateRepeat(new Date())
-								.learned(false)
-								.wordEnglish(enty.getWord())
-								.wordRussian(Translator.translate("ru", enty.getWord() ))
-								.owner(owner)
-								.repeatTomorrow(false)
-								.build();
+		Words words = Words.builder()
+				.id(maxId+1)
+				.dateLearned(new Date())
+				.dateRepeat(new Date())
+				.learned(false)
+				.english_word(enty.getWord())
+				.russian_word(Translator.translate("ru", enty.getWord() ))
+				.owner(owner)
+				.repeatTomorrow(false)
+				.build();	
+		
+	 return Dictionary.builder()
+			  .id(maxId+1)
+			  .owner(owner)
+		      .words(new HashSet<>(Arrays.asList(words)))
+		      .build();
 		
 	}
 
 	private static boolean IsWordNotExistsInDictionary(DictionaryRepository dictionaryRepository,
 			String word, String loggedUser) {	
 		
-		Optional<DictionaryEnglish> result = dictionaryRepository.findBywordEnglishAndOwner(word, loggedUser) ;	
+		Optional<Dictionary> result = dictionaryRepository.findBywordEnglishAndOwner(word, loggedUser) ;	
 		
 		return !result.isPresent();	
 		

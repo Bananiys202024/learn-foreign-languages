@@ -15,7 +15,7 @@ import org.apache.logging.log4j.Logger;
 
 import com.web.Fremdsprache.entity.mongodb.ConstEnDict;
 import com.web.Fremdsprache.entity.mongodb.CountExperienceOfTrainingWords;
-import com.web.Fremdsprache.entity.mongodb.DictionaryEnglish;
+import com.web.Fremdsprache.entity.mongodb.Dictionary;
 import com.web.Fremdsprache.entity.mongodb.Preference;
 import com.web.Fremdsprache.entity.mongodb.User;
 import com.web.Fremdsprache.entity.redis.Experience;
@@ -37,7 +37,7 @@ public class Training {
 
 	public static Train initialize(String loggedUser, DictionaryRepository dictionaryRepository) {
 		
-		List<DictionaryEnglish> list = dictionaryRepository.findAll()
+		List<Dictionary> list = dictionaryRepository.findAll()
 																	.stream()
 																	.filter(c -> c.getOwner().equals(loggedUser))
 																	.filter(c -> c.isRepeatTomorrow()== false)
@@ -50,7 +50,7 @@ public class Training {
 		 return model;
 	}
 
-	private static String[] russianArray(List<DictionaryEnglish> list) {
+	private static String[] russianArray(List<Dictionary> list) {
 		
 		String[] result = new String[5];
 		for(int i=0;i<5;i++)
@@ -59,7 +59,7 @@ public class Training {
 		return result;
 	}
 
-	private static String[] englishArray(List<DictionaryEnglish> list) {
+	private static String[] englishArray(List<Dictionary> list) {
 		
 		String[] result = new String[5];
 		for(int i=0;i<5;i++)
@@ -143,15 +143,15 @@ public class Training {
 		right_array = Arrays.stream(right_array).filter(e -> !e.equals("null")).toArray(String[]::new);
 
 		
-		List<DictionaryEnglish> right_entity_list = new ArrayList<DictionaryEnglish>();
-		List<DictionaryEnglish> wrong_entity_list = new ArrayList<DictionaryEnglish>();
+		List<Dictionary> right_entity_list = new ArrayList<Dictionary>();
+		List<Dictionary> wrong_entity_list = new ArrayList<Dictionary>();
 
 		for(String item:right_array)
 		{
-			Optional<DictionaryEnglish> found = dictionaryRepository.findBywordEnglishAndOwner(item, loggedUser);
+			Optional<Dictionary> found = dictionaryRepository.findBywordEnglishAndOwner(item, loggedUser);
 			if(found.isPresent())
 			{
-			DictionaryEnglish entity = found.get();
+			Dictionary entity = found.get();
 			entity.setLearned(true);
 			entity.setRepeatTomorrow(false);
 			entity.setOwner(loggedUser);
@@ -162,10 +162,10 @@ public class Training {
 		
 		for(String item:wrong_array)
 		{
-			Optional<DictionaryEnglish> found = dictionaryRepository.findBywordEnglishAndOwner(item, loggedUser);
+			Optional<Dictionary> found = dictionaryRepository.findBywordEnglishAndOwner(item, loggedUser);
 			if(found.isPresent())
 			{
-			DictionaryEnglish entity = found.get();
+			Dictionary entity = found.get();
 			entity.setLearned(false);
 			entity.setRepeatTomorrow(true);
 			entity.setOwner(loggedUser);

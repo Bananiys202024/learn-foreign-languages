@@ -2,7 +2,10 @@ package com.web.Fremdsprache.controllers;
 
 import java.io.IOException;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.web.Fremdsprache.entity.mongodb.ConstEnDict;
-import com.web.Fremdsprache.entity.mongodb.DictionaryEnglish;
+import com.web.Fremdsprache.entity.mongodb.Dictionary;
 import com.web.Fremdsprache.repositories.ConstEnDictRepo;
 import com.web.Fremdsprache.repositories.DictionaryRepository;
 import com.web.Fremdsprache.repositories.countCounterOfExperienceForTrainingWords;
@@ -35,7 +38,7 @@ public class Testing {
 	}
 	
 	@RequestMapping(value = "/mongo/say/eng", method = RequestMethod.GET, produces = "application/json")
-	public List<DictionaryEnglish> mong_say_dffict() throws Exception {
+	public List<Dictionary> mong_say_dffict() throws Exception {
 			return dictionaryRepository.findAll();
 	}
 	
@@ -66,13 +69,14 @@ public class Testing {
 //	
 	
 	@RequestMapping(value = "mongo/write", method = RequestMethod.GET, produces = "application/json")
-	public void sendWordsOnRepeat() throws IOException {	
-		DictionaryEnglish entity = new DictionaryEnglish(1L, null, null, null, false, null, false, null);
+	public void sendWordsOnRepeat() throws IOException {
+
+		Dictionary entity = new Dictionary(1L, null, null);
 		dictionaryRepository.save(entity);
 	}
 	
 	@RequestMapping(value = "mongodb/say", method = RequestMethod.GET, produces = "application/json")
-	public List<DictionaryEnglish> Mongo_say() throws IOException {	
+	public List<Dictionary> Mongo_say() throws IOException {	
 		return dictionaryRepository.findAll();
 	}
 	
