@@ -109,6 +109,9 @@ Drop database "tongues"
            use tongues       
            db.dropDatabase()
             
+<h2>Screenshots</h2>            
+<kbd><img src="github/images/1.jpg"></kbd>
+
             
            
 <h2>Access</h2>
