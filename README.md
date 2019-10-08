@@ -6,14 +6,14 @@
  App is developing...
 
 <h2>Screenshots</h2>            
-<kbd><img src="github/images/1.jpg"></kbd>
-<kbd><img src="github/images/2.jpg"></kbd>
-<kbd><img src="github/images/3.jpg"></kbd>
-<kbd><img src="github/images/4.jpg"></kbd>
-<kbd><img src="github/images/5.jpg"></kbd>
-<kbd><img src="github/images/6.jpg"></kbd>
-<kbd><img src="github/images/7.jpg"></kbd>
 
+<kbd><img src="github/images/7.jpg"></kbd>
+<kbd><img src="github/images/6.jpg"></kbd>
+<kbd><img src="github/images/5.jpg"></kbd>
+<kbd><img src="github/images/4.jpg"></kbd>
+<kbd><img src="github/images/3.jpg"></kbd>
+<kbd><img src="github/images/2.jpg"></kbd>
+<kbd><img src="github/images/1.jpg"></kbd>
 
 <h2>Start app</h2>
 
