@@ -5,6 +5,14 @@
 
  App is developing...
 
+<h2>Screenshots</h2>            
+<kbd><img src="github/images/1.jpg"></kbd>
+<kbd><img src="github/images/2.jpg"></kbd>
+<kbd><img src="github/images/3.jpg"></kbd>
+<kbd><img src="github/images/4.jpg"></kbd>
+<kbd><img src="github/images/5.jpg"></kbd>
+<kbd><img src="github/images/6.jpg"></kbd>
+<kbd><img src="github/images/7.jpg"></kbd>
 
 
 <h2>Start app</h2>
@@ -108,12 +116,7 @@ Drop database "tongues"
 
            use tongues       
            db.dropDatabase()
-            
-<h2>Screenshots</h2>            
-<kbd><img src="github/images/1.jpg"></kbd>
-
-            
-           
+ 
 <h2>Access</h2>
 
 Back-end:  <a href="http://localhost:8083/">http://localhost:8083/</a> </br>
