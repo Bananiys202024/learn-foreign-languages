@@ -58,7 +58,12 @@ Start(long note)
 Start(short note)
     
             ./gradlew bootJar;docker-compose build;docker-compose up;
-   
+
+or
+
+            sudo ./gradlew bootJar;sudo docker-compose build;sudo docker-compose up;
+
+
 <h3>Redis</h3>
 
 Start
