@@ -18,6 +18,7 @@ import com.web.Fremdsprache.entity.mongodb.CountExperienceOfTrainingWords;
 import com.web.Fremdsprache.entity.mongodb.Dictionary;
 import com.web.Fremdsprache.entity.mongodb.Preference;
 import com.web.Fremdsprache.entity.mongodb.User;
+import com.web.Fremdsprache.entity.mongodb.Words;
 import com.web.Fremdsprache.entity.redis.Experience;
 import com.web.Fremdsprache.model.Mistakes;
 import com.web.Fremdsprache.model.Random;
@@ -27,6 +28,7 @@ import com.web.Fremdsprache.repositories.ConstRnDictRepo;
 import com.web.Fremdsprache.repositories.DictionaryRepository;
 import com.web.Fremdsprache.repositories.PreferenceRepository;
 import com.web.Fremdsprache.repositories.UserRepository;
+import com.web.Fremdsprache.repositories.WordsRepository;
 import com.web.Fremdsprache.repositories.countCounterOfExperienceForTrainingWords;
 import com.web.Fremdsprache.translator.Translator;
 import com.web.Fremdsprache.util.Convertor;
@@ -40,8 +42,8 @@ public class Training {
 		List<Dictionary> list = dictionaryRepository.findAll()
 																	.stream()
 																	.filter(c -> c.getOwner().equals(loggedUser))
-																	.filter(c -> c.isRepeatTomorrow()== false)
-																	.filter(c -> c.isLearned() == false)
+																	.filter(c -> c.getWords().iterator().next().isRepeatTomorrow()== false)
+																	.filter(c -> c.getWords().iterator().next().isLearned() == false)
 																	.limit(5) //6 excluded, only 5;
 																	.collect(Collectors.toList());
 		
@@ -54,7 +56,7 @@ public class Training {
 		
 		String[] result = new String[5];
 		for(int i=0;i<5;i++)
-		result[i]=list.get(i).getWordRussian();
+		result[i]=list.get(i).getWords().iterator().next().getRussianWord();
 			
 		return result;
 	}
@@ -63,7 +65,7 @@ public class Training {
 		
 		String[] result = new String[5];
 		for(int i=0;i<5;i++)
-		result[i]=list.get(i).getWordEnglish();
+		result[i]=list.get(i).getWords().iterator().next().getEnglishWord();
 			
 		return result;
 	}
@@ -137,7 +139,7 @@ public class Training {
 	}
 
 	public static void conclusion(String loggedUser, String[] right_array, String[] wrong_array,
-			DictionaryRepository dictionaryRepository) {
+			DictionaryRepository dictionaryRepository, WordsRepository words_repository) {
 	
 		wrong_array = Arrays.stream(wrong_array).filter(e -> !e.equals("null")).toArray(String[]::new);
 		right_array = Arrays.stream(right_array).filter(e -> !e.equals("null")).toArray(String[]::new);
@@ -148,28 +150,42 @@ public class Training {
 
 		for(String item:right_array)
 		{
-			Optional<Dictionary> found = dictionaryRepository.findBywordEnglishAndOwner(item, loggedUser);
+			Optional<Words> found = words_repository.findByEnglishWordAndOwner(item, loggedUser);
 			if(found.isPresent())
 			{
-			Dictionary entity = found.get();
-			entity.setLearned(true);
-			entity.setRepeatTomorrow(false);
-			entity.setOwner(loggedUser);
+				
+			Dictionary entity = dictionaryRepository.findByOwner(found.get().getOwner()).get();
+			
+			Words words = found.get();
+			
+			words.setLearned(true);
+			words.setRepeatTomorrow(false);
+			words.setOwner(loggedUser);
+			
 			right_entity_list.add(entity);
+			words_repository.save(words);
+
 			}
 
 		}
 		
 		for(String item:wrong_array)
 		{
-			Optional<Dictionary> found = dictionaryRepository.findBywordEnglishAndOwner(item, loggedUser);
+			Optional<Words> found = words_repository.findByEnglishWordAndOwner(item, loggedUser);
 			if(found.isPresent())
 			{
-			Dictionary entity = found.get();
-			entity.setLearned(false);
-			entity.setRepeatTomorrow(true);
-			entity.setOwner(loggedUser);
+				Dictionary entity = dictionaryRepository.findByOwner(found.get().getOwner()).get();
+
+				Words words = found.get();
+
+				
+				words.setLearned(false);
+				words.setRepeatTomorrow(true);
+				words.setOwner(loggedUser);
+			
 			wrong_entity_list.add(entity);
+			words_repository.save(words);
+			
 			}
 
 		}

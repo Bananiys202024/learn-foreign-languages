@@ -20,10 +20,10 @@ public @Data  class Words {
 	    private String owner;
 		
 	    @Field(value = "registration_date")
-	    private String russian_word;
+	    private String russianWord;
 	    
 	    @Field(value = "current_level")
-	    private String english_word;
+	    private String englishWord;
 
 	    @Field(value = "reapeatTomorrow")
 	    private boolean repeatTomorrow;

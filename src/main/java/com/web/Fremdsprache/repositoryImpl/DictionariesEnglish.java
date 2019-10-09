@@ -2,6 +2,7 @@ package com.web.Fremdsprache.repositoryImpl;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -13,7 +14,6 @@ import java.util.stream.Collectors;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.assertj.core.util.Arrays;
 
 import com.web.Fremdsprache.entity.mongodb.ConstEnDict;
 import com.web.Fremdsprache.entity.mongodb.Dictionary;
@@ -29,10 +29,10 @@ public class DictionariesEnglish {
 
 	private static final Logger logger = LogManager.getLogger(DictionariesEnglish.class);
 
-	public static void addWordToEnglishDictionary(DictionaryRepository dictionaryRepository, String word, String owner) throws IOException {
+	public static void addWordToEnglishDictionary(DictionaryRepository dictionaryRepository, String word, String owner, WordsRepository words_repository) throws IOException {
 		
 		//check if word exists in dictionary
-		if(IsWordNotExistsInDictionary(dictionaryRepository, word, owner))
+		if(IsWordNotExistsInDictionary(dictionaryRepository, word, owner, words_repository))
 		{
 		
 	
@@ -42,8 +42,8 @@ public class DictionariesEnglish {
 		{	
 			
 			Words words = Words.builder()
-					.english_word(word)
-					.russian_word(Translator.translate("ru",word))
+					.englishWord(word)
+					.russianWord(Translator.translate("ru",word))
 					.id(getMaxId(dictionaryRepository)+1)
 					.repeatTomorrow(false)
 					.dateLearned(new Date())
@@ -131,7 +131,7 @@ public class DictionariesEnglish {
 	}
 
 	public static void insert_10_random_words(String owner, DictionaryRepository dictionaryRepository,
-			ConstEnDictRepo englishDictionaryRepository) throws IOException {
+			ConstEnDictRepo englishDictionaryRepository, WordsRepository words_repository) throws IOException {
 		
 		int limit = 1_000; //number of words in dicitonary;
 
@@ -145,7 +145,7 @@ public class DictionariesEnglish {
 		entity = findEntityConstEnDict(englishDictionaryRepository, limit);
 		
 		logger.info("---Boollean-----"+entity);
-		boolean checkingBool = IsWordNotExistsInDictionary(dictionaryRepository, entity.getWord(), owner);
+		boolean checkingBool = IsWordNotExistsInDictionary(dictionaryRepository, entity.getWord(), owner, words_repository);
 		boolean word_not_exist_in_generated_list = checkIfGeneratedListContainWord(entities, entity.getWord());
 		
 		
@@ -192,8 +192,8 @@ public class DictionariesEnglish {
 				.dateLearned(new Date())
 				.dateRepeat(new Date())
 				.learned(false)
-				.english_word(enty.getWord())
-				.russian_word(Translator.translate("ru", enty.getWord() ))
+				.englishWord(enty.getWord())
+				.russianWord(Translator.translate("ru", enty.getWord() ))
 				.owner(owner)
 				.repeatTomorrow(false)
 				.build();	
@@ -207,9 +207,9 @@ public class DictionariesEnglish {
 	}
 
 	private static boolean IsWordNotExistsInDictionary(DictionaryRepository dictionaryRepository,
-			String word, String loggedUser) {	
+			String word, String loggedUser, WordsRepository words_repository) {	
 		
-		Optional<Dictionary> result = dictionaryRepository.findBywordEnglishAndOwner(word, loggedUser) ;	
+		Optional<Words> result = words_repository.findByEnglishWordAndOwner(word, loggedUser) ;	
 		
 		return !result.isPresent();	
 		

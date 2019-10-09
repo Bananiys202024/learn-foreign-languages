@@ -5,17 +5,16 @@ REMEMBER: write time of execution on even task of executed;
 
 
 Last: -----
-	created some logic in mind "How do i can initiale words even 24 hourse";
-	some refactoring of table "Dictionary"
-	fixing some back-end error of refiactoring table "Dicitonary";
-	
+fixing error of refiactoring table "Dicitonary";10 minutes
 	
 Next:
 
-	fixing error of refiactoring table "Dicitonary";
+	fixing process trainign words 
+	fixing process fo changing timezone for user;
+	
 	checking projects;
 	
-		add kafka to spring boot
+	add kafka to spring boot
 	
 	redis experience and redis persitence;
 	
@@ -74,7 +73,7 @@ To do bz default learning two languages;
 	
 	Add scheduling with sending statistics;
 
-	initialiye disconnected userö
+	initialiye disconnected user��
 	
 	Add JasperReports for creating report for admin about statistics of web-sites;
 	May be i should use there is kafka;
@@ -230,9 +229,9 @@ Telegramm bot on java
 
 
 
-Написать серверный чат на Java. как соедующий проэкт.
-Может быть с использованием сокетом
-Может быть с исопльзование многопточного программирования.
+���������������� ������������������ ������ ���� Java. ������ ������������������ ������������.
+���������� �������� �� ���������������������������� ��������������
+���������� �������� �� �������������������������� �������������������������� ��������������������������������.
 
 
 script on java?For arch-linux?
@@ -241,7 +240,7 @@ file: .config/i3(home directory);
 vim ~/.conkyrc
 execute conky  
 usermod -aG banan
-Вы добавили пользователя имя_пользователя в группу log. Теперь имя_пользователя может читать файлы логов, и conky сможет отображать журнальные записи на рабочем столе.
+���� ���������������� ������������������������ ������_������������������������ �� ������������ log. ������������ ������_������������������������ ���������� ������������ ���������� ����������, �� conky ������������ �������������������� �������������������� ������������ ���� �������������� ����������.
 
 
 
@@ -270,3 +269,6 @@ change cursor of i3
 Install torrent
 yaourt -S qbittorrent 
 
+nodejs angular_cli;
+
+trash-cli

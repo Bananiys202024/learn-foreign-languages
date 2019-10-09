@@ -24,6 +24,7 @@ import com.web.Fremdsprache.repositories.ConstRnDictRepo;
 import com.web.Fremdsprache.repositories.DictionaryRepository;
 import com.web.Fremdsprache.repositories.PreferenceRepository;
 import com.web.Fremdsprache.repositories.UserRepository;
+import com.web.Fremdsprache.repositories.WordsRepository;
 import com.web.Fremdsprache.repositories.countCounterOfExperienceForTrainingWords;
 import com.web.Fremdsprache.repositoryImpl.Training;
 import com.web.Fremdsprache.util.DictionaryProcess;
@@ -55,6 +56,9 @@ public class TrainingController {
 	@Autowired
 	public ConstRnDictRepo russianRepository;
 	
+	@Autowired 
+	WordsRepository words_repository;
+	
 	@GetMapping(value = "initialize", produces = "application/json")
 	public Train initialize(Principal principal) throws IOException {
 		String loggedUser = principal.getName();
@@ -71,7 +75,7 @@ public class TrainingController {
 	public void conclusion_decision_of_destiny_wors(@PathVariable String[] right_array, @PathVariable String[] wrong_array, Principal principal) throws IOException {
 		String loggedUser = principal.getName();
 		this.conclusion_about_experience(loggedUser);
-		Training.conclusion(loggedUser, right_array, wrong_array, dictionaryRepository);
+		Training.conclusion(loggedUser, right_array, wrong_array, dictionaryRepository, words_repository);
 	}
 	
 

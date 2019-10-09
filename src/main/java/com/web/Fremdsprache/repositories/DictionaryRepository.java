@@ -17,9 +17,6 @@ public interface DictionaryRepository extends MongoRepository<Dictionary, String
 	
 	public Optional<Dictionary> findFirstByOrderByIdDesc();
 
-	public Optional<Dictionary> findBywordEnglish(String word);
-	
-	public Optional<Dictionary> findBywordEnglishAndOwner(String word, String owner);
 
 
 }

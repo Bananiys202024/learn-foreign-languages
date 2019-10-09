@@ -49,7 +49,7 @@ public class DictionaryController {
 	@RequestMapping(value = "/Dictionary/English/{word}", method = RequestMethod.GET, produces = "application/json")
 	public void addNotesToMongoDB(@PathVariable String word, Principal principal) throws IOException {
 		String loggedUser = principal.getName();
-		DictionariesEnglish.addWordToEnglishDictionary(dictionaryRepository, word, loggedUser);
+		DictionariesEnglish.addWordToEnglishDictionary(dictionaryRepository, word, loggedUser, words_repository);
 	}
 	
 	@RequestMapping(value = "get/Dictionary/size", method = RequestMethod.GET, produces = "application/json")
@@ -67,7 +67,7 @@ public class DictionaryController {
 	@RequestMapping(value = "get/10/random/words/to/dictionary", method = RequestMethod.GET, produces = "application/json")
 	public void generate_10_random_words(Principal principal) throws IOException {
 		String loggedUser = principal.getName();
-		DictionariesEnglish.insert_10_random_words(loggedUser, dictionaryRepository, englishDictionaryRepository);	
+		DictionariesEnglish.insert_10_random_words(loggedUser, dictionaryRepository, englishDictionaryRepository, words_repository);	
 	}
 
 
