@@ -5,13 +5,26 @@ REMEMBER: write time of execution on even task of executed;
 
 
 Last: -----
-fixing error of refiactoring table "Dicitonary";10 minutes
-	
+fixing process of initializing words before training;40minutes
+fixing process of training words:13 minutes
+
+
+
 Next:
 
-	fixing process trainign words 
+	fixing display words on page "dictonary"
 	fixing process fo changing timezone for user;
+	fixing redis displaying for persistence_days;
+	adding kafka(message broker)(abilty to admin send message for all and chat for all users)
+	add ability to pay for VIP course;
+	Add part only for VIP user, which can view only VIP user;
+	Refactoring of code, implementing patterns of programming;
+	fixing all another errors, mistakes, polish of code
+	Creating web vue.js resume web-site;
 	
+
+	for redis:
+
 	checking projects;
 	
 	add kafka to spring boot

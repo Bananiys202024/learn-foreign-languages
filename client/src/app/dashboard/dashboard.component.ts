@@ -47,20 +47,21 @@ export class DashboardComponent implements OnInit {
     this.httpClientService.synchronize_words_for_repeat_or_learning().subscribe(
       response => 
       {
-
-  this.httpClientService.getSizeEnglishDictionary().subscribe(
-	 response => 
-	 {
-		 this.learn = response.WordsOnLearn;
+        console.log('Response---'+response);
+     this.httpClientService.getSizeEnglishDictionary().subscribe(
+	   response => 
+	   {
+      console.log('Another method---'+JSON.stringify(response));
+      this.learn = response.WordsOnLearn;
 		 this.later = response.WordsOnRepeat;
 		 this.learned = response.Learned;
-	 }
-  );
+	   }
+    );
 
-  this.subscription = this.loaderService.loaderState
-  .subscribe((state: LoaderState) => {
+    this.subscription = this.loaderService.loaderState
+   .subscribe((state: LoaderState) => {
     this.show = state.show;
-  });
+    });
    
   
   }
@@ -71,9 +72,7 @@ export class DashboardComponent implements OnInit {
 
 
 
-  ngOnDestroy() {
-    this.subscription.unsubscribe();
-  }
+ 
 
 
 

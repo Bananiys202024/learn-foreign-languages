@@ -153,12 +153,46 @@ public class DictionariesEnglish {
 		{
 			entities.add(entity);
 		}
-		}
+		
+		}//end while loop
 		
 		//save those 10 entities in dictionaryRepository
 		for(ConstEnDict enty:entities)
-		dictionaryRepository.save(transformToProperEntity(owner,dictionaryRepository, enty));
+		saveToDataBase(words_repository, dictionaryRepository, enty, owner);
+	
 
+	
+		
+	}
+
+	private static void saveToDataBase(WordsRepository words_repository, DictionaryRepository dictionaryRepository,
+			ConstEnDict enty, String owner) throws IOException {
+		
+
+		Optional<Dictionary> entity = dictionaryRepository.findFirstByOrderByIdDesc();
+		
+		long maxId = entity.isPresent()?entity.get().getId():0L;	
+		
+		Words words = Words.builder()
+				.id(maxId+1)
+				.dateLearned(new Date())
+				.dateRepeat(new Date())
+				.learned(false)
+				.englishWord(enty.getWord())
+				.russianWord(Translator.translate("ru", enty.getWord() ))
+				.owner(owner)
+				.repeatTomorrow(false)
+				.build();	
+		
+		Dictionary dictionary =  Dictionary.builder()
+			  .id(maxId+1)
+			  .owner(owner)
+		      .words(new HashSet<>(Arrays.asList(words)))
+		      .build();
+		
+		
+		dictionaryRepository.save(dictionary);
+		words_repository.save(words);
 	}
 
 	private static boolean checkIfGeneratedListContainWord(List<ConstEnDict> entities, String word) {
@@ -181,30 +215,7 @@ public class DictionariesEnglish {
 		return englishDictionaryRepository.findById(new Random().ints(1, 1, limit).findFirst().getAsInt() );
 	}
 
-	private static Dictionary transformToProperEntity(String owner, DictionaryRepository dictionaryRepository, ConstEnDict enty) throws IOException {
-		
-		Optional<Dictionary> entity = dictionaryRepository.findFirstByOrderByIdDesc();
-		
-		long maxId = entity.isPresent()?entity.get().getId():0L;	
-		
-		Words words = Words.builder()
-				.id(maxId+1)
-				.dateLearned(new Date())
-				.dateRepeat(new Date())
-				.learned(false)
-				.englishWord(enty.getWord())
-				.russianWord(Translator.translate("ru", enty.getWord() ))
-				.owner(owner)
-				.repeatTomorrow(false)
-				.build();	
-		
-	 return Dictionary.builder()
-			  .id(maxId+1)
-			  .owner(owner)
-		      .words(new HashSet<>(Arrays.asList(words)))
-		      .build();
-		
-	}
+
 
 	private static boolean IsWordNotExistsInDictionary(DictionaryRepository dictionaryRepository,
 			String word, String loggedUser, WordsRepository words_repository) {	

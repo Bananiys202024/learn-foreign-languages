@@ -20,6 +20,7 @@ import com.web.Fremdsprache.entity.mongodb.User;
 import com.web.Fremdsprache.repositories.DictionaryRepository;
 import com.web.Fremdsprache.repositories.PreferenceRepository;
 import com.web.Fremdsprache.repositories.UserRepository;
+import com.web.Fremdsprache.repositories.WordsRepository;
 import com.web.Fremdsprache.repositoryImpl.AdminProcesses;
 import com.web.Fremdsprache.repositoryImpl.UserProcess;
 
@@ -36,6 +37,9 @@ public class UserController {
 	
 	@Autowired
 	public DictionaryRepository dictionaryRepository;
+	
+	@Autowired 
+	WordsRepository words_repository;
 	
 	//only for admin
 	@PutMapping(value = "settings/timezone")
@@ -80,7 +84,7 @@ public class UserController {
 			if(found.isPresent())
 			{
 				//logic of refresh redis, updating words on by repeat
-				UserProcess.synchronize_dictionary_for_words_on_reapeating_checking_if_day_expired_for_words_on_reapeat(found.get(), dictionaryRepository );
+				UserProcess.synchronize_dictionary_for_words_on_reapeating_checking_if_day_expired_for_words_on_reapeat(found.get(), dictionaryRepository, words_repository );
 		    	return new ResponseEntity<String>("All okey", HttpStatus.OK);
 			}
 			else

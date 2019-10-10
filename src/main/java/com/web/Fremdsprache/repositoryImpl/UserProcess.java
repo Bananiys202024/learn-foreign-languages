@@ -3,10 +3,12 @@ package com.web.Fremdsprache.repositoryImpl;
 
 import java.text.SimpleDateFormat;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Optional;
 import java.util.TimeZone;
 import java.util.concurrent.TimeUnit;
@@ -15,9 +17,11 @@ import com.web.Fremdsprache.controllers.TrainingController;
 import com.web.Fremdsprache.entity.mongodb.Dictionary;
 import com.web.Fremdsprache.entity.mongodb.Preference;
 import com.web.Fremdsprache.entity.mongodb.User;
+import com.web.Fremdsprache.entity.mongodb.Words;
 import com.web.Fremdsprache.repositories.DictionaryRepository;
 import com.web.Fremdsprache.repositories.PreferenceRepository;
 import com.web.Fremdsprache.repositories.UserRepository;
+import com.web.Fremdsprache.repositories.WordsRepository;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -58,17 +62,41 @@ public class UserProcess {
 	}
 
 	public static void synchronize_dictionary_for_words_on_reapeating_checking_if_day_expired_for_words_on_reapeat(User user,
-			DictionaryRepository dictionaryRepository) {
+			DictionaryRepository dictionaryRepository, WordsRepository  words_repostiory) {
 			
-			Optional<Dictionary> found = dictionaryRepository.findByOwner(user.getEmail());
+			Optional<List<Words>> found = words_repostiory.findByOwnerAndRepeatTomorrow(user.getEmail(), true);
 			
 			if(found.isPresent())
 			{
-				 Date time_repeat = found.get().getWords().iterator().next().getDateRepeat();
-				 long diffInMillies = Math.abs(new Date().getTime() - time_repeat.getTime());
-				 long diff = TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS);
-				 logger.info("Found time---"+diff);
-				 
+				
+				List<Words> words_list = found.get();
+				List<Dictionary> dictionary_list =  new ArrayList<Dictionary>();
+				
+				int size = words_list.size() -1 ;
+				
+				for(int i=size; i>=0;--i)
+				{
+					 logger.info("New entity in for loop");
+					 Date time_repeat = words_list.get(i).getDateRepeat();
+					 long diffInMillies = Math.abs(new Date().getTime() - time_repeat.getTime());
+					 long diff = TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS);
+					 
+					 //if time more than 24 hourse
+					 //set field repeat to 00:00:00;
+					 //set field RepeatTomorrow to false;
+					 
+					 logger.info("Found time---"+diff);
+					 logger.info("End entity on for loop");
+					 
+				}
+				
+				dictionaryRepository.saveAll(dictionary_list);
+				words_repostiory.saveAll(words_list);
+
+			}
+			else
+			{
+				
 			}
 			//synchronize dictionary
 			//get field of "dateReapeat"
