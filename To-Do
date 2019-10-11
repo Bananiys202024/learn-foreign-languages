@@ -5,12 +5,11 @@ REMEMBER: write time of execution on even task of executed;
 
 
 Last: -----
-checking github commit
+I was fixing display of words on page "dictionary";10 minutes;
 
 
 Next:
 
-	fixing display words on page "dictonary"
 	fixing process fo changing timezone for user;
 	fixing redis displaying for persistence_days;
 	adding kafka(message broker)(abilty to admin send message for all and chat for all users)

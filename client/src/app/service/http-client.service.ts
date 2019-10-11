@@ -13,6 +13,7 @@ import { CounterExperience } from '../classes/counter-experience';
 import { Train } from '../classes/train';
 import { Random } from '../classes/random';
 import { count } from 'rxjs/operators';
+import { Words } from '../classes/words';
 
 @Injectable({
   providedIn: 'root'
@@ -83,7 +84,7 @@ export class HttpClientService {
                   
                     getEnglishDictionary()
    {
-	    return this.httpClient.get<Dictionary>('http://localhost:8083/get/Dictionary/English');
+	    return this.httpClient.get<Words>('http://localhost:8083/get/Dictionary/English');
    } 
            
    					getSizeEnglishDictionary()

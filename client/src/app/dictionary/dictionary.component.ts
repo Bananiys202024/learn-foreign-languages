@@ -3,6 +3,7 @@ import { Router } from "@angular/router";
 import { ActivatedRoute } from "@angular/router";
 import { HttpClientService} from '../service/http-client.service';
 import { Dictionary } from '../classes/dictionary';
+import { Words } from '../classes/words';
 
 @Component({
   selector: 'app-dictionary',
@@ -11,7 +12,7 @@ import { Dictionary } from '../classes/dictionary';
 })
 export class DictionaryComponent implements OnInit {
 
-  dictionaryEnglish: Dictionary []; 
+  dictionaryEnglish: Words []; 
 	
   constructor(
 		    private router: Router,
