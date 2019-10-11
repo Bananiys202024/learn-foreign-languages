@@ -122,7 +122,7 @@ Use database "tongues"
            
 Show tables
 
-           show tabes
+           show tables
 
 Get number of lines in table "users"
 
