@@ -65,9 +65,8 @@ public class UserController {
 			
 			if(found.isPresent())
 			{
-				Date date = UserProcess.get_timezone(users, found);
+				String date = UserProcess.get_timezone(users, found);
 		    	return new ResponseEntity<String>(""+date, HttpStatus.OK);
-
 			}
 			else
 			{

@@ -2,6 +2,9 @@ package com.web.Fremdsprache.repositoryImpl;
 
 
 import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -27,7 +30,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
-import org.joda.time.Instant;
+//import org.joda.time.Instant;
 import org.joda.time.LocalDateTime;
 import org.joda.time.format.DateTimeFormat;
 
@@ -49,16 +52,20 @@ public class UserProcess {
 		users.save(user);
 	}
 
-	public static Date get_timezone(UserRepository users, Optional<User> found) {
+	public static String get_timezone(UserRepository users, Optional<User> found) {
 		
 		//get timezone
 		String timezone = found.get().getPreference().iterator().next().getTimezone();
 		
-		Instant nowUtc = Instant.now();
-		DateTimeZone time_zone = DateTimeZone.forID(timezone);
-		DateTime result_current_time = nowUtc.toDateTime(time_zone);
+//		Instant nowUtc = Instant.now();
+//		DateTimeZone time_zone = DateTimeZone.forID(timezone);
+//		DateTime result_current_time = nowUtc.toDateTime(time_zone);
 
-		return result_current_time.toDate();
+		final ZoneId zoneId = ZoneId.of(timezone);
+        final ZonedDateTime zonedDateTime = ZonedDateTime.ofInstant(Instant.now(), zoneId);
+        String result_current_time = zonedDateTime.format(DateTimeFormatter.ISO_ZONED_DATE_TIME);
+		
+		return result_current_time;
 	}
 
 	public static void synchronize_dictionary_for_words_on_reapeating_checking_if_day_expired_for_words_on_reapeat(User user,
@@ -74,9 +81,11 @@ public class UserProcess {
 				
 				int size = words_list.size() -1 ;
 				
+				
+				logger.info("Before loop"+"\n");
 				for(int i=size; i>=0;--i)
 				{
-					 logger.info("New entity in for loop");
+					 logger.info("New entity in for loop"+"\n");
 					 Date time_repeat = words_list.get(i).getDateRepeat();
 					 long diffInMillies = Math.abs(new Date().getTime() - time_repeat.getTime());
 					 long diff = TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS);
@@ -89,6 +98,7 @@ public class UserProcess {
 					 logger.info("End entity on for loop");
 					 
 				}
+				logger.info("After loop"+"\n");
 				
 				dictionaryRepository.saveAll(dictionary_list);
 				words_repostiory.saveAll(words_list);

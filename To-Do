@@ -1,17 +1,23 @@
 REMEMBER: write time of execution on even task of executed;
-
+!!!DON't post CONKY to github!!!!!
      
      
-
 
 Last: -----
-I was fixing display of words on page "dictionary";10 minutes;
+fixing process fo changing timezone for user;20 minutes;
+awareness of confusing of my code and decision about rewriting it:35 minutes;
+reading about kafk
+16:40
 
 
 Next:
 
-	fixing process fo changing timezone for user;
-	fixing redis displaying for persistence_days;
+	kafka
+	https://www.confluent.io/blog/apache-kafka-spring-boot-application
+
+	for testing start kafka with new project;
+	https://habr.com/ru/post/440400/
+
 	adding kafka(message broker)(abilty to admin send message for all and chat for all users)
 	add ability to pay for VIP course;
 	Add part only for VIP user, which can view only VIP user;
@@ -19,6 +25,20 @@ Next:
 	fixing all another errors, mistakes, polish of code
 	Creating web vue.js resume web-site;
 	
+	mainly refactore method "checkCurrentTimeOfTraining" in training class;
+	fixing process counting experience in end of training words;
+	fixing redis displaying for persistence_days:
+	
+	
+	
+	
+	
+	What is "cluster", "node"
+	
+	
+	
+	Add cascade on deleting If we delete one from following tables then delete all others related
+	User, Roles, Preference; mongodb;
 
 	for redis:
 
@@ -33,11 +53,16 @@ Next:
 	
 	Checking dictonaries and synchronyze that wth redis while visiting dashboard page;
 	
+	fixing displaying time in cabinet( display time without of refresh page);
+	
 	To do something with experience in redis; Set time to expire by "x".
 	Set to x seconds to end of current time in match with timezone;
 	
 	internationalization; 
 	after internilization add redis  persitence_days;
+		
+	After creating resume:
+	refactor code with Spring Stream for kafka;	
 		
 	add ability send message for admin to all
 	add paying system;
@@ -62,6 +87,7 @@ Next:
 	
 	parse time in UserProcess of method() get_timezone();
 
+!!!DON't post CONKY to github!!!!!
 To do bz default learning two languages;
 
 	add system of pay;
@@ -110,6 +136,7 @@ permission_role: Admin
 message: --
 Target_role: USER;
 
+!!!DON't post CONKY to github!!!!!
  	  	In table "User" create another table "Preferences" and there add all other preferences;
  	  
  
@@ -140,6 +167,7 @@ Add empty page to TV "We work on this page"
 
 Add test of turing by enter to web-sites;
 
+!!!DON't post CONKY to github!!!!!
 revise video by topic: "spring boot + redis" or "spring data  + redis";
 
 Fast check_marks on github
@@ -206,6 +234,7 @@ Add in another project multithreading;
 
 
 
+!!!DON't post CONKY to github!!!!!
 
 SEOPULT for marketing of web_site;
 
@@ -243,6 +272,7 @@ Telegramm bot on java
 ���������� �������� �� ���������������������������� ��������������
 ���������� �������� �� �������������������������� �������������������������� ��������������������������������.
 
+!!!DON't post CONKY to github!!!!!
 
 script on java?For arch-linux?
 
@@ -271,6 +301,7 @@ YES, i should simple write script, that's quite interesting;
 After start terminal automatically open beuatiful arch images with parameters;
 change cursor of i3
 
+!!!DON't post CONKY to github!!!!!
 
 9. Add protect to gmail;
 	If i lose my phone;
@@ -279,6 +310,7 @@ change cursor of i3
 Install torrent
 yaourt -S qbittorrent 
 
+!!!DON't post CONKY to github!!!!!
 nodejs angular_cli;
 
 trash-cli
