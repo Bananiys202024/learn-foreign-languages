@@ -90,9 +90,24 @@ Delete key "mykey"
           
             del mykey
             
- Read hash key "mykey"
+Read hash key "mykey"
  
             HGETALL mykey
+
+Redis Sets are unordered collections of strings. The SADD command adds new elements to a set. It's also possible to do a number of other operations against sets like testing if a given element already exists, performing the intersection, union or difference between multiple sets, and so forth. Following command create unordered collections "myset"
+
+            sadd myset 1 2 3
+
+Get sets or get unordered collections of strings "myset"
+
+            smembers myset
+            
+Redis is free to return the elements in any order at every call
+This is a good time to introduce the set command that provides the number of elements inside a set. This is often called the cardinality of a set in the context of set theory, so the Redis command is called SCARD.
+Get number elements of set "myset"
+
+             scard myset
+
 
 <h3>Mongodb</h3>
 
@@ -107,12 +122,12 @@ Use database "tongues"
            
 Show tables
 
-           show tabes
+           show tables
 
 Get number of lines in table "users"
 
            db.users.count();
-           
+  
 Revise content of table "users"
 
            db.users.find();
@@ -121,6 +136,8 @@ Drop database "tongues"
 
            use tongues       
            db.dropDatabase()
+           
+           
  
 <h2>Access</h2>
 
