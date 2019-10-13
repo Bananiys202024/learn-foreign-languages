@@ -14,7 +14,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.web.Fremdsprache.entity.mongodb.ConstEnDict;
-import com.web.Fremdsprache.entity.mongodb.CountExperienceOfTrainingWords;
 import com.web.Fremdsprache.entity.mongodb.Dictionary;
 import com.web.Fremdsprache.entity.mongodb.Preference;
 import com.web.Fremdsprache.entity.mongodb.User;
@@ -29,7 +28,6 @@ import com.web.Fremdsprache.repositories.DictionaryRepository;
 import com.web.Fremdsprache.repositories.PreferenceRepository;
 import com.web.Fremdsprache.repositories.UserRepository;
 import com.web.Fremdsprache.repositories.WordsRepository;
-import com.web.Fremdsprache.repositories.countCounterOfExperienceForTrainingWords;
 import com.web.Fremdsprache.translator.Translator;
 import com.web.Fremdsprache.util.Convertor;
 

@@ -62,19 +62,12 @@ public class Initializing implements ApplicationListener<ContextRefreshedEvent> 
 	
 	@Override
 	public void onApplicationEvent(ContextRefreshedEvent event) {
-		logger.info("Starting passive initializing..");
-		
-		//checking if Admin role exist in app
-		logger.info("Creating admin account...");
+
 		Optional<Role> adminExist = roles.findByRole("Admin");
 		List<Preference> preferenceExist = preferenceRepository.findAll();
-		logger.info("Checking--" + preferenceExist);
 		
+		//creating admin user
 		if(adminExist.isPresent())
-		{
-		logger.info("Admin account already exist");
-		}
-		else
 		{
 			User user = new User();
 			user.setUsername("Admin");
@@ -82,18 +75,12 @@ public class Initializing implements ApplicationListener<ContextRefreshedEvent> 
 			user.setPassword(passwordAdmin.toCharArray());
 			
 			userService.saveUser(user, "Admin", true, "Europe/Kiev");
-			logger.info("Admin account created, all okey.");
 		}
 		//...
 		
 		//creating disabled user
-		logger.info("Creating disabled user account...");
 		Optional<User> userDisabledExist = users.findByEmail(disabledUserEmail);
 		if(userDisabledExist.isPresent())
-		{
-			logger.info("disabled user already exist");
-		}
-		else
 		{
 			User user = new User();
 			user.setUsername("Mortal");
@@ -103,15 +90,10 @@ public class Initializing implements ApplicationListener<ContextRefreshedEvent> 
 			userService.saveUser(user, "User", false, "Europe/Kiev");
 			logger.info("user-disabled account already created, all okey");
 		}
-		
 		//....
 		
 		
-		logger.info("End passive initializing..");
-	
-	
 		//initializing different dictionaries
-		
 		//add there is logger initializing dictionaries
 		try {
 			InitializingProcess.initalizeMostUsedEnglishWordsToTableMongo(englishDictionaryRepository);

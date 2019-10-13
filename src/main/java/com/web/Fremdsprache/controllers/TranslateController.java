@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.web.Fremdsprache.model.Answers;
 import com.web.Fremdsprache.translator.Translator;
 
 
@@ -18,10 +17,8 @@ import com.web.Fremdsprache.translator.Translator;
 public class TranslateController {
 
 	@RequestMapping(value = "/translate/{word}", method = RequestMethod.GET, produces = "application/json")
-	public Answers translateWord(@PathVariable String word) throws IOException {
-		return 	Answers.builder()
-					   .answer(Translator.translate("ru", word))
-					   .build();
+	public String translateWord(@PathVariable String word) throws IOException {
+		return Translator.translate("ru", word);
 	}
 	
 }

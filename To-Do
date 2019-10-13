@@ -4,30 +4,45 @@ REMEMBER: write time of execution on even task of executed;
      
 
 Last: -----
-fixing process fo changing timezone for user;20 minutes;
-awareness of confusing of my code and decision about rewriting it:35 minutes;
-reading about kafk
-16:40
+i am so lazy;cutted many options for day of production;some time;
+refactored some code;some hourse;
+
 
 
 Next:
 
-	kafka
-	https://www.confluent.io/blog/apache-kafka-spring-boot-application
+	Refactorng in back-end:
+	InitializingProcess in package com.web.Fremdsprache.initializer.InitializerProcess;
+	start refactoring from package:
+	com.web.Fremdsparche.repostoryImpl.*;
 
-	for testing start kafka with new project;
-	https://habr.com/ru/post/440400/
+	Add to test "testing redis, mongodb,  write, read,
 
-	adding kafka(message broker)(abilty to admin send message for all and chat for all users)
-	add ability to pay for VIP course;
-	Add part only for VIP user, which can view only VIP user;
+	Delete Testing Controller before production;
+	back-end refactored:
+	/Dictionary/English/empty
+	/translate/{word}
+	
+
 	Refactoring of code, implementing patterns of programming;
 	fixing all another errors, mistakes, polish of code
-	Creating web vue.js resume web-site;
-	
+
 	mainly refactore method "checkCurrentTimeOfTraining" in training class;
 	fixing process counting experience in end of training words;
-	fixing redis displaying for persistence_days:
+	fixing redis displaying for persistence_days:	
+	Creating web vue.js resume web-site;
+
+
+
+	front-end of page "messages";
+	back-end of page "messsage";
+
+	abilty to admin send message for all and chat for all users	
+	add ability to pay for VIP course;
+	Add part only for VIP user, which can view only VIP user;
+	
+	
+	
 	
 	
 	
@@ -41,6 +56,8 @@ Next:
 	User, Roles, Preference; mongodb;
 
 	for redis:
+
+	write app with kafka;
 
 	checking projects;
 	
@@ -66,6 +83,8 @@ Next:
 		
 	add ability send message for admin to all
 	add paying system;
+
+	Create app with  Spring Cloud, Spring Caching
 
 	Add ability to Admin send messages to all people;
 	Then add time;

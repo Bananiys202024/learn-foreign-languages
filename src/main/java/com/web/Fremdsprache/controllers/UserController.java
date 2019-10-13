@@ -49,13 +49,13 @@ public class UserController {
 		if(found.isPresent())
 		{
 			UserProcess.set_time_zone_user(found, timezone, users, preferenceRepo);
+	    	return new ResponseEntity<String>("All okey, timezone "+found.get().getEmail()+" is changed", HttpStatus.OK);
 		}
 		else
 		{
         	return new ResponseEntity<String>("User not found", HttpStatus.OK);
 		}
 
-    	return new ResponseEntity<String>("All okey, timezone "+found.get().getEmail()+" is changed", HttpStatus.OK);
 	}
 		
 	//only for admin

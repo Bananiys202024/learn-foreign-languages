@@ -1,6 +1,6 @@
 package com.web.Fremdsprache.controllers;
 
-import static org.springframework.http.ResponseEntity.ok;
+
 
 import java.security.Principal;
 import java.util.HashMap;
@@ -35,6 +35,7 @@ import com.web.Fremdsprache.model.AuthBody;
 import com.web.Fremdsprache.repositories.UserRepository;
 import com.web.Fremdsprache.service.CustomUserDetailsService;
 import com.web.Fremdsprache.util.ConfirmEmailorPassword;
+import com.web.Fremdsprache.util.Creator;
 import com.web.Fremdsprache.util.Security;
 
 import ch.qos.logback.classic.Logger;
@@ -60,58 +61,41 @@ public class AuthController {
 
 	@Autowired
     private JavaMailSender javaMailSender;
-	
- 
-   
+	 
     @SuppressWarnings("rawtypes")
     @PostMapping("/login")
     public ResponseEntity login(@RequestBody AuthBody data) {
        
-//    	throw new BadCredentialsException("Invalid email/password supplied");
     	try {
-        	logger.info("Email---"+data.getEmail()+"---passwd3e---"+data.getPassword());
-            String username = data.getEmail();
+
+    		String username = data.getEmail();
             char [] password = data.getPassword();
             
             Optional<User> found = this.users.findByEmail(username);
-            logger.info("Chec-point-1");
             
-            //exception if user doesn't exist
-            if(!found.isPresent())
-            {
-            	logger.info("User not found");
-            	return new ResponseEntity<String>("User not found. May be, he does not exist", HttpStatus.OK);
-            }
+            //model for checking  errors
+            boolean user_not_found = !found.isPresent();
+            boolean user_is_disabled = !found.get().getPreference().iterator().next().isEnabled();
+
+            if(user_not_found)
+            return new ResponseEntity<String>("User not found. May be, he does not exist", HttpStatus.OK);
             
-            //exception if user is disabled
-            if(!found.get().getPreference().iterator().next().isEnabled())//if doesn't enable user;
-            {
-            	logger.info("User is disabled");
-            	return new ResponseEntity<String>("User is disabled", HttpStatus.OK);
-            }
+            if(user_is_disabled)
+            return new ResponseEntity<String>("User is disabled", HttpStatus.OK);
+            
+            //...end model for checking errors
 
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, new String(password) ));
 
-            String token = jwtTokenProvider.createToken(username, found.get().getRoles());
-            logger.info("We reached this point");
-            
-            Map<Object, Object> model = new HashMap<>();
-            model.put("email", username); // It is really email, but have name of "username"
-            model.put("token", token);
-            model.put("password", password);
-            model.put("username", found.get().getUsername());
-            model.put("role", found.get().getRoles().iterator().next().getRole());
-           
-            //clear password field for security
+            //We are clearing password field for security
             data.setPassword(new char[] {'c', 'l','e','a','r','e','d'});
             
-            return ok(model);
-        } catch (AuthenticationException e) {
-        	logger.error("Error Authentication");
+            return Creator.generate_user_response_in_process_login(username, password, found.get(), jwtTokenProvider);
+       
+    	} catch (AuthenticationException e) {
             return new ResponseEntity<String>("Invalid email/password supplied", HttpStatus.OK);
         }
     	catch(Exception e) {
-    		logger.error("Commong error "+e);
             return new ResponseEntity<String>("Common error", HttpStatus.OK);
     	}
 
@@ -122,13 +106,15 @@ public class AuthController {
     @PostMapping(value="/register")
     public ResponseEntity register(@RequestBody User user) {
         Optional<User> userExists = userService.findUserByEmail(user.getEmail());
-        if (userExists.isPresent()) {
-        return new ResponseEntity<String>("User with email: " + user.getEmail() + " already exists", HttpStatus.OK );
-        }
-        logger.info(user.getUsername()+"----name");
-        userService.saveUser(user, "User", true, user.getPreference().iterator().next().getTimezone());
-        logger.info("All okey, we registered");
         
+        //checking errors
+        if (userExists.isPresent()) 
+        return new ResponseEntity<String>("User with email: " + user.getEmail() + " already exists", HttpStatus.OK );
+        //...
+        
+        userService.saveUser(user, "User", true, user.getPreference().iterator().next().getTimezone());
+        
+        //We are clearing field password for security
         user.setPassword(new char[] {'l','a','t','e'});
         
         return new ResponseEntity<String>("User registered successfully", HttpStatus.OK);
@@ -146,10 +132,9 @@ public class AuthController {
     public ResponseEntity<String> check_exist_email(@RequestBody User user) {
         Optional<User> userExists = userService.findUserByEmail(user.getEmail());
 
-        if (userExists.isPresent()) {
+        if (userExists.isPresent())
         return new ResponseEntity<String>("User with email: " + user.getEmail() + " already exists", HttpStatus.OK );
-        }
-
+        
         return new ResponseEntity<String>("Validation of registration data is ok", HttpStatus.OK);
     }
 

@@ -35,17 +35,15 @@ public class AdminController {
 	@PutMapping(value = "delete/user")
 	public ResponseEntity<String> generate_german_dictionary(@RequestBody String email) throws Exception {	
 		Optional<User> found = users.findByEmail(email);
-		
 		if(found.isPresent())
 		{
 			AdminProcesses.disable_user_by_email(email, users, found.get(), preferenceRepo);
+	    	return new ResponseEntity<String>("All okey, user "+found.get().getEmail()+" is disabled", HttpStatus.OK);
 		}
 		else
 		{
         	return new ResponseEntity<String>("User not found", HttpStatus.OK);
 		}
-
-    	return new ResponseEntity<String>("All okey, user "+found.get().getEmail()+" is disabled", HttpStatus.OK);
 	}
 		
 }

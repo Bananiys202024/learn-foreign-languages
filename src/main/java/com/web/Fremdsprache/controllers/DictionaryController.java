@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.web.Fremdsprache.entity.mongodb.Dictionary;
 import com.web.Fremdsprache.entity.mongodb.Words;
-import com.web.Fremdsprache.model.Bool;
 import com.web.Fremdsprache.model.Size;
 import com.web.Fremdsprache.repositories.ConstEnDictRepo;
 import com.web.Fremdsprache.repositories.DictionaryRepository;
@@ -38,12 +37,10 @@ public class DictionaryController {
 	WordsRepository words_repository;
 	
 	@RequestMapping(value = "/Dictionary/English/empty", method = RequestMethod.GET, produces = "application/json")
-	public Bool translateWord(Principal principal) throws IOException {
+	public boolean translateWord(Principal principal) throws IOException {
 		String loggedUser = principal.getName();
 		boolean result = DictionariesEnglish.checkIfEnglishDictionaryEmpty(loggedUser, words_repository);
-		return  Bool.builder()
-					.bool(!result) //important !, that logic...yes, i know...but it's work;
-					.build();
+		return !result; //check if boolean dictionary empty;
 	}
 	
 	@RequestMapping(value = "/Dictionary/English/{word}", method = RequestMethod.GET, produces = "application/json")

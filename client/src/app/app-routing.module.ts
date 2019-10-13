@@ -57,7 +57,7 @@ const routes: Routes = [
 	  { path: 'tv', canActivate: [AuthGuard], component: TVComponent, data: {animation: 'StandartAnimation15'}},
 
 	  { path: 'user/cabinet', canActivate: [AuthGuard], component: CabinetComponent, data: {animation: 'StandartAnimation23'}},
-	  { path: 'user/messages', canActivate: [AuthGuard], component: MessagesComponent, data: {animation: 'StandartAnimation22'}},
+	  { path: 'user/messages', canActivate: [AuthGuard], component: PageUnderConstructionComponent, data: {animation: 'StandartAnimation22'}},
 
 	  { path: 'result-training-words/:wrong/:right', canActivate: [AuthGuard], component: ResultTrainingWordsComponent, data: {animation: 'StandartAnimation13'} },
 

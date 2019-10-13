@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.web.Fremdsprache.model.Answers;
 import com.web.Fremdsprache.model.Mistakes;
 import com.web.Fremdsprache.model.Random;
 import com.web.Fremdsprache.model.Train;
@@ -25,7 +24,6 @@ import com.web.Fremdsprache.repositories.DictionaryRepository;
 import com.web.Fremdsprache.repositories.PreferenceRepository;
 import com.web.Fremdsprache.repositories.UserRepository;
 import com.web.Fremdsprache.repositories.WordsRepository;
-import com.web.Fremdsprache.repositories.countCounterOfExperienceForTrainingWords;
 import com.web.Fremdsprache.repositoryImpl.Training;
 import com.web.Fremdsprache.util.DictionaryProcess;
 
@@ -50,9 +48,6 @@ public class TrainingController {
     @Autowired
     PreferenceRepository preferenceRepo;
     
-	@Autowired
-	public countCounterOfExperienceForTrainingWords countExperienceOfTrainingWords;
-
 	@Autowired
 	public ConstRnDictRepo russianRepository;
 	

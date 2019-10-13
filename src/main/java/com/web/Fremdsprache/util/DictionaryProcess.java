@@ -9,16 +9,14 @@ import java.util.Random;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
-import com.web.Fremdsprache.model.Answers;
-
 
 public class DictionaryProcess {
 	
-	public static List<Answers> generateRussianAnswers(String correctAnswer) throws FileNotFoundException {
+	public static List<String> generateRussianAnswers(String correctAnswer) throws FileNotFoundException {
 		
 		Random rand = new Random();
 		
-		List<Answers> result = new ArrayList<Answers>(4);
+		List<String> result = new ArrayList<String>(4);
 		Scanner s = new Scanner(new File("src/main/resources/static/dictionary/word_rus.txt"), "UTF-8");
 		
 		ArrayList<String> list = new ArrayList<String>();
@@ -37,10 +35,10 @@ public class DictionaryProcess {
 		
 		for(int i=0;i<3;i++)
 		{
-			result.add(new Answers(list.get(i)));
+			result.add(list.get(i));
 		}
 		
-		result.add(new Answers(correctAnswer));
+		result.add(correctAnswer);
 		
 		Collections.shuffle(result);
 		
