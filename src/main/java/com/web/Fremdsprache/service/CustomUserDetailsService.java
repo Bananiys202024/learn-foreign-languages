@@ -92,6 +92,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 	    preference.setCurrent_level(0);
 	    
 	    String password = new String(user.getPassword());
+	    
 	    user.setPassword(bCryptPasswordEncoder.encode(password).toCharArray());
 	    user.setRoles(new HashSet<>(Arrays.asList(userRole)));
 	    user.setId(id);

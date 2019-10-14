@@ -29,7 +29,6 @@ import com.web.Fremdsprache.repositories.PreferenceRepository;
 import com.web.Fremdsprache.repositories.UserRepository;
 import com.web.Fremdsprache.repositories.WordsRepository;
 import com.web.Fremdsprache.translator.Translator;
-import com.web.Fremdsprache.util.Convertor;
 
 public class Training {
 
@@ -123,16 +122,11 @@ public class Training {
 		
 		}	
 		
-		logger.info("Result----"+result);
 		
 		return result;
 	}
 
 	private static Object generateElementOfArray(int i,ConstRnDictRepo russianRepository) {
-		
-		if(russianRepository.findAll().size()==0)
-		logger.info("You forget initialize russian dictionaries");
-		
 		return russianRepository.findById(i).getWord();
 	}
 
@@ -237,30 +231,20 @@ public class Training {
 		}
 		
 		List<Experience> foundList = list.stream().filter(c -> c.getUser().equals(loggedUser)).collect(Collectors.toList());
-		logger.info("Onfi-----"+foundList);
 		
 		
 		boolean empty = foundList.size() == 0;
 		
-		logger.info("Empty-----"+empty);
 		
 		if(!empty)
 		{		
 			Experience found = (Experience) list.stream().filter(c -> c.getUser().equals(loggedUser)).collect(Collectors.toList()).get(0);
-			logger.info("\n\nfound---"+found+"\n\n");
 
 		byte plusCount = (byte) (found.getCount()+1);
-		logger.info("plusCount1-----"+plusCount);
-		
 		byte experience = (byte) (plusCount>=3?50:20);
 
-		plusCount = plusCount>=3?1:plusCount;
-		logger.info("plusCount2-------"+plusCount);
-		
-		logger.info("experience----"+experience);
-		
+		plusCount = plusCount>=3?1:plusCount;		
 		byte currentExperience = (byte) found.getExperience();
-		logger.info("info-----"+currentExperience);
 		
 		Experience entity = found;
 		entity.setCount(plusCount);

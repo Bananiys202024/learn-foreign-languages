@@ -31,11 +31,15 @@ public class DictionariesEnglish {
 
 	public static void addWordToEnglishDictionary(DictionaryRepository dictionaryRepository, String word, String owner, WordsRepository words_repository) throws IOException {
 		
-		//check if word exists in dictionary
-		if(IsWordNotExistsInDictionary(dictionaryRepository, word, owner, words_repository))
-		{
+		//check if word exists in dictionary with if condition
+		//then execute adding words to english dictionary
+		if(IsWordNotExistsInDictionary(dictionaryRepository, word, owner, words_repository)) 
+		add_words_to_english_dictionary(dictionaryRepository, word, owner, words_repository);	
 		
-	
+	}
+
+	private static void add_words_to_english_dictionary(DictionaryRepository dictionaryRepository, String word,
+			String owner, WordsRepository words_repository) {
 		
 		//try/catch for empty database;
 		try
@@ -62,7 +66,8 @@ public class DictionariesEnglish {
 		{
 			logger.error("Ops!Error!Catched by logger!",e);
 		}
-		}//is word exist in dictionary ?
+		
+	
 
 	}
 
@@ -92,30 +97,22 @@ public class DictionariesEnglish {
 		
 		List<Words> list = getSizeEnglishDictionaryByLoggedUser(loggedUser, words_repository);
 		
-		logger.info("List------"+
-				 list.stream()
-		  .filter(c -> c.isRepeatTomorrow()==false)
-		  .filter(c -> c.isLearned() == false)
-		  .collect(Collectors.toList())
-		  );
-		
-		Size size = Size.builder()
-								.WordsOnLearn(
-											  list.stream()
-											  .filter(c -> c.isRepeatTomorrow()==false)
-											  .filter(c -> c.isLearned() == false)
-											  .collect(Collectors.toList()).size()
-											)
-								.WordsOnRepeat(
-												list.stream()
+		final int words_on_learn =  list.stream()
+				  								.filter(c -> c.isRepeatTomorrow()==false)
+				  								.filter(c -> c.isLearned() == false)
+				  								.collect(Collectors.toList()).size();
+		final int words_on_repeat = list.stream()
 												.filter(c -> c.isRepeatTomorrow()==true)
 												.filter(c -> c.isLearned() == false)
-												.collect(Collectors.toList()).size()
-											  )
-								 .Learned(
-										list.stream().filter(c -> c.isLearned() == true)
-										.collect(Collectors.toList()).size()
-									  )
+												.collect(Collectors.toList()).size();
+		final int words_learned = list.stream()
+											  .filter(c -> c.isLearned() == true)
+											  .collect(Collectors.toList()).size();
+		
+		Size size = Size.builder()
+								.WordsOnLearn(words_on_learn)
+								.WordsOnRepeat(words_on_repeat)
+								.Learned(words_learned)
 								.build();
 
 		 return size;
@@ -139,20 +136,18 @@ public class DictionariesEnglish {
 		List<ConstEnDict> entities = new ArrayList<ConstEnDict>();
 	
 		ConstEnDict entity = null;
+		
 		while(entities.size()<10)
 		{
-		
 		entity = findEntityConstEnDict(englishDictionaryRepository, limit);
 		
-		logger.info("---Boollean-----"+entity);
 		boolean checkingBool = IsWordNotExistsInDictionary(dictionaryRepository, entity.getWord(), owner, words_repository);
 		boolean word_not_exist_in_generated_list = checkIfGeneratedListContainWord(entities, entity.getWord());
 		
 		
 		if(checkingBool && word_not_exist_in_generated_list)
-		{
-			entities.add(entity);
-		}
+		entities.add(entity);
+		
 		
 		}//end while loop
 		
@@ -160,9 +155,6 @@ public class DictionariesEnglish {
 		for(ConstEnDict enty:entities)
 		saveToDataBase(words_repository, dictionaryRepository, enty, owner);
 	
-
-	
-		
 	}
 
 	private static void saveToDataBase(WordsRepository words_repository, DictionaryRepository dictionaryRepository,
@@ -207,10 +199,7 @@ public class DictionariesEnglish {
 	private static ConstEnDict findEntityConstEnDict(ConstEnDictRepo englishDictionaryRepository, int limit) {
 		
 		if(englishDictionaryRepository.findAll().size()==0)
-		{
-		logger.debug("EnglishDictionaryRepositoryEmpty");
-		return ConstEnDict.builder().word("towing").build();
-		}
+		return ConstEnDict.builder().word("towing").build();	
 		
 		return englishDictionaryRepository.findById(new Random().ints(1, 1, limit).findFirst().getAsInt() );
 	}

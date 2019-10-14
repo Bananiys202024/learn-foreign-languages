@@ -19,9 +19,6 @@ public class Story {
 	public static ArrayList<String> getWordsOfBookInListFromDataBase(String title) throws FileNotFoundException
 	{
 		
-//		Path path = FileSystems.getDefault().getPath(Book.class);
-		logger.info("Path--updated------"+ Story.class.getProtectionDomain().getCodeSource().getLocation().getPath());
-		
 		Scanner s = new Scanner(new File("file:/Fremdsprache.jar!/BOOT-INF/classes!/static/books/Atlas-Broken.txt"), "UTF-8");
 		
 		ArrayList<String> list = new ArrayList<String>();
@@ -30,9 +27,7 @@ public class Story {
 		    list.add(s.next());
 		}
 		s.close();
-			
-		
-		//
+
 		
 		return (ArrayList<String>) list.stream().limit(150).collect(Collectors.toList());	
 	}

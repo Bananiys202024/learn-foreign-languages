@@ -56,10 +56,6 @@ public class UserProcess {
 		
 		//get timezone
 		String timezone = found.get().getPreference().iterator().next().getTimezone();
-		
-//		Instant nowUtc = Instant.now();
-//		DateTimeZone time_zone = DateTimeZone.forID(timezone);
-//		DateTime result_current_time = nowUtc.toDateTime(time_zone);
 
 		final ZoneId zoneId = ZoneId.of(timezone);
         final ZonedDateTime zonedDateTime = ZonedDateTime.ofInstant(Instant.now(), zoneId);

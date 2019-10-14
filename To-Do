@@ -4,25 +4,54 @@ REMEMBER: write time of execution on even task of executed;
      
 
 Last: -----
-i am so lazy;cutted many options for day of production;some time;
-refactored some code;some hourse;
-
 
 
 Next:
 
-	Refactorng in back-end:
-	InitializingProcess in package com.web.Fremdsprache.initializer.InitializerProcess;
-	start refactoring from package:
-	com.web.Fremdsparche.repostoryImpl.*;
-
-	Add to test "testing redis, mongodb,  write, read,
-
-	Delete Testing Controller before production;
-	back-end refactored:
-	/Dictionary/English/empty
-	/translate/{word}
+	1. Refactorng in front-end:
+	2. fixing all errors;
+	3. Adding redis;
+	4. Adding tests "testing redis, mongodb,  write, read,";
+	5. Delete To-Do list and delete
+		After fixing all errors in project and adding redis, deelete loggers(Logger,info()..loger.error()..) from:
+		UserProcess.synchronize_dictionary_for_words_on_reapeating_checking_if_day_expired_for_words_on_reapeat(); 
+		Add tests to project
 	
+	6.
+	Try create with WordPress resume:
+	https://www.jimdo.com/u3mHeYGM4YCiUHPKw0NlHgEm4.jpg
+	Soe describe resume:
+	Button with projects: to do as drop_menu
+	And then on that page Add infromation from top to bottom;
+	Divided by parts 
+	I should use WordPress;
+	
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	Get some experience with Kafka;
 
 	Refactoring of code, implementing patterns of programming;
 	fixing all another errors, mistakes, polish of code
