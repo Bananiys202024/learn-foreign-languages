@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ProgressClient } from '../service/progress-client';
+import { ProgressClient } from '../service/http/common/progress-page/progress-client';
 
 @Component({
   selector: 'app-progress',

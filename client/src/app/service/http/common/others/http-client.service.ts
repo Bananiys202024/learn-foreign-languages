@@ -2,18 +2,18 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 //classes
-import { TrainWords } from '../classes/train-words';
-import { Answers } from '../classes/answers';
-import { Mistakes } from '../classes/mistakes';
-import { Book } from '../classes/book';
-import { Boolean } from '../classes/boolean';
-import { Dictionary } from '../classes/dictionary';
-import { Size } from '../classes/size';
-import { CounterExperience } from '../classes/counter-experience';
-import { Train } from '../classes/train';
-import { Random } from '../classes/random';
+import { TrainWords } from '../../../../classes/train-words';
+import { Answers } from '../../../../classes/answers';
+import { Mistakes } from '../../../../classes/mistakes';
+import { Book } from '../../../../classes/book';
+import { Boolean } from '../../../../classes/boolean';
+import { Dictionary } from '../../../../classes/dictionary';
+import { Size } from '../../../../classes/size';
+import { CounterExperience } from '../../../../classes/counter-experience';
+import { Train } from '../../../../classes/train';
+import { Random } from '../../../../classes/random';
 import { count } from 'rxjs/operators';
-import { Words } from '../classes/words';
+import { Words } from '../../../../classes/words';
 
 @Injectable({
   providedIn: 'root'
@@ -31,31 +31,6 @@ export class HttpClientService {
   ) { 
      }
 
-  	     getSomeSound(element)
-  {	    	 
-    return this.httpClient.get('http://localhost:8083/speach/'+element);
-  }
-  	
-      getAnswers(element)
-  {	    	 
-    return this.httpClient.get<Answers[]>('http://localhost:8083/secondProcess/TrainingWord/generate/list/answers/russian/'+element);
-  }
-      
-      getAudioAnswer(inputed, element, reallyId)
-  {	   	         	
-    return this.httpClient.get('http://localhost:8083/thirdProcess/checkAudioAnswer/'+inputed+'/'+element+"/"+reallyId);
-  }
-
-
-  checkAnswerForSecondProcess(inputed, element, reallyId)
-  {	   	   
-    return this.httpClient.get('http://localhost:8083/secondProcess/checkAnswer/'+inputed+'/'+element+"/"+reallyId);
-  }
-
-   getElementOfArrayForTrainingWords(id)
-  {
-    return this.httpClient.get<TrainWords>('http://localhost:8083/get/entity/'+id);
-  }
 
    getMistakes()
    {

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BanchProgressData } from '../classes/banch-progress-data';
+import { BanchProgressData } from 'src/app/classes/banch-progress-data';
 
 @Injectable({
     providedIn: 'root'
@@ -15,10 +15,10 @@ export class ProgressClient {
       //get dictionary words
       //get current level
       //get How do many experience we need for next level
-       getProgressData()
-       {
-        return this.httpClient.get<BanchProgressData>('http://localhost:8083/account/settings/banch/data/for/progress/page');
-       } 	
+      getProgressData()
+      {
+       return this.httpClient.get<BanchProgressData>('http://localhost:8083/account/settings/banch/data/for/progress/page');
+      } 	
 
        //query to redis
        //to get 

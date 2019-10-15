@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 import { NgbCarousel, NgbSlideEvent, NgbSlideEventSource } from '@ng-bootstrap/ng-bootstrap';
 import { Router } from "@angular/router";
-import { HttpClientService } from '../service/http-client.service';
+import { HttpClientService } from '../service/http/common/others/http-client.service';
 import { Train } from '../classes/train';
 import { Random } from '../classes/random';
 import { Globals } from '../classes/globals'

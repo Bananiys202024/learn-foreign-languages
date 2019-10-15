@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClientService } from '../../service/http-client.service';
+import { HttpClientService } from '../../service/http/common/others/http-client.service';
 
 import { Subscription } from 'rxjs';
-import { LoaderService } from '../../service/loader.service';
+import { LoaderService } from '../../service/loader/loader.service';
 import { LoaderState } from '../../loader/LoaderState';
 import { User } from 'src/app/classes/user';
 import { Preference } from 'src/app/classes/preference';

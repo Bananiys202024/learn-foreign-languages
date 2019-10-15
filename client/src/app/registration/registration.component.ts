@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { User } from '../classes/user';
 import { FormsModule } from '@angular/forms';
-import { HttpClientService } from '../service/http-client.service';
+import { HttpClientService } from '../service/http/common/others/http-client.service';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
 import { HttpEventType } from '@angular/common/http';

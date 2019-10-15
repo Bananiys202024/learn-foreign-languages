@@ -1,6 +1,6 @@
-import { ProgressClient } from './progress-client';
 import { TestBed } from '@angular/core/testing';
-import { HttpClientService } from './http-client.service';
+import { HttpClientService } from '../others/http-client.service';
+import { ProgressClient } from './progress-client';
 
 describe('ProgressClient', () => {
   beforeEach(() => TestBed.configureTestingModule({}));

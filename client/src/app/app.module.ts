@@ -33,7 +33,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { CabinetComponent } from './cabinet/cabinet.component';
 
 import { LoaderComponent } from './loader/loader.component';
-import { LoaderInterceptorService } from './service/loader-interceptor.service';
+import { LoaderInterceptorService } from './service/intercepter/loader-interceptor.service';
 import { RecaptchaModule } from 'ng-recaptcha';
 import { Globals } from './classes/globals';
 import { TokenInterceptor } from './Interceptors/token.interceptor';

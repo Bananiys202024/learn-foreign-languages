@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
 import { ActivatedRoute } from "@angular/router";
-import { HttpClientService} from '../service/http-client.service';
+import { HttpClientService} from '../service/http/common/others/http-client.service';
 import { Dictionary } from '../classes/dictionary';
 import { Words } from '../classes/words';
 

@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClientService } from '../service/http-client.service';
+import { HttpClientService } from '../service/http/common/others/http-client.service';
 import { Router } from '@angular/router';
 import { element } from 'protractor';
 import { Size } from '../classes/size';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 import { Subscription } from 'rxjs';
-import { LoaderService } from '../service/loader.service';
+import { LoaderService } from '../service/loader/loader.service';
 import { LoaderState } from '../loader/LoaderState';
 import { Location } from '@angular/common';
 
