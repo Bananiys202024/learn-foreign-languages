@@ -7,7 +7,7 @@ import { LoaderState } from '../../loader/LoaderState';
 import { User } from 'src/app/classes/user';
 import { Preference } from 'src/app/classes/preference';
 import { NgForm } from '@angular/forms';
-import { AdminHttpClientService } from 'src/app/service/http/admin-http-client.service';
+import { AdminHttpClientService } from 'src/app/service/http/admin/admin-http-client.service';
 
 
 @Component({

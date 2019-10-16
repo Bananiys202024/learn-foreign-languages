@@ -130,7 +130,7 @@ public class Training {
 		return russianRepository.findById(i).getWord();
 	}
 
-	public static void conclusion(String loggedUser, String[] right_array, String[] wrong_array,
+	public static void conclusion_without_experience(String loggedUser, String[] right_array, String[] wrong_array,
 			DictionaryRepository dictionaryRepository, WordsRepository words_repository) {
 	
 		wrong_array = Arrays.stream(wrong_array).filter(e -> !e.equals("null")).toArray(String[]::new);
@@ -193,10 +193,35 @@ public class Training {
 		
 		//on third time of training you will get +50 exp.
 		//time variable can't be more than 3, that's logic of app;
-		byte experience = (byte) checkCurrentTimeOfTraining(cashExperience, loggedUser); 
+		byte experience = (byte) we_are_counting_how_do_many_experience_we_need_add_to_current_experience(cashExperience, loggedUser); 
 
 		saveExperienceToUser(loggedUser, users, experience, preferenceRepo);
-//		saveExperienceToCash()
+		save_experience_to_cash(loggedUser, experience, cashExperience);
+		//save to cash experience;
+	}
+
+	private static void save_experience_to_cash(String loggedUser, byte experience, CashExperience cashExperience) {
+		
+		Optional<Experience> found = cashExperience.findByUser(loggedUser);
+		
+		if(found.isPresent())
+		{
+			if(found.get().getCount()>=3)
+			{
+				Experience entity = found.get();
+				entity.setCount(1);
+				entity.setExperience(experience+found.get().getExperience());
+				cashExperience.save(entity);
+			}
+			
+		}
+		
+		if(!found.isPresent())
+		{
+			Experience entity = Experience.builder().count(1).experience(20).user(loggedUser).build();
+			cashExperience.save(entity);
+		}
+		
 	}
 
 	private static void saveExperienceToUser(String loggedUser, UserRepository users, byte experience, PreferenceRepository preferenceRepo) {	
@@ -219,48 +244,21 @@ public class Training {
 		preferenceRepo.save(preference);
 	}
 
-	private static int checkCurrentTimeOfTraining(CashExperience cashExperience, String loggedUser) {
+	private static int we_are_counting_how_do_many_experience_we_need_add_to_current_experience(CashExperience cashExperience, String loggedUser) {
 		
-		List<Experience> list = (List<Experience>) cashExperience.findAll();
 		
-		if(list.size()==0)
+		Optional<Experience> found = cashExperience.findByUser(loggedUser);
+		
+		if(found.isPresent())
 		{
-			Experience entity = Experience.builder().count(1).experience(20).user(loggedUser).build();
-			cashExperience.save(entity);
-			return 20;
+			if(found.get().getCount()>=3)
+			{
+				return 50;
+			}
+			
 		}
-		
-		List<Experience> foundList = list.stream().filter(c -> c.getUser().equals(loggedUser)).collect(Collectors.toList());
-		
-		
-		boolean empty = foundList.size() == 0;
-		
-		
-		if(!empty)
-		{		
-			Experience found = (Experience) list.stream().filter(c -> c.getUser().equals(loggedUser)).collect(Collectors.toList()).get(0);
-
-		byte plusCount = (byte) (found.getCount()+1);
-		byte experience = (byte) (plusCount>=3?50:20);
-
-		plusCount = plusCount>=3?1:plusCount;		
-		byte currentExperience = (byte) found.getExperience();
-		
-		Experience entity = found;
-		entity.setCount(plusCount);
-		entity.setExperience(currentExperience+experience);
-		cashExperience.save(entity);
-		
-		return experience;
-		}
-		else
-		{
-			Experience entity = Experience.builder().count(1).experience(20).user(loggedUser).build();
-			cashExperience.save(entity);
 		
 		return 20;
-		}
-		
 		
 	}
 

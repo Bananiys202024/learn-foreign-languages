@@ -4,11 +4,16 @@ REMEMBER: write time of execution on even task of executed;
      
 
 Last: -----
-
+Detected reason of problem training words.Redis;60mintues;
 
 Next:
 
-	1. Refactorng in front-end:
+I can disconnect kafka from docker;
+if less than 5 words add warnings that we can't train;
+
+
+http://localhost:8083/training/conclusion/milk,natural/molecule,drink,rail"
+
 	2. fixing all errors;
 	3. Adding redis;
 	4. Adding tests "testing redis, mongodb,  write, read,";

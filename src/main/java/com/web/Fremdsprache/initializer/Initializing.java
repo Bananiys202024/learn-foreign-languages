@@ -67,7 +67,7 @@ public class Initializing implements ApplicationListener<ContextRefreshedEvent> 
 		List<Preference> preferenceExist = preferenceRepository.findAll();
 		
 		//creating admin user
-		if(adminExist.isPresent())
+		if(!adminExist.isPresent())
 		{
 			User user = new User();
 			user.setUsername("Admin");
@@ -80,7 +80,7 @@ public class Initializing implements ApplicationListener<ContextRefreshedEvent> 
 		
 		//creating disabled user
 		Optional<User> userDisabledExist = users.findByEmail(disabledUserEmail);
-		if(userDisabledExist.isPresent())
+		if(!userDisabledExist.isPresent())
 		{
 			User user = new User();
 			user.setUsername("Mortal");

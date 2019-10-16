@@ -70,7 +70,7 @@ public class TrainingController {
 	public void conclusion_decision_of_destiny_wors(@PathVariable String[] right_array, @PathVariable String[] wrong_array, Principal principal) throws IOException {
 		String loggedUser = principal.getName();
 		this.conclusion_about_experience(loggedUser);
-		Training.conclusion(loggedUser, right_array, wrong_array, dictionaryRepository, words_repository);
+		Training.conclusion_without_experience(loggedUser, right_array, wrong_array, dictionaryRepository, words_repository);
 	}
 	
 
