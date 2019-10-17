@@ -16,13 +16,13 @@ public @Data  class Words {
 		@Id
 	    private Long id;
 	    
-		@Field(value = "status")
+		@Field(value = "owner")
 	    private String owner;
 		
-	    @Field(value = "registration_date")
+	    @Field(value = "russianWord")
 	    private String russianWord;
 	    
-	    @Field(value = "current_level")
+	    @Field(value = "englishWord")
 	    private String englishWord;
 
 	    @Field(value = "reapeatTomorrow")

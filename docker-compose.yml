@@ -21,32 +21,7 @@ services:
           - '27017:27017'
         volumes:
           - $HOME/mongodb:/data/db
-      
-     # zookeeper & kafka
-     zookeeper:
-        image: wurstmeister/zookeeper
-        container_name: zookeeper
-        restart: always
-        ports:
-          - 2181:2181
-
-     kafka:
-        image: wurstmeister/kafka
-        container_name: kafka
-        restart: always
-        depends_on:
-          - zookeeper
-        links:
-          - zookeeper:zookeeper
-        ports:
-          - 9092:9092
-        environment:
-          - KAFKA_ZOOKEEPER_CONNECT=zookeeper:2181
-          - KAFKA_ADVERTISED_HOST_NAME=kafka
-          - KAFKA_ADVERTISED_PORT=9092
-          - KAFKA_CREATE_TOPICS=USER:1:1,PRODUCT:1:1,ORDER:1:1
-          - KAFKA_BROKER_ID=1
-      
+         
      fremdsprache:
         build: .  
         ports:
@@ -54,9 +29,7 @@ services:
         links:
         - "redis:redis"
         - "mongo:mongo"
-        - "kafka:kafka"
         depends_on:
-        - kafka
         - mongo
         - redis
         restart: "always"

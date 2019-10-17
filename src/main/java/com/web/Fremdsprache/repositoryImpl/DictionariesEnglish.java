@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Random;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.apache.logging.log4j.LogManager;
@@ -23,6 +24,8 @@ import com.web.Fremdsprache.repositories.ConstEnDictRepo;
 import com.web.Fremdsprache.repositories.DictionaryRepository;
 import com.web.Fremdsprache.repositories.WordsRepository;
 import com.web.Fremdsprache.translator.Translator;
+import com.web.Fremdsprache.util.Convertor;
+import com.web.Fremdsprache.util.ExtraPackage;
 
 
 public class DictionariesEnglish {
@@ -151,41 +154,69 @@ public class DictionariesEnglish {
 		
 		}//end while loop
 		
-		//save those 10 entities in dictionaryRepository
+		
+		//creating list of words for entity dictionaryEnglish;
+		Set<Words> list_set_of_words = new HashSet<Words>();
+		 
+		Optional<Words> found_entity_for_count_max_id = words_repository.findFirstByOrderByIdDesc();
+		
+		long maxId = found_entity_for_count_max_id.isPresent()?found_entity_for_count_max_id.get().getId():0L;	
+		
+		//create set collection
 		for(ConstEnDict enty:entities)
-		saveToDataBase(words_repository, dictionaryRepository, enty, owner);
+		{
+			list_set_of_words.add(
+				Convertor.convert_class_ConstEnDict_to_class_Words_for_process_insert_10_words(enty, maxId, owner)
+				);
+			
+		maxId+=1l;
+		}//...end creating list of words;	
+		
+		//save those 10 entities in dictionaryRepository	
+		saveToDataBase(words_repository, dictionaryRepository, list_set_of_words, owner);
 	
 	}
 
-	private static void saveToDataBase(WordsRepository words_repository, DictionaryRepository dictionaryRepository,
-			ConstEnDict enty, String owner) throws IOException {
-		
+private static void saveToDataBase(WordsRepository words_repository, DictionaryRepository dictionaryRepository,
+			Set<Words> list_set_of_words, String owner) {
 
-		Optional<Dictionary> entity = dictionaryRepository.findFirstByOrderByIdDesc();
+		Optional<Dictionary> found_entity_for_count_max_id_for_dictionary = dictionaryRepository.findFirstByOrderByIdDesc();
+
+		long maxId = found_entity_for_count_max_id_for_dictionary.isPresent() ? found_entity_for_count_max_id_for_dictionary.get().getId():0L;	
+
+		//check if dictionary entity with that user already exist; 
+		//if already exist then add to current words those words;
+		//if not then create new;
+				
+		Optional<Dictionary> check_by_exist = dictionaryRepository.findByOwner(owner);
+		Dictionary dictionary=null;
 		
-		long maxId = entity.isPresent()?entity.get().getId():0L;	
+		if(check_by_exist.isPresent())
+		{
+			dictionary =  Dictionary.builder()
+					  .id(check_by_exist.get().getId())
+					  .owner(owner)
+				      .words(ExtraPackage.mergeSet(list_set_of_words, check_by_exist.get().getWords()))
+				      .build();	
 		
-		Words words = Words.builder()
-				.id(maxId+1)
-				.dateLearned(new Date())
-				.dateRepeat(new Date())
-				.learned(false)
-				.englishWord(enty.getWord())
-				.russianWord(Translator.translate("ru", enty.getWord() ))
-				.owner(owner)
-				.repeatTomorrow(false)
-				.build();	
+		}
+		else
+		{
+			dictionary =  Dictionary.builder()
+				  .id(maxId+1)
+				  .owner(owner)
+			      .words(list_set_of_words)
+			      .build();
 		
-		Dictionary dictionary =  Dictionary.builder()
-			  .id(maxId+1)
-			  .owner(owner)
-		      .words(new HashSet<>(Arrays.asList(words)))
-		      .build();
 		
+		}
+		//...
 		
 		dictionaryRepository.save(dictionary);
-		words_repository.save(words);
+		words_repository.saveAll(list_set_of_words);
+	
 	}
+
 
 	private static boolean checkIfGeneratedListContainWord(List<ConstEnDict> entities, String word) {
 		

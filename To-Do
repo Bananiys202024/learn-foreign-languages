@@ -4,15 +4,29 @@ REMEMBER: write time of execution on even task of executed;
      
 
 Last: -----
-Detected reason of problem training words.Redis;60mintues;
+
+deleted kafka;
+18:19;
+refactoring create tables;
+refactoring initalizing training process;
 
 Next:
 
-I can disconnect kafka from docker;
+Add to github note as to find only one note by owner in mongodb;get only some fields;
+
+
+Right right distribute elements by buckets in method DictionaresEnglish line 156;
+https://javarush.ru/groups/posts/2147-hashset-v-java
+
+Rename entity dictionaryEnglish to simple Dictionary
+Abiity automatically count id for database and rewrite all that;
+
+User to login: kaxofom@umail365.com
+
 if less than 5 words add warnings that we can't train;
 
+fixing process of training words;
 
-http://localhost:8083/training/conclusion/milk,natural/molecule,drink,rail"
 
 	2. fixing all errors;
 	3. Adding redis;
@@ -37,7 +51,8 @@ http://localhost:8083/training/conclusion/milk,natural/molecule,drink,rail"
 
 
 
-
+	java How de we can get time system time of used computer or device;
+	
 
 
 

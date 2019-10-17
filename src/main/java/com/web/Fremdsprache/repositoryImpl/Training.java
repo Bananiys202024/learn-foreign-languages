@@ -202,15 +202,15 @@ public class Training {
 
 	private static void save_experience_to_cash(String loggedUser, byte experience, CashExperience cashExperience) {
 		
-		Optional<Experience> found = cashExperience.findByUser(loggedUser);
+		Optional<List<Experience>> found = cashExperience.findByUser(loggedUser); 
 		
 		if(found.isPresent())
 		{
-			if(found.get().getCount()>=3)
+			if(found.get().get(0).getCount()>=3)
 			{
-				Experience entity = found.get();
+				Experience entity = found.get().get(0);
 				entity.setCount(1);
-				entity.setExperience(experience+found.get().getExperience());
+				entity.setExperience(experience+found.get().get(0).getExperience());
 				cashExperience.save(entity);
 			}
 			
@@ -247,11 +247,11 @@ public class Training {
 	private static int we_are_counting_how_do_many_experience_we_need_add_to_current_experience(CashExperience cashExperience, String loggedUser) {
 		
 		
-		Optional<Experience> found = cashExperience.findByUser(loggedUser);
+		Optional<List<Experience>> found = cashExperience.findByUser(loggedUser);
 		
 		if(found.isPresent())
 		{
-			if(found.get().getCount()>=3)
+			if(found.get().get(0).getCount()>=3)
 			{
 				return 50;
 			}
