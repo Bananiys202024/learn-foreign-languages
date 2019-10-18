@@ -57,7 +57,7 @@ public class TrainingController {
 	@GetMapping(value = "initialize", produces = "application/json")
 	public Train initialize(Principal principal) throws IOException {
 		String loggedUser = principal.getName();
-		return Training.initialize(loggedUser, dictionaryRepository);
+		return Training.initialize(loggedUser, words_repository);
 	}
 	
 	@GetMapping(value = "generate_random_words/{rightAnswers}", produces = "application/json")

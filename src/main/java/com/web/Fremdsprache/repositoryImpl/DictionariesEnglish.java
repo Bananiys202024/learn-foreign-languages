@@ -124,10 +124,21 @@ public class DictionariesEnglish {
 
 	public static List<Words> getSizeEnglishDictionaryByLoggedUser(String loggedUser,
 			WordsRepository words_repository) {
-		return  words_repository.findAll()
-									.stream()
-									.filter(c -> c.getOwner().equals(loggedUser))
-									.collect(Collectors.toList());
+		List<Words> found = words_repository.findAll(); 
+		
+		if(found.size()!=0)
+		{
+		return  found
+				.stream()
+				.filter(c -> c.getOwner().equals(loggedUser))
+				.collect(Collectors.toList());
+		}
+		else
+		{
+			found.add(Words.builder().dateRepeat(new Date()).learned(true).repeatTomorrow(false).build() );
+			return found;
+		}
+		
 	}
 
 	public static void insert_10_random_words(String owner, DictionaryRepository dictionaryRepository,
@@ -150,7 +161,7 @@ public class DictionariesEnglish {
 		
 		if(checkingBool && word_not_exist_in_generated_list)
 		entities.add(entity);
-		
+		logger.info("Is this loop ?+"+checkingBool+"--"+word_not_exist_in_generated_list);
 		
 		}//end while loop
 		

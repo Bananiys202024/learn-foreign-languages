@@ -17,4 +17,6 @@ public interface WordsRepository extends MongoRepository<Words, Long>{
 	
 	public Optional<Words> findFirstByOrderByIdDesc();
 	
+	public List<Words> findByOwner(String name);
+	
 }

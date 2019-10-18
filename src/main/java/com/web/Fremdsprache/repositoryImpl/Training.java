@@ -34,13 +34,12 @@ public class Training {
 
 	private static final Logger logger = LogManager.getLogger(Training.class);
 
-	public static Train initialize(String loggedUser, DictionaryRepository dictionaryRepository) {
+	public static Train initialize(String loggedUser,WordsRepository words_repository) {
 		
-		List<Dictionary> list = dictionaryRepository.findAll()
+		List<Words> list = words_repository.findByOwner(loggedUser)
 																	.stream()
-																	.filter(c -> c.getOwner().equals(loggedUser))
-																	.filter(c -> c.getWords().iterator().next().isRepeatTomorrow()== false)
-																	.filter(c -> c.getWords().iterator().next().isLearned() == false)
+																	.filter(c -> c.isRepeatTomorrow()== false)
+																	.filter(c -> c.isLearned() == false)
 																	.limit(5) //6 excluded, only 5;
 																	.collect(Collectors.toList());
 		
@@ -49,20 +48,20 @@ public class Training {
 		 return model;
 	}
 
-	private static String[] russianArray(List<Dictionary> list) {
+	private static String[] russianArray(List<Words> list) {
 		
 		String[] result = new String[5];
 		for(int i=0;i<5;i++)
-		result[i]=list.get(i).getWords().iterator().next().getRussianWord();
+		result[i]=list.get(i).getRussianWord();
 			
 		return result;
 	}
 
-	private static String[] englishArray(List<Dictionary> list) {
+	private static String[] englishArray(List<Words> list) {
 		
 		String[] result = new String[5];
 		for(int i=0;i<5;i++)
-		result[i]=list.get(i).getWords().iterator().next().getEnglishWord();
+		result[i]=list.get(i).getEnglishWord();
 			
 		return result;
 	}
@@ -206,7 +205,9 @@ public class Training {
 		
 		if(found.isPresent())
 		{
-			if(found.get().get(0).getCount()>=3)
+			boolean do_not_empty = found.get().size()!=0;
+			
+			if(do_not_empty && found.get().get(0).getCount()>=3)
 			{
 				Experience entity = found.get().get(0);
 				entity.setCount(1);
@@ -249,7 +250,7 @@ public class Training {
 		
 		Optional<List<Experience>> found = cashExperience.findByUser(loggedUser);
 		
-		if(found.isPresent())
+		if(found.isPresent() && found.get().size()!=0)
 		{
 			if(found.get().get(0).getCount()>=3)
 			{
