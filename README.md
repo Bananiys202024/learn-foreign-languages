@@ -123,6 +123,23 @@ Use database "tongues"
 Show tables
 
            show tables
+ 
+Show content of table "users"
+   
+           db.users.find({})
+           
+Show content of table "users"
+   
+           db.users.find()
+           
+Show define content of table "users", only with value "Mortal" in column "username"
+             
+           db.users.find({"username": "Mortal"})
+
+Show define content of table "users", only with value "Mortal" in column "username" 
+and with value IamDisabledUser" in column email
+
+           db.users.find({"email": "IamDisabledUser", "username":"Mortal"})
 
 Get number of lines in table "users"
 
