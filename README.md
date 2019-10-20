@@ -15,6 +15,18 @@
 <kbd><img src="github/images/2.jpg"></kbd>
 <kbd><img src="github/images/1.jpg"></kbd>
 
+<h2>Frameworks and tools</h2>
+
+<h6>
+    Java&IDE: JDK8 Eclipse<br>
+    Backend: Spring Boot, Spring Data, Spring Security<br>
+    Frontend: Angular, Bootstrap<br>
+    Database: mongoDB, redis <br>
+    Build Tool: Gradle<br>
+    Linux： Arch Linux<br>
+    Other: Log4j, lombok, Spring Mail, google translator, Spring actuator<br>
+</h6>
+
 <h2>Start app</h2>
 
 
