@@ -1,11 +1,15 @@
 package com.web.Fremdsprache.repositoryImpl;
 
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import com.web.Fremdsprache.entity.mongodb.Dictionary;
+import com.web.Fremdsprache.entity.mongodb.Preference;
+import com.web.Fremdsprache.entity.mongodb.User;
 import com.web.Fremdsprache.entity.redis.Experience;
 import com.web.Fremdsprache.model.BanchProgressData;
 import com.web.Fremdsprache.repositories.CashExperience;
@@ -78,6 +82,20 @@ public class AccountInformation {
 	public static int days_persistence_learning(UserRepository users, String loggedUser,
 			CashePersistence cashe_persistence) {
 		
+//		Optional<User> found = users.findByEmail(loggedUser);
+//		
+//		if(found.isPresent())
+//		{
+//		Set<Preference> set_preference = found.get().getPreference();
+//		Preference preference = set_preference.iterator().next();
+//		String timezone = preference.getTimezone();
+//		Date current_date = new Date();
+//		
+//		}
+//		else
+//		{
+//			return 0;
+//		}
 		
 		//users get time-zone
 		//count date from now;
@@ -92,7 +110,7 @@ public class AccountInformation {
 		//date current set and set owner-loggedName.
 		
 		
-		return 0;
+		return 3;
 	}
 
 }

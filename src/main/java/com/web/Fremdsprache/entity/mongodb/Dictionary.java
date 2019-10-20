@@ -22,7 +22,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Document(collection = "dictionaryEnglish")
+@Document(collection = "dictionary")
 public @Data class Dictionary {
 
     @Id

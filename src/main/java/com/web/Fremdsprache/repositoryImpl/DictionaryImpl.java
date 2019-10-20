@@ -28,9 +28,9 @@ import com.web.Fremdsprache.util.Convertor;
 import com.web.Fremdsprache.util.ExtraPackage;
 
 
-public class DictionariesEnglish {
+public class DictionaryImpl {
 
-	private static final Logger logger = LogManager.getLogger(DictionariesEnglish.class);
+	private static final Logger logger = LogManager.getLogger(DictionaryImpl.class);
 
 	public static void addWordToEnglishDictionary(DictionaryRepository dictionaryRepository, String word, String owner, WordsRepository words_repository) throws IOException {
 		

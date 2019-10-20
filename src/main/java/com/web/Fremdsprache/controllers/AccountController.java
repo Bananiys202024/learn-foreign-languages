@@ -21,7 +21,7 @@ import com.web.Fremdsprache.model.BanchProgressData;
 import com.web.Fremdsprache.repositories.DictionaryRepository;
 import com.web.Fremdsprache.repositories.UserRepository;
 import com.web.Fremdsprache.repositoryImpl.AccountInformation;
-import com.web.Fremdsprache.repositoryImpl.DictionariesEnglish;
+import com.web.Fremdsprache.repositoryImpl.DictionaryImpl;
 import com.web.Fremdsprache.repositories.CashExperience;
 import com.web.Fremdsprache.repositories.CashePersistence;
 import com.web.Fremdsprache.repositories.ConstEnDictRepo;

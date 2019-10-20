@@ -19,7 +19,7 @@ import com.web.Fremdsprache.model.Size;
 import com.web.Fremdsprache.repositories.ConstEnDictRepo;
 import com.web.Fremdsprache.repositories.DictionaryRepository;
 import com.web.Fremdsprache.repositories.WordsRepository;
-import com.web.Fremdsprache.repositoryImpl.DictionariesEnglish;
+import com.web.Fremdsprache.repositoryImpl.DictionaryImpl;
 
 @CrossOrigin(origins = "http://localhost:4203")
 @RestController
@@ -39,32 +39,32 @@ public class DictionaryController {
 	@RequestMapping(value = "/Dictionary/English/empty", method = RequestMethod.GET, produces = "application/json")
 	public boolean translateWord(Principal principal) throws IOException {
 		String loggedUser = principal.getName();
-		boolean result = DictionariesEnglish.checkIfEnglishDictionaryEmpty(loggedUser, words_repository);
+		boolean result = DictionaryImpl.checkIfEnglishDictionaryEmpty(loggedUser, words_repository);
 		return !result; //check if boolean dictionary empty;
 	}
 	
 	@RequestMapping(value = "/Dictionary/English/{word}", method = RequestMethod.GET, produces = "application/json")
 	public void addNotesToMongoDB(@PathVariable String word, Principal principal) throws IOException {
 		String loggedUser = principal.getName();
-		DictionariesEnglish.addWordToEnglishDictionary(dictionaryRepository, word, loggedUser, words_repository);
+		DictionaryImpl.addWordToEnglishDictionary(dictionaryRepository, word, loggedUser, words_repository);
 	}
 	
 	@RequestMapping(value = "get/Dictionary/size", method = RequestMethod.GET, produces = "application/json")
 	public Size dictionarySize(Principal principal) throws IOException {
 	String loggedUser = principal.getName();
-	return DictionariesEnglish.getDictionarySize(words_repository, loggedUser);
+	return DictionaryImpl.getDictionarySize(words_repository, loggedUser);
 	}
 	
 	@RequestMapping(value = "get/Dictionary/English", method = RequestMethod.GET, produces = "application/json")
 	public List<Words> addNotesToMongoDB(Principal principal) throws IOException {
 		String loggedUser = principal.getName();
-		return DictionariesEnglish.getSizeEnglishDictionaryByLoggedUser(loggedUser, words_repository);	
+		return DictionaryImpl.getSizeEnglishDictionaryByLoggedUser(loggedUser, words_repository);	
 	}
 	
 	@RequestMapping(value = "get/10/random/words/to/dictionary", method = RequestMethod.GET, produces = "application/json")
 	public void generate_10_random_words(Principal principal) throws IOException {
 		String loggedUser = principal.getName();
-		DictionariesEnglish.insert_10_random_words(loggedUser, dictionaryRepository, englishDictionaryRepository, words_repository);	
+		DictionaryImpl.insert_10_random_words(loggedUser, dictionaryRepository, englishDictionaryRepository, words_repository);	
 	}
 
 
