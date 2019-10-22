@@ -1,10 +1,8 @@
 # learn-foreign-languages
 
 <h2>Describe</h2>
- App for learning foreign languages
-
- App is developing...
-
+ App for learning English
+ 
 <h2>Screenshots</h2>            
 
 <kbd><img src="github/images/7.jpg"></kbd>
