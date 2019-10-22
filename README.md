@@ -22,7 +22,7 @@
     Database: mongoDB, redis <br>
     Build Tool: Gradle<br>
     Linux： Arch Linux<br>
-    Other: Docker, Log4j, lombok, Spring Mail, google translator, Spring actuator<br>
+    Other: Docker, Log4j, Spring Mail, google translator, Spring actuator<br>
 </h6>
 
 <h2>Start app</h2>
